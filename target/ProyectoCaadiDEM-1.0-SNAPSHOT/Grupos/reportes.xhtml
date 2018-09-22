@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Plantillas/HCF.xhtml">
+
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:panel header="Reportes de Grupos">
+                        
+                        <p:commandButton value="Reporte de Grupo"/>
+                        
+                        <p:selectOneMenu value="#{beanGrupos.grpIndex}">
+                            <f:selectItem itemLabel="Seleccione Grupo"/>
+                            <f:selectItems value="#{beanGrupos.listarItems()}" 
+                                           var="grp"
+                                           itemLabel="#{grp.id} #{grp.identifier} 
+                                           #{grp.learningUnit} #{grp.level}"
+                                           itemValue="#{grp.id}"/>
+                            
+                            <f:ajax listener="#{beanGrupos.buscarGrupo()}" render=":form:idRep :form:idProf"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel id="idProf" value="Profesor: #{beanGrupos.grpActual.employeeNumber.name}
+                                       #{beanGrupos.grpActual.employeeNumber.firstLastName}
+                                       #{beanGrupos.grpActual.employeeNumber.secondLastName}"/>
+                        
+                        <p:dataTable id="idRep" value="#{beanGrupos.grpActual.studentsCollection}" var="std">
+                            <p:column headerText="NUA">
+                                <p:outputLabel value="#{std.nua}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Nombre">
+                                <p:outputLabel value="#{std.name}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Apellidos">
+                                <p:outputLabel value="#{std.firstLastName} #{std.secondLastName}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Total Horas">
+                                <p:outputLabel value="#{beanVisit.contarHoras(std)}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

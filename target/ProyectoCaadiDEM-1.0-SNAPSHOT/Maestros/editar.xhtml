@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Plantillas/HCF.xhtml">
+
+            <ui:define name="content">
+                
+                 <h:form id="form">
+                    <p:growl id="stdEdtGrowl" showDetail="true" />
+                    <p:panel header="Editar Maestro" id="stdEdtPanel">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel for="txtNua" value="NUE"/>
+                            <p:inputText id="txtNua" required="true" value="#{beanMaestros.mtsActual.employeeNumber}"/>
+                            
+                            <p:outputLabel for="txtNombre" value="Nombre"/>
+                            <p:inputText id="txtNombre" required="true" value="#{beanMaestros.mtsActual.name}" />
+                            
+                            <p:outputLabel for="txtPa" value="Apellido Paterno"/>
+                            <p:inputText id="txtPa" required="true" value="#{beanMaestros.mtsActual.firstLastName}" />
+                            
+                            <p:outputLabel for="txtMa"  value="Apellido Materno"/>
+                            <p:inputText  id="txtMa" required="true" value="#{beanMaestros.mtsActual.secondLastName}" />
+                                                     
+                            
+                            <p:outputLabel  for="gen" value="Genero"/>
+                            <p:selectOneMenu id="gen" required="true" value="#{beanMaestros.mtsActual.gender}">
+                                <f:selectItem itemLabel="masculino" itemValue="M" />
+                                <f:selectItem itemLabel="femenino"  itemValue="F" />
+                                <f:selectItem itemLabel="Otro"      itemValue="X" />
+                            </p:selectOneMenu>                            
+                            
+                            <p:outputLabel  value="E-mail"/>
+                            <p:inputText value="#{beanMaestros.mtsActual.email}" />
+                                                    
+                            <p:commandButton value="Guardar" update=":form:stdEdtGrowl :form:stdEdtPanel"
+                                             action="#{beanMaestros.editarItem()}" 
+                                             actionListener="#{beanUtileria.mensajeEditado()}"/>
+                            <p:commandButton value="Cancelar"/>
+                        </p:panelGrid>
+                        
+                    </p:panel>
+                </h:form>
+                
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

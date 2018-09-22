@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Plantillas/HCF.xhtml">
+
+            <ui:define name="content">
+                
+                <h:form id="form">
+                    <p:panel header="Estudiantes Registrados">
+                        <p:growl id="stdListGrowl" showDetail="true"  />
+                        <p:outputPanel>
+                            <p:commandButton value="Borrar Seleccionados" 
+                                             update=":form:delVarios"
+                                             action="#{beanUtileria.mostrarDialogoBorrarMulti('dlgBorrarVarios')}"
+                            />
+                            
+                            <p:commandButton value="Agregar Estudiante" action="agregar" actionListener="#{beanEstudiantes.crearNuevoItem()}"/>
+                        </p:outputPanel>
+                    <p:dataTable 
+                        selection="#{beanEstudiantes.stdSeleccionados}"
+                        rowKey="#{std.nua}" paginator="true"
+                        rows="10"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
+                         {PreviousPageLink} {PageLinks} {NextPageLink}
+                         {LastPageLink} {RowsPerPageDropdown}"
+                        value="#{beanEstudiantes.listarItems()}" var="std"
+                        filteredValue="#{beanEstudiantes.stdFiltrados}"
+                    >
+                        
+                        
+                        <p:column selectionMode="multiple" />
+                        
+                        <p:column headerText="NUA" filterBy="#{std.nua}">
+                            <p:outputLabel value="#{std.nua}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Nombre" filterBy="#{std.name}">
+                            <p:outputLabel value="#{std.name}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Apellido Paterno" filterBy="#{std.firstLastName}">
+                            <p:outputLabel value="#{std.firstLastName}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Apellido Materno" filterBy="#{std.secondLastName}">
+                            <p:outputLabel value="#{std.secondLastName}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Programa Educativo" filterBy="#{std.program}">
+                            <p:outputLabel value="#{std.program}"/>
+                        </p:column>
+                        
+                         <p:column headerText="Opciones" >
+                             <p:commandButton value="Borrar" update=":form:delUno" action="#{beanUtileria.mostrarDialogoBorrarSingle('dlgBorrar')}">
+                                 <f:setPropertyActionListener 
+                                     value="#{std}" target="#{beanEstudiantes.stdActual}"
+                                 />
+                             </p:commandButton>
+                             <p:commandButton value="Editar" action="editar">
+                                 <f:setPropertyActionListener 
+                                     value="#{std}" target="#{beanEstudiantes.stdActual}"
+                                 />
+                             </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                        
+                        
+                        <p:dialog header="Eliminar Estudiantes" widgetVar="dlgBorrar" id="delUno" modal="true" draggable="false" resizable="false" >
+                            <p:panel>
+                                <p:outputLabel value="Eliminar al estudiante con NUA: #{beanEstudiantes.stdActual.nua}?" />
+                                <p:commandButton value="Si" update=":form:stdListGrowl" action="#{beanEstudiantes.borrarSeleccionado()}"
+                                                 actionListener="#{beanMensajes.mensajeBorrdo()}"/>
+                                <p:commandButton value="No" onclick="PF('dlgBorrar').hide()"/>
+                            </p:panel>
+                        </p:dialog>
+                        
+                         <p:dialog header="Eliminar Estudiantes" widgetVar="dlgBorrarVarios" id="delVarios" draggable="false" resizable="false" modal="true" >
+                            <p:panel>
+                                <p:outputLabel value="Eliminar los #{beanEstudiantes.stdSeleccionados.size()} seleccionados?" />
+                                <p:commandButton value="Si" update=":form:stdListGrowl" action="#{beanEstudiantes.borrarSeleccionados()}"
+                                                 actionListener="#{beanMensajes.mensajeBorrdo()}"/>
+                                <p:commandButton value="No" onclick="PF('dlgBorrarVarios').hide();"/>
+                            </p:panel>
+                        </p:dialog>
+                    </p:panel>
+                </h:form>
+                
+            </ui:define>
+        </ui:composition>
+
+</body>
+</html>

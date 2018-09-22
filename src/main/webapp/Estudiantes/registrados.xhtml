@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../Plantillas/HCF.xhtml">
+
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="desGrowl" showDetail="true" showSummary="true"/>
+                    <p:panel header="Estudiante Conectados">
+                        <p:dataTable value="#{beanVisit.verHash()}" var="stds">
+                           
+                            <p:column headerText="NUA">
+                                <p:outputLabel value="#{stds.visita.nua.nua}"/>
+                            </p:column>
+
+                            <p:column headerText="Nombre">
+                                <p:outputLabel value="#{stds.visita.nua.name}"/>
+                            </p:column>
+
+                            <p:column headerText="Apellido Paterno">
+                                <p:outputLabel value="#{stds.visita.nua.firstLastName}"/>
+                            </p:column>
+
+
+                            <p:column headerText="Apellido Materno">
+                                <p:outputLabel value="#{stds.visita.nua.secondLastName}"/>
+                            </p:column>
+
+                            <p:column headerText="Hora De Inicio">
+                                <p:outputLabel value="#{stds.visita.start}"/>
+                            </p:column>
+
+
+                            <p:column headerText="Opciones">
+                                <p:commandButton update=":form:desGrowl" value="Desconectar" 
+                                                 action="#{beanVisit.desconectar(stds.visita.nua.nua)}"
+                                                 />
+                            </p:column>
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Plantillas/HCF.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <p:growl showDetail="true" showSummary="true"/>
+                    <p:panel header="Asignar Estudiantes y Maestros">
+                        
+                        <p:outputLabel value="Grupo"/>                       
+                        <p:selectOneMenu value="#{beanGrupos.grpIndex}" >
+                            <f:selectItem itemLabel="Seleccione Grupo"/>
+                            <f:selectItems value="#{beanGrupos.listarItems()}" 
+                                           var="grp" itemValue="#{grp.id}"
+                                           itemLabel="#{grp.identifier} 
+                                           #{grp.learningUnit} #{grp.level} #{grp.id}"/>
+                            <f:ajax listener="#{beanGrupos.buscarGrupo()}" render="profe stdGrp"/>
+                            
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel id="profe" value="Profesor: #{beanGrupos.grpActual.employeeNumber.name} 
+                                       #{beanGrupos.grpActual.employeeNumber.firstLastName} 
+                                       #{beanGrupos.grpActual.employeeNumber.secondLastName}"/> 
+                        
+                       
+                        <p:commandButton value="Asignar" action="#{beanGrupos.asignarME()}"/>
+
+                        <p:panel header="Estudiantes en el Grupo" id="stdGrp">
+                            <p:commandButton value="Eliminar Seleccionados" action="#{beanGrupos.eliminarSeleccionados()}"/>
+                            <p:dataTable value="#{beanGrupos.grpActual.studentsCollection}" var="stdG"
+                                         rowKey="#{stdG.nua}" paginator="true" rows="10"
+                                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
+                                          {PreviousPageLink} {PageLinks} {NextPageLink}
+                                          {LastPageLink} {RowsPerPageDropdown}"
+                                          selection="#{beanGrupos.stdsSlctG}"
+                                          filteredValue="#{beanGrupos.stdsFltG}"
+                            
+                            >
+                                <p:column selectionMode="multiple" />
+                                
+                                <p:column headerText="NUA" filterBy="#{stdG.nua}">
+                                    <p:outputLabel value="#{stdG.nua}"/>
+                                </p:column>
+                                <p:column headerText="Nombre" filterBy="#{stdG.name}">
+                                    <p:outputLabel value="#{stdG.name}"/>
+                                </p:column>
+                                <p:column headerText="Apellido Paterno" filterBy="#{stdG.firstLastName}">
+                                    <p:outputLabel value="#{stdG.firstLastName}"/>
+                                </p:column>
+                                
+                                <p:column headerText="Apellido Materno" filterBy="#{stdG.secondLastName}">
+                                    <p:outputLabel value="#{stdG.secondLastName}"/>
+                                </p:column>
+                                
+                                <p:column headerText="Programa Educativo" filterBy="#{stdG.program}">
+                                    <p:outputLabel value="#{stdG.program}"/>
+                                </p:column>
+                                
+                                <p:column headerText="Opciones">
+                                    <p:commandButton value="Eliminar" action="#{beanGrupos.eliminarStdGrupo(stdG)}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:panel>
+                        
+                        <br/>
+                        <br/>
+                        <br/>
+                        
+                        <p:panel header="Estudiantes Disponibles">
+                        <p:dataTable  value="#{beanGrupos.listarStdSinGrupo()}" var="std"
+                                     
+                                      rowKey="#{std.nua}" paginator="true" rows="10"
+                                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
+                                          {PreviousPageLink} {PageLinks} {NextPageLink}
+                                          {LastPageLink} {RowsPerPageDropdown}"
+                                          selection="#{beanGrupos.stdsSlct}"
+                                          filteredValue="#{beanGrupos.stdsFlt}"
+                        >
+                        
+                            <p:column selectionMode="multiple" />
+                            
+                            <p:column headerText="NUA" filterBy="#{std.nua}">
+                                <p:outputLabel value="#{std.nua}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Nombre" filterBy="#{std.name}">
+                                <p:outputLabel value="#{std.name}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Apellido Paterno" filterBy="#{std.firstLastName}">
+                                <p:outputLabel value="#{std.firstLastName}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Apellido Materno" filterBy="#{std.secondLastName}">
+                                <p:outputLabel value="#{std.secondLastName}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Programa Educativo" filterBy="#{std.program}">
+                                <p:outputLabel value="#{std.program}"/>
+                            </p:column>
+                            
+                        </p:dataTable>
+                        </p:panel>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

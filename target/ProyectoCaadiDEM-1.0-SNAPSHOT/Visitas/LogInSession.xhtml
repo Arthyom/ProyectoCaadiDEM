@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Plantillas/HCF.xhtml">
+
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="logGrowl" showDetail="true"/>
+                    <p:panel header="Login Start" id="grupo">
+                        <p:panelGrid columns="1">
+                            <p:inputText required="true" placeholder="NUA" value="#{beanVisit.nua}"
+                                         requiredMessage="NUA: Valor obligatorio" id="NUA"
+                            />                           
+                            <p:commandButton value="Entrar" 
+                                             update=":form:outConf :form:inConf :form:logGrowl :form:grupo"
+                                             actionListener="#{beanVisit.crearVisita()}"
+                                             
+                                             action="#{beanVisit.mensajeErrorLog()}"/>                
+                        </p:panelGrid>
+                    </p:panel>
+
+
+                    <p:dialog id="inConf" widgetVar="logInConfirm" header="Confirmacion"
+                              modal="true"  resizable="false" draggable="false"
+                    >
+                        <p:panel>
+                            <p:outputLabel value="Eres
+                                 #{beanVisit.stdActual.name} #{beanVisit.stdActual.firstLastName}
+                                 #{beanVisit.stdActual.secondLastName} ? " />
+                            
+                            <p:commandButton value="Aceptar"  action="#{beanVisit.verificar()}"/>
+                            <p:commandButton value="Cancelar" update=":form:grupo" process="@this"
+                                             action="#{beanVisit.cancelarLogin()}"
+                                             onclick="PF('logInConfirm').hide();">
+                                <p:resetInput target=":form:grupo"/>
+                            </p:commandButton>
+                            
+                        </p:panel>    
+                    </p:dialog>
+                    
+                    <p:dialog id="outConf" widgetVar="logOutConfirm" header="Confirmacion"
+                              modal="true"  resizable="false" draggable="false"
+                    >
+                        <p:panel>
+                            <p:outputLabel value="Eres
+                                 #{beanVisit.stdActual.name} #{beanVisit.stdActual.firstLastName}
+                                 #{beanVisit.stdActual.secondLastName} ? " />
+                            
+                            <p:commandButton value="Listening" action="#{beanVisit.logOutVisitante('Listening')}"/>
+                            <p:commandButton value="Reading"   action="#{beanVisit.logOutVisitante('Reading')}"/>
+                            <p:commandButton value="Grammar"   action="#{beanVisit.logOutVisitante('Grammar')}"/>
+                            <p:commandButton value="Speaking"  action="#{beanVisit.logOutVisitante('Speaking')}"/>
+                            
+                            
+                            
+                        </p:panel>    
+                    </p:dialog>
+                    
+                </h:form>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

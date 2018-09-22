@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Plantillas/HCF.xhtml">
+
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="stdAddGrowl" showDetail="true" />
+                    <p:panel header="Agregar Nuevo Periodo" id="stdAddPanel">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel for="txtNua" value="Identificador"/>
+                            <p:inputText id="txtNua" required="true" value="#{beanPeriodos.prdNuevo.id}"/>
+                            
+                            <p:outputLabel for="txtNombre" value="Descripcion"/>
+                            <p:inputText id="txtNombre" required="true" value="#{beanPeriodos.prdNuevo.description}" />
+                            
+                            <p:outputLabel for="txtPa" value="Fecha de Inicio"/>
+                            <p:calendar id="txtPa" required="true" value="#{beanPeriodos.prdNuevo.start}" />
+                            
+                            <p:outputLabel for="txtMa"  value="Fecha de Termino"/>
+                            <p:calendar id="txtMa" required="true" value="#{beanPeriodos.prdNuevo.end}" />
+                            
+                                  
+             
+                            <p:commandButton value="Guardar" update=":form:stdAddGrowl :form:stdAddPanel"
+                                             action="#{beanPeriodos.guardarItem()}" 
+                                             actionListener="#{beanUtileria.mensajeAgregado()}"/>
+                            <p:commandButton value="Cancelar"/>
+                        </p:panelGrid>
+                        
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
