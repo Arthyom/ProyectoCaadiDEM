@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./Plantillas/HCF.xhtml">
+
+        
+
+            <ui:define name="content">
+                <h:form>
+                <p:panelGrid columns="3">
+                    <b:growl showDetail="true"/>
+                    <p:panel header="Periodos" toggleable="true" styleClass="card box-solid box-primary">
+                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
+                            <p:outputLabel value="Peridos registrados: #{beanPeriodos.listarItems().size()}"/>
+                            <p:outputLabel value="Periodo actual     : #{beanPeriodos.conseguirActual().description}"/>
+                            <p:outputLabel value="Inicio del Periodo : #{beanPeriodos.conseguirActual().start.toString()}"/>
+                            <p:outputLabel value="Termino del Periodo: #{beanPeriodos.conseguirActual().end.toString()}"/>
+                        </p:panelGrid>
+                    </p:panel>
+                    
+                    <p:panel header="Grupos" toggleable="true" styleClass="card box-solid box-primary">
+                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
+                            <p:outputLabel value="Grupos  registrados: #{beanGrupos.listarItems().size()}"/>
+                            <p:outputLabel value="Grupos sin Profesor: #{beanMaestros.listarItems().size()}"/>
+                            <p:outputLabel value="Grupos sin Alumnos : #{beanMaestros.listarItems().size()}"/>
+                            <p:outputLabel value=""/>
+
+                        </p:panelGrid>
+                    </p:panel>
+                    
+                    <p:panel header="Profesores" toggleable="true" styleClass="card box-solid box-primary">
+                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
+                            <b:navCommandLink value="Profesores Registrados: #{beanMaestros.listarItems().size()}" action="/Maestros/listar"/>
+                            <p:outputLabel value="Profesores Registrados: #{beanMaestros.listarItems().size()}"/>
+                            <p:outputLabel value="Profesores Sin Grupo  : #{beanMaestros.listarItems().size()}"/>
+                            <p:outputLabel value="Profesores Sin Grupo  : #{beanMaestros.listarItems().size()}"/>
+                        </p:panelGrid>
+                    </p:panel>
+                    
+                    <p:panel header="Estudiantes" toggleable="true" styleClass="card box-solid box-primary">
+                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
+                            <p:outputLabel value="Estudiantes Registrados: #{beanEstudiantes.listarItems().size()}"/>
+                            <p:outputLabel value="Estudiantes Disponibles: #{beanGrupos.listarStdSinGrupo().size()}"/>
+                            <p:outputLabel value="Estudiantes Asignados:   #{beanGrupos.contarStdConGrupo()}"/>
+                        </p:panelGrid>
+                    </p:panel>
+                    
+                    <p:panel header="Visitas" toggleable="true" styleClass="card box-solid box-primary">
+                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
+                            <p:outputLabel value="Total de Visitas       : #"/>
+                            <p:outputLabel value="Estudiantes Disponibles: #{beanGrupos.listarStdSinGrupo().size()}"/>
+                            <p:outputLabel value="Estudiantes Asignados:   "/>
+                        </p:panelGrid>
+                    </p:panel>
+                    
+                    <p:panel header="Actual" toggleable="true" styleClass="card box-solid box-primary">
+                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
+                            <p:outputLabel value="Visitantes en el sistema: #{beanVisit.verHash().size()}"/>
+                            <p:outputLabel value="Estudiantes Disponibles: #{beanGrupos.listarStdSinGrupo().size()}"/>
+                            <p:outputLabel value="Estudiantes Asignados:   "/>
+                        </p:panelGrid>
+                    </p:panel>
+                    
+                    <p:panel header="Reportes" toggleable="true" styleClass="card box-solid box-primary">
+                        
+                    </p:panel>
+                    
+                    <p:panel header="Estadisticas" toggleable="true" styleClass="card box-solid box-primary">
+                        
+                    </p:panel>
+                </p:panelGrid>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

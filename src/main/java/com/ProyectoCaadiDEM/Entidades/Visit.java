@@ -35,6 +35,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Visit.findAll", query = "SELECT v FROM Visit v")
     , @NamedQuery(name = "Visit.findById", query = "SELECT v FROM Visit v WHERE v.id = :id")
     , @NamedQuery(name = "Visit.findBySkill", query = "SELECT v FROM Visit v WHERE v.skill = :skill")
+    , @NamedQuery(name = "Visit.findBySkillByNUA", query = "SELECT v FROM Visit v WHERE v.skill = :skill AND v.nua.nua =:nua")
+    , @NamedQuery(name = "Visit.findByNUA", query = "SELECT v FROM Visit v WHERE v.nua.nua = :nua")
     , @NamedQuery(name = "Visit.findByStart", query = "SELECT v FROM Visit v WHERE v.start = :start")
     , @NamedQuery(name = "Visit.findByEnd", query = "SELECT v FROM Visit v WHERE v.end = :end")})
 public class Visit implements Serializable {

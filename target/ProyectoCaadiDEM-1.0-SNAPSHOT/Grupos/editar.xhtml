@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
           
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
 
     <body>
 
@@ -14,7 +15,7 @@
             <ui:define name="content">
                 
                  <h:form id="form">
-                    <p:growl id="stdAddGrowl" showDetail="true" />
+                    <b:growl id="stdAddGrowl" showDetail="true" />
                     <p:panel header="Editar Grupo" id="stdAddPanel">
                         <p:panelGrid columns="2">
                             <p:outputLabel for="txtNua" value="Identificador"/>
@@ -35,10 +36,10 @@
                             </p:selectOneMenu>
                             
                             
-                            <p:commandButton value="Guardar" update=":form:stdAddGrowl :form:stdAddPanel"
+                            <b:commandButton value="Guardar" update=":form:stdAddGrowl :form:stdAddPanel"
                                              action="#{beanGrupos.editarItem()}" 
                                              actionListener="#{beanUtileria.mensajeEditado()}"/>
-                            <p:commandButton value="Cancelar"/>
+                            <b:commandButton value="Cancelar"/>
                         </p:panelGrid>
                         
                     </p:panel>

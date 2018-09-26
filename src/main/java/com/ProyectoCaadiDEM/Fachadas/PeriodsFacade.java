@@ -6,6 +6,7 @@
 package com.ProyectoCaadiDEM.Fachadas;
 
 import com.ProyectoCaadiDEM.Entidades.Periods;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,4 +30,28 @@ public class PeriodsFacade extends AbstractFacade<Periods> {
         super(Periods.class);
     }
     
+    
+    public boolean buscarPrdActual (){
+        List<Periods> lp = this.em.createNamedQuery("Periods.findByActual")
+                .getResultList();
+                
+        if(lp.isEmpty())
+            return false;
+        
+        return true;
+    }
+    
+    public Periods conseguirPrdActual (){
+        
+        Periods p;
+        try {
+            p =(Periods) this.em.createNamedQuery("Periods.findByActual")
+                .getSingleResult();
+        }
+        catch (Exception e) 
+        {
+            p = null;
+        }
+        return p;
+    }
 }

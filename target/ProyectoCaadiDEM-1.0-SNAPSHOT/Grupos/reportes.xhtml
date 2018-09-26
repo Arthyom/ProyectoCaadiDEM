@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
 
     <body>
 
@@ -14,7 +15,7 @@
                 <h:form id="form">
                     <p:panel header="Reportes de Grupos">
                         
-                        <p:commandButton value="Reporte de Grupo"/>
+                        <b:commandButton value="Reporte de Grupo"/>
                         
                         <p:selectOneMenu value="#{beanGrupos.grpIndex}">
                             <f:selectItem itemLabel="Seleccione Grupo"/>

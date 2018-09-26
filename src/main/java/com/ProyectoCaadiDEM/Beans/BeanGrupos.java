@@ -67,6 +67,18 @@ public class BeanGrupos implements Serializable {
         return estLibrs;
     }
     
+    public int contarStdConGrupo () {
+        
+        int a = 0;
+        
+        List<Groups>   grpTotal  = fcdGrupos.findAll();
+        
+        for( Groups gi : grpTotal )
+            a += gi.getStudentsCollection().size();
+            
+        return a;
+    }
+    
     public String eliminarStdGrupo ( Students s){
         this.grpActual.getStudentsCollection().remove(s);
         this.fcdGrupos.edit(this.grpActual);

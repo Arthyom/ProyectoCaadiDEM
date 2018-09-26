@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
 
     <body>
 
@@ -13,17 +14,25 @@
             <ui:define name="content">
                 
                 <h:form id="form">
-                    <p:panel header="Estudiantes Registrados">
-                        <p:growl id="stdListGrowl" showDetail="true"  />
+                    <p:panel header="Estudiantes Registrados" toggleable="true">
+                        <p:breadCrumb>
+                            <p:menuitem value="Index"       url="index.xhtml"/>
+                            <p:menuitem value="Estudiantes" url="Estudiantes/listar.xhtml"/>
+                            <p:menuitem value="Listar"      url="Estudiantes/listar.xhtml"/>
+                        </p:breadCrumb>
+                        <b:growl id="stdListGrowl" showDetail="true"  />
                         <p:outputPanel>
-                            <p:commandButton value="Borrar Seleccionados" 
+                            <b:commandButton value="Borrar Seleccionados" 
+                                             icon="minus-sign"
+                                             styleClass="btn-fatal"
                                              update=":form:delVarios"
                                              action="#{beanUtileria.mostrarDialogoBorrarMulti('dlgBorrarVarios')}"
                             />
                             
-                            <p:commandButton value="Agregar Estudiante" action="agregar" actionListener="#{beanEstudiantes.crearNuevoItem()}"/>
+                            <b:commandButton icon="plus-sign" styleClass="btn-primary" value="Agregar Estudiante" action="agregar" actionListener="#{beanEstudiantes.crearNuevoItem()}"/>
                         </p:outputPanel>
                     <p:dataTable 
+                        
                         selection="#{beanEstudiantes.stdSeleccionados}"
                         rowKey="#{std.nua}" paginator="true"
                         rows="10"
@@ -32,8 +41,14 @@
                          {LastPageLink} {RowsPerPageDropdown}"
                         value="#{beanEstudiantes.listarItems()}" var="std"
                         filteredValue="#{beanEstudiantes.stdFiltrados}"
+                        styleClass="box-solid box-primary"
+                        rowsPerPageTemplate="10,15,20" 
+                        paginatorPosition="bottom"
                     >
                         
+                        <f:facet name="footer">
+                            <h:outputText value="Table footer"/>
+                        </f:facet>
                         
                         <p:column selectionMode="multiple" />
                         
@@ -58,35 +73,44 @@
                         </p:column>
                         
                          <p:column headerText="Opciones" >
-                             <p:commandButton value="Borrar" update=":form:delUno" action="#{beanUtileria.mostrarDialogoBorrarSingle('dlgBorrar')}">
+                             <b:commandButton styleClass="btn-danger"  update=":form:delUno" action="#{beanUtileria.mostrarDialogoBorrarSingle('dlgBorrar')}"
+                                              icon="minus"
+                                              >
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanEstudiantes.stdActual}"
                                  />
-                             </p:commandButton>
-                             <p:commandButton value="Editar" action="editar">
+                             </b:commandButton>
+                             
+                             <b:commandButton  icon="pencil" action="editar">
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanEstudiantes.stdActual}"
                                  />
-                             </p:commandButton>
+                             </b:commandButton>
+                             
+                             <b:commandButton  action="estatus" icon="search">
+                                 <f:setPropertyActionListener 
+                                     value="#{std}" target="#{beanEstudiantes.stdActual}"
+                                 />
+                             </b:commandButton>
                         </p:column>
                     </p:dataTable>
                         
                         
-                        <p:dialog header="Eliminar Estudiantes" widgetVar="dlgBorrar" id="delUno" modal="true" draggable="false" resizable="false" >
+                        <p:dialog showEffect="fade" header="Eliminar Estudiantes" widgetVar="dlgBorrar" id="delUno" modal="true" draggable="false" resizable="false" >
                             <p:panel>
                                 <p:outputLabel value="Eliminar al estudiante con NUA: #{beanEstudiantes.stdActual.nua}?" />
-                                <p:commandButton value="Si" update=":form:stdListGrowl" action="#{beanEstudiantes.borrarSeleccionado()}"
-                                                 actionListener="#{beanMensajes.mensajeBorrdo()}"/>
-                                <p:commandButton value="No" onclick="PF('dlgBorrar').hide()"/>
+                                <b:commandButton styleClass="btn-fatal" value="Si" update=":form:stdListGrowl" action="#{beanEstudiantes.borrarSeleccionado()}"
+                                                 actionListener="#{beanUtileria.mensajeBorrdo()}"/>
+                                <b:commandButton styleClass="btn-success" value="No" onclick="PF('dlgBorrar').hide()"/>
                             </p:panel>
                         </p:dialog>
                         
                          <p:dialog header="Eliminar Estudiantes" widgetVar="dlgBorrarVarios" id="delVarios" draggable="false" resizable="false" modal="true" >
                             <p:panel>
                                 <p:outputLabel value="Eliminar los #{beanEstudiantes.stdSeleccionados.size()} seleccionados?" />
-                                <p:commandButton value="Si" update=":form:stdListGrowl" action="#{beanEstudiantes.borrarSeleccionados()}"
-                                                 actionListener="#{beanMensajes.mensajeBorrdo()}"/>
-                                <p:commandButton value="No" onclick="PF('dlgBorrarVarios').hide();"/>
+                                <b:commandButton styleClass="btn-fatal" value="Si" update=":form:stdListGrowl" action="#{beanEstudiantes.borrarSeleccionados()}"
+                                                 actionListener="#{beanUtileria.mensajeBorrdo()}"/>
+                                <b:commandButton styleClass="btn-success" value="No" onclick="PF('dlgBorrarVarios').hide();"/>
                             </p:panel>
                         </p:dialog>
                     </p:panel>

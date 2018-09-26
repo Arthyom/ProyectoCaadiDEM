@@ -1,4 +1,4 @@
-
+ 
 package com.ProyectoCaadiDEM.Beans;
 
 import com.ProyectoCaadiDEM.Entidades.Periods;
@@ -8,18 +8,42 @@ import com.ProyectoCaadiDEM.Fachadas.PeriodsFacade;
 import com.ProyectoCaadiDEM.Fachadas.StudentsFacade;
 import com.ProyectoCaadiDEM.Fachadas.VisitFacade;
 import com.ProyectoCaadiDEM.Modelos.Visitantes;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.text.ParseException;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 import javax.ejb.EJB;
+
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+
 import org.primefaces.context.RequestContext;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.PieChartModel;
 
 
 @Named(value = "beanVisit")
@@ -69,7 +93,7 @@ public class BeanVisit implements Serializable {
            // crear una nueva visita, buscar al periodo actual
            this.vstActual = new Visit(2, new Date() );
            this.stdActual = st;
-           this.prdActual = fcdPeriodo.find(1);
+           this.prdActual = fcdPeriodo.conseguirPrdActual();
            this.vstActual.setNua(st);
            this.vstActual.setPeriodId(prdActual);
            
@@ -171,19 +195,153 @@ public class BeanVisit implements Serializable {
         return "registrados?faces-redirect=true";
     }
     
-    public String contarHoras(Students stdCont) {
-        String total = "0 Horas 0 Minutos";
-        long   tTtl = 0;
+    public String contarHoras(Students stdCont) throws ParseException {
+        String total;
+        long   tTtl = 0, h= 0, m = 0;
 
-        for (Visit vi : stdCont.getVisitCollection()) {
-            if (vi.getEnd() != null && vi.getStart() != null) {
+        for (Visit vi : stdCont.getVisitCollection()) 
+            if (vi.getEnd() != null && vi.getStart() != null) 
                 tTtl += vi.getEnd().getTime() - vi.getStart().getTime();
-                Date delta = new Date(tTtl);
-                total = "Horas: " + delta.getHours() + " Minutos: " + delta.getMinutes() + " Segundos: " + delta.getSeconds();
-            }
-        }
+                
+        h = tTtl/(1000*60*60);
+        tTtl = tTtl%(1000*60*60);
+        m = tTtl/(1000*60);
+        
+        total = h+" Horas, " + m + " Minutos";
         return total;
     }
+    
+    public String contarLapso(Visit vstActl) throws ParseException {
+        String total;
+        long   tTtl = 0, h= 0, m = 0;
+
+        long delta = vstActl.getEnd().getTime() - vstActl.getStart().getTime();
+
+        h = delta/(1000*60*60);
+        delta = delta%(1000*60*60);
+        m = delta/(1000*60);
+        
+        total = h+" Horas, " + m + " Minutos";
+        return total;
+    }
+    
+    
+    
+    public List<Visit> listarItems2Std ( String nua ) {
+        List<Visit> s = this.fcdVisita.visitasParaStd(nua);    
+        return s;
+    } 
+    
+    public float contarHorasLista ( List<Visit> listaVisitas ){
+        long k = 0, h= 0, m = 0;
+        
+        for( Visit vi : listaVisitas )
+            k += vi.getEnd().getTime() - vi.getStart().getTime();
+        
+        h = k/(1000*60*60);
+        k = k%(1000*60*60);
+        m = k/(1000*60);
+        
+        if(10 > m)
+            return new Float(h+".0"+m);
+        
+        return new Float(h+"."+m);
+    }
+    
+    public PieChartModel crearVisitPieParaStd ( String NUA ){
+        String  sk [] = {"Reading", "Listening", "Grammar", "Speaking"};
+        
+        int rd = this.fcdVisita.visitasParaHblParaStd(sk[0], NUA).size();
+        int ls = this.fcdVisita.visitasParaHblParaStd(sk[1], NUA).size();
+        int gr = this.fcdVisita.visitasParaHblParaStd(sk[2], NUA).size();
+        int sp = this.fcdVisita.visitasParaHblParaStd(sk[3], NUA).size();
+        
+        PieChartModel mdn = new PieChartModel ();
+        mdn.setTitle("Visitas por Habilidad");
+        mdn.setLegendPosition("w");
+        mdn.setShowDataLabels(true);
+        
+        mdn.set(sk[0], rd);
+        mdn.set(sk[1], ls);
+        mdn.set(sk[2], gr);
+        mdn.set(sk[3], sp);
+        
+        return mdn;
+    }
+    
+    public BarChartModel crearVisitBarParaStd ( String NUA ){
+        String  sk [] = {"Reading", "Listening", "Grammar", "Speaking"};
+        
+        BarChartModel bm    = new BarChartModel();
+    
+        bm.setExtender("ext");
+        bm.setTitle("Horas Por Habilidad");
+        bm.getAxis(AxisType.Y).setLabel("Horas");
+        bm.getAxis(AxisType.X).setLabel("Habilidad");
+        
+        
+        ChartSeries sR = new ChartSeries(sk[0]); 
+
+        List<Visit> rd = this.fcdVisita.visitasParaHblParaStd(sk[0], NUA);
+        List<Visit> ls = this.fcdVisita.visitasParaHblParaStd(sk[1], NUA);
+        List<Visit> gr = this.fcdVisita.visitasParaHblParaStd(sk[2], NUA);
+        List<Visit> sp = this.fcdVisita.visitasParaHblParaStd(sk[3], NUA);
+        
+       
+        sR.set(sk[0], contarHorasLista(rd) );
+        sR.set(sk[1], contarHorasLista(ls));
+        sR.set(sk[2], contarHorasLista(gr));
+        sR.set(sk[3], contarHorasLista(sp));
+
+        bm.addSeries(sR);
+
+        return bm;
+    }
+    
+    public void crearPdfParaStd ( String nombre, String Nua) throws DocumentException, FileNotFoundException, IOException{
+        
+        
+        
+         FacesContext fc = FacesContext.getCurrentInstance();
+         ExternalContext ec = fc.getExternalContext();
+
+         List<Visit> lv = this.listarItems2Std(Nua);
+    ec.responseReset(); // Some JSF component library or some Filter might have set some headers in the buffer beforehand. We want to get rid of them, else it may collide.
+    ec.setResponseContentType("application/pdf"); // Check http://www.iana.org/assignments/media-types for all types. Use if necessary ExternalContext#getMimeType() for auto-detection based on filename.
+    ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + "RI"+Nua+nombre+".pdf" + "\""); // The Save As popup magic is done here. You can give it any file name you want, this only won't work in MSIE, it will use current request URL as file name instead.
+
+    OutputStream output = ec.getResponseOutputStream();
+    
+    Document nd = new Document(PageSize.LETTER);
+    nd.setMargins(10,10, 10, 10);
+    PdfPTable nt = new PdfPTable(4);
+    
+    nt.setHorizontalAlignment(Element.LIST);
+    nt.setTotalWidth(new float[] {260,260,100,100});
+    Font hf = new Font( Font.FontFamily.HELVETICA, 15, Font.BOLD);
+    Font th = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD, BaseColor.BLUE);
+        nt.addCell( new Phrase("Inicio",hf) ); nt.addCell(new Phrase("Termino",hf) ); 
+        nt.addCell(new Phrase("Duracion",hf) );nt.addCell(new Phrase("Habilidad",hf) );
+        for (Visit vi : lv) {
+            nt.addCell(vi.getStart().toString());
+            nt.addCell(vi.getEnd().toString());
+            nt.addCell("Duracion");
+            nt.addCell(vi.getSkill());
+        }
+        PdfWriter.getInstance(nd,  output );
+        nd.open();
+        nd.add( new Paragraph("Reporte Individual para: "));
+        nd.add(new Phrase(  Nua +" " + nombre + " "   + lv.get(0).getNua().getFirstLastName() 
+                +" "+lv.get(0).getNua().getSecondLastName(), th));
+        nd.add(nt);
+        nd.close();
+      
+    fc.responseComplete();
+        
+    }
+    
+    
+   
     ////////////////////////////////////////////////////////////////////////////
     
     

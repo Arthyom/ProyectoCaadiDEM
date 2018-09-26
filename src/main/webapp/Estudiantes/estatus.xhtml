@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./../Plantillas/HCF.xhtml">
+
+            
+            <ui:define name="content">
+                <p:panel header="Total de visitas de #{beanEstudiantes.stdActual.name} 
+                         #{beanEstudiantes.stdActual.firstLastName}
+                         #{beanEstudiantes.stdActual.secondLastName}: "
+                         toggleable="true"
+                >
+                    <p:outputLabel value="Total de Horas"/>
+                    <h:form>
+                        
+                        <b:commandButton value="Descargar PDF" 
+                                         action="#{beanVisit.crearPdfParaStd(beanEstudiantes.stdActual.name, beanEstudiantes.stdActual.nua)}"/>               
+                    </h:form>>
+                    <p:dataTable var="vst" value="#{beanVisit.listarItems2Std(beanEstudiantes.stdActual.nua)}" >
+                        <p:column headerText="NUA">
+                            <p:outputLabel value="#{vst.nua.nua}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Nombre y Apellidos">
+                            <p:outputLabel value="#{vst.nua.name} #{vst.nua.firstLastName} #{vst.nua.secondLastName}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Inicio">
+                            <p:outputLabel value="#{vst.start.toString()}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Final">
+                            <p:outputLabel value="#{vst.start.toString()}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Duracion">
+                            <p:outputLabel value="#{beanVisit.contarLapso(vst)}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Habilidad">
+                            <p:outputLabel value="#{vst.skill}"/>
+                        </p:column>
+                    </p:dataTable>
+                    
+                    <p:chart type="pie" model="#{beanVisit.crearVisitPieParaStd(beanEstudiantes.stdActual.nua)}" />
+                    <h:outputScript>
+                        function ext() {
+                        this.cfg.seriesDefaults.rendererOptions.varyBarColor = true;
+                        this.cfg.legend = {show: false};
+                        
+                        this.cfg.highlighter={show: true,tooltipAxes: 'y',
+                        useAxesFormatters: false,tooltipFormatString: "%'d"};
+                        }                               
+                    </h:outputScript>  
+                    <p:chart type="bar" model="#{beanVisit.crearVisitBarParaStd(beanEstudiantes.stdActual.nua)}" />
+                </p:panel>
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -6,6 +6,8 @@
 package com.ProyectoCaadiDEM.Fachadas;
 
 import com.ProyectoCaadiDEM.Entidades.Visit;
+import com.ProyectoCaadiDEM.Entidades.Visits;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,6 +25,21 @@ public class VisitFacade extends AbstractFacade<Visit> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    public List<Visit> visitasParaStd ( String nua ){
+        List<Visit> ls = this.em.createNamedQuery("Visit.findByNUA").
+                setParameter("nua", nua).getResultList();
+        return ls;
+    }
+    
+    public List<Visit> visitasParaHblParaStd ( String skill, String nua ){
+        List<Visit> ls = this.em.createNamedQuery("Visit.findBySkillByNUA")
+                .setParameter("nua", nua)
+                .setParameter("skill", skill)
+                .getResultList();
+                
+        return ls;
     }
 
     public VisitFacade() {

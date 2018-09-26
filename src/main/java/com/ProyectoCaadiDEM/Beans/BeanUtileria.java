@@ -30,6 +30,11 @@ public class BeanUtileria implements Serializable {
     }
     
      
+      public void mensajeAceptarAdmin () {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Aceptado",  "Bienvenido administrador") );   
+    }
+     
     public void mostrarDialogoBorrarMulti ( String objetivo ) {
         RequestContext context = RequestContext.getCurrentInstance();
         context.execute("PF('"+objetivo+"').show();");

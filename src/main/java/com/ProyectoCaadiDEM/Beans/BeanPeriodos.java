@@ -1,6 +1,7 @@
 
 package com.ProyectoCaadiDEM.Beans;
 
+import com.ProyectoCaadiDEM.Entidades.Groups;
 import com.ProyectoCaadiDEM.Entidades.Periods;
 import com.ProyectoCaadiDEM.Fachadas.PeriodsFacade;
 import javax.inject.Named;
@@ -61,6 +62,33 @@ public class BeanPeriodos implements Serializable {
      public void crearNuevoItem () {
         prdNuevo = new Periods();
     }
+     
+     public void fijarComoActual (){
+         
+         List<Periods> ls = this.fcdPeriodos.findAll();
+         for(Periods pi : ls){
+             pi.setActual(Boolean.FALSE);
+             this.fcdPeriodos.edit(pi);
+         }
+
+         this.prdActual.setActual(Boolean.TRUE);
+         this.fcdPeriodos.edit(this.prdActual);
+         
+     }
+     
+     
+     public Periods conseguirActual(){
+         Periods p = this.fcdPeriodos.conseguirPrdActual();
+         return p;
+     }
+     
+     public List<Groups> conseguirGruposParaAtual () {
+         Periods p = this.conseguirActual();
+         List<Groups> gs = (List<Groups>) p.getGroupsCollection();
+         
+         
+         return gs;
+     }
     ////////////////////////////////////////////////////////////////////////////
      
      

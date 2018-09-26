@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
 
     <body>
 
@@ -12,7 +13,7 @@
 
             <ui:define name="content">
                 <h:form>
-                    <p:growl showDetail="true" showSummary="true"/>
+                    <b:growl showDetail="true" showSummary="true"/>
                     <p:panel header="Asignar Estudiantes y Maestros">
                         
                         <p:outputLabel value="Grupo"/>                       
@@ -31,21 +32,28 @@
                                        #{beanGrupos.grpActual.employeeNumber.secondLastName}"/> 
                         
                        
-                        <p:commandButton value="Asignar" action="#{beanGrupos.asignarME()}"/>
+                        <b:commandButton value="Asignar" action="#{beanGrupos.asignarME()}"/>
 
-                        <p:panel header="Estudiantes en el Grupo" id="stdGrp">
-                            <p:commandButton value="Eliminar Seleccionados" action="#{beanGrupos.eliminarSeleccionados()}"/>
+                        <p:panel header="Estudiantes en el Grupo" id="stdGrp" toggleable="true">
+                            <b:commandButton value="Eliminar Seleccionados" action="#{beanGrupos.eliminarSeleccionados()}"/>
                             <p:dataTable value="#{beanGrupos.grpActual.studentsCollection}" var="stdG"
                                          rowKey="#{stdG.nua}" paginator="true" rows="10"
                                       paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
-                                          {PreviousPageLink} {PageLinks} {NextPageLink}
-                                          {LastPageLink} {RowsPerPageDropdown}"
-                                          selection="#{beanGrupos.stdsSlctG}"
-                                          filteredValue="#{beanGrupos.stdsFltG}"
-                            
-                            >
+                                      {PreviousPageLink} {PageLinks} {NextPageLink}
+                                      {LastPageLink} {RowsPerPageDropdown}"
+                                      selection="#{beanGrupos.stdsSlctG}"
+                                      filteredValue="#{beanGrupos.stdsFltG}"
+
+                                      styleClass="box-solid box-primary"
+                                      rowsPerPageTemplate="10,15,20" 
+                                      paginatorPosition="bottom"
+                                      >
+
+                                <f:facet name="footer">
+                                    <h:outputText value="Table footer"/>
+                                </f:facet>
                                 <p:column selectionMode="multiple" />
-                                
+
                                 <p:column headerText="NUA" filterBy="#{stdG.nua}">
                                     <p:outputLabel value="#{stdG.nua}"/>
                                 </p:column>
@@ -65,7 +73,7 @@
                                 </p:column>
                                 
                                 <p:column headerText="Opciones">
-                                    <p:commandButton value="Eliminar" action="#{beanGrupos.eliminarStdGrupo(stdG)}"/>
+                                    <b:commandButton value="Eliminar" action="#{beanGrupos.eliminarStdGrupo(stdG)}"/>
                                 </p:column>
                             </p:dataTable>
                         </p:panel>
@@ -74,16 +82,23 @@
                         <br/>
                         <br/>
                         
-                        <p:panel header="Estudiantes Disponibles">
+                        <p:panel header="Estudiantes Disponibles" toggleable="true">
                         <p:dataTable  value="#{beanGrupos.listarStdSinGrupo()}" var="std"
                                      
                                       rowKey="#{std.nua}" paginator="true" rows="10"
                                       paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
-                                          {PreviousPageLink} {PageLinks} {NextPageLink}
-                                          {LastPageLink} {RowsPerPageDropdown}"
-                                          selection="#{beanGrupos.stdsSlct}"
-                                          filteredValue="#{beanGrupos.stdsFlt}"
-                        >
+                                      {PreviousPageLink} {PageLinks} {NextPageLink}
+                                      {LastPageLink} {RowsPerPageDropdown}"
+                                      selection="#{beanGrupos.stdsSlct}"
+                                      filteredValue="#{beanGrupos.stdsFlt}"
+                                      styleClass="box-solid box-primary"
+                                      rowsPerPageTemplate="10,15,20" 
+                                      paginatorPosition="bottom"
+                                      >
+
+                            <f:facet name="footer">
+                                <h:outputText value="Table footer"/>
+                            </f:facet>
                         
                             <p:column selectionMode="multiple" />
                             
