@@ -1,0 +1,5 @@
+# ProyectoCaadiDEM
+### Status
+[![Build Status](https://travis-ci.com/Arthyom/ProyectoCaadiDEM.png)](https://travis-ci.com/Arthyom/ProyectoCaadiDEM/)
+
+Sistema de control de asistencias CAADI DEM Yuriria, escrito en Java EE y Mysql
