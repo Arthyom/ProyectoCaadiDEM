@@ -6,11 +6,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-<<<<<<< HEAD
-@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2018-09-26T17:07:11")
-=======
-@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2018-09-27T22:32:33")
->>>>>>> feature/Logs
+@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2018-09-27T23:19:56")
 @StaticMetamodel(Teachers.class)
 public class Teachers_ { 
 
