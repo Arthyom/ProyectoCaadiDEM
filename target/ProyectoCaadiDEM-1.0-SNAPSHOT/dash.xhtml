@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -20,8 +21,12 @@
                         <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
                             <p:outputLabel value="Peridos registrados: #{beanPeriodos.listarItems().size()}"/>
                             <p:outputLabel value="Periodo actual     : #{beanPeriodos.conseguirActual().description}"/>
-                            <p:outputLabel value="Inicio del Periodo : #{beanPeriodos.conseguirActual().start.toString()}"/>
-                            <p:outputLabel value="Termino del Periodo: #{beanPeriodos.conseguirActual().end.toString()}"/>
+                            <p:outputLabel value="#{beanPeriodos.conseguirActual().start}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
+                            </p:outputLabel>
+                            <p:outputLabel value="#{beanPeriodos.conseguirActual().end}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
+                            </p:outputLabel>
                         </p:panelGrid>
                     </p:panel>
                     

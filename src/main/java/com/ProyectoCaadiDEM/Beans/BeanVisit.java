@@ -26,7 +26,9 @@ import java.io.OutputStream;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -69,6 +71,8 @@ public class BeanVisit implements Serializable {
     private String          nua;
     
     private Visitantes      vistActual;
+    
+    private DateFormat      formateador = new SimpleDateFormat( "dd/MM/yyyy HH:mm:ss");
     
    
     
@@ -314,18 +318,18 @@ public class BeanVisit implements Serializable {
     OutputStream output = ec.getResponseOutputStream();
     
     Document nd = new Document(PageSize.LETTER);
-    nd.setMargins(10,10, 10, 10);
+    nd.setMargins(15,15, 15, 15);
     PdfPTable nt = new PdfPTable(4);
     
     nt.setHorizontalAlignment(Element.LIST);
-    nt.setTotalWidth(new float[] {260,260,100,100});
+    nt.setTotalWidth(600);
     Font hf = new Font( Font.FontFamily.HELVETICA, 15, Font.BOLD);
     Font th = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD, BaseColor.BLUE);
         nt.addCell( new Phrase("Inicio",hf) ); nt.addCell(new Phrase("Termino",hf) ); 
         nt.addCell(new Phrase("Duracion",hf) );nt.addCell(new Phrase("Habilidad",hf) );
         for (Visit vi : lv) {
-            nt.addCell(vi.getStart().toString());
-            nt.addCell(vi.getEnd().toString());
+            nt.addCell(this.formateador.format(vi.getStart()));
+            nt.addCell(this.formateador.format(vi.getEnd()));
             nt.addCell("Duracion");
             nt.addCell(vi.getSkill());
         }

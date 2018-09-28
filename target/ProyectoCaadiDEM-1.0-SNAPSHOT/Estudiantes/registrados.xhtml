@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -34,7 +35,9 @@
                             </p:column>
 
                             <p:column headerText="Hora De Inicio">
-                                <p:outputLabel value="#{stds.visita.start}"/>
+                                <p:outputLabel value="#{stds.visita.start}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
+                                </p:outputLabel>
                             </p:column>
 
 

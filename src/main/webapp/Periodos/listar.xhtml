@@ -53,11 +53,15 @@
                         </p:column>
                         
                         <p:column headerText="Fecha de Inicio">
-                            <p:outputLabel value="#{std.start}"/>
+                            <p:outputLabel value="#{std.start}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
+                            </p:outputLabel>
                         </p:column>
                         
                         <p:column headerText="Apellido Materno">
-                            <p:outputLabel value="#{std.end}"/>
+                            <p:outputLabel value="#{std.end}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
+                            </p:outputLabel>
                         </p:column>
                         
                         <p:column headerText="Actual">
