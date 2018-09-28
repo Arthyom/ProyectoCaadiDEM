@@ -9,7 +9,9 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-       
+
+        <f:event  type="preRenderView" listener="#{beanVisit.verificarIp()}"/>
+
         <title>Facelets Template</title>
     </h:head>
 
@@ -59,7 +61,21 @@
                                               rendered="#{beanPeriodos.conseguirActual() ne null 
                                                                    and beanGrupos.listarItems().size() gt 0 }"/>
                         </b:navbarLinks>
+                        
+                        <p:commandButton 
+                            type="button" id="overPanel"
+                            
+                            icon="fa fa-user"
+                            class="btn btn-success"
+                           
+                                         />
+                        
                     </b:navBar>
+                    
+                    <p:overlayPanel for="overPanel" dynamic="true" >
+                        <p:panel header="Account">
+                        </p:panel>
+                    </p:overlayPanel>
                 </h:form>
             </ui:insert>
         </div>

@@ -5,8 +5,11 @@
  */
 package com.ProyectoCaadiDEM.Fachadas;
 
+import java.io.IOException;
 import java.util.List;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -61,4 +64,12 @@ public abstract class AbstractFacade<T> {
         return ((Long) q.getSingleResult()).intValue();
     }
     
+    public boolean verificarIp( HttpServletRequest request) throws IOException{
+        String ip = request.getRemoteAddr();
+        if( "0:0:0:0:0:0:0:1".equals(ip) )
+            return true;
+        
+        FacesContext.getCurrentInstance().getExternalContext().redirect("Visitas/OutLogIn.xhtml");
+        return false;   
+    }
 }
