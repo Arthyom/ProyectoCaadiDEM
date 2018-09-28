@@ -8,6 +8,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 
@@ -24,9 +25,25 @@ public class BeanEstudiantes implements Serializable {
     private List<Students>   stdSeleccionados;
     private List<Students>   stdFiltrados;
     
+    private String           nua;
     
     
     ////////////////////////////////////////////////////////////////////////////
+    public String buscarEstudiante ( ){
+        this.stdActual = this.fcdEstudiante.find(this.nua);
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        FacesContext ct =  FacesContext.getCurrentInstance();
+        
+        if(this.stdActual != null ){
+            ct.addMessage(null, 
+              new FacesMessage("Deslogueado", "Hasta luego" ));
+            return "/Estudiantes/estatus?faces-redirect=true";
+        }
+        ct.addMessage(null, 
+              new FacesMessage("Error", "No se ha encontrado el NUA" ));
+        return ""; 
+    }
+    
     public List<Students> listarItems () {        
         return fcdEstudiante.findAll();
     }
@@ -64,8 +81,15 @@ public class BeanEstudiantes implements Serializable {
         stdNuevo = new Students();
     }
     ////////////////////////////////////////////////////////////////////////////
-    
-    
+
+    public String getNua() {
+        return nua;
+    }
+
+    public void setNua(String nua) {
+        this.nua = nua;
+    }
+
     public BeanEstudiantes() {
     }
 
