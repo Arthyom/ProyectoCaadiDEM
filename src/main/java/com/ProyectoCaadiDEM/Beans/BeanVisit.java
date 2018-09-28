@@ -38,6 +38,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.model.chart.AxisType;
@@ -340,6 +341,13 @@ public class BeanVisit implements Serializable {
         
     }
     
+    public void verificarIp() throws IOException {
+        HttpServletRequest req = (HttpServletRequest) FacesContext.
+                getCurrentInstance().getExternalContext().getRequest();
+        
+        this.fcdVisita.verificarIp(req);
+
+    }
     
    
     ////////////////////////////////////////////////////////////////////////////

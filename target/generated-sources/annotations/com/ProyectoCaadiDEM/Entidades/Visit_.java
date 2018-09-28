@@ -7,7 +7,11 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
+<<<<<<< HEAD
 @Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2018-09-26T17:07:11")
+=======
+@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2018-09-27T22:32:33")
+>>>>>>> feature/Logs
 @StaticMetamodel(Visit.class)
 public class Visit_ { 
 
