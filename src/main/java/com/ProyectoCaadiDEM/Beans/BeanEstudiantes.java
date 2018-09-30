@@ -9,8 +9,10 @@ import java.io.InputStreamReader;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Pattern;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -37,7 +39,7 @@ public class BeanEstudiantes implements Serializable {
     
     private Students         stdActual;
     private Students         stdNuevo ;
-    private List<Students>   stdSeleccionados;
+    private List<Students>   stdSeleccionados, stdExst = new ArrayList(), stdNoExst = new ArrayList();
     private List<Students>   stdFiltrados;
     
     private String           nua;
@@ -99,39 +101,54 @@ public class BeanEstudiantes implements Serializable {
     
     public void mensajeCargar () throws IOException{
         if( this.archivo != null ){
-            FacesMessage message = new FacesMessage("Succesful", this.archivo.getContentType() +" "+ this.archivo.getFileName() + " is uploaded.");
-            FacesContext.getCurrentInstance().addMessage(null, message);
-            barrerArchivo();
+
+            // si es un archivo xl
+            if( this.archivo.getContentType().contains("xlsx")  )
+                barrerArchivoXl();
+            // si es un archivo de texto
+            else
+                barrerArchivoTxt();
+            
+            
         }
     }
     
-    public void barrerArchivo () throws IOException{
-       InputStreamReader in = new InputStreamReader(archivo.getInputstream(), "UTF-8");
-       BufferedReader    bf = new BufferedReader(in);
+    public void barrerArchivoXl () throws IOException{
+        
        XSSFWorkbook      nb = new XSSFWorkbook( archivo.getInputstream() );
        XSSFSheet         nh = nb.getSheetAt(0);
        
        for( int nr = nh.getFirstRowNum(); nr<nh.getLastRowNum()+1 ; nr++){
 
-           XSSFRow   r = nh.getRow(nr);
-           XSSFCell  cn = r.getCell(0);
-           XSSFCell  cN = r.getCell(1);
-           XSSFCell  cA = r.getCell(2);
-           XSSFCell  cP = r.getCell(3);
+           XSSFRow   r   = nh.getRow(nr);
+           XSSFCell  cn  = r.getCell(0);
+           XSSFCell  cN  = r.getCell(1);
+           XSSFCell  cAP = r.getCell(2);
+           XSSFCell  cAM = r.getCell(3);
+           XSSFCell  cG  = r.getCell(4);
            
-          
-           XSSFRichTextString  cNv = cN.getRichStringCellValue();
-           XSSFRichTextString  cAv = cA.getRichStringCellValue();
-           XSSFRichTextString  cPv = cP.getRichStringCellValue();
+           int     cnV = (int)cn.getNumericCellValue();
+           String  cNv = cN.getRichStringCellValue().getString();
+           String  cAPv = cAP.getRichStringCellValue().getString();
+           String  cAMv = cAM.getRichStringCellValue().getString();
+           String  cGV  = cG.getRichStringCellValue().getString();
            
+           Students ns = this.fcdEstudiante.find( String.valueOf(cnV) );
+           
+           if(ns != null)
+                // si el estudiante ya existe se agraga a la lista de nuevo  
+                this.stdExst.add(ns);
+           else
+               // si el estudiante no existe en la base de datos
+               this.stdNoExst.add( new Students( String.valueOf(cnV), cAPv, cAMv, cNv, cGV) );
            
        }
-       
-       String line;
-       
-     
     }
     
+    
+    public void barrerArchivoTxt (){
+        return;
+    }
     ////////////////////////////////////////////////////////////////////////////
 
     public String getNua() {
@@ -184,6 +201,23 @@ public class BeanEstudiantes implements Serializable {
     public void setArchivo(UploadedFile archivo) {
         this.archivo = archivo;
     }
+
+    public List<Students> getStdExst() {
+        return stdExst;
+    }
+
+    public void setStdExst(List<Students> stdExst) {
+        this.stdExst = stdExst;
+    }
+
+    public List<Students> getStdNoExst() {
+        return stdNoExst;
+    }
+
+    public void setStdNoExst(List<Students> stdNoExst) {
+        this.stdNoExst = stdNoExst;
+    }
+    
     
     
     
