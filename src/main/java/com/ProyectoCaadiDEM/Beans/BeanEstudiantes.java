@@ -3,13 +3,28 @@ package com.ProyectoCaadiDEM.Beans;
 
 import com.ProyectoCaadiDEM.Entidades.Students;
 import com.ProyectoCaadiDEM.Fachadas.StudentsFacade;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRichTextString;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRichTextString;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.primefaces.model.UploadedFile;
 
 
 @Named(value = "beanEstudiantes")
@@ -26,6 +41,7 @@ public class BeanEstudiantes implements Serializable {
     private List<Students>   stdFiltrados;
     
     private String           nua;
+    private UploadedFile     archivo;
     
     
     ////////////////////////////////////////////////////////////////////////////
@@ -80,6 +96,42 @@ public class BeanEstudiantes implements Serializable {
     public void crearNuevoItem () {
         stdNuevo = new Students();
     }
+    
+    public void mensajeCargar () throws IOException{
+        if( this.archivo != null ){
+            FacesMessage message = new FacesMessage("Succesful", this.archivo.getContentType() +" "+ this.archivo.getFileName() + " is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+            barrerArchivo();
+        }
+    }
+    
+    public void barrerArchivo () throws IOException{
+       InputStreamReader in = new InputStreamReader(archivo.getInputstream(), "UTF-8");
+       BufferedReader    bf = new BufferedReader(in);
+       XSSFWorkbook      nb = new XSSFWorkbook( archivo.getInputstream() );
+       XSSFSheet         nh = nb.getSheetAt(0);
+       
+       for( int nr = nh.getFirstRowNum(); nr<nh.getLastRowNum()+1 ; nr++){
+
+           XSSFRow   r = nh.getRow(nr);
+           XSSFCell  cn = r.getCell(0);
+           XSSFCell  cN = r.getCell(1);
+           XSSFCell  cA = r.getCell(2);
+           XSSFCell  cP = r.getCell(3);
+           
+          
+           XSSFRichTextString  cNv = cN.getRichStringCellValue();
+           XSSFRichTextString  cAv = cA.getRichStringCellValue();
+           XSSFRichTextString  cPv = cP.getRichStringCellValue();
+           
+           
+       }
+       
+       String line;
+       
+     
+    }
+    
     ////////////////////////////////////////////////////////////////////////////
 
     public String getNua() {
@@ -124,6 +176,15 @@ public class BeanEstudiantes implements Serializable {
     public void setStdNuevo(Students stdNuevo) {
         this.stdNuevo = stdNuevo;
     }
+
+    public UploadedFile getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(UploadedFile archivo) {
+        this.archivo = archivo;
+    }
+    
     
     
 
