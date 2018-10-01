@@ -26,11 +26,7 @@ public class BeanIndex implements Serializable {
        if(!"admin".equals(ad))
         FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
     }
-    
-    public String escucharHotKey() 
-    {
-        return "/index?faces-redirect=true";
-    }    
+ 
     public BeanIndex() {
     }
     
