@@ -11,7 +11,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
         <f:event  type="preRenderView" listener="#{beanVisit.verificarIp()}"/>
+        <f:event  type="preRenderView" listener="#{beanIndex.comprobarSesion()}"/>
 
+        
         <title>Facelets Template</title>
     </h:head>
 
@@ -74,7 +76,8 @@
                     </b:navBar>
                     
                     <p:overlayPanel for="overPanel" dynamic="true" >
-                        <p:panel header="Account">
+                        <p:panel header="Administrador">
+                            <b:commandButton value="Cerrar Secion" class="btn-success" action="#{beanIndex.cerrarSesion()}"/>
                         </p:panel>
                     </p:overlayPanel>
                 </h:form>

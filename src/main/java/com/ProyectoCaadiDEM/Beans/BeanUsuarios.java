@@ -32,6 +32,7 @@ public class BeanUsuarios {
         if(this.usrActual != null){
             if("admin".equals(this.usrActual.getNombre())){
                 mensajeAceptarAdmin();
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("admin", "admin");
                 return "dash?faces-redirect=true";
             }
             else{

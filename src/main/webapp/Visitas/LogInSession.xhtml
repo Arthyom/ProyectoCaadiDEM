@@ -9,7 +9,7 @@
 
     <body>
 
-        <ui:composition template="./../Plantillas/HCF.xhtml">
+        <ui:composition template="./../Plantillas/blank.xhtml">
 
             <ui:define name="top">
                 top
@@ -17,18 +17,24 @@
             
             <ui:define name="content">
                 <b:container>
+                    <h:form>
+                        <p:hotkey bind="ctrl+a" action="/index?faces-redirect=true"/>
+                    </h:form>
                 <h:form id="form">
                     <b:growl id="logGrowl" showDetail="true"/>
                     <p:panel header="Login Start" id="grupo">
+                        
                         <p:panelGrid columns="1">
+                            
                             <p:inputText required="true" placeholder="NUA" value="#{beanVisit.nua}"
                                          requiredMessage="NUA: Valor obligatorio" id="NUA"
-                            />                           
+                            />                                                 
                             <b:commandButton value="Entrar" 
                                              update=":form:outConf :form:inConf :form:logGrowl :form:grupo"
                                              actionListener="#{beanVisit.crearVisita()}"
                                              
-                                             action="#{beanVisit.mensajeErrorLog()}"/>                
+                                             action="#{beanVisit.mensajeErrorLog()}"/>    
+          
                         </p:panelGrid>
                     </p:panel>
 

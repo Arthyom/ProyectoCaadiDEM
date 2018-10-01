@@ -72,4 +72,5 @@ public abstract class AbstractFacade<T> {
         FacesContext.getCurrentInstance().getExternalContext().redirect("Visitas/OutLogIn.xhtml");
         return false;   
     }
+
 }
