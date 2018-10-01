@@ -22,7 +22,9 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Paint;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -52,11 +54,16 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.ChartUtils;
+
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.PieSectionLabelGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.CategoryItemRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
 import org.primefaces.context.RequestContext;
@@ -64,6 +71,7 @@ import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.PieChartModel;
+
 
 
 @Named(value = "beanVisit")
@@ -303,7 +311,7 @@ public class BeanVisit implements Serializable {
         pPie.setSimpleLabels(true);
         pPie.setLabelGenerator(gen);
         
-         ChartUtilities.saveChartAsJPEG(new File("/home/frodo/images/"+NUA+"grafPie.jpeg"), gpPie, 360, 450);
+        ChartUtils.saveChartAsJPEG(new File("/home/frodo/images/"+NUA+"grafPie.jpeg"), gpPie, 360, 450);
         
         mdn.setTitle("Visitas por Habilidad");
         mdn.setLegendPosition("w");
@@ -318,7 +326,7 @@ public class BeanVisit implements Serializable {
         return mdn;
     }
     
-    public BarChartModel crearVisitBarParaStd ( String NUA ){
+    public BarChartModel crearVisitBarParaStd ( String NUA ) throws IOException{
         String  sk [] = {"Reading", "Listening", "Grammar", "Speaking"};
         
         BarChartModel bm    = new BarChartModel();
@@ -341,6 +349,27 @@ public class BeanVisit implements Serializable {
         sR.set(sk[1], contarHorasLista(ls));
         sR.set(sk[2], contarHorasLista(gr));
         sR.set(sk[3], contarHorasLista(sp));
+        
+        DefaultCategoryDataset dt = new DefaultCategoryDataset( );
+        dt.addValue(contarHorasLista(rd), "Habilidad", sk[0]);
+        dt.addValue(contarHorasLista(ls), "Habilidad", sk[1]);
+        dt.addValue(contarHorasLista(gr), "Habilidad", sk[2]);
+        dt.addValue(contarHorasLista(sp), "Habilidad", sk[3]);
+     
+
+      this.gpBar = ChartFactory.createBarChart(
+         "Horas Por Habilidad", 
+         "Habilidad", "Horas", 
+         dt, PlotOrientation.VERTICAL,
+         false, true, false);
+  
+        BarRenderer r = (BarRenderer)this.gpBar.getCategoryPlot().getRenderer();
+        r.setSeriesPaint(0, Color.blue);
+        r.setSeriesPaint(1, Color.red);
+        r.setSeriesPaint(2, Color.green);
+        r.setSeriesPaint(3, Color.yellow);
+
+        ChartUtils.saveChartAsJPEG(new File("/home/frodo/images/"+NUA+"grafBar.jpeg"), gpBar, 390, 480);
 
         bm.addSeries(sR);
 
@@ -365,7 +394,8 @@ public class BeanVisit implements Serializable {
     
     PdfPTable nt = new PdfPTable(4);
  
-    Image img = Image.getInstance("/home/frodo/images/"+Nua+"grafPie.jpeg");
+    Image imgP = Image.getInstance("/home/frodo/images/"+Nua+"grafPie.jpeg");
+    Image imgB = Image.getInstance("/home/frodo/images/"+Nua+"grafBar.jpeg");
     
     nt.setHorizontalAlignment(Element.LIST);
     nt.setTotalWidth(600);
@@ -385,7 +415,8 @@ public class BeanVisit implements Serializable {
         nd.add(new Phrase(  Nua +" " + nombre + " "   + lv.get(0).getNua().getFirstLastName() 
                 +" "+lv.get(0).getNua().getSecondLastName(), th));
         nd.add(nt);
-        nd.add(img);
+        nd.add(imgP);
+        nd.add(imgB);
         nd.close();
       
     fc.responseComplete();
