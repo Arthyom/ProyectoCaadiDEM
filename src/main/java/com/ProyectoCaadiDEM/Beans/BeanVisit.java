@@ -8,16 +8,23 @@ import com.ProyectoCaadiDEM.Fachadas.PeriodsFacade;
 import com.ProyectoCaadiDEM.Fachadas.StudentsFacade;
 import com.ProyectoCaadiDEM.Fachadas.VisitFacade;
 import com.ProyectoCaadiDEM.Modelos.Visitantes;
+import com.itextpdf.awt.DefaultFontMapper;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,20 +34,30 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.ejb.EJB;
+import javax.enterprise.inject.Default;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.model.chart.AxisType;
@@ -71,6 +88,8 @@ public class BeanVisit implements Serializable {
     private String          nua;
     
     private Visitantes      vistActual;
+    
+    private JFreeChart      gpPie, gpBar;
     
     private DateFormat      formateador = new SimpleDateFormat( "dd/MM/yyyy HH:mm:ss");
     
@@ -253,7 +272,7 @@ public class BeanVisit implements Serializable {
         return new Float(h+"."+m);
     }
     
-    public PieChartModel crearVisitPieParaStd ( String NUA ){
+    public PieChartModel crearVisitPieParaStd ( String NUA ) throws IOException{
         String  sk [] = {"Reading", "Listening", "Grammar", "Speaking"};
         
         int rd = this.fcdVisita.visitasParaHblParaStd(sk[0], NUA).size();
@@ -261,10 +280,35 @@ public class BeanVisit implements Serializable {
         int gr = this.fcdVisita.visitasParaHblParaStd(sk[2], NUA).size();
         int sp = this.fcdVisita.visitasParaHblParaStd(sk[3], NUA).size();
         
+ 
+        
+        DefaultPieDataset pd = new DefaultPieDataset();      
         PieChartModel mdn = new PieChartModel ();
+        
+           
+        pd.setValue(sk[0], rd);
+        pd.setValue(sk[1], ls);
+        pd.setValue(sk[2], gr);
+        pd.setValue(sk[3], sp);
+        
+        this.gpPie = ChartFactory.createPieChart(
+                "Visitas por Habilidad",  pd, true, true, false );
+        
+         PieSectionLabelGenerator gen = new StandardPieSectionLabelGenerator(
+            "{0}: {1} ({2})", new DecimalFormat("0"), new DecimalFormat("0%"));
+
+        
+        PiePlot pPie = (PiePlot) this.gpPie.getPlot();
+        pPie.setCircular(false);
+        pPie.setSimpleLabels(true);
+        pPie.setLabelGenerator(gen);
+        
+         ChartUtilities.saveChartAsJPEG(new File("/home/frodo/images/"+NUA+"grafPie.jpeg"), gpPie, 360, 450);
+        
         mdn.setTitle("Visitas por Habilidad");
         mdn.setLegendPosition("w");
         mdn.setShowDataLabels(true);
+     
         
         mdn.set(sk[0], rd);
         mdn.set(sk[1], ls);
@@ -318,8 +362,10 @@ public class BeanVisit implements Serializable {
     OutputStream output = ec.getResponseOutputStream();
     
     Document nd = new Document(PageSize.LETTER);
-    nd.setMargins(15,15, 15, 15);
+    
     PdfPTable nt = new PdfPTable(4);
+ 
+    Image img = Image.getInstance("/home/frodo/images/"+Nua+"grafPie.jpeg");
     
     nt.setHorizontalAlignment(Element.LIST);
     nt.setTotalWidth(600);
@@ -339,6 +385,7 @@ public class BeanVisit implements Serializable {
         nd.add(new Phrase(  Nua +" " + nombre + " "   + lv.get(0).getNua().getFirstLastName() 
                 +" "+lv.get(0).getNua().getSecondLastName(), th));
         nd.add(nt);
+        nd.add(img);
         nd.close();
       
     fc.responseComplete();
@@ -351,6 +398,10 @@ public class BeanVisit implements Serializable {
         
         this.fcdVisita.verificarIp(req);
 
+    }
+    
+    public void pieGrafPdf (){
+       
     }
     
    
