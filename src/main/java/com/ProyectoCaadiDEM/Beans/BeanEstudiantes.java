@@ -26,6 +26,7 @@ import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.primefaces.context.RequestContext;
 import org.primefaces.model.UploadedFile;
 
 
@@ -99,18 +100,26 @@ public class BeanEstudiantes implements Serializable {
         stdNuevo = new Students();
     }
     
+    public void cancelarCargaAutomatica (){
+        this.stdExst.clear(); this.stdNoExst.clear();
+    }
+    
     public void mensajeCargar () throws IOException{
-        if( this.archivo != null ){
-
-            // si es un archivo xl
-            if( this.archivo.getContentType().contains("xlsx")  )
+        
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesContext ct = FacesContext.getCurrentInstance();
+            
+        
+        if (this.archivo != null) // si es un archivo xl
+        {
+            if (this.archivo.getContentType().contains("xlsx")) {
                 barrerArchivoXl();
-            // si es un archivo de texto
-            else
-                barrerArchivoTxt();
-            
-            
+                context.execute("PF('dlgCargar').show();");
+                return;
+            } 
         }
+        ct.addMessage(null,
+                new FacesMessage("Error: ", "El archivo no tiene el formato correcto"));
     }
     
     public void barrerArchivoXl () throws IOException{
@@ -143,6 +152,21 @@ public class BeanEstudiantes implements Serializable {
                this.stdNoExst.add( new Students( String.valueOf(cnV), cAPv, cAMv, cNv, cGV) );
            
        }
+    }
+    public String agregarAutomatico(){
+        for (Students si : this.stdNoExst) 
+            this.fcdEstudiante.create(si);
+
+        this.stdExst.clear();
+        this.stdNoExst.clear();
+        
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        FacesContext ct = FacesContext.getCurrentInstance();
+
+        ct.addMessage(null,
+                new FacesMessage("Agregar: ", "Estudiantes Agregados Correctamente"));
+        return "listar?faces-redirect=true";
+        
     }
     
     
