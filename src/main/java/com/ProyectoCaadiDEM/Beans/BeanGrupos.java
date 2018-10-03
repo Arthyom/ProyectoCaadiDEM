@@ -5,6 +5,7 @@ import com.ProyectoCaadiDEM.Entidades.Groups;
 import com.ProyectoCaadiDEM.Entidades.Periods;
 import com.ProyectoCaadiDEM.Entidades.Students;
 import com.ProyectoCaadiDEM.Entidades.Teachers;
+import com.ProyectoCaadiDEM.Entidades.Visit;
 import com.ProyectoCaadiDEM.Fachadas.GroupsFacade;
 import com.ProyectoCaadiDEM.Fachadas.PeriodsFacade;
 import com.ProyectoCaadiDEM.Fachadas.StudentsFacade;
@@ -170,6 +171,26 @@ public class BeanGrupos implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Asignacion", "Se han Borrado los estudiantes" ));
         return "asignacion?faces-redirect=true";
+    }
+    
+    public String contarHorasGrupo ( Groups grp ){
+        long total = 0, h = 0, m = 0;
+
+        if (grp != null) {
+            // contar las horas que cada estudiante ha realizaro
+            for (Students si : grp.getStudentsCollection()) {
+                for (Visit vi : si.getVisitCollection()) {
+                    total += vi.getEnd().getTime() - vi.getStart().getTime();
+                }
+            }
+
+            h = total / (1000 * 60 * 60);
+            total = total % (1000 * 60 * 60);
+            m = total / (1000 * 60);
+
+            return h + " Horas, " + m + " Minutos";
+        }
+        return "-";
     }
 
     ////////////////////////////////////////////////////////////////////////////

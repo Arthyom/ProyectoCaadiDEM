@@ -25,12 +25,14 @@
                                            #{grp.learningUnit} #{grp.level}"
                                            itemValue="#{grp.id}"/>
                             
-                            <f:ajax listener="#{beanGrupos.buscarGrupo()}" render=":form:idRep :form:idProf"/>
+                            <f:ajax listener="#{beanGrupos.buscarGrupo()}" render=":form:idRep :form:idProf :form:idHrs"/>
                         </p:selectOneMenu>
                         
                         <p:outputLabel id="idProf" value="Profesor: #{beanGrupos.grpActual.employeeNumber.name}
                                        #{beanGrupos.grpActual.employeeNumber.firstLastName}
                                        #{beanGrupos.grpActual.employeeNumber.secondLastName}"/>
+                        
+                        <p:outputLabel id="idHrs" value="Horas Totales Trabajadas: #{beanGrupos.contarHorasGrupo(beanGrupos.grpActual)}"/>
                         
                         <p:dataTable id="idRep" value="#{beanGrupos.grpActual.studentsCollection}" var="std">
                             <p:column headerText="NUA">

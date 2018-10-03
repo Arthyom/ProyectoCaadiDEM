@@ -17,7 +17,8 @@ public class BeanIndex implements Serializable {
        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("admin");
        
-        return "index?faces-redirect=true";
+       
+        return "/index?faces-redirect=true";
     }
     
     public void  comprobarSesion () throws IOException{

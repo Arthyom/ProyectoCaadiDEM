@@ -244,8 +244,8 @@ public class BeanVisit implements Serializable {
     }
     
     public String contarLapso(Visit vstActl) throws ParseException {
-        String total;
-        long   tTtl = 0, h= 0, m = 0;
+  
+        long   h= 0, m = 0;
 
         long delta = vstActl.getEnd().getTime() - vstActl.getStart().getTime();
 
@@ -253,8 +253,9 @@ public class BeanVisit implements Serializable {
         delta = delta%(1000*60*60);
         m = delta/(1000*60);
         
-        total = h+" Horas, " + m + " Minutos";
-        return total;
+        
+        return h+" Horas, " + m + " Minutos";
+        
     }
     
     
@@ -376,7 +377,7 @@ public class BeanVisit implements Serializable {
         return bm;
     }
     
-    public void crearPdfParaStd ( String nombre, String Nua) throws DocumentException, FileNotFoundException, IOException{
+    public void crearPdfParaStd ( String nombre, String Nua) throws DocumentException, FileNotFoundException, IOException, ParseException{
         
         
         
@@ -406,14 +407,14 @@ public class BeanVisit implements Serializable {
         for (Visit vi : lv) {
             nt.addCell(this.formateador.format(vi.getStart()));
             nt.addCell(this.formateador.format(vi.getEnd()));
-            nt.addCell("Duracion");
+            nt.addCell(this.contarLapso(vi));
             nt.addCell(vi.getSkill());
         }
         PdfWriter.getInstance(nd,  output );
         nd.open();
         nd.add( new Paragraph("Reporte Individual para: "));
         nd.add(new Phrase(  Nua +" " + nombre + " "   + lv.get(0).getNua().getFirstLastName() 
-                +" "+lv.get(0).getNua().getSecondLastName(), th));
+                +" "+lv.get(0).getNua().getSecondLastName() +"       Tiempo Total: "+ this.contarHoras( fcdEstudiante.find(Nua)) , th));
         nd.add(nt);
         nd.add(imgP);
         nd.add(imgB);

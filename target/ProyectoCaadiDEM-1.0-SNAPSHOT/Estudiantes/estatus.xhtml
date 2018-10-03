@@ -18,7 +18,7 @@
                          #{beanEstudiantes.stdActual.secondLastName}: "
                          toggleable="true"
                 >
-                    <p:outputLabel value="Total de Horas"/>
+                    <p:outputLabel value="Total de Horas #{beanVisit.contarHoras( beanEstudiantes.stdActual )}"/>
                     <h:form>
                         
                         <b:commandButton value="Descargar PDF" 

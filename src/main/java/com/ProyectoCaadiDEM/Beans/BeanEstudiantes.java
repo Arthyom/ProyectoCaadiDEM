@@ -173,6 +173,7 @@ public class BeanEstudiantes implements Serializable {
     public void barrerArchivoTxt (){
         return;
     }
+    
     ////////////////////////////////////////////////////////////////////////////
 
     public String getNua() {
