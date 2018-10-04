@@ -15,43 +15,50 @@
                 
                  <h:form id="form">
                     <b:growl id="stdEdtGrowl" showDetail="true" />
-                    <p:panel header="Editar Estudiante" id="stdEdtPanel">
-                        <p:panelGrid columns="2">
+                    <p:panel header="Editar Estudiante" id="stdEdtPanel" toggleable="true" styleClass="card box-solid box-primary" style=" width: 500px; margin: 0 auto">
+                        <h:panelGrid columns="2" style="text-align: center; margin: 0 auto; width: 450px">
                             <p:outputLabel for="txtNua" value="NUA"/>
-                            <p:inputText id="txtNua" required="true" value="#{beanEstudiantes.stdActual.nua}"/>
+                            <b:inputText id="txtNua" required="true" value="#{beanEstudiantes.stdActual.nua}" renderLabel="false"/>
                             
                             <p:outputLabel for="txtNombre" value="Nombre"/>
-                            <p:inputText id="txtNombre" required="true" value="#{beanEstudiantes.stdActual.name}" />
+                            <b:inputText id="txtNombre" required="true" value="#{beanEstudiantes.stdActual.name}" renderLabel="false" />
                             
                             <p:outputLabel for="txtPa" value="Apellido Paterno"/>
-                            <p:inputText id="txtPa" required="true" value="#{beanEstudiantes.stdActual.firstLastName}" />
+                            <b:inputText id="txtPa" required="true" value="#{beanEstudiantes.stdActual.firstLastName}" renderLabel="false" />
                             
                             <p:outputLabel for="txtMa"  value="Apellido Materno"/>
-                            <p:inputText  id="txtMa" required="true" value="#{beanEstudiantes.stdActual.secondLastName}" />
+                            <b:inputText  id="txtMa" required="true" value="#{beanEstudiantes.stdActual.secondLastName}" renderLabel="false" />
                             
                             
                             <p:outputLabel  value="Programa Educativo"/>
-                            <p:inputText    value="#{beanEstudiantes.stdActual.program}" />
+                            <b:inputText    value="#{beanEstudiantes.stdActual.program}" renderLabel="false"/>
                             
                             <p:outputLabel  for="gen" value="Genero"/>
-                            <p:selectOneMenu id="gen" required="true" value="#{beanEstudiantes.stdActual.gender}">
+                            <b:selectOneMenu id="gen" required="true" value="#{beanEstudiantes.stdActual.gender}" renderLabel="false">
                                 <f:selectItem itemLabel="masculino" itemValue="M" />
                                 <f:selectItem itemLabel="femenino"  itemValue="F" />
                                 <f:selectItem itemLabel="Otro"      itemValue="X" />
-                            </p:selectOneMenu>
+                            </b:selectOneMenu>
                             
                             
                             <p:outputLabel  value="E-mail"/>
-                            <p:inputText value="#{beanEstudiantes.stdActual.email}" />
+                            <b:inputText value="#{beanEstudiantes.stdActual.email}" renderLabel="false"/>
                             
                             <p:outputLabel  value="Fecha de Nacimiento"/>
-                            <p:calendar value="#{beanEstudiantes.stdActual.birthday}" />
+                            <b:dateTimePicker format="DD/MM/YYYY" value="#{beanEstudiantes.stdActual.birthday}" />
+                            </h:panelGrid>
+                        
+                            <hr/>
                             
-                            <b:commandButton styleClass="btn-success" value="Guardar" update=":form:stdEdtGrowl :form:stdEdtPanel"
+                            <h:panelGrid columns="2" style="width: 100%">
+                        
+                            <b:commandButton styleClass="btn-success btn-lg btn-block" value="Guardar" update=":form:stdEdtGrowl :form:stdEdtPanel"
                                              action="#{beanEstudiantes.editarItem()}" 
                                              actionListener="#{beanUtileria.mensajeEditado()}"/>
-                            <b:commandButton styleClass="btn-fatal" value="Cancelar"/>
-                        </p:panelGrid>
+                            
+                            <b:commandButton styleClass="btn-fatal btn-lg btn-block" value="Cancelar"/>
+                            </h:panelGrid>
+                        
                         
                     </p:panel>
                 </h:form>

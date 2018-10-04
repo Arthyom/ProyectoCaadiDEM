@@ -4,26 +4,40 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
-        <ui:composition template="./../Plantillas/blank.xhtml">
+        <ui:composition template="./../Plantillas/blankOut.xhtml">
 
             <ui:define name="top">
                 top
             </ui:define>
 
             <ui:define name="content">
+                <div style="background-color: #F3EDED;">
+                       <hr/>
                 <h:form id="form">
                     <b:growl id="outGrowl"/>
-                    <p:panel header="Registro de Usiarios">
-                        <p:inputText label="NUA" placeholder="NUA" value="#{beanEstudiantes.nua}" 
-                                     required="true"/>
-                        <p:inputText placeholder="Fecha de Nacimiento"/>
-                        <b:commandButton value="Acceder" action="#{beanEstudiantes.buscarEstudiante()}"/>
+
+                    <p:panel header="Registro" id="pnlLog" styleClass="card box-solid box-primary" style=" width: 300px; margin: 0 auto; text-align: center">
+                        <div style=" margin-top: 10px; margin-bottom:10px; color: #FFF; font-size: 50px; text-align: center;   background: #A8A6A6; padding: 20px; border-radius: 40px;">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </div>
+                        <h:panelGrid columns="1" style="margin: 0 auto; width: 80%">
+                            <b:inputText label="NUA" placeholder="NUA" value="#{beanEstudiantes.nua}" 
+                                         required="true" renderLabel="false">
+                                <f:facet name="prepend">
+                                    <b:iconAwesome name="key" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:commandButton value="Acceder" styleClass="btn-primary btn-lg btn-block " action="#{beanEstudiantes.buscarEstudiante()}"/>
+                        </h:panelGrid>
                     </p:panel>
                 </h:form>
+                       <hr/>
+                </div>
             </ui:define>
 
             <ui:define name="bottom">

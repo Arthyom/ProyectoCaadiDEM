@@ -17,31 +17,50 @@
             
             <ui:define name="content">
                 <b:container>
+                     
                     <h:form>
                         <p:hotkey bind="ctrl+a" action="/index?faces-redirect=true"/>
                     </h:form>
+                <div class="backgroundBody">
+                    <hr/>
                 <h:form id="form">
                     <b:growl id="logGrowl" showDetail="true"/>
-                    <p:panel header="Login Start" id="grupo">
+                    <p:panel header="Registro" id="grupo" styleClass="card box-solid box-primary smallFormLog" >
                         
-                        <p:panelGrid columns="1">
+                        <div class="primIcon">
+                   <span class="glyphicon glyphicon-user"></span>
+                        </div>
+                        
+                        <h:panelGrid columns="1" class="gridLogForm">
                             
-                            <p:inputText required="true" placeholder="NUA" value="#{beanVisit.nua}"
+                            <b:inputText required="true" placeholder="NUA" value="#{beanVisit.nua}"
                                          requiredMessage="NUA: Valor obligatorio" id="NUA"
-                            />                                                 
-                            <b:commandButton value="Entrar" 
+                                         label="NUA" renderLabel="false"
+                                         
+                            >
+                                  <f:facet name="prepend">
+                                    <b:iconAwesome name="key" />
+                                </f:facet>
+                            </b:inputText>
+                            
+                            <b:commandButton value="Acceder" 
                                              update=":form:outConf :form:inConf :form:logGrowl :form:grupo"
                                              actionListener="#{beanVisit.crearVisita()}"
-                                             
-                                             action="#{beanVisit.mensajeErrorLog()}"/>    
+                                             styleClass="btn-primary btn-lg btn-block "
+                                             action="#{beanVisit.mensajeErrorLog()}"/>
+
           
-                        </p:panelGrid>
+                        </h:panelGrid>
                     </p:panel>
+                    </h:form>
+                    <hr/>
+                </div>
 
 
                     <p:dialog id="inConf" widgetVar="logInConfirm" header="Confirmacion"
                               modal="true"  resizable="false" draggable="false"
                     >
+                        <h:form>
                         <p:panel>
                             <p:outputLabel value="Eres
                                  #{beanVisit.stdActual.name} #{beanVisit.stdActual.firstLastName}
@@ -54,13 +73,15 @@
                                 <p:resetInput target=":form:grupo"/>
                             </b:commandButton>
                             
-                        </p:panel>    
+                        </p:panel> 
+                        </h:form>
                     </p:dialog>
                     
                     <p:dialog id="outConf" widgetVar="logOutConfirm" header="Confirmacion"
                               modal="true"  resizable="false" draggable="false"
-                    >
+                    ><h:form>
                         <p:panel>
+                            
                             <p:outputLabel value="Eres
                                  #{beanVisit.stdActual.name} #{beanVisit.stdActual.firstLastName}
                                  #{beanVisit.stdActual.secondLastName} ? " />
@@ -73,9 +94,10 @@
                             
                             
                         </p:panel>    
+                              </h:form>
                     </p:dialog>
                     
-                </h:form>
+              
                 </b:container>
             </ui:define>
 

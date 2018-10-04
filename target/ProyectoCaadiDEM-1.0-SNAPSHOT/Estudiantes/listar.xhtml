@@ -14,12 +14,7 @@
             <ui:define name="content">
                 
                 <h:form id="form">
-                    <p:panel header="Estudiantes Registrados" toggleable="true">
-                        <p:breadCrumb>
-                            <p:menuitem value="Index"       url="index.xhtml"/>
-                            <p:menuitem value="Estudiantes" url="Estudiantes/listar.xhtml"/>
-                            <p:menuitem value="Listar"      url="Estudiantes/listar.xhtml"/>
-                        </p:breadCrumb>
+                    <p:panel header="Estudiantes Registrados" toggleable="true" styleClass="card box-solid box-primary" style="text-align: center; width: 950px; margin: 0 auto">
                         <b:growl id="stdListGrowl" showDetail="true"  />
                         <p:outputPanel>
                             <b:commandButton value="Borrar Seleccionados" 
@@ -33,42 +28,43 @@
                         </p:outputPanel>
                     <p:dataTable 
                         
+                        style="text-align: center; width: 900px; margin: 0 auto"
                         selection="#{beanEstudiantes.stdSeleccionados}"
                         rowKey="#{std.nua}" paginator="true"
-                        rows="10"
+                        rows="5"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
                          {PreviousPageLink} {PageLinks} {NextPageLink}
                          {LastPageLink} {RowsPerPageDropdown}"
                         value="#{beanEstudiantes.listarItems()}" var="std"
                         filteredValue="#{beanEstudiantes.stdFiltrados}"
-                        styleClass="box-solid box-primary"
-                        rowsPerPageTemplate="10,15,20" 
+                        styleClass="box-solid box-default"
+                        rowsPerPageTemplate="5,10,15,20" 
                         paginatorPosition="bottom"
                     >
                         
-                        <f:facet name="footer">
-                            <h:outputText value="Table footer"/>
+                        <f:facet name="footer" >
+                            <h:outputText value=""/>
                         </f:facet>
                         
-                        <p:column selectionMode="multiple" />
+                        <p:column selectionMode="multiple" style="width: 50px" />
                         
-                        <p:column headerText="NUA" filterBy="#{std.nua}">
+                        <p:column headerText="NUA" filterBy="#{std.nua}" style=" width: 80px">
                             <p:outputLabel value="#{std.nua}"/>
                         </p:column>
                         
-                        <p:column headerText="Nombre" filterBy="#{std.name}">
+                        <p:column headerText="Nombre" filterBy="#{std.name}" style="width: 150px">
                             <p:outputLabel value="#{std.name}"/>
                         </p:column>
                         
-                        <p:column headerText="Apellido Paterno" filterBy="#{std.firstLastName}">
+                        <p:column headerText="Apellido Paterno" filterBy="#{std.firstLastName}" style="width: 150px">
                             <p:outputLabel value="#{std.firstLastName}"/>
                         </p:column>
                         
-                        <p:column headerText="Apellido Materno" filterBy="#{std.secondLastName}">
+                        <p:column headerText="Apellido Materno" filterBy="#{std.secondLastName}" style="width: 150px">
                             <p:outputLabel value="#{std.secondLastName}"/>
                         </p:column>
                         
-                        <p:column headerText="Programa Educativo" filterBy="#{std.program}">
+                        <p:column headerText="Programa Educativo" filterBy="#{std.program}" style="width: 150px">
                             <p:outputLabel value="#{std.program}"/>
                         </p:column>
                         

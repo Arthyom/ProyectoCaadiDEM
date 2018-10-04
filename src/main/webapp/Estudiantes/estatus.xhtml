@@ -9,30 +9,36 @@
 
     <body>
 
-        <ui:composition template="./../Plantillas/blank.xhtml">
+        <ui:composition template="./../Plantillas/blankOut.xhtml">
 
             
             <ui:define name="content">
-                <p:panel header="Total de visitas de #{beanEstudiantes.stdActual.name} 
+                <h:outputScript>
+                    function ext() {
+                    this.cfg.seriesDefaults.rendererOptions.varyBarColor = true;
+                    this.cfg.legend = {show: false};
+
+                    this.cfg.highlighter={show: true,tooltipAxes: 'y',
+                    useAxesFormatters: false,tooltipFormatString: "%'d"};
+                    }                               
+                </h:outputScript>  
+                
+                <p:panel header="Reporte para:  #{beanEstudiantes.stdActual.name} 
                          #{beanEstudiantes.stdActual.firstLastName}
-                         #{beanEstudiantes.stdActual.secondLastName}: "
-                         toggleable="true"
+                         #{beanEstudiantes.stdActual.secondLastName} "
+                         styleClass="card box-solid box-primary" style="text-align: center; width: 90%; margin: 0 auto"
                 >
-                    <p:outputLabel value="Total de Horas #{beanVisit.contarHoras( beanEstudiantes.stdActual )}"/>
+                    <p:outputLabel value="Total de Horas: #{beanVisit.contarHoras( beanEstudiantes.stdActual )}" />
                     <h:form>
                         
-                        <b:commandButton value="Descargar PDF" 
+                        <b:commandButton value="Descargar PDF"  styleClass="btn-success btn-lg btn-block"
                                         
-                                         action="#{beanVisit.crearPdfParaStd(beanEstudiantes.stdActual.name, beanEstudiantes.stdActual.nua)}"/>               
-                    </h:form>>
-                    <p:dataTable var="vst" value="#{beanVisit.listarItems2Std(beanEstudiantes.stdActual.nua)}" >
-                        <p:column headerText="NUA">
-                            <p:outputLabel value="#{vst.nua.nua}"/>
-                        </p:column>
-                        
-                        <p:column headerText="Nombre y Apellidos">
-                            <p:outputLabel value="#{vst.nua.name} #{vst.nua.firstLastName} #{vst.nua.secondLastName}"/>
-                        </p:column>
+                                         action="#{beanVisit.crearPdfParaStd(beanEstudiantes.stdActual.name, beanEstudiantes.stdActual.nua)}"/>   
+                        <br/>
+                    </h:form>
+                    <p:panel header="Detalles de Visitas" styleClass="card box-solid box-primary" toggleable="true">
+                    <p:dataTable var="vst" value="#{beanVisit.listarItems2Std(beanEstudiantes.stdActual.nua)}" styleClass="card box-solid box-default" >
+                       
                         
                         <p:column headerText="Inicio">
                             <p:outputLabel value="#{vst.start}">
@@ -53,20 +59,23 @@
                         <p:column headerText="Habilidad">
                             <p:outputLabel value="#{vst.skill}"/>
                         </p:column>
-                    </p:dataTable>
-                    
-                    <p:chart type="pie" widgetVar="pie" model="#{beanVisit.crearVisitPieParaStd(beanEstudiantes.stdActual.nua)}" />
-                    <h:outputScript>
-                        function ext() {
-                        this.cfg.seriesDefaults.rendererOptions.varyBarColor = true;
-                        this.cfg.legend = {show: false};
                         
-                        this.cfg.highlighter={show: true,tooltipAxes: 'y',
-                        useAxesFormatters: false,tooltipFormatString: "%'d"};
-                        }                               
-                    </h:outputScript>  
-                    <p:chart type="bar" model="#{beanVisit.crearVisitBarParaStd(beanEstudiantes.stdActual.nua)}" />
+                    </p:dataTable>
+                    </p:panel>
+                    
+                    <hr/>
+                    
+                    <p:panel header="Graficos de Analisis" toggleable="true">
+
+                            <p:chart type="pie" widgetVar="pie" model="#{beanVisit.crearVisitPieParaStd(beanEstudiantes.stdActual.nua)}" />
+                            
+                            <br/>
+                            
+                            <p:chart type="bar" model="#{beanVisit.crearVisitBarParaStd(beanEstudiantes.stdActual.nua)}" />
+
+                    </p:panel>
                 </p:panel>
+                
                 
               
             </ui:define>

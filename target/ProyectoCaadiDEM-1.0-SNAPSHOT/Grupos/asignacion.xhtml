@@ -14,8 +14,8 @@
             <ui:define name="content">
                 <h:form>
                     <b:growl showDetail="true" showSummary="true"/>
-                    <p:panel header="Asignar Estudiantes y Maestros">
-                        
+                    <p:panel header="Asignar Estudiantes y Maestros" styleClass="card box-solid box-primary" style="text-align: center; width: 1000px; margin: 0 auto">
+                        <h:panelGrid columns="2" style="margin: 0 auto; width: 500px">
                         <p:outputLabel value="Grupo"/>                       
                         <p:selectOneMenu value="#{beanGrupos.grpIndex}" >
                             <f:selectItem itemLabel="Seleccione Grupo"/>
@@ -27,15 +27,20 @@
                             
                         </p:selectOneMenu>
                         
-                        <p:outputLabel id="profe" value="Profesor: #{beanGrupos.grpActual.employeeNumber.name} 
+                        <p:outputLabel value="Profesor: "/>
+                        <p:outputLabel id="profe" value="#{beanGrupos.grpActual.employeeNumber.name} 
                                        #{beanGrupos.grpActual.employeeNumber.firstLastName} 
                                        #{beanGrupos.grpActual.employeeNumber.secondLastName}"/> 
                         
+                        
                        
-                        <b:commandButton value="Asignar" action="#{beanGrupos.asignarME()}"/>
+                        <b:commandButton value="Asignar  Seleccionados" action="#{beanGrupos.asignarME()}" styleClass="btn-primary btn-md btn-block"/>
+                        <b:commandButton value="Eliminar Seleccionados" action="#{beanGrupos.eliminarSeleccionados()}" styleClass="btn-fatal btn-md btn-block"/>
+                        </h:panelGrid>
 
-                        <p:panel header="Estudiantes en el Grupo" id="stdGrp" toggleable="true">
-                            <b:commandButton value="Eliminar Seleccionados" action="#{beanGrupos.eliminarSeleccionados()}"/>
+                        <br/>
+                        
+                        <p:panel header="Estudiantes en el Grupo" id="stdGrp" toggleable="true" styleClass="card box-solid box-primary" style="text-align: center; width: 720px; margin: 0 auto" >
                             <p:dataTable value="#{beanGrupos.grpActual.studentsCollection}" var="stdG"
                                          rowKey="#{stdG.nua}" paginator="true" rows="10"
                                       paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
@@ -43,82 +48,82 @@
                                       {LastPageLink} {RowsPerPageDropdown}"
                                       selection="#{beanGrupos.stdsSlctG}"
                                       filteredValue="#{beanGrupos.stdsFltG}"
+                                      style="width: 700px"
 
-                                      styleClass="box-solid box-primary"
+                                      styleClass="box-solid box-default"
                                       rowsPerPageTemplate="10,15,20" 
                                       paginatorPosition="bottom"
                                       >
 
                                 <f:facet name="footer">
-                                    <h:outputText value="Table footer"/>
+                                    <h:outputText value=""/>
                                 </f:facet>
-                                <p:column selectionMode="multiple" />
+                                <p:column selectionMode="multiple" style="width: 50px"/>
 
-                                <p:column headerText="NUA" filterBy="#{stdG.nua}">
+                                <p:column headerText="NUA" filterBy="#{stdG.nua}" style="width: 70px">
                                     <p:outputLabel value="#{stdG.nua}"/>
                                 </p:column>
-                                <p:column headerText="Nombre" filterBy="#{stdG.name}">
+                                <p:column headerText="Nombre" filterBy="#{stdG.name}" style="width: 120px">
                                     <p:outputLabel value="#{stdG.name}"/>
                                 </p:column>
-                                <p:column headerText="Apellido Paterno" filterBy="#{stdG.firstLastName}">
+                                <p:column headerText="Apellido Paterno" filterBy="#{stdG.firstLastName}" style="width: 120px">
                                     <p:outputLabel value="#{stdG.firstLastName}"/>
                                 </p:column>
                                 
-                                <p:column headerText="Apellido Materno" filterBy="#{stdG.secondLastName}">
+                                <p:column headerText="Apellido Materno" filterBy="#{stdG.secondLastName}" style="width: 120px">
                                     <p:outputLabel value="#{stdG.secondLastName}"/>
                                 </p:column>
                                 
-                                <p:column headerText="Programa Educativo" filterBy="#{stdG.program}">
+                                <p:column headerText="Programa Educativo" filterBy="#{stdG.program}"  style="width: 140px">
                                     <p:outputLabel value="#{stdG.program}"/>
                                 </p:column>
                                 
                                 <p:column headerText="Opciones">
-                                    <b:commandButton value="Eliminar" action="#{beanGrupos.eliminarStdGrupo(stdG)}"/>
+                                    <b:commandButton icon="remove" action="#{beanGrupos.eliminarStdGrupo(stdG)}"/>
                                 </p:column>
                             </p:dataTable>
                         </p:panel>
                         
-                        <br/>
-                        <br/>
-                        <br/>
+                        <hr/>
                         
-                        <p:panel header="Estudiantes Disponibles" toggleable="true">
+                        <p:panel header="Estudiantes Disponibles" toggleable="true"  styleClass="card box-solid box-primary" style="text-align: center; width: 720px; margin: 0 auto" >
                         <p:dataTable  value="#{beanGrupos.listarStdSinGrupo()}" var="std"
-                                     
+                                      
                                       rowKey="#{std.nua}" paginator="true" rows="10"
                                       paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
                                       {PreviousPageLink} {PageLinks} {NextPageLink}
                                       {LastPageLink} {RowsPerPageDropdown}"
                                       selection="#{beanGrupos.stdsSlct}"
                                       filteredValue="#{beanGrupos.stdsFlt}"
-                                      styleClass="box-solid box-primary"
+                                      style="width: 700px"
+                                      styleClass="box-solid box-default"
                                       rowsPerPageTemplate="10,15,20" 
                                       paginatorPosition="bottom"
                                       >
 
-                            <f:facet name="footer">
-                                <h:outputText value="Table footer"/>
+                            <f:facet name="footer" >
+                                <h:outputText value=""/>
                             </f:facet>
                         
-                            <p:column selectionMode="multiple" />
+                            <p:column selectionMode="multiple" style="width: 50px"/>
                             
-                            <p:column headerText="NUA" filterBy="#{std.nua}">
+                            <p:column headerText="NUA" filterBy="#{std.nua}" style="width: 120px">
                                 <p:outputLabel value="#{std.nua}"/>
                             </p:column>
                             
-                            <p:column headerText="Nombre" filterBy="#{std.name}">
+                            <p:column headerText="Nombre" filterBy="#{std.name}" style="width: 120px">
                                 <p:outputLabel value="#{std.name}"/>
                             </p:column>
                             
-                            <p:column headerText="Apellido Paterno" filterBy="#{std.firstLastName}">
+                            <p:column headerText="Apellido Paterno" filterBy="#{std.firstLastName}" style="width: 120px">
                                 <p:outputLabel value="#{std.firstLastName}"/>
                             </p:column>
                             
-                            <p:column headerText="Apellido Materno" filterBy="#{std.secondLastName}">
+                            <p:column headerText="Apellido Materno" filterBy="#{std.secondLastName}" style="width: 120px">
                                 <p:outputLabel value="#{std.secondLastName}"/>
                             </p:column>
                             
-                            <p:column headerText="Programa Educativo" filterBy="#{std.program}">
+                            <p:column headerText="Programa Educativo" filterBy="#{std.program}" style="width: 140px">
                                 <p:outputLabel value="#{std.program}"/>
                             </p:column>
                             

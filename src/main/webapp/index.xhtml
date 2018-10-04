@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -15,27 +16,45 @@
             </ui:define>
 
             <ui:define name="content">
-                
-                <h:form id="form">
+                <div class="backgroundBody" >
+                       <hr/>
+                <h:form id="form" >
                     <b:growl id="usrGrowl" showSummary="true"/>
-                    <p:panel header="Log In" id="pnlLog">
-                        <p:panelGrid columns="1">
-                            <p:inputText placeholder="Usuario" required="true" 
-                                         label="Usuario"
-                                         value="#{beanUsuarios.usr}"/>
+                    <p:panel header="Registro" id="pnlLog" styleClass="card box-solid box-primary smallFormLog" >
+                        <div class="primIcon">
+                   <span class="glyphicon glyphicon-user"></span>
+                 </div>
+          
+                        <h:panelGrid columns="1" class="gridLogForm">
+                                                  
+                            
+                            <b:inputText placeholder="Usuario" required="true"  
+                                         label="Usuario" renderLabel="false"
+                                         
+                                         value="#{beanUsuarios.usr}">
+                                <f:facet name="prepend">
+                                    <b:icon name="user" />
+                                </f:facet>
+                            </b:inputText>
 
-                            <p:password placeholder="Contraseña" required="true"
-                                        label="Contraseña"
-                                        value="#{beanUsuarios.pass}"/>
+                            <b:inputSecret placeholder="Contraseña" required="true"
+                                           label="Contraseña" renderLabel="false"
+                                     
+                                        value="#{beanUsuarios.pass}">
+                                <f:facet name="prepend">
+                                    <b:iconAwesome name="key" />
+                                </f:facet>
+                            </b:inputSecret >
 
                             <b:commandButton value="Acceder" update=":form:usrGrowl :form:pnlLog"
-                                             
+                                              styleClass="btn-primary btn-lg btn-block "
                                              action="#{beanUsuarios.buscarUsuario()}"/>
 
-                        </p:panelGrid>
+                        </h:panelGrid>
                     </p:panel>
                 </h:form>
-                
+                    <hr/>
+                </div>
             </ui:define>
 
             <ui:define name="bottom">
