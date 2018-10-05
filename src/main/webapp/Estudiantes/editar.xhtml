@@ -15,8 +15,8 @@
                 
                  <h:form id="form">
                     <b:growl id="stdEdtGrowl" showDetail="true" />
-                    <p:panel header="Editar Estudiante" id="stdEdtPanel" toggleable="true" styleClass="card box-solid box-primary" style=" width: 500px; margin: 0 auto">
-                        <h:panelGrid columns="2" style="text-align: center; margin: 0 auto; width: 450px">
+                    <p:panel header="Editar Estudiante" id="stdEdtPanel" toggleable="true" styleClass="card box-solid box-primary gridAdmiForm">
+                        <h:panelGrid columns="2" class="gridFormCrud" >
                             <p:outputLabel for="txtNua" value="NUA"/>
                             <b:inputText id="txtNua" required="true" value="#{beanEstudiantes.stdActual.nua}" renderLabel="false"/>
                             
@@ -50,13 +50,13 @@
                         
                             <hr/>
                             
-                            <h:panelGrid columns="2" style="width: 100%">
+                            <h:panelGrid columns="2" class="gridFormButtons">
                         
-                            <b:commandButton styleClass="btn-success btn-lg btn-block" value="Guardar" update=":form:stdEdtGrowl :form:stdEdtPanel"
+                            <b:commandButton styleClass="btn-success btn-md btn-block" value="Guardar" update=":form:stdEdtGrowl :form:stdEdtPanel"
                                              action="#{beanEstudiantes.editarItem()}" 
                                              actionListener="#{beanUtileria.mensajeEditado()}"/>
                             
-                            <b:commandButton styleClass="btn-fatal btn-lg btn-block" value="Cancelar"/>
+                            <b:commandButton styleClass="btn-fatal btn-md btn-block" value="Cancelar"/>
                             </h:panelGrid>
                         
                         

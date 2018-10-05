@@ -14,7 +14,7 @@
             <ui:define name="content">
                 
                 <h:form id="form">
-                    <p:panel header="Estudiantes Registrados" toggleable="true" styleClass="card box-solid box-primary" style="text-align: center; width: 950px; margin: 0 auto">
+                    <p:panel header="Estudiantes Registrados" toggleable="true" styleClass="card box-solid box-primary commonFormList" >
                         <b:growl id="stdListGrowl" showDetail="true"  />
                         <p:outputPanel>
                             <b:commandButton value="Borrar Seleccionados" 
@@ -28,7 +28,7 @@
                         </p:outputPanel>
                     <p:dataTable 
                         
-                        style="text-align: center; width: 900px; margin: 0 auto"
+                        class="gridAdmiForm"
                         selection="#{beanEstudiantes.stdSeleccionados}"
                         rowKey="#{std.nua}" paginator="true"
                         rows="5"

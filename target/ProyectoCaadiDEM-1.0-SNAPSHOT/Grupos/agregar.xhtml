@@ -14,33 +14,40 @@
             <ui:define name="content">
                 <h:form id="form">
                     <b:growl id="stdAddGrowl" showDetail="true" />
-                    <p:panel header="Agregar Nuevo Grupo" id="stdAddPanel">
-                        <p:panelGrid columns="2">
+                    <p:panel header="Agregar Nuevo Grupo" id="stdAddPanel" styleClass="card box-solid box-primary gridAdmiForm" toggleable="true">
+                        <h:panelGrid columns="2" class="gridFormCrud">
                             <p:outputLabel for="txtNua" value="Identificador"/>
-                            <p:inputText id="txtNua" required="true" value="#{beanGrupos.grpNuevo.id}"/>
+                            <b:inputText id="txtNua" required="true" value="#{beanGrupos.grpNuevo.id}" renderLabel="false"/>
                             
                             <p:outputLabel for="txtIdf" value="Identificador"/>
-                            <p:inputText id="txtIdf" required="true" value="#{beanGrupos.grpNuevo.identifier}"/>
+                            <b:inputText id="txtIdf" required="true" value="#{beanGrupos.grpNuevo.identifier}" renderLabel="false"/>
                             
                             <p:outputLabel for="txtNombre" value="Unidad de Aprendizaje"/>
-                            <p:inputText id="txtNombre" required="true" value="#{beanGrupos.grpNuevo.learningUnit}" />
+                            <b:inputText id="txtNombre" required="true" value="#{beanGrupos.grpNuevo.learningUnit}" renderLabel="false"/>
                             
                             <p:outputLabel for="txtPa" value="Nivel"/>
-                            <p:inputText id="txtPa" required="true" value="#{beanGrupos.grpNuevo.level}" />
+                            <b:inputText id="txtPa" required="true" value="#{beanGrupos.grpNuevo.level}" renderLabel="false"/>
 
                             <p:outputLabel  value="Profesor"/>
-                            <p:selectOneMenu value="#{beanGrupos.indxPrf}" required="true">
+                            <b:selectOneMenu value="#{beanGrupos.indxPrf}" required="true" renderLabel="false">
                                 
                                 <f:selectItems value="#{beanMaestros.listarItems()}" var="prf"
                                                itemValue="#{prf.employeeNumber}"
                                                itemLabel="#{prf.name} #{prf.firstLastName} #{prf.secondLastName}"/>
-                            </p:selectOneMenu>
-                            
+                            </b:selectOneMenu>
+                        </h:panelGrid>
+                        
+                        <hr/>
+                        
+                        <h:panelGrid class="gridFormButtons" columns="2">
                             <b:commandButton value="Guardar" update=":form:stdAddGrowl :form:stdAddPanel"
                                              action="#{beanGrupos.guardarItem()}" 
-                                             actionListener="#{beanUtileria.mensajeAgregado()}"/>
-                            <b:commandButton value="Cancelar"/>
-                        </p:panelGrid>
+                                             actionListener="#{beanUtileria.mensajeAgregado()}"
+                                             styleClass="btn-success btn-md btn-block"
+                                             />
+                            
+                            <b:commandButton value="Cancelar" styleClass="btn-fatal btn-md btn-block"/>
+                        </h:panelGrid>
                     </p:panel>
                 </h:form>
             </ui:define>

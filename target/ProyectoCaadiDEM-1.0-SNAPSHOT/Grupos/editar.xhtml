@@ -16,31 +16,36 @@
                 
                  <h:form id="form">
                     <b:growl id="stdAddGrowl" showDetail="true" />
-                    <p:panel header="Editar Grupo" id="stdAddPanel">
-                        <p:panelGrid columns="2">
+                    <p:panel header="Editar Grupo" id="stdAddPanel" styleClass="card box-solid box-primary gridAdmiForm" toggleable="true">
+                        <h:panelGrid columns="2" class="gridFormCrud" >
                             <p:outputLabel for="txtNua" value="Identificador"/>
-                            <p:inputText id="txtNua" required="true" value="#{beanGrupos.grpActual.id}"/>
+                            <b:inputText id="txtNua" required="true" value="#{beanGrupos.grpActual.id}" renderLabel="false"/>
                             
                             <p:outputLabel for="txtNombre" value="Unidad de Aprendizaje"/>
-                            <p:inputText id="txtNombre" required="true" value="#{beanGrupos.grpActual.learningUnit}" />
+                            <b:inputText id="txtNombre" required="true" value="#{beanGrupos.grpActual.learningUnit}" renderLabel="false"/>
                             
                             <p:outputLabel for="txtPa" value="Nivel"/>
-                            <p:inputText id="txtPa" required="true" value="#{beanGrupos.grpActual.level}" />
+                            <b:inputText id="txtPa" required="true" value="#{beanGrupos.grpActual.level}" renderLabel="false"/>
                             
                             <p:outputLabel  value="Profesor" for="profes"/>
-                            <p:selectOneMenu value="#{beanGrupos.indxPrf}" id="profes" required="true">
+                            <b:selectOneMenu value="#{beanGrupos.indxPrf}" id="profes" required="true" renderLabel="false" >
                                 
                                 <f:selectItems value="#{beanMaestros.listarItems()}" var="prf"
                                                itemValue="#{prf.employeeNumber}"
                                                itemLabel="#{prf.name} #{prf.firstLastName} #{prf.secondLastName}"/>
-                            </p:selectOneMenu>
-                            
-                            
-                            <b:commandButton value="Guardar" update=":form:stdAddGrowl :form:stdAddPanel"
+                            </b:selectOneMenu>
+                        </h:panelGrid>
+                             
+                        <hr/>
+                             
+                        <h:panelGrid columns="2" class="gridFormButtons">
+                         <b:commandButton value="Guardar" update=":form:stdAddGrowl :form:stdAddPanel"
                                              action="#{beanGrupos.editarItem()}" 
-                                             actionListener="#{beanUtileria.mensajeEditado()}"/>
-                            <b:commandButton value="Cancelar"/>
-                        </p:panelGrid>
+                                             actionListener="#{beanUtileria.mensajeEditado()}"
+                                             styleClass="btn-success btn-md btn-block"/>
+                         
+                            <b:commandButton value="Cancelar" styleClass="btn-fatal btn-md btn-block"/>
+                        </h:panelGrid>
                         
                     </p:panel>
                 </h:form>

@@ -14,16 +14,17 @@
 }
 
 .smallFormLog{
-    width: 300px;
+    width: 280px;
     margin: 0 auto; 
     text-align: center
 }
 
-.commonForm{
+.commonFormList{
     text-align: center;
     width: 950px;
     margin: 0 auto
 }
+
 
 .backgroundBody{
     background-color: #F3EDED;
@@ -35,10 +36,21 @@
 }
 
 .gridAdmiForm{
-    margin: 0 auto;
-    width: 70% 
+    width: 36%; 
+    margin: 0 auto
 }
 
-.dataFooter{
-    height: 80px;
+
+.gridFormCrud{
+    margin: 0 auto;
+    width: 95% 
+}
+
+.gridFormButtons{
+    width: 100%
+}
+
+
+.selectFormList{
+    width: 80px;
 }

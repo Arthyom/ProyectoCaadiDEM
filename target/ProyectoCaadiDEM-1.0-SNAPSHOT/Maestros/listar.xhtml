@@ -14,15 +14,20 @@
             <ui:define name="content">
                 
                 <h:form id="form">
-                    <p:panel header="Maestros Registrados">
+                    <p:panel header="Maestros Registrados" toggleable="true" styleClass="card box-solid box-primary commonFormList">
                         <b:growl id="mtsListGrowl" showDetail="true"  />
                         <p:outputPanel>
                             <b:commandButton value="Borrar Seleccionados" 
                                              update=":form:delVarios"
+                                             styleClass="btn btn-fatal "
+                                             icon="remove-sign"
                                              action="#{beanUtileria.mostrarDialogoBorrarMulti('dlgBorrarVarios')}"
                             />
                             
-                            <b:commandButton value="Agregar Maestro" action="agregar" actionListener="#{beanMaestros.crearNuevoItem()}"/>
+                            <b:commandButton value="Agregar Maestro" action="agregar" 
+                                             styleClass="btn btn-primary "
+                                             icon="plus-sign"
+                                             actionListener="#{beanMaestros.crearNuevoItem()}"/>
                         </p:outputPanel>
                     <p:dataTable 
                         selection="#{beanMaestros.mtsSeleccionados}"
@@ -33,16 +38,16 @@
                          {LastPageLink} {RowsPerPageDropdown}"
                         value="#{beanMaestros.listarItems()}" var="std"
                         filteredValue="#{beanMaestros.mtsFiltrados}"
-                    styleClass="box-solid box-primary"
+                        styleClass="box-solid box-default"
                         rowsPerPageTemplate="10,15,20" 
                         paginatorPosition="bottom"
                     >
                         
                         <f:facet name="footer">
-                            <h:outputText value="Table footer"/>
+                            <h:outputText value=""/>
                         </f:facet>
                         
-                        <p:column selectionMode="multiple" />
+                        <p:column selectionMode="multiple" width="50" />
                         
                         <p:column headerText="Numero de Empleado" filterBy="#{std.employeeNumber}">
                             <p:outputLabel value="#{std.employeeNumber}"/>
@@ -62,16 +67,20 @@
                         
                         
                          <p:column headerText="Opciones" >
-                             <b:commandButton value="Borrar" update=":form:delUno" action="#{beanUtileria.mostrarDialogoBorrarSingle('dlgBorrar')}">
+                             <b:commandButton icon="pencil" action="editar">
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanMaestros.mtsActual}"
                                  />
                              </b:commandButton>
-                             <b:commandButton value="Editar" action="editar">
+                             
+                             <b:commandButton icon="minus" 
+                                              styleClass="btn btn-danger"
+                                              update=":form:delUno" action="#{beanUtileria.mostrarDialogoBorrarSingle('dlgBorrar')}">
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanMaestros.mtsActual}"
                                  />
                              </b:commandButton>
+                             
                         </p:column>
                     </p:dataTable>
                         
@@ -90,7 +99,8 @@
                                 <p:outputLabel value="Eliminar los #{beanMaestros.mtsSeleccionados.size()} seleccionados?" />
                                 <b:commandButton value="Si" update=":form:mtsListGrowl" action="#{beanMaestros.borrarSeleccionados()}"
                                                  actionListener="#{beanUtileria.mensajeBorrdo()}"/>
-                                <b:commandButton value="No" onclick="PF('dlgBorrarVarios').hide();"/>
+                                
+                                <b:commandButton value="No" onclick="PF('dlgBorrarVarios').hide();" />
                             </p:panel>
                         </p:dialog>
                     </p:panel>

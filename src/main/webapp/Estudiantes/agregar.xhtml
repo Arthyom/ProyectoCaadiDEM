@@ -14,8 +14,8 @@
             <ui:define name="content">
                 <h:form id="form">
                     <b:growl id="stdAddGrowl" showDetail="true" />
-                    <p:panel header="Agregar Nuevo Estudiante" id="stdAddPanel" toggleable="true" styleClass="card box-solid box-primary" style="text-align: center; width: 500px; margin: 0 auto">
-                        <h:panelGrid columns="2" style="margin: 0 auto; width: 450px" >
+                    <p:panel header="Agregar Nuevo Estudiante" id="stdAddPanel" toggleable="true" styleClass="card box-solid box-primary gridAdmiForm">
+                        <h:panelGrid columns="2" class="gridFormCrud" >
                             <p:outputLabel for="txtNua" value="NUA"/>
                             <b:inputText id="txtNua" required="true" value="#{beanEstudiantes.stdNuevo.nua}" renderLabel="false"/>
                             
@@ -50,11 +50,14 @@
                         </h:panelGrid>
                         
                         <hr/>
+                        
+                        <h:panelGrid columns="2" class="gridFormButtons">
                         <b:commandButton styleClass="btn-success btn-md btn-block" value="Guardar" update=":form:stdAddGrowl :form:stdAddPanel"
                                              action="#{beanEstudiantes.guardarItem()}" 
                                              actionListener="#{beanUtileria.mensajeAgregado()}"/>
                             
-                            <b:commandButton styleClass="btn-fatal btn-md btn-block" value="Cancelar"/>
+                        <b:commandButton styleClass="btn-fatal btn-md btn-block" value="Cancelar"/>
+                        </h:panelGrid>
                         
                     </p:panel>
                 </h:form>
