@@ -21,13 +21,16 @@
 
     <h:body>
 
-        <div id="top">
+        <div id="top" >
             <ui:insert name="top">
                 
+                <div>
                 <h:form>
-                    <b:navBar fluid="true" brand="CAADI DEM" 
+                    <b:navBar fluid="true" brand="CAADI DEM" position="top"
                               brand-href="http://localhost:8080/ProyectoCaadiDEM/dash.xhtml"  
                               inverse="true" > 
+                        
+                        
                         <b:navbarLinks>
                             <b:dropMenu value="Periodos">
                                 <b:navCommandLink  value="Listar"  action="/Periodos/listar"/>
@@ -67,13 +70,14 @@
                                                                    and beanGrupos.listarItems().size() gt 0 }"/>
                         </b:navbarLinks>
                         
-                        <p:commandButton 
+                        
+                            <p:commandButton 
                             type="button" id="overPanel"
                             
                             icon="fa fa-user"
                             class="btn btn-success"
-                           
-                                         />
+                            />
+                        
                         
                     </b:navBar>
                     
@@ -83,6 +87,12 @@
                         </p:panel>
                     </p:overlayPanel>
                 </h:form>
+                </div>
+                
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </ui:insert>
         </div>
 

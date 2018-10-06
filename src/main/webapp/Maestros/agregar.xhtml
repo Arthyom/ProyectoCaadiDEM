@@ -46,9 +46,11 @@
                         
                         <h:panelGrid class="gridFormButtons" columns="2">
                             <b:commandButton value="Guardar" update=":form:stdAddGrowl :form:stdAddPanel"
+                                             styleClass="btn btn-success btn-md btn-block"
                                              action="#{beanMaestros.guardarItem()}" 
                                              actionListener="#{beanUtileria.mensajeAgregado()}"/>
-                            <b:commandButton value="Cancelar"/>
+                            
+                            <b:commandButton value="Cancelar" styleClass="btn btn-fatal btn-md btn-block"/>
                         </h:panelGrid>
                         
                     </p:panel>

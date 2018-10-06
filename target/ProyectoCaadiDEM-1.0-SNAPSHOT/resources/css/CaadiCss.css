@@ -50,7 +50,18 @@
     width: 100%
 }
 
+.gridFormButtonsHeader{
+    width: 74%;
+    margin: 0 auto
+}
 
 .selectFormList{
     width: 80px;
+}
+
+
+.navStyle{
+    
+    background: #036fab
+    
 }

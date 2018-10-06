@@ -34,7 +34,8 @@
                         <b:commandButton value="Descargar PDF"  styleClass="btn-success btn-lg btn-block"
                                         
                                          action="#{beanVisit.crearPdfParaStd(beanEstudiantes.stdActual.name, beanEstudiantes.stdActual.nua)}"/>   
-                        <br/>
+                        <hr/>
+
                     </h:form>
                     <p:panel header="Detalles de Visitas" styleClass="card box-solid box-primary" toggleable="true">
                     <p:dataTable var="vst" value="#{beanVisit.listarItems2Std(beanEstudiantes.stdActual.nua)}" styleClass="card box-solid box-default" >
@@ -63,15 +64,17 @@
                     </p:dataTable>
                     </p:panel>
                     
-                    <hr/>
-                    
+                    <br/>
+
                     <p:panel header="Graficos de Analisis" toggleable="true">
 
-                            <p:chart type="pie" widgetVar="pie" model="#{beanVisit.crearVisitPieParaStd(beanEstudiantes.stdActual.nua)}" />
+                            <p:chart type="pie" widgetVar="pie" model="#{beanVisit.crearVisitPieParaStd(beanEstudiantes.stdActual.nua)}" 
+                                     responsive="true"/>
                             
                             <br/>
                             
-                            <p:chart type="bar" model="#{beanVisit.crearVisitBarParaStd(beanEstudiantes.stdActual.nua)}" />
+                            <p:chart type="bar" model="#{beanVisit.crearVisitBarParaStd(beanEstudiantes.stdActual.nua)}" 
+                                     responsive="true"/>
 
                     </p:panel>
                 </p:panel>

@@ -15,30 +15,38 @@
                 
                  <h:form id="form">
                     <b:growl id="stdEdtGrowl" showDetail="true" />
-                    <p:panel header="Editar Periodos" id="stdEdtPanel">
-                        <p:panelGrid columns="2">
+                    <p:panel header="Editar Periodos" id="stdEdtPanel"  styleClass="card box-solid box-primary gridAdmiForm" toggleable="true">
+                        <h:panelGrid columns="2" class="gridFormCrud">
                             <p:outputLabel for="txtNua" value="Identificador"/>
-                            <p:inputText id="txtNua" required="true" value="#{beanPeriodos.prdActual.id}"/>
+                            <b:inputText id="txtNua" required="true" value="#{beanPeriodos.prdActual.id}" renderLabel="false"/>
                             
                             <p:outputLabel for="txtNombre" value="Descripcion"/>
-                            <p:inputText id="txtNombre" required="true" value="#{beanPeriodos.prdActual.description}" />
+                            <b:inputText id="txtNombre" required="true" value="#{beanPeriodos.prdActual.description}" renderLabel="false"/>
                             
                             <p:outputLabel for="txtPa" value="Fecha de Inicio"/>
-                            <p:calendar id="txtPa" required="true" value="#{beanPeriodos.prdActual.start}" />
+                            <b:datepicker id="txtPa" required="true" value="#{beanPeriodos.prdActual.start}" renderLabel="false"/>
                             
                             <p:outputLabel for="txtMa"  value="Fecha de Termino"/>
-                            <p:calendar  id="txtMa" required="true" value="#{beanPeriodos.prdActual.end}" />
+                            <b:datepicker id="txtMa" required="true" value="#{beanPeriodos.prdActual.end}" renderLabel="false"/>
                             
                             
-                            <p:outputLabel  value="Programa Educativo"/>
-                            <p:inputText    value="#{beanPeriodos.prdActual.actual}" />
+                            <p:outputLabel  value="Fijar como Actual"/>
+                            <b:switch    value="#{beanPeriodos.prdActual.actual}" 
+                                         onText="Si" offText="No" offColor="danger"
+                            />
                             
-                            
+                        </h:panelGrid>
+                        
+                        <hr/>
+                        
+                        <h:panelGrid columns="2" styleClass="gridFormButtons">
                             <b:commandButton value="Guardar" update=":form:stdEdtGrowl :form:stdEdtPanel"
+                                             styleClass="btn btn-success btn-block btn-md"
                                              action="#{beanPeriodos.editarItem()}" 
                                              actionListener="#{beanUtileria.mensajeEditado()}"/>
-                            <b:commandButton value="Cancelar"/>
-                        </p:panelGrid>
+                            
+                            <b:commandButton value="Cancelar"  styleClass="btn btn-fatal btn-block btn-md"/>
+                        </h:panelGrid>
                         
                     </p:panel>
                 </h:form>

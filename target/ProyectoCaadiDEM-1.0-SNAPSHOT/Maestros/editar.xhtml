@@ -15,36 +15,43 @@
                 
                  <h:form id="form">
                     <b:growl id="stdEdtGrowl" showDetail="true" />
-                    <p:panel header="Editar Maestro" id="stdEdtPanel">
-                        <p:panelGrid columns="2">
+                    <p:panel header="Editar Maestro" id="stdEdtPanel" styleClass="card box-solid box-primary gridAdmiForm" toggleable="true">
+                        <h:panelGrid columns="2" class="gridFormCrud">
                             <p:outputLabel for="txtNua" value="NUE"/>
-                            <p:inputText id="txtNua" required="true" value="#{beanMaestros.mtsActual.employeeNumber}"/>
+                            <b:inputText id="txtNua" required="true" value="#{beanMaestros.mtsActual.employeeNumber}" renderLabel="fatal"/>
                             
                             <p:outputLabel for="txtNombre" value="Nombre"/>
-                            <p:inputText id="txtNombre" required="true" value="#{beanMaestros.mtsActual.name}" />
+                            <b:inputText id="txtNombre" required="true" value="#{beanMaestros.mtsActual.name}" renderLabel="fatal"/>
                             
                             <p:outputLabel for="txtPa" value="Apellido Paterno"/>
-                            <p:inputText id="txtPa" required="true" value="#{beanMaestros.mtsActual.firstLastName}" />
+                            <b:inputText id="txtPa" required="true" value="#{beanMaestros.mtsActual.firstLastName}" renderLabel="fatal"/>
                             
                             <p:outputLabel for="txtMa"  value="Apellido Materno"/>
-                            <p:inputText  id="txtMa" required="true" value="#{beanMaestros.mtsActual.secondLastName}" />
+                            <b:inputText  id="txtMa" required="true" value="#{beanMaestros.mtsActual.secondLastName}" renderLabel="fatal"/>
                                                      
                             
                             <p:outputLabel  for="gen" value="Genero"/>
-                            <p:selectOneMenu id="gen" required="true" value="#{beanMaestros.mtsActual.gender}">
+                            <b:selectOneMenu id="gen" required="true" value="#{beanMaestros.mtsActual.gender}" renderLabel="fatal">
                                 <f:selectItem itemLabel="masculino" itemValue="M" />
                                 <f:selectItem itemLabel="femenino"  itemValue="F" />
                                 <f:selectItem itemLabel="Otro"      itemValue="X" />
-                            </p:selectOneMenu>                            
+                            </b:selectOneMenu>                            
                             
                             <p:outputLabel  value="E-mail"/>
-                            <p:inputText value="#{beanMaestros.mtsActual.email}" />
-                                                    
+                            <b:inputText value="#{beanMaestros.mtsActual.email}" renderLabel="fatal"/>                                                 
+                        </h:panelGrid>
+                        
+                        <hr/>
+                        
+                        <h:panelGrid columns="2" styleClass="gridFormButtons">
                             <b:commandButton value="Guardar" update=":form:stdEdtGrowl :form:stdEdtPanel"
                                              action="#{beanMaestros.editarItem()}" 
-                                             actionListener="#{beanUtileria.mensajeEditado()}"/>
-                            <b:commandButton value="Cancelar"/>
-                        </p:panelGrid>
+                                             actionListener="#{beanUtileria.mensajeEditado()}"
+                                             styleClass="btn btn-success btn-md btn-block"
+                            />
+                            
+                            <b:commandButton value="Cancelar" styleClass="btn btn-fatal btn-md btn-block"/>
+                        </h:panelGrid>
                         
                     </p:panel>
                 </h:form>

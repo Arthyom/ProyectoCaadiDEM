@@ -14,15 +14,16 @@
             <ui:define name="content">
                 
                 <h:form id="form">
-                    <p:panel header="Periodos Registrados">
+                    <p:panel header="Periodos Registrados" toggleable="true" styleClass="card box-solid box-primary commonFormList">
                         <b:growl id="stdListGrowl" showDetail="true"  />
                         <p:outputPanel>
                             <b:commandButton value="Borrar Seleccionados" 
                                              update=":form:delVarios"
+                                             icon="remove-sign" style-class="btn btn-fatal"
                                              action="#{beanUtileria.mostrarDialogoBorrarMulti('dlgBorrarVarios')}"
                             />
                             
-                            <b:commandButton value="Agregar Periodos" action="agregar" actionListener="#{beanPeriodos.crearNuevoItem()}"/>
+                            <b:commandButton icon="plus-sign" style-class="btn btn-primary" value="Agregar Periodos" action="agregar" actionListener="#{beanPeriodos.crearNuevoItem()}"/>
                         </p:outputPanel>
                     <p:dataTable 
                         selection="#{beanPeriodos.prdSeleccionados}"
@@ -33,16 +34,16 @@
                          {LastPageLink} {RowsPerPageDropdown}"
                          value="#{beanPeriodos.listarItems()}" var="std"
                          filteredValue="#{beanPeriodos.prdFiltrados}"
-                         styleClass="box-solid box-primary"
+                         styleClass="box-solid box-default"
                          rowsPerPageTemplate="10,15,20" 
                          paginatorPosition="bottom"
                          >
 
                         <f:facet name="footer">
-                            <h:outputText value="Table footer"/>
+                            <h:outputText value=""/>
                         </f:facet>  
                         
-                        <p:column selectionMode="multiple" />
+                        <p:column selectionMode="multiple" width="50" />
                         
                         <p:column headerText="Identificador" filterBy="#{std.id}">
                             <p:outputLabel value="#{std.id}"/>
@@ -54,39 +55,45 @@
                         
                         <p:column headerText="Fecha de Inicio">
                             <p:outputLabel value="#{std.start}">
-                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </p:outputLabel>
                         </p:column>
                         
                         <p:column headerText="Apellido Materno">
                             <p:outputLabel value="#{std.end}">
-                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </p:outputLabel>
                         </p:column>
                         
                         <p:column headerText="Actual">
-                            <p:selectBooleanCheckbox value="#{std.actual}" disabled="true"/>
+                            <b:switch value="#{std.actual}" disabled="true" onText="Si" offText="No" offColor="Danger"/>
                         </p:column>
                         
                         
                          <p:column headerText="Opciones" >
-                             <b:commandButton value="Borrar" update=":form:delUno" action="#{beanUtileria.mostrarDialogoBorrarSingle('dlgBorrar')}">
+                             
+                             <b:commandButton icon="pencil" action="editar">
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanPeriodos.prdActual}"
                                  />
                              </b:commandButton>
                              
-                             <b:commandButton value="Editar" action="editar">
+                             <b:commandButton icon="star" action="#{beanPeriodos.fijarComoActual()}"
+                                              styleClass="btn btn-warning">
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanPeriodos.prdActual}"
                                  />
                              </b:commandButton>
                              
-                             <b:commandButton value="Actual" action="#{beanPeriodos.fijarComoActual()}">
+                             <b:commandButton icon="minus" update=":form:delUno" 
+                                              styleClass="btn btn-danger"
+                                              action="#{beanUtileria.mostrarDialogoBorrarSingle('dlgBorrar')}">
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanPeriodos.prdActual}"
                                  />
                              </b:commandButton>
+                             
+                             
                         </p:column>
                     </p:dataTable>
                         

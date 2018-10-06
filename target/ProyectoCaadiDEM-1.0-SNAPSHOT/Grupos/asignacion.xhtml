@@ -15,7 +15,7 @@
                 <h:form>
                     <b:growl showDetail="true" showSummary="true"/>
                     <p:panel header="Asignar Estudiantes y Maestros" styleClass="card box-solid box-primary" style="text-align: center; width: 1000px; margin: 0 auto">
-                        <h:panelGrid columns="2" style="margin: 0 auto; width: 500px">
+                        <h:panelGrid columns="2" class="gridFormButtonsHeader">
                         <p:outputLabel value="Grupo"/>                       
                         <p:selectOneMenu value="#{beanGrupos.grpIndex}" >
                             <f:selectItem itemLabel="Seleccione Grupo"/>
@@ -36,10 +36,9 @@
                        
                         <b:commandButton value="Asignar  Seleccionados" action="#{beanGrupos.asignarME()}" styleClass="btn-primary btn-md btn-block"/>
                         <b:commandButton value="Eliminar Seleccionados" action="#{beanGrupos.eliminarSeleccionados()}" styleClass="btn-fatal btn-md btn-block"/>
-                        </h:panelGrid>
-
-                        <br/>
                         
+                        </h:panelGrid>
+                        <hr/>
                         <p:panel header="Estudiantes en el Grupo" id="stdGrp" toggleable="true" styleClass="card box-solid box-primary" style="text-align: center; width: 720px; margin: 0 auto" >
                             <p:dataTable value="#{beanGrupos.grpActual.studentsCollection}" var="stdG"
                                          rowKey="#{stdG.nua}" paginator="true" rows="10"
@@ -84,7 +83,7 @@
                             </p:dataTable>
                         </p:panel>
                         
-                        <hr/>
+                        <br/>
                         
                         <p:panel header="Estudiantes Disponibles" toggleable="true"  styleClass="card box-solid box-primary" style="text-align: center; width: 720px; margin: 0 auto" >
                         <p:dataTable  value="#{beanGrupos.listarStdSinGrupo()}" var="std"

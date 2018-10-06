@@ -14,27 +14,36 @@
             <ui:define name="content">
                 <h:form id="form">
                     <b:growl id="stdAddGrowl" showDetail="true" />
-                    <p:panel header="Agregar Nuevo Periodo" id="stdAddPanel">
-                        <p:panelGrid columns="2">
+                    <p:panel header="Agregar Nuevo Periodo" id="stdAddPanel" styleClass="card box-solid box-primary gridAdmiForm" toggleable="true">
+                        <h:panelGrid columns="2" class="gridFormCrud">
                             <p:outputLabel for="txtNua" value="Identificador"/>
-                            <p:inputText id="txtNua" required="true" value="#{beanPeriodos.prdNuevo.id}"/>
+                            <b:inputText id="txtNua" required="true" value="#{beanPeriodos.prdNuevo.id}" renderLabel="false"/>
                             
                             <p:outputLabel for="txtNombre" value="Descripcion"/>
-                            <p:inputText id="txtNombre" required="true" value="#{beanPeriodos.prdNuevo.description}" />
+                            <b:inputText id="txtNombre" required="true" value="#{beanPeriodos.prdNuevo.description}" renderLabel="false"/>
                             
                             <p:outputLabel for="txtPa" value="Fecha de Inicio"/>
-                            <p:calendar id="txtPa" required="true" value="#{beanPeriodos.prdNuevo.start}" />
+                            <b:datepicker id="txtPa" required="true" value="#{beanPeriodos.prdNuevo.start}" renderLabel="false"/>
+                            
+                         
                             
                             <p:outputLabel for="txtMa"  value="Fecha de Termino"/>
-                            <p:calendar id="txtMa" required="true" value="#{beanPeriodos.prdNuevo.end}" />
-                            
-                                  
-             
-                            <b:commandButton value="Guardar" update=":form:stdAddGrowl :form:stdAddPanel"
+                            <b:datepicker id="txtMa" required="true" value="#{beanPeriodos.prdNuevo.end}" renderLabel="false"/>
+
+                            <p:outputLabel value="Fijar Como Actual"/>
+                            <b:switch value="#{beanPeriodos.prdNuevo.actual}" onText="Si" offText="No" offColor="danger"/>
+                        </h:panelGrid>
+                        
+                        <hr/>
+                        
+                        <h:panelGrid class="gridFormButtons" columns="2">
+                             <b:commandButton value="Guardar" update=":form:stdAddGrowl :form:stdAddPanel"
                                              action="#{beanPeriodos.guardarItem()}" 
+                                             styleClass="btn btn-success btn-md btn-block"
                                              actionListener="#{beanUtileria.mensajeAgregado()}"/>
-                            <b:commandButton value="Cancelar"/>
-                        </p:panelGrid>
+                             
+                            <b:commandButton value="Cancelar" styleClass="btn btn-fatal btn-md btn-block"/>
+                        </h:panelGrid>
                         
                     </p:panel>
                 </h:form>
