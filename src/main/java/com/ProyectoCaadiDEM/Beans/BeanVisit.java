@@ -363,12 +363,6 @@ public class BeanVisit implements Serializable {
          "Habilidad", "Horas", 
          dt, PlotOrientation.VERTICAL,
          false, true, false);
-  
-        BarRenderer r = (BarRenderer)this.gpBar.getCategoryPlot().getRenderer();
-        r.setSeriesPaint(0, Color.blue);
-        r.setSeriesPaint(1, Color.red);
-        r.setSeriesPaint(2, Color.green);
-        r.setSeriesPaint(3, Color.yellow);
 
         ChartUtils.saveChartAsJPEG(new File("/home/frodo/images/"+NUA+"grafBar.jpeg"), gpBar, 390, 480);
 
@@ -385,9 +379,9 @@ public class BeanVisit implements Serializable {
          ExternalContext ec = fc.getExternalContext();
 
          List<Visit> lv = this.listarItems2Std(Nua);
-    ec.responseReset(); // Some JSF component library or some Filter might have set some headers in the buffer beforehand. We want to get rid of them, else it may collide.
-    ec.setResponseContentType("application/pdf"); // Check http://www.iana.org/assignments/media-types for all types. Use if necessary ExternalContext#getMimeType() for auto-detection based on filename.
-    ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + "RI"+Nua+nombre+".pdf" + "\""); // The Save As popup magic is done here. You can give it any file name you want, this only won't work in MSIE, it will use current request URL as file name instead.
+    ec.responseReset(); 
+    ec.setResponseContentType("application/pdf"); 
+    ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + "RI"+Nua+nombre+".pdf" + "\""); 
 
     OutputStream output = ec.getResponseOutputStream();
     
@@ -398,12 +392,13 @@ public class BeanVisit implements Serializable {
     Image imgP = Image.getInstance("/home/frodo/images/"+Nua+"grafPie.jpeg");
     Image imgB = Image.getInstance("/home/frodo/images/"+Nua+"grafBar.jpeg");
     
-    nt.setHorizontalAlignment(Element.LIST);
-    nt.setTotalWidth(600);
+    
     Font hf = new Font( Font.FontFamily.HELVETICA, 15, Font.BOLD);
     Font th = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD, BaseColor.BLUE);
+    
         nt.addCell( new Phrase("Inicio",hf) ); nt.addCell(new Phrase("Termino",hf) ); 
         nt.addCell(new Phrase("Duracion",hf) );nt.addCell(new Phrase("Habilidad",hf) );
+        
         for (Visit vi : lv) {
             nt.addCell(this.formateador.format(vi.getStart()));
             nt.addCell(this.formateador.format(vi.getEnd()));

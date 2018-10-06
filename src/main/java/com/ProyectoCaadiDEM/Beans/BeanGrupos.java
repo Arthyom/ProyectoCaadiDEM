@@ -10,6 +10,22 @@ import com.ProyectoCaadiDEM.Fachadas.GroupsFacade;
 import com.ProyectoCaadiDEM.Fachadas.PeriodsFacade;
 import com.ProyectoCaadiDEM.Fachadas.StudentsFacade;
 import com.ProyectoCaadiDEM.Fachadas.TeachersFacade;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPHeaderCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.IOException;
+import java.io.OutputStream;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -17,7 +33,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.PieChartModel;
 
 
 @Named(value = "beanGrupos")
@@ -150,6 +171,7 @@ public class BeanGrupos implements Serializable {
     
     public void buscarGrupo () {
         this.grpActual = fcdGrupos.find(this.grpIndex);
+        
     }
     
     public String asignarME() {
@@ -193,6 +215,119 @@ public class BeanGrupos implements Serializable {
         return "-";
     }
 
+    public void crearPDF() throws IOException, BadElementException, DocumentException {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
+
+        String profName = grpActual.getEmployeeNumber().getName();
+        String proFFname = grpActual.getEmployeeNumber().getFirstLastName();
+        String proFSname = grpActual.getEmployeeNumber().getSecondLastName();
+        String grpSlctd = grpActual.getLearningUnit() + " " + grpActual.getLevel();
+        String grpIds = grpActual.getId() + grpActual.getIdentifier();
+        int aRegs = grpActual.getStudentsCollection().size();
+
+        List<Students> grs = (List<Students>) grpActual.getStudentsCollection();
+
+        ec.responseReset();
+        ec.setResponseContentType("application/pdf");
+        ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + "RP" + grpSlctd + profName + proFFname + ".pdf" + "\"");
+        OutputStream output = ec.getResponseOutputStream();
+
+        Document nd = new Document(PageSize.LETTER);
+        PdfPTable nt = new PdfPTable(5);
+
+        // Image imgP = Image.getInstance("/home/frodo/images/" + grpIds + "grafPie.jpeg");
+        // Image imgB = Image.getInstance("/home/frodo/images/" + grpIds + "grafBar.jpeg");
+        Font hf = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD);
+        Font th = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD, BaseColor.BLUE);
+
+        Phrase contenido = new Phrase();
+
+        PdfWriter.getInstance(nd, output);
+        nd.open();
+
+        // primer parrafo
+        nd.add(new Paragraph("Reporte De Grupo Para: "));
+        contenido.setFont(th);
+        contenido.add(grpSlctd + ",  Profesor: " + proFFname + " " + proFFname + " " + proFSname + ", Alumnos Registrados: " + aRegs);
+        nd.add(contenido);
+
+        // encabezad de la tabla 
+        nt.addCell(new Phrase("NUA", hf));
+        nt.addCell(new Phrase("Nombre", hf));
+        nt.addCell(new Phrase("Apellido Paterno", hf));
+        nt.addCell(new Phrase("Apellido Materno", hf));
+        nt.addCell(new Phrase("Total de Horas", hf));
+
+        // para cada estudiante en la coleccion 
+        for (Students sti : grs) {
+            nt.addCell(sti.getNua());
+            nt.addCell(sti.getName());
+            nt.addCell(sti.getFirstLastName());
+            nt.addCell(sti.getSecondLastName());
+            nt.addCell(contarHorasParaStd(sti));
+        }
+
+        nd.add(nt);
+        // nd.add(imgP);
+        // nd.add(imgB);
+        nd.close();
+        fc.responseComplete();
+
+        
+    }
+    
+    public String contarHorasParaStd ( Students stdGrp ){
+        long total = 0, h = 0 , m = 0;
+        
+        for ( Visit vi : stdGrp.getVisitCollection() )
+            total += vi.getEnd().getTime() - vi.getStart().getTime();
+            
+        h = total / (1000 * 60 * 60);
+        h = h % (1000 * 60 * 60);
+        m = h / (1000 * 60);
+
+        return h + " Horas, " + m +" Minutos";
+    }
+    
+     public float contarHorasParaStdNum ( Students stdGrp ){
+        long total = 0, h = 0 , m = 0;
+        
+        for ( Visit vi : stdGrp.getVisitCollection() )
+            total += vi.getEnd().getTime() - vi.getStart().getTime();
+            
+        h = total / (1000 * 60 * 60);
+        total = total % (1000 * 60 * 60);
+        m = total / (1000 * 60);
+
+         if (10 > m) {
+             return new Float(h + ".0" + m);
+         }
+        
+        return  new Float (h + "." + m );
+    }
+   
+    
+    public BarChartModel grpBarGraf (){
+        
+        BarChartModel bm = new BarChartModel();
+        if (grpActual != null) {
+
+            bm.setTitle("Horas Por Alumno");
+            bm.getAxis(AxisType.Y).setLabel("Horas");
+            bm.getAxis(AxisType.X).setLabel("Nombre");
+
+            ChartSeries sR = new ChartSeries("Nombre");
+
+            for (Students si : grpActual.getStudentsCollection()) 
+                sR.set(si.getName(), contarHorasParaStdNum(si));
+            
+             bm.addSeries(sR);
+        }
+        
+        return bm;
+        
+    }
     ////////////////////////////////////////////////////////////////////////////
     
     

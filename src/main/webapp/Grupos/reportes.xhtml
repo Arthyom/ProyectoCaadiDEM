@@ -13,22 +13,26 @@
 
             <ui:define name="content">
                 <h:form id="form">
+                    <b:growl showDetail="true"/>
                     <p:panel header="Reportes de Grupos" toggleable="true" styleClass="card box-solid box-primary commonFormList">
                         
-                        <b:commandButton value="Reporte de Grupo" styleClass="btn btn-success btn-lg btn-block"/>
+                        <b:commandButton value="Imprimir PDF" 
+                                         action="#{beanGrupos.crearPDF()}"
+                                         styleClass="btn btn-success btn-lg btn-block"/>
                         
                         <br/>
                         
-                        <p:selectOneMenu value="#{beanGrupos.grpIndex}">
+                        <b:selectOneMenu value="#{beanGrupos.grpIndex}" required="true" renderLabel="false" label="Grupo"
+                                         requiredMessage="Seleccione un Grupo" >
                             <f:selectItem itemLabel="Seleccione Grupo"/>
                             <f:selectItems value="#{beanGrupos.listarItems()}" 
-                                           var="grp"
+                                           var="grp" 
                                            itemLabel="#{grp.id} #{grp.identifier} 
                                            #{grp.learningUnit} #{grp.level}"
                                            itemValue="#{grp.id}"/>
                             
-                            <f:ajax listener="#{beanGrupos.buscarGrupo()}" render=":form:idRep :form:idProf :form:idHrs"/>
-                        </p:selectOneMenu>
+                            <f:ajax listener="#{beanGrupos.buscarGrupo()}"  render=":form:idRep :form:idProf :form:idHrs grafs"/>
+                        </b:selectOneMenu>
                         
                         <br/>
                         
@@ -43,7 +47,8 @@
                         <hr/>
                         
                         <p:panel header="Detalles De Visitas" toggleable="true">
-                        <p:dataTable id="idRep" value="#{beanGrupos.grpActual.studentsCollection}" var="std" styleClass="box-solid box-default">
+                        <p:dataTable id="idRep" value="#{beanGrupos.grpActual.studentsCollection}"
+                                     var="std" styleClass="box-solid box-default">
                             <p:column headerText="NUA" width="100">
                                 <p:outputLabel value="#{std.nua}"/>
                             </p:column>
@@ -67,7 +72,10 @@
                         </p:panel>
                         
                         <br/>
-                        <p:panel header="Graficos De Analisis" toggleable="true" >
+                        <p:panel header="Graficos De Analisis" toggleable="true" id="grafs">
+                           
+                            <p:chart type="bar" model="#{beanGrupos.grpBarGraf()}"
+                                     responsive="true"/>
                             
                         </p:panel>
                     </p:panel>
