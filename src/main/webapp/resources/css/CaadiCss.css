@@ -1,5 +1,35 @@
 
+.banner{
+    position: fixed;
+    top: 0%;
+    left: 0px;
+    width: 100%;
+    height: 17%;
+    font-family: Helvetica, Arial, sans-serif;
+    background: linear-gradient(rgb(23, 77, 135) 0%, rgb(14, 52, 91) 77%, rgb(14, 52, 91) 100%);
+    border-bottom: 8px solid #A0935F;
+}
 
+a:hover{
+    background-color: #A0935F !important;
+}
+
+
+#imageBanner{
+    position: absolute;
+    top: .4%;
+    left: 40.35%;
+    vertical-align: center;
+    height: 103.516px;
+    background-color: rgba(0,0,0,0);
+    width: 250px;
+    line-height: 20px;
+}
+
+
+.cas{
+    padding-top: 200px;
+}
 
 .primIcon{
     margin-top: 10px; 
@@ -22,9 +52,39 @@
 .commonFormList{
     text-align: center;
     width: 950px;
-    margin: 0 auto
+    margin: 0 auto;
+
+        
+}
+th, .ui-datatable-footer, .ui-paginator, .ui-paginator-pages{
+
+  background:  #A0935F !important;
+
 }
 
+.btn-primary{
+    background:  #A0935F !important;
+    border-color: #A0935F !important;   
+}
+
+.btn-primary:hover{
+    background: linear-gradient(rgb(23, 77, 135) 0%, rgb(14, 52, 91) 77%, rgb(14, 52, 91) 100%) !important;
+    border-color: #045491 !important;
+}
+
+
+.ui-panel-titlebar {
+    background: linear-gradient(rgb(23, 77, 135) 0%, rgb(14, 52, 91) 77%, rgb(14, 52, 91) 100%) !important;
+    
+}
+
+
+
+
+.ui-panel-title{
+    color: white !important;
+    font-size: 20px !important;
+}
 
 .backgroundBody{
     background-color: #F3EDED;

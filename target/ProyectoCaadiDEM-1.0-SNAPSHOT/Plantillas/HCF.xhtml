@@ -21,18 +21,27 @@
 
     <h:body>
 
-        <div id="top" >
-            <ui:insert name="top">
+        <div id="top">
+            <ui:insert name="top" >
                 
-                <div>
+                <b:container fluid="false">
+                    <div class="banner">
+                        <p:graphicImage library="images" name="escudo.png" id="imageBanner"/>
+                    </div>
+
+                    
                 <h:form>
-                    <b:navBar fluid="true" brand="CAADI DEM" position="top"
+                    <b:navBar fluid="false" brand="CAADI DEM"  
+                              fixed="top"
+                              style="background: linear-gradient(rgb(23, 77, 135) 0%, rgb(14, 52, 91) 77%, rgb(14, 52, 91) 100%);
+                              top: 107px; border-bottom: 8px solid #A0935F;"
+                              
                               brand-href="http://localhost:8080/ProyectoCaadiDEM/dash.xhtml"  
                               inverse="true" > 
                         
                         
-                        <b:navbarLinks>
-                            <b:dropMenu value="Periodos">
+                        <b:navbarLinks  style="background: linear-gradient(rgb(23, 77, 135) 0%, rgb(14, 52, 91) 77%, rgb(14, 52, 91) 100%);" >
+                            <b:dropMenu value="Periodos" >
                                 <b:navCommandLink  value="Listar"  action="/Periodos/listar"/>
                                 <b:navCommandLink  value="Agregar" action="/Periodos/agregar"
                                            actionListener="#{beanPeriodos.crearNuevoItem()}"/>
@@ -87,21 +96,22 @@
                         </p:panel>
                     </p:overlayPanel>
                 </h:form>
-                </div>
-                
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+                </b:container>
             </ui:insert>
         </div>
 
-        <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
+        <div id="content"  class="cas">
+            <ui:insert name="content" >
+
+   
+               
+            </ui:insert>
         </div>
 
         <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
+            <ui:insert name="bottom">
+               
+            </ui:insert>
         </div>
 
     </h:body>
