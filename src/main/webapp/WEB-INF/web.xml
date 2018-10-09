@@ -29,4 +29,8 @@
         <error-code>404</error-code>
         <location>/404.xhtml</location>
     </error-page>
+    <error-page>
+        <error-code>505</error-code>
+        <location>/505.html</location>
+    </error-page>
 </web-app>
