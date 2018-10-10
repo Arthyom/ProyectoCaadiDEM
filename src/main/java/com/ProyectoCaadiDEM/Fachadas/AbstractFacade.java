@@ -64,13 +64,15 @@ public abstract class AbstractFacade<T> {
         return ((Long) q.getSingleResult()).intValue();
     }
     
-    public boolean verificarIp( HttpServletRequest request) throws IOException{
-        String ip = request.getRemoteAddr();
-        if( "0:0:0:0:0:0:0:1".equals(ip) )
-            return true;
-        
-        FacesContext.getCurrentInstance().getExternalContext().redirect("Visitas/OutLogIn.xhtml");
-        return false;   
+    public void verificarIp( HttpServletRequest request) throws IOException{
+        try {
+            String ip = request.getRemoteAddr();
+            if (!"0:0:0:0:0:0:0:1".equals(ip)) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("Visitas/OutLogIn.xhtml");
+            }
+        } catch (IOException ex) {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("404.xhtml");
+        }
     }
 
 }

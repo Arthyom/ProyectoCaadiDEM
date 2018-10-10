@@ -30,7 +30,7 @@
         <location>/404.xhtml</location>
     </error-page>
     <error-page>
-        <error-code>505</error-code>
+        <error-code>500</error-code>
         <location>/505.html</location>
     </error-page>
 </web-app>

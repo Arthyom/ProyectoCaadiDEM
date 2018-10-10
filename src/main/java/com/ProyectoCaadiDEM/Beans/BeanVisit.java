@@ -139,7 +139,7 @@ public class BeanVisit implements Serializable {
     }
    public String verificar () {
       Map<String, Object> mv = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-       if( this.prdActual != null && this.stdActual != null && !mv.containsKey(this.nua) ){
+       if( this.prdActual != null && this.stdActual != null && !mv.containsKey(this.nua)){
            // crear un visitante
            Visitantes visitante =  new Visitantes();
            visitante.setVisita(this.vstActual);
@@ -419,12 +419,16 @@ public class BeanVisit implements Serializable {
         
     }
     
-    public void verificarIp() throws IOException {
+    public String verificarIp() throws IOException {
         HttpServletRequest req = (HttpServletRequest) FacesContext.
                 getCurrentInstance().getExternalContext().getRequest();
-        
-        this.fcdVisita.verificarIp(req);
 
+        String ip = req.getRemoteAddr();
+        if (!"0:0:0:0:0:0:0:1".equals(ip)) {
+            return "Visitas/OutLogIn.xhtml";
+        }
+
+        return "";
     }
     
     public void pieGrafPdf (){

@@ -11,9 +11,6 @@
 
         <ui:composition template="./../Plantillas/blank.xhtml">
 
-            <ui:define name="top">
-                top
-            </ui:define>
             
             <ui:define name="content">
                 <b:container>
@@ -44,7 +41,7 @@
                             </b:inputText>
                             
                             <b:commandButton value="Acceder" 
-                                             update=":form:outConf :form:inConf :form:logGrowl :form:grupo"
+                                             update=":form:outConf :form2:inConf :form:logGrowl :form:grupo"
                                              actionListener="#{beanVisit.crearVisita()}"
                                              styleClass="btn-primary btn-lg btn-block "
                                              action="#{beanVisit.mensajeErrorLog()}"/>
@@ -57,24 +54,27 @@
                 </div>
 
 
-                    <p:dialog id="inConf" widgetVar="logInConfirm" header="Confirmacion"
+                    <p:dialog widgetVar="logInConfirm" header="Confirmacion"
                               modal="true"  resizable="false" draggable="false"
                     >
-                        <h:form>
+                        <h:form id="form2">
                         <p:panel>
-                            <p:outputLabel value="Eres
-                                 #{beanVisit.stdActual.name} #{beanVisit.stdActual.firstLastName}
-                                 #{beanVisit.stdActual.secondLastName} ? " />
                             
-                            <b:commandButton value="Aceptar"  action="#{beanVisit.verificar()}"/>
+                            <p:outputLabel id="inConf" value="Eres
+                                 #{beanVisit.stdActual.name} #{beanVisit.stdActual.firstLastName}
+                                 #{beanVisit.stdActual.secondLastName}?" />
+                            
+                            <b:commandButton value="Aceptar"  action="#{beanVisit.verificar()}" />
+                            
                             <b:commandButton value="Cancelar" update=":form:grupo" process="@this"
                                              action="#{beanVisit.cancelarLogin()}"
                                              onclick="PF('logInConfirm').hide();">
                                 <p:resetInput target=":form:grupo"/>
                             </b:commandButton>
-                            
+                           
                         </p:panel> 
                         </h:form>
+
                     </p:dialog>
                     
                     <p:dialog id="outConf" widgetVar="logOutConfirm" header="Confirmacion"
@@ -101,9 +101,6 @@
                 </b:container>
             </ui:define>
 
-            <ui:define name="bottom">
-                bottom
-            </ui:define>
         </ui:composition>
 
     </body>
