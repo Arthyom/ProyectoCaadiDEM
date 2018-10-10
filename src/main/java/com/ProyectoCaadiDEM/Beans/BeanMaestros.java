@@ -1,14 +1,24 @@
 
 package com.ProyectoCaadiDEM.Beans;
 
+import com.ProyectoCaadiDEM.Entidades.Students;
 import com.ProyectoCaadiDEM.Entidades.Teachers;
 import com.ProyectoCaadiDEM.Fachadas.TeachersFacade;
+import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.primefaces.context.RequestContext;
+import org.primefaces.model.UploadedFile;
 
 
 @Named(value = "beanMaestros")
@@ -20,8 +30,13 @@ public class BeanMaestros implements Serializable {
     
     private Teachers        mtsActual;
     private Teachers        mtsNuevo;
-    private List<Teachers>  mtsSeleccionados;
+    private List<Teachers>  mtsSeleccionados,
+                            mtsNoExist = new ArrayList(),
+                            mtsExist   = new ArrayList();
+    
     private List<Teachers>  mtsFiltrados;
+    
+    private UploadedFile     archivo;
     
     
     
@@ -62,6 +77,76 @@ public class BeanMaestros implements Serializable {
     public void crearNuevoItem () {
         mtsNuevo = new Teachers();
     }
+    
+    
+      public void cancelarCargaAutomatica (){
+        this.mtsExist.clear(); this.mtsNoExist.clear();
+    }
+    
+    public void mensajeCargar () throws IOException{
+        
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesContext ct = FacesContext.getCurrentInstance();
+            
+        
+        if (this.archivo != null) // si es un archivo xl
+        {
+            if (this.archivo.getContentType().contains("xlsx")) {
+                barrerArchivoXl();
+                context.execute("PF('dlgCargar').show();");
+                return;
+            } 
+        }
+        ct.addMessage(null,
+                new FacesMessage("Error: ", "El archivo no tiene el formato correcto"));
+    }
+    
+    public void barrerArchivoXl () throws IOException{
+        
+       XSSFWorkbook      nb = new XSSFWorkbook( archivo.getInputstream() );
+       XSSFSheet         nh = nb.getSheetAt(0);
+       
+       for( int nr = nh.getFirstRowNum(); nr<nh.getLastRowNum()+1 ; nr++){
+
+           XSSFRow   r   = nh.getRow(nr);
+           XSSFCell  cn  = r.getCell(0);
+           XSSFCell  cN  = r.getCell(1);
+           XSSFCell  cAP = r.getCell(2);
+           XSSFCell  cAM = r.getCell(3);
+           XSSFCell  cG  = r.getCell(4);
+           
+           int     cnV = (int)cn.getNumericCellValue();
+           String  cNv = cN.getRichStringCellValue().getString();
+           String  cAPv = cAP.getRichStringCellValue().getString();
+           String  cAMv = cAM.getRichStringCellValue().getString();
+           String  cGV  = cG.getRichStringCellValue().getString();
+           
+           Teachers nt = this.fcdMaestros.find( String.valueOf(cnV) );
+           
+           if(nt != null)
+                // si el maestro ya existe se agraga a la lista de nuevo  
+                this.mtsExist.add(nt);
+           else
+               // si el maestro no existe en la base de datos
+               this.mtsNoExist.add( new Teachers( String.valueOf(cnV), cAPv, cAMv, cNv, cGV) );
+           
+       }
+    }
+    public String agregarAutomatico(){
+        for (Teachers ti : this.mtsNoExist) 
+            this.fcdMaestros.create(ti);
+
+        this.mtsExist.clear();
+        this.mtsNoExist.clear();
+        
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        FacesContext ct = FacesContext.getCurrentInstance();
+
+        ct.addMessage(null,
+                new FacesMessage("Agregar: ", "Estudiantes Agregados Correctamente"));
+        return "listar?faces-redirect=true";
+        
+    }
     ////////////////////////////////////////////////////////////////////////////
      
      
@@ -100,4 +185,32 @@ public class BeanMaestros implements Serializable {
     public void setMtsFiltrados(List<Teachers> mtsFiltrados) {
         this.mtsFiltrados = mtsFiltrados;
     } 
+
+    public List<Teachers> getMtsNoExist() {
+        return mtsNoExist;
+    }
+
+    public void setMtsNoExist(List<Teachers> mtsNoExist) {
+        this.mtsNoExist = mtsNoExist;
+    }
+
+    public List<Teachers> getMtsExist() {
+        return mtsExist;
+    }
+
+    public void setMtsExist(List<Teachers> mtsExist) {
+        this.mtsExist = mtsExist;
+    }
+
+    public UploadedFile getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(UploadedFile archivo) {
+        this.archivo = archivo;
+    }
+    
+    
+    
+    
 }
