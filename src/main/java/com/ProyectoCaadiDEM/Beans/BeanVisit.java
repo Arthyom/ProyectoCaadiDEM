@@ -419,16 +419,21 @@ public class BeanVisit implements Serializable {
         
     }
     
-    public String verificarIp() throws IOException {
+    public void verificarIp() throws IOException {
         HttpServletRequest req = (HttpServletRequest) FacesContext.
                 getCurrentInstance().getExternalContext().getRequest();
+        
+        String p[] = req.getRequestURL().toString().split("/ProyectoCaadiDEM/");
+        String s = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() 
+                    + "/Visitas/OutLogIn.xhtml";
 
         String ip = req.getRemoteAddr();
         if (!"0:0:0:0:0:0:0:1".equals(ip)) {
-            return "Visitas/OutLogIn.xhtml";
+            if( p.length == 1)
+                FacesContext.getCurrentInstance().getExternalContext().redirect(s);
+            else
+                 FacesContext.getCurrentInstance().getExternalContext().redirect("404.xhtml");
         }
-
-        return "";
     }
     
     public void pieGrafPdf (){
