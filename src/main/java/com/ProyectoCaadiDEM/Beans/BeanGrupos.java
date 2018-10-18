@@ -35,6 +35,12 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.primefaces.context.RequestContext;
+import org.primefaces.model.UploadedFile;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
@@ -50,9 +56,12 @@ public class BeanGrupos implements Serializable {
     private List<Groups>     grpsSeleccionados;
     private List<Groups>     grpsFiltrados;
     private List<Students>   stdsSlct, stdsFlt;
-    private List<Students>   stdsSlctG, stdsFltG;
+    private List<Students>   stdsSlctG, stdsFltG; 
+    private List<Students>   stdNoExst = new ArrayList(), stdExst  = new ArrayList();
     private String           indxPrf, indxPrd;
+   
     
+    private UploadedFile     archivo;
     
     
     @EJB
@@ -328,7 +337,102 @@ public class BeanGrupos implements Serializable {
         return bm;
         
     }
-    ////////////////////////////////////////////////////////////////////////////
+    
+    public void mensajeCargar () throws IOException{
+        
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesContext ct = FacesContext.getCurrentInstance();
+
+        try {
+            barrerArchivoXl();
+            context.execute("PF('dlgCargar').show();");
+            return;
+        } catch (Exception e) {
+            ct.addMessage(null,
+                    new FacesMessage("Error: ", "El archivo no tiene el formato correcto"));
+        }
+    }
+    
+    public void barrerArchivoXl () throws IOException{
+      
+            XSSFWorkbook nb = new XSSFWorkbook(archivo.getInputstream());
+            XSSFSheet nh = nb.getSheetAt(0);
+
+            // conseguir la primera columna para representar al grupo
+            int gId = (int) nh.getRow(0).getCell(0).getNumericCellValue();
+            String gIdTx = nh.getRow(0).getCell(1).getRichStringCellValue().getString();
+            String gLuTx = nh.getRow(0).getCell(2).getRichStringCellValue().getString();
+            String gLvTx = nh.getRow(0).getCell(3).getRichStringCellValue().getString();
+            String gEmTx = nh.getRow(0).getCell(4).getRichStringCellValue().getString();
+            int gPId = (int) nh.getRow(0).getCell(5).getNumericCellValue();
+
+            Groups gp = this.fcdGrupos.find(gId);
+            // buscar el grupo en la base de datos 
+            if (gp != null) // si no existe ya el grupo... crearlo 
+                gp = new Groups(gId, gLuTx, gLvTx, gIdTx);
+            
+            // saltarse una columna 
+            // barrer todos los alumnos 
+            for (int nr = 2; nr < nh.getLastRowNum() + 1; nr++) {
+
+                //
+                XSSFRow r = nh.getRow(nr);
+                XSSFCell cn = r.getCell(0); // nua
+                XSSFCell cN = r.getCell(1); // nombre
+                XSSFCell cAP = r.getCell(2); // apellido P
+                XSSFCell cAM = r.getCell(3); // apellido M
+                XSSFCell cG = r.getCell(4); // genero
+
+                String cnV = cn.getRichStringCellValue().getString();
+                String cNv = cN.getRichStringCellValue().getString();
+                String cAPv = cAP.getRichStringCellValue().getString();
+                String cAMv = cAM.getRichStringCellValue().getString();
+                String cGV = cG.getRichStringCellValue().getString();
+
+                // verificar si el estudiante no existe persistirlo y agregarlo a la lista de existentes
+                Students st = this.fcdEstudints.find(cnV);
+                if (st == null) {
+                    st = new Students(cnV, cNv, cAPv, cAMv, cGV);
+                    this.fcdEstudints.create(st);
+                    this.stdNoExst.add(st);
+
+                } else // meterlo en la lista de existentes 
+                    this.stdExst.add(st);
+                
+                // enlazar estudiante y grupo
+                this.grpActual.getStudentsCollection().add(st);
+            }
+
+            // persistir el grupo
+            this.fcdGrupos.edit(grpActual);
+        
+          
+    }
+    public String agregarAutomatico(){
+  
+        
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        FacesContext ct = FacesContext.getCurrentInstance();
+
+        ct.addMessage(null,
+                new FacesMessage("Agregar: ", "Estudiantes Agregados Correctamente"));
+        return "listar?faces-redirect=true";
+        
+    }
+
+    public UploadedFile getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(UploadedFile archivo) {
+        this.archivo = archivo;
+    }
+    
+    
+    
+    
+    
+        ////////////////////////////////////////////////////////////////////////////
     
     
     
@@ -421,6 +525,22 @@ public class BeanGrupos implements Serializable {
 
     public void setStdsFltG(List<Students> stdsFltG) {
         this.stdsFltG = stdsFltG;
+    }
+
+    public List<Students> getStdNoExst() {
+        return stdNoExst;
+    }
+
+    public void setStdNoExst(List<Students> stdNoExst) {
+        this.stdNoExst = stdNoExst;
+    }
+
+    public List<Students> getStdExst() {
+        return stdExst;
+    }
+
+    public void setStdExst(List<Students> stdExst) {
+        this.stdExst = stdExst;
     }
  
     
