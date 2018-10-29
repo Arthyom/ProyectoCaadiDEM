@@ -34,10 +34,12 @@ public class BeanMaestros implements Serializable {
                             mtsNoExist = new ArrayList(),
                             mtsExist   = new ArrayList();
     
+     private UploadedFile     archivo;
+    
+    
     private List<Teachers>  mtsFiltrados;
     
-    private UploadedFile     archivo;
-    
+   
     
     
     ////////////////////////////////////////////////////////////////////////////
