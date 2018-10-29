@@ -38,6 +38,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Teachers.findByEmail", query = "SELECT t FROM Teachers t WHERE t.email = :email")})
 public class Teachers implements Serializable {
 
+    @Column(name = "visible")
+    private Boolean visible;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -167,6 +170,14 @@ public class Teachers implements Serializable {
     @Override
     public String toString() {
         return "com.ProyectoCaadiDEM.Entidades.Teachers[ employeeNumber=" + employeeNumber + " ]";
+    }
+
+    public Boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
     }
     
 }

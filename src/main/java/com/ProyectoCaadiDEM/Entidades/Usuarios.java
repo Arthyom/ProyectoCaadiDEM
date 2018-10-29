@@ -34,6 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuarios.findByPass", query = "SELECT u FROM Usuarios u WHERE u.pass = :pass")})
 public class Usuarios implements Serializable {
 
+    @Column(name = "visible")
+    private Boolean visible;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -111,6 +114,14 @@ public class Usuarios implements Serializable {
     @Override
     public String toString() {
         return "com.ProyectoCaadiDEM.Entidades.Usuarios[ id=" + id + " ]";
+    }
+
+    public Boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
     }
     
 }

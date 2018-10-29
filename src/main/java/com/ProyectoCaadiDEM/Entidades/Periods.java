@@ -42,6 +42,11 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Periods.findByActual", query = "SELECT p FROM Periods p WHERE p.actual = true")})
 public class Periods implements Serializable {
 
+    @Column(name = "visible")
+    private Boolean visible;
+    @OneToMany(mappedBy = "periodid")
+    private Collection<Visits> visitsCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -162,6 +167,23 @@ public class Periods implements Serializable {
     @Override
     public String toString() {
         return "com.ProyectoCaadiDEM.Entidades.Periods[ id=" + id + " ]";
+    }
+
+    public Boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
+    }
+
+    @XmlTransient
+    public Collection<Visits> getVisitsCollection() {
+        return visitsCollection;
+    }
+
+    public void setVisitsCollection(Collection<Visits> visitsCollection) {
+        this.visitsCollection = visitsCollection;
     }
     
 }

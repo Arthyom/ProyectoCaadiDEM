@@ -5,6 +5,7 @@
  */
 package com.ProyectoCaadiDEM.Entidades;
 
+import com.ProyectoCaadiDEM.Beans.GroupMembers;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -43,6 +44,11 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Students.findByProgram", query = "SELECT s FROM Students s WHERE s.program = :program")
     , @NamedQuery(name = "Students.findByEmail", query = "SELECT s FROM Students s WHERE s.email = :email")})
 public class Students implements Serializable {
+
+    @Column(name = "visible")
+    private Boolean visible;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "students")
+    private Collection<GroupMembers> groupMembersCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -206,6 +212,24 @@ public class Students implements Serializable {
     @Override
     public String toString() {
         return "com.ProyectoCaadiDEM.Entidades.Students[ nua=" + nua + " ]";
+    }
+
+
+    @XmlTransient
+    public Collection<GroupMembers> getGroupMembersCollection() {
+        return groupMembersCollection;
+    }
+
+    public void setGroupMembersCollection(Collection<GroupMembers> groupMembersCollection) {
+        this.groupMembersCollection = groupMembersCollection;
+    }
+
+    public Boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
     }
     
 }

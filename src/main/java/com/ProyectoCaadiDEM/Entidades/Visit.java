@@ -41,6 +41,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Visit.findByEnd", query = "SELECT v FROM Visit v WHERE v.end = :end")})
 public class Visit implements Serializable {
 
+    @Column(name = "visible")
+    private Boolean visible;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -148,6 +151,14 @@ public class Visit implements Serializable {
     @Override
     public String toString() {
         return "com.ProyectoCaadiDEM.Entidades.Visit[ id=" + id + " ]";
+    }
+
+    public Boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
     }
     
 }

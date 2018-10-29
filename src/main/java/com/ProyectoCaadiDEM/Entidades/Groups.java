@@ -5,9 +5,11 @@
  */
 package com.ProyectoCaadiDEM.Entidades;
 
+import com.ProyectoCaadiDEM.Beans.GroupMembers;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -39,6 +42,11 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Groups.findByLevel", query = "SELECT g FROM Groups g WHERE g.level = :level")
     , @NamedQuery(name = "Groups.findByIdentifier", query = "SELECT g FROM Groups g WHERE g.identifier = :identifier")})
 public class Groups implements Serializable {
+
+    @Column(name = "visible")
+    private Boolean visible;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "groups")
+    private Collection<GroupMembers> groupMembersCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -167,6 +175,23 @@ public class Groups implements Serializable {
     @Override
     public String toString() {
         return "com.ProyectoCaadiDEM.Entidades.Groups[ id=" + id + " ]";
+    }
+
+    public Boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
+    }
+
+    @XmlTransient
+    public Collection<GroupMembers> getGroupMembersCollection() {
+        return groupMembersCollection;
+    }
+
+    public void setGroupMembersCollection(Collection<GroupMembers> groupMembersCollection) {
+        this.groupMembersCollection = groupMembersCollection;
     }
     
 }
