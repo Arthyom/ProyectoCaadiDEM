@@ -54,4 +54,11 @@ public class PeriodsFacade extends AbstractFacade<Periods> {
         }
         return p;
     }
+
+    public EntityManager getEm() {
+        return em;
+    }
+    
+    
+
 }

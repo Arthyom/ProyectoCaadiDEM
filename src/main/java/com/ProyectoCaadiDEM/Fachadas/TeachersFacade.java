@@ -28,5 +28,12 @@ public class TeachersFacade extends AbstractFacade<Teachers> {
     public TeachersFacade() {
         super(Teachers.class);
     }
+
+    public EntityManager getEm() {
+        return em;
+    }
     
+    
+
+
 }

@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Groups.findAll", query = "SELECT g FROM Groups g")
     , @NamedQuery(name = "Groups.findById", query = "SELECT g FROM Groups g WHERE g.id = :id")
+    , @NamedQuery(name = "Groups.findValidos", query = "SELECT g FROM Groups g WHERE g.visible != 0 or g.visible is NULL")
     , @NamedQuery(name = "Groups.findByLearningUnit", query = "SELECT g FROM Groups g WHERE g.learningUnit = :learningUnit")
     , @NamedQuery(name = "Groups.findByLevel", query = "SELECT g FROM Groups g WHERE g.level = :level")
     , @NamedQuery(name = "Groups.findByIdentifier", query = "SELECT g FROM Groups g WHERE g.identifier = :identifier")})

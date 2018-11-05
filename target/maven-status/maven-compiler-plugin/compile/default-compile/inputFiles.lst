@@ -13,6 +13,7 @@
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Entidades/Usuarios.java
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Entidades/Students.java
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Beans/BeanEstudiantes.java
+/home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Beans/GroupMembersPK.java
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Fachadas/AbstractFacade.java
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Fachadas/VisitsFacade.java
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Filtros/CacheControlPhaseListener.java
@@ -24,3 +25,4 @@
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Fachadas/StudentsFacade.java
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Fachadas/TeachersFacade.java
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Beans/BeanVisitas.java
+/home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Beans/GroupMembers.java

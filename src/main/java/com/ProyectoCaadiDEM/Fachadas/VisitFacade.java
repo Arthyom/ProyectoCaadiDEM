@@ -46,4 +46,7 @@ public class VisitFacade extends AbstractFacade<Visit> {
         super(Visit.class);
     }
     
+        public EntityManager getEm() {
+        return em;
+    }
 }

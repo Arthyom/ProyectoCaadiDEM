@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Periods.findAll", query = "SELECT p FROM Periods p")
     , @NamedQuery(name = "Periods.findById", query = "SELECT p FROM Periods p WHERE p.id = :id")
+    , @NamedQuery(name = "Periods.findValidos", query = "SELECT p FROM Periods p WHERE p.visible != 0 or p.visible is NULL")
     , @NamedQuery(name = "Periods.findByStart", query = "SELECT p FROM Periods p WHERE p.start = :start")
     , @NamedQuery(name = "Periods.findByEnd", query = "SELECT p FROM Periods p WHERE p.end = :end")
     , @NamedQuery(name = "Periods.findByDescription", query = "SELECT p FROM Periods p WHERE p.description = :description")

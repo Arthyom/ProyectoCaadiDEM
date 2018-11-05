@@ -7,11 +7,12 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2018-10-12T14:54:41")
+@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2018-11-04T22:46:18")
 @StaticMetamodel(Visit.class)
 public class Visit_ { 
 
     public static volatile SingularAttribute<Visit, Periods> periodId;
+    public static volatile SingularAttribute<Visit, Boolean> visible;
     public static volatile SingularAttribute<Visit, String> skill;
     public static volatile SingularAttribute<Visit, Date> start;
     public static volatile SingularAttribute<Visit, Date> end;

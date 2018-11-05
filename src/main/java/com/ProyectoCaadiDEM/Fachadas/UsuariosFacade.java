@@ -35,4 +35,7 @@ public class UsuariosFacade extends AbstractFacade<Usuarios> {
         super(Usuarios.class);
     }
     
+        public EntityManager getEm() {
+        return em;
+    }
 }

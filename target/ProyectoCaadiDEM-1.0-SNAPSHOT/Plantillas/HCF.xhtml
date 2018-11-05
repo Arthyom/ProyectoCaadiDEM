@@ -47,8 +47,8 @@
                                            actionListener="#{beanPeriodos.crearNuevoItem()}"/>
                             </b:dropMenu>
                             
-                            <b:dropMenu value="Grupos" rendered="#{beanPeriodos.conseguirActual() ne null 
-                                                                   and beanMaestros.listarItems().size() gt 0 }">
+                            <b:dropMenu value="Grupos" rendered="#{beanPeriodos.conseguirActual() ne null and
+                                                                   beanMaestros.listarValidos() ne null }">
                                 <b:navCommandLink value="Listar"  action="/Grupos/listar"/>
                                 <b:navCommandLink value="Reportes"  action="/Grupos/reportes"/>
                                 <b:navCommandLink  value="Agregar" action="/Grupos/agregar"
@@ -72,14 +72,14 @@
                             </b:dropMenu>
                             
                             <b:navCommandLink value="Asignar"   action="/Grupos/asignacion" 
-                                              rendered="#{beanPeriodos.conseguirActual() ne null 
-                                                                   and beanGrupos.listarItems().size() gt 0 }"/>
+                                              rendered="#{beanPeriodos.conseguirActual() ne null and
+                                                          beanMaestros.listarValidos() ne null        }"/>
                             <b:navCommandLink value="Conectados" action="/Estudiantes/registrados" 
-                                              rendered="#{beanPeriodos.conseguirActual() ne null 
-                                                                   and beanGrupos.listarItems().size() gt 0 }"/>
+                                              rendered="#{beanPeriodos.conseguirActual() ne null and
+                                                          beanMaestros.listarValidos() ne null         }"/>
                             <b:navCommandLink value="Registrar" action="/Visitas/LogInSession" 
-                                              rendered="#{beanPeriodos.conseguirActual() ne null 
-                                                                   and beanGrupos.listarItems().size() gt 0 }"/>
+                                              rendered="#{beanPeriodos.conseguirActual() ne null and
+                                                          beanGrupos.listarValidos().size() gt 0     }"/>
                         </b:navbarLinks>
                         
                         

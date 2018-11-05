@@ -28,5 +28,12 @@ public class GroupsFacade extends AbstractFacade<Groups> {
     public GroupsFacade() {
         super(Groups.class);
     }
+
+    public EntityManager getEm() {
+        return em;
+    }
+
+    
+  
     
 }

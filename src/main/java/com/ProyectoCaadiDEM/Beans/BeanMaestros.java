@@ -1,7 +1,7 @@
 
 package com.ProyectoCaadiDEM.Beans;
 
-import com.ProyectoCaadiDEM.Entidades.Students;
+
 import com.ProyectoCaadiDEM.Entidades.Teachers;
 import com.ProyectoCaadiDEM.Fachadas.TeachersFacade;
 import java.io.IOException;
@@ -43,26 +43,37 @@ public class BeanMaestros implements Serializable {
     
     
     ////////////////////////////////////////////////////////////////////////////
+    public List<Teachers> listarValidos (){
+        List<Teachers> t = this.fcdMaestros.getEm().createNamedQuery("Teachers.findValidos").getResultList();
+        return t;
+        
+    }
+    
     public List<Teachers> listarItems () {        
         return fcdMaestros.findAll();
+
     }
         
     public String borrarSeleccionado () {
-        fcdMaestros.remove(mtsActual);
+        mtsActual.setVisible(Boolean.FALSE);
+        fcdMaestros.edit(mtsActual);
         
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "listar?faces-redirect=true";
     }
        
     public String borrarSeleccionados () {
-        for( Teachers si : mtsSeleccionados )
-            fcdMaestros.remove(si);
+        for( Teachers si : mtsSeleccionados ){
+            si.setVisible(Boolean.FALSE);
+            fcdMaestros.edit(si);
+        }
         
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "listar?faces-redirect=true";
     }
     
     public String guardarItem () {
+        mtsNuevo.setVisible(Boolean.TRUE);
         fcdMaestros.create(mtsNuevo);
      
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);

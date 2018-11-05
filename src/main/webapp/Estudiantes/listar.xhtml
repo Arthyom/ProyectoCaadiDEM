@@ -29,6 +29,7 @@
                         </p:outputPanel>
                     <p:dataTable 
                         
+                        
                         class="gridAdmiForm"
                         selection="#{beanEstudiantes.stdSeleccionados}"
                         rowKey="#{std.nua}" paginator="true"
@@ -37,7 +38,7 @@
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
                          {PreviousPageLink} {PageLinks} {NextPageLink}
                          {LastPageLink} {RowsPerPageDropdown}"
-                        value="#{beanEstudiantes.listarItems()}" var="std"
+                        value="#{beanEstudiantes.listarValidos()}" var="std"
                         filteredValue="#{beanEstudiantes.stdFiltrados}"
                         styleClass="box-solid "
                         rowsPerPageTemplate="5,10,15,20" 

@@ -10,18 +10,14 @@ import com.ProyectoCaadiDEM.Fachadas.GroupsFacade;
 import com.ProyectoCaadiDEM.Fachadas.PeriodsFacade;
 import com.ProyectoCaadiDEM.Fachadas.StudentsFacade;
 import com.ProyectoCaadiDEM.Fachadas.TeachersFacade;
-import com.itextpdf.layout.element.Cell;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPHeaderCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.IOException;
@@ -44,7 +40,6 @@ import org.primefaces.model.UploadedFile;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
-import org.primefaces.model.chart.PieChartModel;
 
 
 @Named(value = "beanGrupos")
@@ -79,16 +74,24 @@ public class BeanGrupos implements Serializable {
     private int grpIndex;
     
     ////////////////////////////////////////////////////////////////////////////
+    public List<Groups> listarValidos(){
+        List <Groups> t = this.fcdGrupos.getEm().createNamedQuery("Groups.findValidos").getResultList();
+        return t;
+    }
+    
     public List<Groups> listarItems () {
-        return this.fcdGrupos.findAll();
+     return this.fcdGrupos.findAll();
+       
     }
     
     public List<Students> listarStdSinGrupo () {
         
         List<Students> estTotal  = fcdEstudints.findAll();
         List<Students> estLibrs  = fcdEstudints.findAll();
-        List<Groups>   grpTotal  = fcdGrupos.findAll();
+        List<Groups>   grpTotal = fcdGrupos.findAll();
+            
         
+      
         for( Students ei : estTotal ){
             for( Groups gi : grpTotal )
                 for( Students eii : gi.getStudentsCollection() )
@@ -120,45 +123,34 @@ public class BeanGrupos implements Serializable {
     }
          
     public String borrarSeleccionado () {
-        fcdGrupos.remove(grpActual);
+        grpActual.setVisible(Boolean.FALSE);
+        fcdGrupos.edit(grpActual);
         
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "listar?faces-redirect=true";
     }
        
     public String borrarSeleccionados () {
-        for( Groups si : grpsSeleccionados )
-            fcdGrupos.remove(si);
+        for( Groups si : grpsSeleccionados ){
+            si.setVisible(Boolean.FALSE);
+            fcdGrupos.edit(si);
+        }
         
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "listar?faces-redirect=true";
     }
     
     public String guardarItem () {
-/*
-        Periods   pn = fcdPeriods.find(1);
-        Teachers  tn = fcdProfes.find("210123");
-        Students  sn = fcdEstudints.find("102345");
-        List<Students> ncs = new ArrayList <> () ;
-        ncs.add(sn);
-        
-        
-        grpNuevo.setEmployeeNumber(tn);
-        grpNuevo.setPeriodId(pn);
-        grpNuevo.setStudentsCollection(ncs);
-*/
+
 
         Periods   pn = fcdPeriods.find(1);
         Teachers  tn = fcdProfes.find(this.indxPrf);
-      //  Students  sn = new Students ();
         List<Students> ncs = new ArrayList <> () ;
 
-        
-        
+        grpNuevo.setVisible(Boolean.TRUE);
         grpNuevo.setEmployeeNumber(tn);
         grpNuevo.setPeriodId(pn);
-        //grpNuevo.setStudentsCollection(ncs);
-
+        
         fcdGrupos.create(grpNuevo);
      
      

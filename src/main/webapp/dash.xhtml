@@ -19,7 +19,7 @@
                     <b:growl showDetail="true"/>
                     <p:panel header="Periodos" toggleable="true" styleClass="card box-solid box-primary">
                         <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
-                            <p:outputLabel value="Peridos registrados: #{beanPeriodos.listarItems().size()}"/>
+                            <p:outputLabel value="Peridos registrados: #{beanPeriodos.listarValidos().size()}"/>
                             <p:outputLabel value="Periodo actual     : #{beanPeriodos.conseguirActual().description}"/>
                             <p:outputLabel value="#{beanPeriodos.conseguirActual().start}">
                                 <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
@@ -31,27 +31,22 @@
                     </p:panel>
                     
                     <p:panel header="Grupos" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
-                            <p:outputLabel value="Grupos  registrados: #{beanGrupos.listarItems().size()}"/>
-                            <p:outputLabel value="Grupos sin Profesor: #{beanMaestros.listarItems().size()}"/>
-                            <p:outputLabel value="Grupos sin Alumnos : #{beanMaestros.listarItems().size()}"/>
-                            <p:outputLabel value=""/>
+                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null }">
+                            
+                            <p:outputLabel value="Numero de grupos: #{beanGrupos.listarValidos().size()}"/>
 
                         </p:panelGrid>
                     </p:panel>
                     
                     <p:panel header="Profesores" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
-                            <b:navCommandLink value="Profesores Registrados: #{beanMaestros.listarItems().size()}" action="/Maestros/listar"/>
-                            <p:outputLabel value="Profesores Registrados: #{beanMaestros.listarItems().size()}"/>
-                            <p:outputLabel value="Profesores Sin Grupo  : #{beanMaestros.listarItems().size()}"/>
-                            <p:outputLabel value="Profesores Sin Grupo  : #{beanMaestros.listarItems().size()}"/>
+                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null }">
+                            <p:outputLabel value="Maestros registrads #{beanMaestros.listarValidos().size()}"/>
                         </p:panelGrid>
                     </p:panel>
                     
                     <p:panel header="Estudiantes" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
-                            <p:outputLabel value="Estudiantes Registrados: #{beanEstudiantes.listarItems().size()}"/>
+                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null }">
+                            <p:outputLabel value="Estudiantes Registrados: #{beanEstudiantes.listarValidos().size()}"/>
                             <p:outputLabel value="Estudiantes Disponibles: #{beanGrupos.listarStdSinGrupo().size()}"/>
                             <p:outputLabel value="Estudiantes Asignados:   #{beanGrupos.contarStdConGrupo()}"/>
                         </p:panelGrid>

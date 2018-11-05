@@ -26,26 +26,36 @@ public class BeanPeriodos implements Serializable {
     
     
     ////////////////////////////////////////////////////////////////////////////
-    public List<Periods> listarItems () {        
+    public List<Periods> listarValidos (){
+        List<Periods> t = this.fcdPeriodos.getEm().createNamedQuery("Periods.findValidos").getResultList();
+        return t;
+    }
+    
+    public List<Periods> listarItems () {  
         return fcdPeriodos.findAll();
+
     }
         
     public String borrarSeleccionado () {
-        fcdPeriodos.remove(prdActual);
+        prdActual.setVisible(Boolean.FALSE);
+        fcdPeriodos.edit(prdActual);
         
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "listar?faces-redirect=true";
     }
        
     public String borrarSeleccionados () {
-        for( Periods si : prdSeleccionados )
-            fcdPeriodos.remove(si);
+        for( Periods si : prdSeleccionados ){
+            si.setVisible(false);
+            fcdPeriodos.edit(si);
+        }
         
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "listar?faces-redirect=true";
     }
     
     public String guardarItem () {
+        prdNuevo.setVisible(Boolean.TRUE);
         fcdPeriodos.create(prdNuevo);
      
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);

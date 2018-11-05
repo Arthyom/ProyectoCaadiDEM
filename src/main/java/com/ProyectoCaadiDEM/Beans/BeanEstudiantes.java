@@ -3,26 +3,16 @@ package com.ProyectoCaadiDEM.Beans;
 
 import com.ProyectoCaadiDEM.Entidades.Students;
 import com.ProyectoCaadiDEM.Fachadas.StudentsFacade;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Pattern;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRichTextString;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -63,26 +53,35 @@ public class BeanEstudiantes implements Serializable {
         return ""; 
     }
     
-    public List<Students> listarItems () {        
-        return fcdEstudiante.findAll();
+    public List<Students> listarValidos (){
+        List<Students> t = this.fcdEstudiante.getEm().createNamedQuery("Students.findValidos").getResultList();
+        return t;
+    }
+    
+    public List<Students> listarItems () {   
+       return fcdEstudiante.findAll();
     }
         
     public String borrarSeleccionado () {
-        fcdEstudiante.remove(stdActual);
+        stdActual.setVisible(Boolean.FALSE);
+        fcdEstudiante.edit(stdActual);
         
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "listar?faces-redirect=true";
     }
        
     public String borrarSeleccionados () {
-        for( Students si : stdSeleccionados )
-            fcdEstudiante.remove(si);
+        for( Students si : stdSeleccionados ){
+            si.setVisible(Boolean.FALSE);
+            fcdEstudiante.edit(si);
+        }
         
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "listar?faces-redirect=true";
     }
     
     public String guardarItem () {
+        stdNuevo.setVisible(Boolean.TRUE);
         fcdEstudiante.create(stdNuevo);
      
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
