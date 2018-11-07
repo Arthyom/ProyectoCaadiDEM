@@ -84,6 +84,7 @@ public class BeanGrupos implements Serializable {
        
     }
     
+    
     public List<Students> listarStdSinGrupo () {
         
         List<Students> estTotal  = fcdEstudints.findAll();
@@ -124,6 +125,7 @@ public class BeanGrupos implements Serializable {
          
     public String borrarSeleccionado () {
         grpActual.setVisible(Boolean.FALSE);
+        grpActual.getStudentsCollection().clear();
         fcdGrupos.edit(grpActual);
         
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
@@ -133,6 +135,7 @@ public class BeanGrupos implements Serializable {
     public String borrarSeleccionados () {
         for( Groups si : grpsSeleccionados ){
             si.setVisible(Boolean.FALSE);
+            si.getStudentsCollection().clear();
             fcdGrupos.edit(si);
         }
         

@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -16,7 +18,19 @@
     <h:body>
 
         <div id="top">
-            <ui:insert name="top">Top</ui:insert>
+            <ui:insert name="top">
+                <b:container fluid="false">
+                    <div class="banner">
+                        <p:graphicImage library="images" name="escudo.png" id="imageBanner"/>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    
+                </b:container>
+
+            </ui:insert>
         </div>
 
         <div id="content" class="center_content">

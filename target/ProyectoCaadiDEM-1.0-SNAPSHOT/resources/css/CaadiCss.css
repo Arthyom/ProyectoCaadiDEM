@@ -63,13 +63,13 @@ th, .ui-datatable-footer, .ui-paginator, .ui-paginator-pages{
 }
 
 .btn-primary{
-    background:  #A0935F !important;
-    border-color: #A0935F !important;   
+    background: linear-gradient(rgb(23, 77, 135) 0%, rgb(14, 52, 91) 77%, rgb(14, 52, 91) 100%) !important;
+    border-color: #045491 !important;   
 }
 
 .btn-primary:hover{
-    background: linear-gradient(rgb(23, 77, 135) 0%, rgb(14, 52, 91) 77%, rgb(14, 52, 91) 100%) !important;
-    border-color: #045491 !important;
+    background:  #A0935F !important;
+    border-color: #A0935F  !important;
 }
 
 

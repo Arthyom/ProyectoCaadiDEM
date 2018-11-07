@@ -38,6 +38,7 @@ public class BeanPeriodos implements Serializable {
         
     public String borrarSeleccionado () {
         prdActual.setVisible(Boolean.FALSE);
+        prdActual.setActual(Boolean.FALSE);
         fcdPeriodos.edit(prdActual);
         
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
@@ -46,6 +47,7 @@ public class BeanPeriodos implements Serializable {
        
     public String borrarSeleccionados () {
         for( Periods si : prdSeleccionados ){
+            si.setActual(Boolean.FALSE);
             si.setVisible(false);
             fcdPeriodos.edit(si);
         }
@@ -82,8 +84,7 @@ public class BeanPeriodos implements Serializable {
          }
 
          this.prdActual.setActual(Boolean.TRUE);
-         this.fcdPeriodos.edit(this.prdActual);
-         
+         this.fcdPeriodos.edit(this.prdActual); 
      }
      
      
@@ -95,8 +96,7 @@ public class BeanPeriodos implements Serializable {
      public List<Groups> conseguirGruposParaAtual () {
          Periods p = this.conseguirActual();
          List<Groups> gs = (List<Groups>) p.getGroupsCollection();
-         
-         
+
          return gs;
      }
     ////////////////////////////////////////////////////////////////////////////

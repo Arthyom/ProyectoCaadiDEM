@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./../Plantillas/HCF.xhtml">
+
+            <ui:define name="content">
+                <h:form id="form">
+                    <b:growl showDetail="true"/>
+                    <p:panel header="Reportes de Grupos" toggleable="true" styleClass="card box-solid box-primary commonFormList">
+                        
+                        <b:commandButton value="Imprimir PDF" 
+                                         action="#{beanGrupos.crearPDF()}"
+                                         styleClass="btn btn-success btn-lg btn-block"/>
+
+                        <br/>
+                        
+                        <p:outputLabel id="idProf" value="Profesor: #{beanGrupos.grpActual.employeeNumber.name}
+                                       #{beanGrupos.grpActual.employeeNumber.firstLastName}
+                                       #{beanGrupos.grpActual.employeeNumber.secondLastName}"/>
+                        
+                        <br/>
+                        
+                        <p:outputLabel id="idHrs" value="Horas Totales Del Grupo: #{beanGrupos.contarHorasGrupo(beanGrupos.grpActual)}"/>
+                        
+                        <hr/>
+                        
+                        <p:panel header="Detalles De Visitas" toggleable="true">
+                        <p:dataTable id="idRep" value="#{beanGrupos.grpActual.studentsCollection}"
+                                     var="std" styleClass="box-solid box-default">
+                            <p:column headerText="NUA" width="100">
+                                <p:outputLabel value="#{std.nua}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Nombre">
+                                <p:outputLabel value="#{std.name}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Apellidos Paterno">
+                                <p:outputLabel value="#{std.secondLastName}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Apellidos Materno">
+                                <p:outputLabel value="#{std.secondLastName}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Total Horas">
+                                <p:outputLabel value="#{beanVisit.contarHoras(std)}"/>
+                            </p:column>
+                        </p:dataTable>
+                        </p:panel>
+                        
+                        <br/>
+                        <p:panel header="Graficos De Analisis" toggleable="true" id="grafs">
+                           
+                            <p:chart type="bar" model="#{beanGrupos.grpBarGraf()}"
+                                     responsive="true"/>
+                            
+                        </p:panel>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
