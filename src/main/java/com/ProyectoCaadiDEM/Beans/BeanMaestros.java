@@ -80,8 +80,14 @@ public class BeanMaestros implements Serializable {
     }
     
     public String guardarItem () {
+        
+        if( fcdMaestros.find(mtsNuevo.getEmployeeNumber()) == null ){
         mtsNuevo.setVisible(Boolean.TRUE);
         fcdMaestros.create(mtsNuevo);
+        }else{
+            mtsNuevo.setVisible(Boolean.TRUE);
+        fcdMaestros.create(mtsNuevo);
+        }
      
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "listar?faces-redirect=true";

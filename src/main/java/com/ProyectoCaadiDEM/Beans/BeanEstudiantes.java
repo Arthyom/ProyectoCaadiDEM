@@ -86,8 +86,14 @@ public class BeanEstudiantes implements Serializable {
     }
     
     public String guardarItem () {
-        stdNuevo.setVisible(Boolean.TRUE);
-        fcdEstudiante.create(stdNuevo);
+        // ver si el estudiante no existe o solo no esta visible
+        if (fcdEstudiante.find(stdNuevo.getNua()) == null) {
+            stdNuevo.setVisible(Boolean.TRUE);
+            fcdEstudiante.create(stdNuevo);
+        } else {
+            stdNuevo.setVisible(Boolean.TRUE);
+            fcdEstudiante.edit(stdNuevo);
+        }
      
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "listar?faces-redirect=true";
