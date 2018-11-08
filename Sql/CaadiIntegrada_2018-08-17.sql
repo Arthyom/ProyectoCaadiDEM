@@ -207,3 +207,75 @@ CHANGE COLUMN `visible` `visible` BIT(2) NULL DEFAULT 0 ;
 
 ALTER TABLE `CaadiIntegrada`.`Visits` 
 CHANGE COLUMN `visible` `visible` BIT(2) NULL DEFAULT 0 ;
+
+
+ALTER TABLE `CaadiIntegrada`.`Groups` 
+ADD COLUMN `visible` BIT(2) NULL AFTER `periodId`;
+
+ALTER TABLE `CaadiIntegrada`.`Periods` 
+ADD COLUMN `visible` BIT(2) NULL AFTER `start`;
+
+
+ALTER TABLE `CaadiIntegrada`.`Students` 
+ADD COLUMN `visible` VARCHAR(45) NULL AFTER `secondLastName`;
+
+ALTER TABLE `CaadiIntegrada`.`Teachers` 
+ADD COLUMN `visible` VARCHAR(45) NULL AFTER `secondLastName`;
+
+ALTER TABLE `CaadiIntegrada`.`usuarios` 
+ADD COLUMN `visible` BIT(2) NULL AFTER `pass`;
+
+ALTER TABLE `CaadiIntegrada`.`Visit` 
+ADD COLUMN `visible` BIT(2) NULL AFTER `periodId`;
+
+ALTER TABLE `CaadiIntegrada`.`Visits` 
+ADD COLUMN `visible` VARCHAR(45) NULL AFTER `periodid`;
+}
+ALTER TABLE `CaadiIntegrada`.`GroupMembers` 
+ADD COLUMN `visible` BIT(2) NULL AFTER `groupId`;
+
+
+ALTER TABLE `CaadiIntegrada`.`Students` 
+CHANGE COLUMN `birthday` `birthday` DATETIME NULL ,
+CHANGE COLUMN `email` `email` VARCHAR(255) NULL ,
+CHANGE COLUMN `firstLastName` `firstLastName` VARCHAR(255) NOT NULL ,
+CHANGE COLUMN `gender` `gender` VARCHAR(255) NOT NULL ,
+CHANGE COLUMN `name` `name` VARCHAR(255) NOT NULL ,
+CHANGE COLUMN `secondLastName` `secondLastName` VARCHAR(255) NOT NULL ,
+CHANGE COLUMN `visible` `visible` VARCHAR(45) NULL DEFAULT 0 ;
+
+ALTER TABLE `CaadiIntegrada`.`Teachers` 
+CHANGE COLUMN `firstLastName` `firstLastName` VARCHAR(255) NOT NULL ,
+CHANGE COLUMN `gender` `gender` VARCHAR(255) NOT NULL ,
+CHANGE COLUMN `name` `name` VARCHAR(255) NOT NULL ,
+CHANGE COLUMN `secondLastName` `secondLastName` VARCHAR(255) NOT NULL ,
+CHANGE COLUMN `visible` `visible` VARCHAR(45) NULL DEFAULT 0 ;
+
+
+ALTER TABLE `CaadiIntegrada`.`Periods` 
+CHANGE COLUMN `end` `end` DATETIME NOT NULL ,
+CHANGE COLUMN `start` `start` DATETIME NOT NULL ;
+
+ALTER TABLE `CaadiIntegrada`.`Students` 
+CHANGE COLUMN `visible` `visible` BIT(2) NULL DEFAULT 0 ;
+
+ALTER TABLE `CaadiIntegrada`.`Teachers` 
+CHANGE COLUMN `visible` `visible` BIT(2) NULL DEFAULT 0 ;
+
+ALTER TABLE `CaadiIntegrada`.`Visits` 
+CHANGE COLUMN `visible` `visible` BIT(2) NULL DEFAULT 0 ;
+
+ALTER TABLE `CaadiIntegrada`.`Teachers` 
+CHANGE COLUMN `visible` `visible` BIT(1) NULL DEFAULT 1 ;
+
+ALTER TABLE `CaadiIntegrada`.`Students` 
+CHANGE COLUMN `visible` `visible` BIT(1) NULL DEFAULT 1 ;
+
+ALTER TABLE `CaadiIntegrada`.`Periods` 
+CHANGE COLUMN `visible` `visible` BIT(1) NULL DEFAULT NULL ;
+
+ALTER TABLE `CaadiIntegrada`.`Groups` 
+CHANGE COLUMN `visible` `visible` BIT(1) NULL DEFAULT NULL ;
+
+ALTER TABLE `CaadiIntegrada`.`Groups` 
+CHANGE COLUMN `visible` `visible` BIT(1) NULL DEFAULT 1 ;
