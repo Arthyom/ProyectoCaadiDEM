@@ -1,7 +1,9 @@
 
 package com.ProyectoCaadiDEM.Beans;
 
+import com.ProyectoCaadiDEM.Entidades.Groups;
 import com.ProyectoCaadiDEM.Entidades.Students;
+import com.ProyectoCaadiDEM.Fachadas.GroupsFacade;
 import com.ProyectoCaadiDEM.Fachadas.StudentsFacade;
 import java.io.IOException;
 import javax.inject.Named;
@@ -27,6 +29,9 @@ public class BeanEstudiantes implements Serializable {
 
     @EJB
     private StudentsFacade   fcdEstudiante;
+    
+    @EJB
+    private GroupsFacade     fcdGroups;
     
     private Students         stdActual;
     private Students         stdNuevo ;
@@ -59,19 +64,19 @@ public class BeanEstudiantes implements Serializable {
     }
     
     public List<Students> listarItems () {   
-       return fcdEstudiante.findAll();
+       List<Students> t = this.fcdEstudiante.getEm().createNamedQuery("Students.findValidos").getResultList();
+        return t;
     }
         
     public String borrarSeleccionado () {
         stdActual.setVisible(Boolean.FALSE);
         fcdEstudiante.edit(stdActual);
-        
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "listar?faces-redirect=true";
     }
        
     public String borrarSeleccionados () {
-        for( Students si : stdSeleccionados ){
+        for (Students si : stdSeleccionados) {
             si.setVisible(Boolean.FALSE);
             fcdEstudiante.edit(si);
         }

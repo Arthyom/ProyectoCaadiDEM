@@ -32,7 +32,8 @@ public class BeanPeriodos implements Serializable {
     }
     
     public List<Periods> listarItems () {  
-        return fcdPeriodos.findAll();
+        List<Periods> t = this.fcdPeriodos.getEm().createNamedQuery("Periods.findValidos").getResultList();
+        return t;
 
     }
         

@@ -80,8 +80,8 @@ public class BeanGrupos implements Serializable {
     }
     
     public List<Groups> listarItems () {
-     return this.fcdGrupos.findAll();
-       
+     List <Groups> t = this.fcdGrupos.getEm().createNamedQuery("Groups.findValidos").getResultList();
+        return t;
     }
     
     
@@ -89,29 +89,54 @@ public class BeanGrupos implements Serializable {
         
         List<Students> estTotal  = fcdEstudints.findAll();
         List<Students> estLibrs  = fcdEstudints.findAll();
-        List<Groups>   grpTotal = fcdGrupos.findAll();
-            
+        List<Groups>   grpTotal = fcdGrupos.findAll();       
         
-      
-        for( Students ei : estTotal ){
+        
+        for( int i = 0 ; i < estTotal.size() ; i ++ ){
+            if( !estTotal.get(i).getVisible() ){
+                estTotal.remove( estTotal.get(i) );
+                estLibrs.remove( estLibrs.get(i) );
+            }
+        }
+        
+        
+        
+        for( Students ei : estTotal )
             for( Groups gi : grpTotal )
                 for( Students eii : gi.getStudentsCollection() )
-                    if( eii.getNua().equals(ei.getNua()) )
+                    if( eii.getNua().equals(ei.getNua()) || !ei.getVisible() )
                         estLibrs.remove(ei);
-        }
-        return estLibrs;
+                return estLibrs;
     }
     
     public int contarStdConGrupo () {
         
         int a = 0;
+       List<Students> estTotal  = fcdEstudints.findAll();
+        List<Groups>   grpTotal = fcdGrupos.findAll();       
+        List<Students> estLibrs  = fcdEstudints.findAll();
         
-        List<Groups>   grpTotal  = fcdGrupos.findAll();
-        
-        for( Groups gi : grpTotal )
-            a += gi.getStudentsCollection().size();
-            
+        for( Students ei : estTotal )
+            for( Groups gi : grpTotal )
+                for( Students eii : gi.getStudentsCollection() )
+                     if( eii.getNua().equals(ei.getNua()) && ei.getVisible() )
+                        a++;
+
         return a;
+    }
+    
+        public List<Students> contarStdValidosConGrupo () {
+        
+        List<Students> s = (List<Students>) this.grpActual.getStudentsCollection();
+        
+        for( int i = 0 ; i < s.size() ; i ++ )
+            if( !s.get(i).getVisible() )
+                s.remove(i);
+        
+        this.grpActual.setStudentsCollection(stdsSlct);
+        this.fcdGrupos.edit(grpActual);
+       
+        return (List<Students>) grpActual.getStudentsCollection();
     }
     
     public String eliminarStdGrupo ( Students s){

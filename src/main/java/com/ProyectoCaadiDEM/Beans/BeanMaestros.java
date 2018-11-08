@@ -52,7 +52,8 @@ public class BeanMaestros implements Serializable {
     }
     
     public List<Teachers> listarItems () {        
-        return fcdMaestros.findAll();
+        List<Teachers> t = this.fcdMaestros.getEm().createNamedQuery("Teachers.findValidos").getResultList();
+        return t;
 
     }
        
