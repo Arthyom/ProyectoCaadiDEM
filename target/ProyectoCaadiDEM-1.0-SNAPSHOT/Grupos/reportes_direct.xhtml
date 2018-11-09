@@ -9,50 +9,17 @@
 
     <body>
 
-        <ui:composition template="./../Plantillas/blankOut.xhtml">
+        <ui:composition template="./../Plantillas/HCF.xhtml">
 
             <ui:define name="content">
-<<<<<<< HEAD
                 <h:form id="form">
                     <b:growl showDetail="true"/>
                     <p:panel header="Reportes de Grupos" toggleable="true" styleClass="card box-solid box-primary commonFormList">
                         
-=======
-                <br/>
-                <br/>
-                <br/>
-                <h:form id="form">
-                    <b:growl showDetail="true"/>
-                    <p:panel header="Profesor: #{beanMaestros.mtsActual.name} #{beanMaestros.mtsActual.setFirstLastName(firstLastName)} #{beanMaestros.mtsActual.secondLastName}" 
-                             toggleable="true" styleClass="card box-solid box-primary commonFormList">
-                       
->>>>>>> 460c0dab5640b84c48e0dde401fc711a70b376fa
                         <b:commandButton value="Imprimir PDF" 
                                          action="#{beanGrupos.crearPDF()}"
                                          styleClass="btn btn-success btn-lg btn-block"/>
-                        
-<<<<<<< HEAD
-=======
-                        <b:commandButton value="Salir" 
-                                         action="/index_Teachers.xhtml"
-                                         styleClass="btn btn-danger btn-lg btn-block"/>
-                        
->>>>>>> 460c0dab5640b84c48e0dde401fc711a70b376fa
-                        <br/>
-                        
-                        <b:selectOneMenu value="#{beanGrupos.grpIndex}" required="true" renderLabel="false" label="Grupo"
-                                         requiredMessage="Seleccione un Grupo" >
-                            <f:selectItem itemLabel="Seleccione Grupo"/>
-                            <f:selectItems value="#{beanMaestros.listarGruposXprof()}" 
-                                           var="grp" 
-                                           itemLabel="#{grp.id} #{grp.identifier} 
-                                           #{grp.learningUnit} #{grp.level}"
-                                           itemValue="#{grp.id}"/>
-                            
-<<<<<<< HEAD
-                            <f:ajax listener="#{beanGrupos.buscarGrupo()}"  render=":form:idRep :form:idProf :form:idHrs grafs"/>
-                        </b:selectOneMenu>
-                        
+
                         <br/>
                         
                         <p:outputLabel id="idProf" value="Profesor: #{beanGrupos.grpActual.employeeNumber.name}
@@ -61,11 +28,6 @@
                         
                         <br/>
                         
-=======
-                            <f:ajax listener="#{beanGrupos.buscarGrupo()}"  render=":form:idRep :form:idHrs grafs"/>
-                        </b:selectOneMenu>
-                        
->>>>>>> 460c0dab5640b84c48e0dde401fc711a70b376fa
                         <p:outputLabel id="idHrs" value="Horas Totales Del Grupo: #{beanGrupos.contarHorasGrupo(beanGrupos.grpActual)}"/>
                         
                         <hr/>

@@ -6,6 +6,8 @@
 package com.ProyectoCaadiDEM.Fachadas;
 
 import java.io.IOException;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.util.List;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -66,7 +68,13 @@ public abstract class AbstractFacade<T> {
     }
     
     public void verificarIp( HttpServletRequest request) throws IOException{
+        System.out.println("----------------------");
         try {
+            final DatagramSocket socket = new DatagramSocket();
+            socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
+            String ips = socket.getLocalAddress().getHostAddress().toString();
+            System.out.println("----------------------" +ips);
+            
             String ip = request.getRemoteAddr();
             if (!"0:0:0:0:0:0:0:1".equals(ip)) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("Visitas/OutLogIn.xhtml");

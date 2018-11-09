@@ -35,6 +35,8 @@ import java.io.OutputStream;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -420,6 +422,11 @@ public class BeanVisit implements Serializable {
     }
     
     public void verificarIp() throws IOException {
+        final DatagramSocket socket = new DatagramSocket();
+        socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
+        String ips = socket.getLocalAddress().getHostAddress();
+            
+        
         HttpServletRequest req = (HttpServletRequest) FacesContext.
                 getCurrentInstance().getExternalContext().getRequest();
         
@@ -428,7 +435,11 @@ public class BeanVisit implements Serializable {
                     + "/Visitas/OutLogIn.xhtml";
 
         String ip = req.getRemoteAddr();
-        if (!"0:0:0:0:0:0:0:1".equals(ip)) {
+        
+        System.out.println("----------------------" +ip);
+        System.out.println("----------------------" +ips);
+        
+        if (!"0:0:0:0:0:0:0:1".equals(ip) || ip.equals(ips)) {
             if( p.length == 1)
                 FacesContext.getCurrentInstance().getExternalContext().redirect(s);
             else
