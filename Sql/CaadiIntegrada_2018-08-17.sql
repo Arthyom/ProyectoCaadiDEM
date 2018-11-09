@@ -279,3 +279,7 @@ CHANGE COLUMN `visible` `visible` BIT(1) NULL DEFAULT NULL ;
 
 ALTER TABLE `CaadiIntegrada`.`Groups` 
 CHANGE COLUMN `visible` `visible` BIT(1) NULL DEFAULT 1 ;
+
+
+INSERT INTO `CaadiIntegrada`.`usuarios` (`id`, `nombre`, `pass`, `visible`) VALUES ('', 'admin', '1820_adCa?!', '1');
+INSERT INTO `CaadiIntegrada`.`usuarios` (`nombre`, `pass`, `visible`) VALUES ('stdunt', '1820_stCa?!', '1');
