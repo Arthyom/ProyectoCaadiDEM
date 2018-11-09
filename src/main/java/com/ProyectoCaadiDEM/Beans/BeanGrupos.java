@@ -84,6 +84,7 @@ public class BeanGrupos implements Serializable {
        
     }
     
+    
     public List<Students> listarStdSinGrupo () {
         
         List<Students> estTotal  = fcdEstudints.findAll();

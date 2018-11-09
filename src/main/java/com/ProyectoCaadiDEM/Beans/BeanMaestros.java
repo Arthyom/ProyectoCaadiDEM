@@ -2,6 +2,7 @@
 package com.ProyectoCaadiDEM.Beans;
 
 
+import com.ProyectoCaadiDEM.Entidades.Groups;
 import com.ProyectoCaadiDEM.Entidades.Teachers;
 import com.ProyectoCaadiDEM.Fachadas.TeachersFacade;
 import java.io.IOException;
@@ -9,6 +10,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -34,8 +36,8 @@ public class BeanMaestros implements Serializable {
                             mtsNoExist = new ArrayList(),
                             mtsExist   = new ArrayList();
     
-     private UploadedFile     archivo;
-    
+    private UploadedFile    archivo;
+    private String          nue;
     
     private List<Teachers>  mtsFiltrados;
     
@@ -53,7 +55,11 @@ public class BeanMaestros implements Serializable {
         return fcdMaestros.findAll();
 
     }
-        
+       
+    
+    public Collection<Groups> listarGruposXprof(){
+        return this.mtsActual.getGroupsCollection();
+    }
     public String borrarSeleccionado () {
         mtsActual.setVisible(Boolean.FALSE);
         fcdMaestros.edit(mtsActual);
@@ -160,7 +166,33 @@ public class BeanMaestros implements Serializable {
         return "listar?faces-redirect=true";
         
     }
+    
+    public void buscarProfesor () {
+        this.mtsActual = this.fcdMaestros.find(this.nue );
+    }
+    
+    public String comprobarProfesor() {
+
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        FacesContext ct = FacesContext.getCurrentInstance();
+        if (this.mtsActual == null) {
+
+            ct.addMessage(null,
+                    new FacesMessage("Error", "No se encontro profesor"));
+            return null;
+        }
+        return "Grupos/reportes_out.xhtml?faces-redirect=true";
+    }
+
     ////////////////////////////////////////////////////////////////////////////
+
+    public String getNue() {
+        return nue;
+    }
+
+    public void setNue(String nue) {
+        this.nue = nue;
+    }
      
      
      

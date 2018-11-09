@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Plantillas/blankOut.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="backgroundBody" >
+                       <hr/>
+                <h:form id="form" >
+                    <b:growl id="usrGrowl" showSummary="true"/>
+                    <p:panel header="Seccion de Profesores" id="pnlLog" styleClass="card box-solid box-primary smallFormLog" >
+                        <div class="primIcon">
+                   <span class="glyphicon glyphicon-user"></span>
+                 </div>
+          
+                        <h:panelGrid columns="1" class="gridLogForm">
+                                                  
+                            
+                            <b:inputText placeholder="Número de Empleado" required="true"  
+                                         label="Usuario" renderLabel="false"
+                                         value="#{beanMaestros.nue}"
+                                         >
+                                <f:facet name="prepend">
+                                    <b:icon name="user" />
+                                </f:facet>
+                            </b:inputText>
+
+
+
+                            <b:commandButton value="Acceder" update=":form:usrGrowl :form:pnlLog"
+                                              styleClass="btn-primary btn-lg btn-block "
+                                              actionListener="#{beanMaestros.buscarProfesor()}"
+                                              action="#{beanMaestros.comprobarProfesor()}"
+                                             />
+
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+                    <hr/>
+                </div>
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
