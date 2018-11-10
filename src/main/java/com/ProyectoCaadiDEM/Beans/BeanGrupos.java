@@ -89,8 +89,7 @@ public class BeanGrupos implements Serializable {
         
         List<Students> estTotal  = fcdEstudints.findAll();
         List<Students> estLibrs  = fcdEstudints.findAll();
-        List<Groups>   grpTotal = fcdGrupos.findAll();       
-        
+        List<Groups>   grpTotal = fcdGrupos.findAll();               
         
         for( int i = 0 ; i < estTotal.size() ; i ++ ){
             if( !estTotal.get(i).getVisible() ){
@@ -98,9 +97,7 @@ public class BeanGrupos implements Serializable {
                 estLibrs.remove( estLibrs.get(i) );
             }
         }
-        
-        
-        
+
         for( Students ei : estTotal )
             for( Groups gi : grpTotal )
                 for( Students eii : gi.getStudentsCollection() )
@@ -413,6 +410,7 @@ public class BeanGrupos implements Serializable {
                 Students st = this.fcdEstudints.find(cnV);
                 if (st == null) {
                     st = new Students(cnV, cNv, cAPv, cAMv, cGV);
+                    st.setVisible(Boolean.TRUE);
                     this.fcdEstudints.create(st);
                     this.stdNoExst.add(st);
 
@@ -421,6 +419,7 @@ public class BeanGrupos implements Serializable {
                 
                 // enlazar estudiante y grupo
                 this.grpActual.getStudentsCollection().add(st);
+                this.grpActual.setVisible(Boolean.TRUE);
             }
 
             // persistir el grupo
@@ -448,7 +447,9 @@ public class BeanGrupos implements Serializable {
         this.archivo = archivo;
     }
     
-    
+    public void cancelarCargaAutomatica(){
+        
+    }
     
     
     

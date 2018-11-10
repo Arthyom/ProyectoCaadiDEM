@@ -157,10 +157,12 @@ public class BeanEstudiantes implements Serializable {
            if(ns != null)
                 // si el estudiante ya existe se agraga a la lista de nuevo  
                 this.stdExst.add(ns);
-           else
+           else{
                // si el estudiante no existe en la base de datos
-               this.stdNoExst.add( new Students( String.valueOf(cnV), cAPv, cAMv, cNv, cGV) );
-           
+              Students s = new Students( String.valueOf(cnV), cAPv, cAMv, cNv, cGV);
+              s.setVisible(Boolean.TRUE);
+              this.stdNoExst.add(s);
+           }
        }
     }
     public String agregarAutomatico(){

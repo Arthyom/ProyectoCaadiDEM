@@ -81,12 +81,12 @@ public class BeanMaestros implements Serializable {
     
     public String guardarItem () {
         
-        if( fcdMaestros.find(mtsNuevo.getEmployeeNumber()) == null ){
-        mtsNuevo.setVisible(Boolean.TRUE);
-        fcdMaestros.create(mtsNuevo);
-        }else{
+        if (fcdMaestros.find(mtsNuevo.getEmployeeNumber()) == null) {
             mtsNuevo.setVisible(Boolean.TRUE);
-        fcdMaestros.create(mtsNuevo);
+            fcdMaestros.create(mtsNuevo);
+        } else {
+            mtsNuevo.setVisible(Boolean.TRUE);
+            fcdMaestros.edit(mtsNuevo);
         }
      
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
@@ -152,9 +152,12 @@ public class BeanMaestros implements Serializable {
            if(nt != null)
                 // si el maestro ya existe se agraga a la lista de nuevo  
                 this.mtsExist.add(nt);
-           else
+           else{
                // si el maestro no existe en la base de datos
-               this.mtsNoExist.add( new Teachers( String.valueOf(cnV), cAPv, cAMv, cNv, cGV) );
+               Teachers t = new Teachers( String.valueOf(cnV), cAPv, cAMv, cNv, cGV);
+               t.setVisible(Boolean.TRUE);
+               this.mtsNoExist.add(t);
+           }
            
        }
     }

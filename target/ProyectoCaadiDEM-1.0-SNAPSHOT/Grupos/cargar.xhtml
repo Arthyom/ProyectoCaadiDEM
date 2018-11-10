@@ -19,9 +19,9 @@
                 <h:form enctype="multipart/form-data">
                     <b:growl showDetail="true"/>
                     <p:panel header="Cargar desde Archivo">
-                        <p:fileUpload   label="Seleccionar Archivo" value="#{beanMaestros.archivo}" mode="simple" skinSimple="true"/>
+                        <p:fileUpload   label="Seleccionar Archivo" value="#{beanGrupos.archivo}" mode="simple" skinSimple="true"/>
                         <b:commandButton value="Cargar" ajax="false"
-                                         action="#{beanMaestros.mensajeCargar()}"
+                                         action="#{beanGrupos.mensajeCargar()}"
                         />
                     </p:panel>
                 </h:form>
@@ -29,12 +29,12 @@
                 <p:dialog header="Listar Agregados" widgetVar="dlgCargar" dynamic="true" modal="true">
                     <h:form id="form">
                         <p:panel id="idPnlCargar">
-                        <p:outputLabel value="Estudiantes existentes: #{beanMaestros.mtsExist.size()}" />
-                        <p:outputLabel value="Estudiantes Nuevo     : #{beanMaestros.mtsNoExist.size()}" />
+                        <p:outputLabel value="Estudiantes existentes: #{beanGrupos.stdExst.size()}" />
+                        <p:outputLabel value="Estudiantes Nuevo     : #{beanGrupos.stdNoExst.size()}" />
                         <p:panelGrid columns="2" id="idDlgCargar">
-                            <p:dataTable value="#{beanMaestros.mtsExist}" var="mstEx">
+                            <p:dataTable value="#{beanGrupos.stdExst}" var="mstEx">
                                 <p:column headerText="NUA">
-                                    <p:outputLabel value="#{mstEx.employeeNumber}"/>
+                                    <p:outputLabel value="#{mstEx.nua}"/>
                                 </p:column>
                                 
                                 <p:column headerText="Nombre">
@@ -46,9 +46,9 @@
                                 </p:column>
                             </p:dataTable>
                             
-                            <p:dataTable value="#{beanMaestros.mtsNoExist}" var="stdNoEx">
+                            <p:dataTable value="#{beanGrupos.stdNoExst}" var="stdNoEx">
                                 <p:column headerText="NUA">
-                                    <p:outputLabel value="#{stdNoEx.employeeNumber}"/>
+                                    <p:outputLabel value="#{stdNoEx.nua}"/>
                                 </p:column>
                                 
                                 <p:column headerText="Nombre">
@@ -60,8 +60,8 @@
                                 </p:column>
                             </p:dataTable>
                           
-                            <b:commandButton value="Agregar"      action="#{beanMaestros.agregarAutomatico()}"/>
-                                <b:commandButton value="Cancelar" action="#{beanMaestros.cancelarCargaAutomatica()}"/>
+                            <b:commandButton value="Agregar"      action="#{beanGrupos.agregarAutomatico()}"/>
+                                <b:commandButton value="Cancelar" action="#{beanGrupos.cancelarCargaAutomatica()}"/>
                         </p:panelGrid>
                         
                     </p:panel>
