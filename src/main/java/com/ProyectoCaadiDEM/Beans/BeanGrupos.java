@@ -26,6 +26,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -52,7 +53,7 @@ public class BeanGrupos implements Serializable {
     private List<Groups>     grpsFiltrados;
     private List<Students>   stdsSlct, stdsFlt;
     private List<Students>   stdsSlctG, stdsFltG; 
-    private List<Students>   stdNoExst = new ArrayList(), stdExst  = new ArrayList();
+    private List<Students>   stdNoExst, stdExst;
     private String           indxPrf, indxPrd;
    
     
@@ -360,39 +361,45 @@ public class BeanGrupos implements Serializable {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesContext ct = FacesContext.getCurrentInstance();
 
-        try {
+      
             barrerArchivoXl();
             context.execute("PF('dlgCargar').show();");
-            return;
-        } catch (Exception e) {
+           
+       
             ct.addMessage(null,
                     new FacesMessage("Error: ", "El archivo no tiene el formato correcto"));
-        }
+        
     }
     
     public void barrerArchivoXl () throws IOException{
       
+            this.stdExst       = new ArrayList<Students>();
+            this.stdNoExst     = new ArrayList<Students>();
+            
             XSSFWorkbook nb = new XSSFWorkbook(archivo.getInputstream());
             XSSFSheet nh = nb.getSheetAt(0);
 
             // conseguir la primera columna para representar al grupo
-            int gId = (int) nh.getRow(0).getCell(0).getNumericCellValue();
+            int gId = 1;
             String gIdTx = nh.getRow(0).getCell(1).getRichStringCellValue().getString();
             String gLuTx = nh.getRow(0).getCell(2).getRichStringCellValue().getString();
-            String gLvTx = nh.getRow(0).getCell(3).getRichStringCellValue().getString();
-            String gEmTx = nh.getRow(0).getCell(4).getRichStringCellValue().getString();
+            String gLvTx = String.valueOf((int)nh.getRow(0).getCell(3).getNumericCellValue());
+            String gEmTx = String.valueOf((int)nh.getRow(0).getCell(4).getNumericCellValue());
             int gPId = (int) nh.getRow(0).getCell(5).getNumericCellValue();
 
-            Groups gp = this.fcdGrupos.find(gId);
+            this.grpActual = this.fcdGrupos.find(gId);
             // buscar el grupo en la base de datos 
-            if (gp != null) // si no existe ya el grupo... crearlo 
-                gp = new Groups(gId, gLuTx, gLvTx, gIdTx);
+            if (this.grpActual != null) {// si no existe ya el grupo... crearlo 
+                this.grpActual = new Groups(gId, gLuTx, gLvTx, gIdTx);
+                this.grpActual.setVisible(Boolean.TRUE);
+                this.grpActual.setStudentsCollection( new ArrayList<Students>() );
+                this.fcdGrupos.create(grpActual);
+            }
             
             // saltarse una columna 
             // barrer todos los alumnos 
             for (int nr = 2; nr < nh.getLastRowNum() + 1; nr++) {
 
-                //
                 XSSFRow r = nh.getRow(nr);
                 XSSFCell cn = r.getCell(0); // nua
                 XSSFCell cN = r.getCell(1); // nombre
@@ -400,7 +407,7 @@ public class BeanGrupos implements Serializable {
                 XSSFCell cAM = r.getCell(3); // apellido M
                 XSSFCell cG = r.getCell(4); // genero
 
-                String cnV = cn.getRichStringCellValue().getString();
+                String cnV = String.valueOf((int) cn.getNumericCellValue()); 
                 String cNv = cN.getRichStringCellValue().getString();
                 String cAPv = cAP.getRichStringCellValue().getString();
                 String cAMv = cAM.getRichStringCellValue().getString();
@@ -413,16 +420,23 @@ public class BeanGrupos implements Serializable {
                     st.setVisible(Boolean.TRUE);
                     this.fcdEstudints.create(st);
                     this.stdNoExst.add(st);
+                    this.grpActual.getStudentsCollection().add(st);
 
-                } else // meterlo en la lista de existentes 
-                    this.stdExst.add(st);
-                
-                // enlazar estudiante y grupo
-                this.grpActual.getStudentsCollection().add(st);
-                this.grpActual.setVisible(Boolean.TRUE);
+                } else // meterlo en la lista de existentes {
+                {
+                    if( !st.getVisible() )
+                    {
+                        st.setVisible(Boolean.TRUE);
+                        stdNoExst.add(st);
+                        this.grpActual.getStudentsCollection().add(st);
+                    }
+                    else
+                        this.stdExst.add(st);
+                }
             }
 
             // persistir el grupo
+            this.grpActual.setVisible(Boolean.TRUE);
             this.fcdGrupos.edit(grpActual);
         
           

@@ -33,6 +33,7 @@
                         class="gridAdmiForm"
                         selection="#{beanEstudiantes.stdSeleccionados}"
                         rowKey="#{std.nua}" paginator="true"
+                        rowStyleClass="#{beanGrupos.listarStdSinGrupo().contains(std) eq true ? null:'stdAsigned'  }"
                         
                         rows="5"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
