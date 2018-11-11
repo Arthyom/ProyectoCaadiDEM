@@ -40,7 +40,7 @@
                         </h:panelGrid>
                         <hr/>
                         <p:panel header="Estudiantes en el Grupo" id="stdGrp" toggleable="true" styleClass="card box-solid box-primary" style="text-align: center; width: 720px; margin: 0 auto" >
-                            <p:dataTable value="#{beanGrupos.grpActual.studentsCollection}" var="stdG"
+                            <p:dataTable value="#{beanGrupos.listarItemsFromActual()}" var="stdG"
                                          rowKey="#{stdG.nua}" paginator="true" rows="10"
                                       paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
                                       {PreviousPageLink} {PageLinks} {NextPageLink}

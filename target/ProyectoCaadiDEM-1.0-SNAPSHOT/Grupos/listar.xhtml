@@ -54,8 +54,12 @@
                             <p:outputLabel value="#{std.learningUnit}"/>
                         </p:column>
                         
-                        <p:column headerText="Niel" filterBy="#{std.level}">
+                        <p:column headerText="Nivel" filterBy="#{std.level}">
                             <p:outputLabel value="#{std.level}"/>
+                        </p:column>
+                        
+                        <p:column headerText="# Estudiantes" >
+                            <p:outputLabel value="#{std.studentsCollection.size()}"/>
                         </p:column>
                         
                  

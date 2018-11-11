@@ -53,7 +53,7 @@ public class BeanGrupos implements Serializable {
     private List<Groups>     grpsFiltrados;
     private List<Students>   stdsSlct, stdsFlt;
     private List<Students>   stdsSlctG, stdsFltG; 
-    private List<Students>   stdNoExst, stdExst;
+    private List<Students>   stdNoExst, stdExst, stdNoVisi ;
     private String           indxPrf, indxPrd;
    
     
@@ -85,6 +85,23 @@ public class BeanGrupos implements Serializable {
         return t;
     }
     
+    public List<Students> listarItemsFromActual () {
+       
+        List<Students> g = new ArrayList();
+
+        if (this.grpActual != null) {
+            List<Students> s = (List<Students>) this.grpActual.getStudentsCollection();
+            for (Students si : s) {
+                if (si.getVisible()) {
+                    g.add(si);
+                }
+            }
+
+            return g;
+        }
+
+        return null;
+    }
     
     public List<Students> listarStdSinGrupo () {
         
@@ -375,6 +392,7 @@ public class BeanGrupos implements Serializable {
       
             this.stdExst       = new ArrayList<Students>();
             this.stdNoExst     = new ArrayList<Students>();
+            this.stdNoVisi     = new ArrayList<Students>();
             
             XSSFWorkbook nb = new XSSFWorkbook(archivo.getInputstream());
             XSSFSheet nh = nb.getSheetAt(0);
@@ -387,14 +405,14 @@ public class BeanGrupos implements Serializable {
             String gEmTx = String.valueOf((int)nh.getRow(0).getCell(4).getNumericCellValue());
             int gPId = (int) nh.getRow(0).getCell(5).getNumericCellValue();
 
-            this.grpActual = this.fcdGrupos.find(gId);
+            this.grpNuevo = this.fcdGrupos.find(gId);
             // buscar el grupo en la base de datos 
-            if (this.grpActual != null) {// si no existe ya el grupo... crearlo 
-                this.grpActual = new Groups(gId, gLuTx, gLvTx, gIdTx);
-                this.grpActual.setVisible(Boolean.TRUE);
-                this.grpActual.setStudentsCollection( new ArrayList<Students>() );
-                this.fcdGrupos.create(grpActual);
+            if (this.grpNuevo == null) {// si no existe ya el grupo... crearlo 
+                this.grpNuevo = new Groups(gId, gLuTx, gLvTx, gIdTx);
+                this.grpNuevo.setStudentsCollection( new ArrayList<Students>() );
             }
+
+                
             
             // saltarse una columna 
             // barrer todos los alumnos 
@@ -418,30 +436,61 @@ public class BeanGrupos implements Serializable {
                 if (st == null) {
                     st = new Students(cnV, cNv, cAPv, cAMv, cGV);
                     st.setVisible(Boolean.TRUE);
-                    this.fcdEstudints.create(st);
                     this.stdNoExst.add(st);
-                    this.grpActual.getStudentsCollection().add(st);
+                   
 
                 } else // meterlo en la lista de existentes {
                 {
                     if( !st.getVisible() )
                     {
                         st.setVisible(Boolean.TRUE);
-                        stdNoExst.add(st);
-                        this.grpActual.getStudentsCollection().add(st);
+                        stdNoVisi.add(st);
                     }
                     else
                         this.stdExst.add(st);
                 }
             }
-
-            // persistir el grupo
-            this.grpActual.setVisible(Boolean.TRUE);
-            this.fcdGrupos.edit(grpActual);
         
           
     }
+    
+    public boolean grpContStd ( Students st ){
+        List<Groups> g = this.listarValidos();
+        
+        for( Groups gi : g )
+           if( gi.getStudentsCollection().contains(st) )
+            return true;
+        
+            return false;
+                
+    }
+    
     public String agregarAutomatico(){
+
+        for (Students s : stdNoExst) {
+            if (!this.grpContStd(s)) {
+                fcdEstudints.create(s);
+                grpNuevo.getStudentsCollection().add(s);
+            }
+        }
+
+        for (Students s : stdNoVisi) {
+            if (!this.grpContStd(s)) {
+                fcdEstudints.edit(s);
+                grpNuevo.getStudentsCollection().add(s);
+            }
+        }
+
+        for (Students s : stdExst)
+            if (!this.grpContStd(s)) 
+                grpNuevo.getStudentsCollection().add(s);
+
+       
+       if( fcdGrupos.find( grpNuevo.getId() ) != null )
+           fcdGrupos.create(grpNuevo);
+       else
+           fcdGrupos.edit(grpNuevo);
+       
   
         
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
