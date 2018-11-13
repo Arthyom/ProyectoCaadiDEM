@@ -8,6 +8,7 @@ com/ProyectoCaadiDEM/Filtros/CacheControlPhaseListener.class
 com/ProyectoCaadiDEM/Entidades/Students_.class
 com/ProyectoCaadiDEM/Entidades/Visits.class
 com/ProyectoCaadiDEM/Entidades/Periods.class
+com/ProyectoCaadiDEM/Beans/transpilar.class
 com/ProyectoCaadiDEM/Entidades/Usuarios_.class
 com/ProyectoCaadiDEM/Beans/BeanIndex.class
 com/ProyectoCaadiDEM/Fachadas/StudentsFacade.class

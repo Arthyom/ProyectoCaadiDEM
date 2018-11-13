@@ -80,6 +80,10 @@
                             <b:navCommandLink value="Registrar" action="/Visitas/LogInSession" 
                                               rendered="#{beanPeriodos.conseguirActual() ne null and
                                                           beanGrupos.listarValidos().size() gt 0     }"/>
+                            
+                            <b:navCommandLink value="Transpilar" action="/Transpilar/transpilar" 
+                                              rendered="#{beanPeriodos.conseguirActual() ne null and
+                                                          beanGrupos.listarValidos().size() gt 0     }"/>
                         </b:navbarLinks>
                         
                         

@@ -48,7 +48,7 @@ public class BeanEstudiantes implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         FacesContext ct =  FacesContext.getCurrentInstance();
         
-        if(this.stdActual != null ){
+        if(this.stdActual != null && this.stdActual.getVisible()){
             ct.addMessage(null, 
               new FacesMessage("Deslogueado", "Hasta luego" ));
             return "/Estudiantes/estatus?faces-redirect=true";

@@ -179,6 +179,9 @@ public class BeanMaestros implements Serializable {
     
     public void buscarProfesor () {
         this.mtsActual = this.fcdMaestros.find(this.nue );
+        if( this.mtsActual != null )
+            if( !this.mtsActual.getVisible() )
+                this.mtsActual = null;
     }
     
     public String comprobarProfesor() {

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Plantillas/HCF.xhtml">
+
+            <ui:define name="content">
+                 <h:form id="form" >
+                    <b:growl id="usrGrowl" showSummary="true"/>
+                    <p:panel header="Transpilar Archivos JSON" id="pnlLog" styleClass="card box-solid box-primary smallFormLog" >
+                     
+          
+                        <h:panelGrid columns="2" class="gridLogForm">
+                                                  
+                           
+                            
+                            <p:panel>                               
+                                <h:form enctype="multipart/form-data">
+                                    <b:selectOneMenu value="#{transpilar.objetivo}" required="true" renderLabel="false" label="Objetivo">
+                                        <f:selectItem itemLabel="Seleccione Objetivo"/>
+                                        <f:selectItem itemLabel="Maestros"    itemValue="1"/>
+                                        <f:selectItem itemLabel="Estudiantes" itemValue="2"/>
+                                    </b:selectOneMenu>
+                                    
+                                    <b:growl showDetail="true"/>
+                                    <p:fileUpload   label="Seleccionar Archivo" value="#{transpilar.archivo}" mode="simple" skinSimple="true"/>
+                                    <b:commandButton value="Cargar" ajax="false"        
+                                    />
+                                </h:form>
+                            </p:panel>
+                            
+
+
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
