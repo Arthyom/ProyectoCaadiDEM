@@ -41,8 +41,13 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Groups.findValidos", query = "SELECT g FROM Groups g WHERE g.visible != 0 or g.visible is NULL")
     , @NamedQuery(name = "Groups.findByLearningUnit", query = "SELECT g FROM Groups g WHERE g.learningUnit = :learningUnit")
     , @NamedQuery(name = "Groups.findByLevel", query = "SELECT g FROM Groups g WHERE g.level = :level")
+    , @NamedQuery(name = "Groups.findByIdAlterno", query = "SELECT g FROM Groups g WHERE g.idAlterno = :idAlt")
     , @NamedQuery(name = "Groups.findByIdentifier", query = "SELECT g FROM Groups g WHERE g.identifier = :identifier")})
 public class Groups implements Serializable {
+
+    @Size(max = 45)
+    @Column(name = "idAlterno")
+    private String idAlterno;
 
     @Column(name = "visible")
     private Boolean visible;
@@ -193,6 +198,14 @@ public class Groups implements Serializable {
 
     public void setGroupMembersCollection(Collection<GroupMembers> groupMembersCollection) {
         this.groupMembersCollection = groupMembersCollection;
+    }
+
+    public String getIdAlterno() {
+        return idAlterno;
+    }
+
+    public void setIdAlterno(String idAlterno) {
+        this.idAlterno = idAlterno;
     }
     
 }

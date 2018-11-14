@@ -76,12 +76,25 @@ public class BeanGrupos implements Serializable {
     
     ////////////////////////////////////////////////////////////////////////////
     public List<Groups> listarValidos(){
-        List <Groups> t = this.fcdGrupos.getEm().createNamedQuery("Groups.findValidos").getResultList();
+        
+        List <Groups> t = null;
+        try{
+        t = this.fcdGrupos.getEm().createNamedQuery("Groups.findValidos").getResultList();
+        }
+        catch(Exception ex){
+            ;
+        }
         return t;
     }
     
     public List<Groups> listarItems () {
-     List <Groups> t = this.fcdGrupos.getEm().createNamedQuery("Groups.findValidos").getResultList();
+     List <Groups> t = null;
+        try{
+        t = this.fcdGrupos.getEm().createNamedQuery("Groups.findValidos").getResultList();
+        }
+        catch(Exception ex){
+            ;
+        }
         return t;
     }
     

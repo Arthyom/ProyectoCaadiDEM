@@ -27,12 +27,24 @@ public class BeanPeriodos implements Serializable {
     
     ////////////////////////////////////////////////////////////////////////////
     public List<Periods> listarValidos (){
-        List<Periods> t = this.fcdPeriodos.getEm().createNamedQuery("Periods.findValidos").getResultList();
+        List<Periods> t = null;
+        try{
+        t = this.fcdPeriodos.getEm().createNamedQuery("Periods.findValidos").getResultList();
+        }
+        catch(Exception ex){
+             ;
+        }
         return t;
     }
     
     public List<Periods> listarItems () {  
-        List<Periods> t = this.fcdPeriodos.getEm().createNamedQuery("Periods.findValidos").getResultList();
+        List<Periods> t = null;
+        try{
+        t = this.fcdPeriodos.getEm().createNamedQuery("Periods.findValidos").getResultList();
+        }
+        catch(Exception ex){
+             ;
+        }
         return t;
 
     }

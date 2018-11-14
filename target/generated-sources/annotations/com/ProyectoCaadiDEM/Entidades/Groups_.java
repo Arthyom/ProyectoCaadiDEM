@@ -9,7 +9,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2018-11-12T21:35:49")
+@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2018-11-13T17:54:28")
 @StaticMetamodel(Groups.class)
 public class Groups_ { 
 
@@ -17,6 +17,7 @@ public class Groups_ {
     public static volatile SingularAttribute<Groups, String> identifier;
     public static volatile SingularAttribute<Groups, Periods> periodId;
     public static volatile SingularAttribute<Groups, Boolean> visible;
+    public static volatile SingularAttribute<Groups, String> idAlterno;
     public static volatile SingularAttribute<Groups, String> level;
     public static volatile CollectionAttribute<Groups, Students> studentsCollection;
     public static volatile CollectionAttribute<Groups, GroupMembers> groupMembersCollection;

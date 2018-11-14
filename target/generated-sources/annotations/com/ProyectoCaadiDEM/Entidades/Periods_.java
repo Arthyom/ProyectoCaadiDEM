@@ -9,13 +9,14 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2018-11-12T21:35:49")
+@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2018-11-13T17:54:28")
 @StaticMetamodel(Periods.class)
 public class Periods_ { 
 
     public static volatile SingularAttribute<Periods, Boolean> actual;
     public static volatile CollectionAttribute<Periods, Visit> visitCollection;
     public static volatile SingularAttribute<Periods, Boolean> visible;
+    public static volatile SingularAttribute<Periods, String> idAlterno;
     public static volatile SingularAttribute<Periods, Date> start;
     public static volatile SingularAttribute<Periods, String> description;
     public static volatile CollectionAttribute<Periods, Visits> visitsCollection;

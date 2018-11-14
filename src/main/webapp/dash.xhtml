@@ -18,53 +18,38 @@
                 <p:panelGrid columns="3">
                     <b:growl showDetail="true"/>
                     <p:panel header="Periodos" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
-                            <p:outputLabel value="Peridos registrados: #{beanPeriodos.listarValidos().size()}"/>
-                            <p:outputLabel value="Periodo actual     : #{beanPeriodos.conseguirActual().description}"/>
-                            <p:outputLabel value="#{beanPeriodos.conseguirActual().start}">
-                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
-                            </p:outputLabel>
-                            <p:outputLabel value="#{beanPeriodos.conseguirActual().end}">
-                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
-                            </p:outputLabel>
+                        <p:panelGrid columns="2" >
+                           
                         </p:panelGrid>
                     </p:panel>
                     
                     <p:panel header="Grupos" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null }">
+                        <p:panelGrid columns="2" >
                             
-                            <p:outputLabel value="Numero de grupos: #{beanGrupos.listarValidos().size()}"/>
+                            
 
                         </p:panelGrid>
                     </p:panel>
                     
                     <p:panel header="Profesores" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null }">
-                            <p:outputLabel value="Maestros registrads #{beanMaestros.listarValidos().size()}"/>
-                        </p:panelGrid>
+                        
                     </p:panel>
                     
                     <p:panel header="Estudiantes" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null }">
-                            <p:outputLabel value="Estudiantes Registrados: #{beanEstudiantes.listarValidos().size()}"/>
-                            <p:outputLabel value="Estudiantes Disponibles: #{beanGrupos.listarStdSinGrupo().size()}"/>
-                            <p:outputLabel value="Estudiantes Asignados:   #{beanGrupos.contarStdConGrupo()}"/>
+                        <p:panelGrid columns="2" >
+
                         </p:panelGrid>
                     </p:panel>
                     
                     <p:panel header="Visitas" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
-                            <p:outputLabel value="Total de Visitas       : #"/>
-                            <p:outputLabel value="Estudiantes Disponibles: #{beanGrupos.listarStdSinGrupo().size()}"/>
-                            <p:outputLabel value="Estudiantes Asignados:   "/>
+                        <p:panelGrid columns="2" >
+                           
                         </p:panelGrid>
                     </p:panel>
                     
                     <p:panel header="Actual" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
-                            <p:outputLabel value="Visitantes en el sistema: #{beanVisit.verHash().size()}"/>
-                            <p:outputLabel value="Estudiantes Disponibles: #{beanGrupos.listarStdSinGrupo().size()}"/>
-                            <p:outputLabel value="Estudiantes Asignados:   "/>
+                        <p:panelGrid columns="2" >
+                            
                         </p:panelGrid>
                     </p:panel>
                     

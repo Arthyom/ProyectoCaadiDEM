@@ -46,15 +46,28 @@ public class BeanMaestros implements Serializable {
     
     ////////////////////////////////////////////////////////////////////////////
     public List<Teachers> listarValidos (){
-        List<Teachers> t = this.fcdMaestros.getEm().createNamedQuery("Teachers.findValidos").getResultList();
+        List<Teachers> t = null;
+        try{
+        t = this.fcdMaestros.getEm().createNamedQuery("Teachers.findValidos").getResultList();
+        }
+        catch(Exception ex){
+            ;
+        }
+        
         return t;
         
     }
     
     public List<Teachers> listarItems () {        
-        List<Teachers> t = this.fcdMaestros.getEm().createNamedQuery("Teachers.findValidos").getResultList();
+      List<Teachers> t = null;
+        try{
+        t = this.fcdMaestros.getEm().createNamedQuery("Teachers.findValidos").getResultList();
+        }
+        catch(Exception ex){
+            ;
+        }
+        
         return t;
-
     }
        
     

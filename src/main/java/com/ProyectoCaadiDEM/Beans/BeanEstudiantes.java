@@ -59,12 +59,24 @@ public class BeanEstudiantes implements Serializable {
     }
     
     public List<Students> listarValidos (){
-        List<Students> t = this.fcdEstudiante.getEm().createNamedQuery("Students.findValidos").getResultList();
+        List<Students> t = null;
+        
+        try{
+        t = this.fcdEstudiante.getEm().createNamedQuery("Students.findValidos").getResultList();
+        }catch(Exception ex){
+            ;
+        }
         return t;
     }
     
     public List<Students> listarItems () {   
-       List<Students> t = this.fcdEstudiante.getEm().createNamedQuery("Students.findValidos").getResultList();
+       List<Students> t = null;
+        
+        try{
+        t = this.fcdEstudiante.getEm().createNamedQuery("Students.findValidos").getResultList();
+        }catch(Exception ex){
+            ;
+        }
         return t;
     }
         
