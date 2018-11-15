@@ -32,6 +32,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 
 import org.primefaces.model.UploadedFile;
 
@@ -64,15 +67,24 @@ public class transpilar implements Serializable {
     ////////////////////////////////////////////////////////////////////////////
     
     // analizar el archivo json seleccinado
-    public void barrerJson() throws FileNotFoundException, IOException{
+    public void ocultarPanel ( String panel ){
         
-       
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesContext ct = FacesContext.getCurrentInstance();
+        context.execute("PF('"+panel+"').hide();");
+        mostrarMensaje();
+    }
+    
+    // analizar el archivo json seleccinado
+    public void mostrarPanel ( String panel ){
         
-        
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesContext ct = FacesContext.getCurrentInstance();
+        context.execute("PF('"+panel+"').show();");
     }
     
     public void insertarLineas (String [] lineas){
-        DateFormat formateador    = new SimpleDateFormat("dd-MM-yyyy");
+        DateFormat formateador    = new SimpleDateFormat("yyyy-MM-dd");
         DateFormat formateadorIso = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         
         ArrayList<String> buffer = new ArrayList();
@@ -181,17 +193,23 @@ public class transpilar implements Serializable {
         } catch (Exception ex) {
             ;
         }
+               
+    }
+    
+    public void mostrarMensaje () {
 
-        
-        
-        
+        FacesContext ct = FacesContext.getCurrentInstance();
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        ct.addMessage(null,
+                new FacesMessage("Informacion: ", "Transpilacion teminada con exito"));
+      
     }
     
     // ejecutar la insercion del archivo json parseado
     public void transpilarArchivo () throws IOException{
         
         if ( archivo != null ){
-            
+
             StringWriter w = new StringWriter();
             InputStream is = archivo.getInputstream();
 
@@ -203,7 +221,10 @@ public class transpilar implements Serializable {
                 String [] lineas = registro.split("\\n");
                 this.insertarLineas(lineas);
             }
-        }   
+            
+            this.mostrarPanel("status");
+        }
+        
     }
     
     

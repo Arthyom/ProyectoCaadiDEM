@@ -45,10 +45,6 @@
                         
                         <p:column selectionMode="multiple" width="50" />
                         
-                        <p:column headerText="Identificador" filterBy="#{std.id}">
-                            <p:outputLabel value="#{std.id}"/>
-                        </p:column>
-                        
                         <p:column headerText="Descripcion" filterBy="#{std.description}">
                             <p:outputLabel value="#{std.description}"/>
                         </p:column>
@@ -59,7 +55,7 @@
                             </p:outputLabel>
                         </p:column>
                         
-                        <p:column headerText="Apellido Materno">
+                        <p:column headerText="Fecha de Termino">
                             <p:outputLabel value="#{std.end}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </p:outputLabel>
