@@ -23,7 +23,7 @@
 
 
                 <h:form id="form">
-                    <b:growl id="logGrowl" showDetail="true"/>
+                    <b:growl id="logGrowl" showSummary="true"/>
                     <p:panel header="Registro" id="grupo" styleClass="card box-solid box-primary smallFormLog" >
                         
                         <div class="primIcon">
@@ -38,7 +38,7 @@
                                          
                             >
                                   <f:facet name="prepend">
-                                    <b:iconAwesome name="key" />
+                                    <b:iconAwesome name="lock" />
                                 </f:facet>
                             </b:inputText>
                             
@@ -58,14 +58,14 @@
 
                     <p:dialog widgetVar="logInConfirm" header="Confirmacion"
                               modal="true"  resizable="false" draggable="false"
-                              closable="false"
+                              closable="false" showEffect="fade" 
                     >
                         <h:form id="form2">
 
                             <p:outputLabel value="¿Eres:&#160;&#160;" style="font-size: 25px" /> 
                             <p:spacer />
                             <p:outputLabel id="inConf" value="#{beanVisit.stdActual.name} #{beanVisit.stdActual.firstLastName}
-                                 #{beanVisit.stdActual.secondLastName}?" style="font-size: 25px; font-weight: bolder; color: #036fab"/>
+                                 #{beanVisit.stdActual.secondLastName}?" style="font-size: 25px; font-weight: bolder; color: #092f56"/>
                             
                             
                             
@@ -89,7 +89,7 @@
                     </p:dialog>
                     
                     <p:dialog id="outConf" widgetVar="logOutConfirm" header="¿Qué Habilidad Trabajaste?"
-                              modal="true"  resizable="false" draggable="false" closable="false"
+                              modal="true"  resizable="false" draggable="false" closable="false" hideEffect="fade"
                     >
                         <h:form>
 
