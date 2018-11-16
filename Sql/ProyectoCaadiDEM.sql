@@ -176,5 +176,10 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-INSERT INTO `CaadiIntegrada`.`usuarios` (`nombre`, `pass`, `visible`) VALUES ('admin', '1820_AdCa?!', '1');
-INSERT INTO `CaadiIntegrada`.`usuarios` (`nombre`, `pass`, `visible`) VALUES ('students', '1820_AdSt?!', '1');
+ALTER TABLE `CaadiIntegrada`.`Groups` 
+ADD COLUMN `idAlterno` VARCHAR(45) NULL AFTER `visible`;
+ALTER TABLE `CaadiIntegrada`.`Periods` 
+ADD COLUMN `idAlterno` VARCHAR(45) NULL AFTER `visible`;
+
+INSERT INTO `CaadiIntegrada`.`usuarios` (`nombre`, `pass`, `visible`) VALUES ('admin', '1820_AdCa?!', b'1');
+INSERT INTO `CaadiIntegrada`.`usuarios` (`nombre`, `pass`, `visible`) VALUES ('students', '1820_AdSt?!', b'1');
