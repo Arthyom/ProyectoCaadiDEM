@@ -45,6 +45,13 @@ public class BeanMaestros implements Serializable {
     
     
     ////////////////////////////////////////////////////////////////////////////
+    public String limpiar(){
+        this.nue = null;
+        this.mtsActual = null;
+        
+        return "/index_Teachers?faces-redirect=true";
+    }
+    
     public List<Teachers> listarValidos (){
         List<Teachers> t = null;
         try{

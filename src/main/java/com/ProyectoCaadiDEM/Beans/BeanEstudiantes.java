@@ -43,6 +43,13 @@ public class BeanEstudiantes implements Serializable {
     
     
     ////////////////////////////////////////////////////////////////////////////
+    public String limpiar(){
+        this.nua = null;
+        this.stdActual = null;
+        
+        return "/index?faces-redirect=true";
+    }
+    
     public String buscarEstudiante ( ){
         this.stdActual = this.fcdEstudiante.find(this.nua);
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);

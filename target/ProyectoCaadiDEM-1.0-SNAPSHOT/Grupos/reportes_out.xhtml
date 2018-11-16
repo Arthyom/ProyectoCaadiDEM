@@ -25,14 +25,14 @@
                                          styleClass="btn btn-success btn-lg btn-block"/>
                         
                         <b:commandButton value="Salir" 
-                                         action="/index_Teachers.xhtml"
+                                         action="#{beanMaestros.limpiar()}"
                                          styleClass="btn btn-danger btn-lg btn-block"/>
                         
                         <br/>
                         
                         <b:selectOneMenu value="#{beanGrupos.grpIndex}" required="true" renderLabel="false" label="Grupo"
                                          requiredMessage="Seleccione un Grupo" >
-                            <f:selectItem itemLabel="Seleccione Grupo"/>
+                            <f:selectItem itemLabel="Seleccione Grupo" itemValue="0"/>
                             <f:selectItems value="#{beanMaestros.listarGruposXprof()}" 
                                            var="grp" 
                                            itemLabel="#{grp.id} #{grp.identifier} 

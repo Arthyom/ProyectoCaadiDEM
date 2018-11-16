@@ -75,6 +75,12 @@ public class BeanGrupos implements Serializable {
     private int grpIndex;
     
     ////////////////////////////////////////////////////////////////////////////
+    public String limpiar(){
+        this.grpActual = null;
+        
+        return "/dash?faces-redirect=true";
+    }
+    
     public List<Groups> listarValidos(){
         
         List <Groups> t = null;

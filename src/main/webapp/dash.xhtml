@@ -15,51 +15,42 @@
 
             <ui:define name="content" >
                 <h:form>
+                       <b:growl showDetail="true"/>
                 <p:panelGrid columns="3">
-                    <b:growl showDetail="true"/>
+                 
                     <p:panel header="Periodos" toggleable="true" styleClass="card box-solid box-primary">
                         <p:panelGrid columns="2" >
-                           
-                        </p:panelGrid>
-                    </p:panel>
-                    
-                    <p:panel header="Grupos" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" >
+                            <p:outputLabel value="Periodo actual:"/>   
+                            <p:outputLabel value="#{beanPeriodos.conseguirActual().description}"/>
                             
+                            <p:outputLabel value="Fecha de inicio:"/> 
+                            <p:outputLabel value="#{beanPeriodos.conseguirActual().start}">
+                                <f:convertDateTime pattern="dd/MMMM/yyyy"/>
+                            </p:outputLabel>
                             
-
-                        </p:panelGrid>
-                    </p:panel>
-                    
-                    <p:panel header="Profesores" toggleable="true" styleClass="card box-solid box-primary">
-                        
-                    </p:panel>
-                    
-                    <p:panel header="Estudiantes" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" >
-
-                        </p:panelGrid>
-                    </p:panel>
-                    
-                    <p:panel header="Visitas" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" >
-                           
+                            <p:outputLabel value="Fecha de termino:"/> 
+                            <p:outputLabel value="#{beanPeriodos.conseguirActual().end}">
+                                <f:convertDateTime pattern="dd/MMMM/yyyy "/>
+                            </p:outputLabel>
                         </p:panelGrid>
                     </p:panel>
                     
                     <p:panel header="Actual" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" >
-                            
+                         <p:panelGrid columns="1" >
+                             <p:outputLabel value="Número de Grupos:   #{beanGrupos.listarValidos().size()}"/>
+                             <p:outputLabel value="Número de Maestros:  #{beanPeriodos.listarItems().size()}"/>
+                             <p:outputLabel  value="Sesiones Activas: #{beanVisit.verHash().size()}"/>
                         </p:panelGrid>
                     </p:panel>
                     
-                    <p:panel header="Reportes" toggleable="true" styleClass="card box-solid box-primary">
-                        
+                    <p:panel header="Estudiantes" toggleable="true" styleClass="card box-solid box-primary">
+                         <p:panelGrid columns="1" >
+                            <p:outputLabel value="Total de Alumnos:   #{beanEstudiantes.listarValidos().size()}"/>
+                            <p:outputLabel value="Alumnos Asignados:  #{beanGrupos.contarStdConGrupo()}"/>
+                            <p:outputLabel value="Alumnos Libres: #{beanGrupos.listarStdSinGrupo().size()}"/>
+                        </p:panelGrid>
                     </p:panel>
-                    
-                    <p:panel header="Estadisticas" toggleable="true" styleClass="card box-solid box-primary">
-                        
-                    </p:panel>
+
                 </p:panelGrid>
                 </h:form>
             </ui:define>

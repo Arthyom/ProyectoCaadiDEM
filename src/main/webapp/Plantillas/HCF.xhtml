@@ -47,7 +47,7 @@
                                            actionListener="#{beanPeriodos.crearNuevoItem()}"/>
                             </b:dropMenu>
                             
-                            <b:dropMenu value="Grupos">
+                            <b:dropMenu value="Grupos" rendered="#{beanPeriodos.conseguirActual() ne null and beanMaestros.listarValidos().size() gt 0}">
                                 <b:navCommandLink value="Listar"  action="/Grupos/listar"/>
                                 <b:navCommandLink value="Reportes"  action="/Grupos/reportes"/>
                                 <b:navCommandLink  value="Agregar" action="/Grupos/agregar"
@@ -56,14 +56,14 @@
                                 
                             </b:dropMenu>
                             
-                            <b:dropMenu value="Maestros" >
+                            <b:dropMenu value="Maestros" rendered="#{beanPeriodos.conseguirActual() ne null}">
                                 <b:navCommandLink value="Listar"   action="/Maestros/listar"/>
                                 <b:navCommandLink  value="Agregar" action="/Maestros/agregar"
                                                    actionListener="#{beanMaestros.crearNuevoItem()}"/>
                                 <b:navCommandLink value="Cargar"   action="/Maestros/cargar"/>
                             </b:dropMenu>
                             
-                            <b:dropMenu value="Maestros" >
+                            <b:dropMenu value="Estudiantes" rendered="#{beanPeriodos.conseguirActual() ne null}" >
                                 <b:navCommandLink value="Listar"   action="/Estudiantes/listar"/>
                                 <b:navCommandLink  value="Agregar" action="/Estudiantes/agregar"
                                                    actionListener="#{beanEstudiantes.crearNuevoItem()}"/>
@@ -71,11 +71,9 @@
                             </b:dropMenu>
                             
                             <b:navCommandLink value="Asignar"   action="/Grupos/asignacion" 
-                                              />
+                                              rendered="#{beanGrupos.listarValidos().size() gt 0}"/>
                             <b:navCommandLink value="Conectados" action="/Estudiantes/registrados" 
-                                              />
-                            <b:navCommandLink value="Registrar" action="/Visitas/LogInSession" 
-                                              />
+                                              rendered="#{beanGrupos.listarValidos().size() gt 0}"/>
                             
                             <b:navCommandLink value="Transpilar" action="/Transpilar/transpilar" />
                         </b:navbarLinks>
