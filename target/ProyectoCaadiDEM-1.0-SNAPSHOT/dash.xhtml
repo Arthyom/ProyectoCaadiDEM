@@ -16,10 +16,10 @@
             <ui:define name="content" >
                 <h:form>
                        <b:growl showDetail="true"/>
-                <p:panelGrid columns="3">
+                       <h:panelGrid columns="3" class="commonFormList">
                  
                     <p:panel header="Periodos" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" >
+                        <h:panelGrid columns="2" >
                             <p:outputLabel value="Periodo actual:"/>   
                             <p:outputLabel value="#{beanPeriodos.conseguirActual().description}"/>
                             
@@ -32,26 +32,36 @@
                             <p:outputLabel value="#{beanPeriodos.conseguirActual().end}">
                                 <f:convertDateTime pattern="dd/MMMM/yyyy "/>
                             </p:outputLabel>
-                        </p:panelGrid>
+                        </h:panelGrid>
                     </p:panel>
                     
                     <p:panel header="Actual" toggleable="true" styleClass="card box-solid box-primary">
-                         <p:panelGrid columns="1" >
-                             <p:outputLabel value="Número de Grupos:   #{beanGrupos.listarValidos().size()}"/>
-                             <p:outputLabel value="Número de Maestros:  #{beanPeriodos.listarItems().size()}"/>
-                             <p:outputLabel  value="Sesiones Activas: #{beanVisit.verHash().size()}"/>
-                        </p:panelGrid>
+                         <h:panelGrid columns="2" >
+                             <p:outputLabel value="Número de Grupos: "/>
+                             <p:outputLabel value="#{beanGrupos.listarValidos().size()}"/>
+                             
+                             <p:outputLabel value="Número de Maestros: "/>
+                             <p:outputLabel value="#{beanPeriodos.listarItems().size()}"/>
+                             
+                             <p:outputLabel value="Sesiones Activas: "/>
+                             <p:outputLabel  value="#{beanVisit.verHash().size()}"/>
+                        </h:panelGrid>
                     </p:panel>
                     
                     <p:panel header="Estudiantes" toggleable="true" styleClass="card box-solid box-primary">
-                         <p:panelGrid columns="1" >
-                            <p:outputLabel value="Total de Alumnos:   #{beanEstudiantes.listarValidos().size()}"/>
-                            <p:outputLabel value="Alumnos Asignados:  #{beanGrupos.contarStdConGrupo()}"/>
-                            <p:outputLabel value="Alumnos Libres: #{beanGrupos.listarStdSinGrupo().size()}"/>
-                        </p:panelGrid>
+                         <h:panelGrid columns="2" >
+                            <p:outputLabel value="Total de Alumnos: "/>
+                            <p:outputLabel value="#{beanEstudiantes.listarValidos().size()}"/>
+                            
+                            <p:outputLabel value="Alumnos Asignados: "/>
+                            <p:outputLabel value="#{beanGrupos.contarStdConGrupo()}"/>
+                            
+                            <p:outputLabel value="Alumnos Libres: "/>
+                            <p:outputLabel value="#{beanGrupos.listarStdSinGrupo().size()}"/>
+                        </h:panelGrid>
                     </p:panel>
 
-                </p:panelGrid>
+                </h:panelGrid>
                 </h:form>
             </ui:define>
 

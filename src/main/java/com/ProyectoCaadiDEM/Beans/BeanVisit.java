@@ -433,11 +433,15 @@ public class BeanVisit implements Serializable {
         System.out.println("----------------------" +ips);
 
         //|| !"0:0:0:0:0:0:0:1".equals(ip)
+        
         if (!"0:0:0:0:0:0:0:1".equals(ip)) 
             if( p.length == 1)
                 FacesContext.getCurrentInstance().getExternalContext().redirect(s);
             else
                 FacesContext.getCurrentInstance().getExternalContext().redirect("404.xhtml");
+        
+        
+    
         
         /*
         if (!ips.equals(ip)) 
