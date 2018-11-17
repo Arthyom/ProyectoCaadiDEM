@@ -47,6 +47,13 @@ public class BeanEstudiantes implements Serializable {
         this.nua = null;
         this.stdActual = null;
         
+        return "/Estudiantes/listar?faces-redirect=true";
+    }
+    
+     public String limpiarOut(){
+        this.nua = null;
+        this.stdActual = null;
+        
         return "/index?faces-redirect=true";
     }
     

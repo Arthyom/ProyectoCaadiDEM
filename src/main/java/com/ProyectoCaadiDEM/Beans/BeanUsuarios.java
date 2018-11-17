@@ -47,6 +47,11 @@ public class BeanUsuarios {
         return "";            
     }
     
+    public void limpiar(){
+        this.usr = null;
+        this.pass = null;
+    }
+    
     public void mensajeRechazarAdmin () {
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         FacesContext context = FacesContext.getCurrentInstance();

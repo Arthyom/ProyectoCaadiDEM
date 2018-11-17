@@ -425,7 +425,7 @@ public class BeanVisit implements Serializable {
         
         String p[] = req.getRequestURL().toString().split("/ProyectoCaadiDEM/");
         String s = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() 
-                    + "/Visitas/OutLogIn.xhtml";
+                    + "/Visitas/Estudiantes.xhtml";
 
         String ip = req.getRemoteAddr();
         

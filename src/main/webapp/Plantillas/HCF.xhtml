@@ -24,9 +24,9 @@
         <div id="top">
             <ui:insert name="top" >
                 
-                <b:container fluid="false">
+                <b:container fluid="true">
                     <div class="banner">
-                        <p:graphicImage library="images" name="escudo.png" id="imageBanner"/>
+                        <b:image library="images" name="escudo.png"  class="img-responsive"/>
                     </div>
 
                     
@@ -91,7 +91,9 @@
                     
                     <p:overlayPanel for="overPanel" dynamic="true" >
                         <p:panel header="Administrador">
-                            <b:commandButton value="Cerrar Secion" class="btn-success" action="#{beanIndex.cerrarSesion()}"/>
+                            <b:commandButton value="Cerrar Secion" class="btn-success" 
+                                             actionListener="#{beanUsuarios.limpiar()}"
+                                             action="#{beanIndex.cerrarSesion()}"/>
                         </p:panel>
                     </p:overlayPanel>
                 </h:form>
