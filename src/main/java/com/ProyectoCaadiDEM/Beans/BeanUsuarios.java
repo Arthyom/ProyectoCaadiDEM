@@ -34,10 +34,12 @@ public class BeanUsuarios {
             if("admin".equals(this.usrActual.getNombre())){
                 mensajeAceptarAdmin();
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("admin", "admin");
+                this.usr = null; this.pass = null;
                 return "dash?faces-redirect=true";
             }
             else{
                 if("students".equals(this.usrActual.getNombre())){
+                    this.usr = null; this.pass = null;
                     mensajeAceptarStd();
                     return "/Visitas/LogInSession?faces-redirect=true";
                 }
