@@ -49,10 +49,17 @@
                             <b:commandButton value="Acceder" update=":form:usrGrowl :form:pnlLog"
                                               styleClass="btn-primary btn-lg btn-block "
                                              action="#{beanUsuarios.buscarUsuario()}"/>
+                            
+                            
 
                         </h:panelGrid>
                     </p:panel>
                 </h:form>
+                       
+                       <h:form>
+                           <p:outputLabel id="txtId" value="van intervalos: #{beanIndex.tiempo}"/>
+                            <p:poll interval="60" listener="#{beanIndex.contar()}" update="txtId"/>
+                       </h:form>
                     <br/>
                        <br/>
                        <br/>

@@ -12,7 +12,31 @@ import javax.servlet.http.HttpSession;
 @Named(value = "beanIndex")
 @SessionScoped
 public class BeanIndex implements Serializable {
+    
+   private int tiempo;
 
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+   
+   
+   
+   public void contar () throws IOException{
+       tiempo++;
+       
+       FacesContext.getCurrentInstance().getExternalContext().
+               redirect("/ProyectoCaadiDEM/Visitas/LogInSession.xhtml");
+       
+   }
+
+   
+   
+   
+   
     public String cerrarSesion (){
        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("admin");
@@ -29,6 +53,7 @@ public class BeanIndex implements Serializable {
     }
  
     public BeanIndex() {
+        this.tiempo = 0;
     }
     
 }
