@@ -34,6 +34,9 @@
                         <b:commandButton value="Descargar PDF"  styleClass="btn-success btn-lg btn-block"
                                         
                                          action="#{beanVisit.crearPdfParaStd(beanEstudiantes.stdActual.name, beanEstudiantes.stdActual.nua)}"/>   
+                        <b:commandButton value="Salir" 
+                                         action="#{beanEstudiantes.limpiar()}"
+                                         styleClass="btn btn-danger btn-lg btn-block"/>
                         <hr/>
 
                     </h:form>

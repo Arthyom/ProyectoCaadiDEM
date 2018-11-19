@@ -15,67 +15,53 @@
 
             <ui:define name="content" >
                 <h:form>
-                <p:panelGrid columns="3">
-                    <b:growl showDetail="true"/>
+                       <b:growl showDetail="true"/>
+                       <h:panelGrid columns="3" class="commonFormList">
+                 
                     <p:panel header="Periodos" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
-                            <p:outputLabel value="Peridos registrados: #{beanPeriodos.listarValidos().size()}"/>
-                            <p:outputLabel value="Periodo actual     : #{beanPeriodos.conseguirActual().description}"/>
-                            <p:outputLabel value="#{beanPeriodos.conseguirActual().start}">
-                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
-                            </p:outputLabel>
-                            <p:outputLabel value="#{beanPeriodos.conseguirActual().end}">
-                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
-                            </p:outputLabel>
-                        </p:panelGrid>
-                    </p:panel>
-                    
-                    <p:panel header="Grupos" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null }">
+                        <h:panelGrid columns="2" >
+                            <p:outputLabel value="Periodo actual:"/>   
+                            <p:outputLabel value="#{beanPeriodos.conseguirActual().description}"/>
                             
-                            <p:outputLabel value="Numero de grupos: #{beanGrupos.listarValidos().size()}"/>
-
-                        </p:panelGrid>
-                    </p:panel>
-                    
-                    <p:panel header="Profesores" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null }">
-                            <p:outputLabel value="Maestros registrads #{beanMaestros.listarValidos().size()}"/>
-                        </p:panelGrid>
-                    </p:panel>
-                    
-                    <p:panel header="Estudiantes" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null }">
-                            <p:outputLabel value="Estudiantes Registrados: #{beanEstudiantes.listarValidos().size()}"/>
-                            <p:outputLabel value="Estudiantes Disponibles: #{beanGrupos.listarStdSinGrupo().size()}"/>
-                            <p:outputLabel value="Estudiantes Asignados:   #{beanGrupos.contarStdConGrupo()}"/>
-                        </p:panelGrid>
-                    </p:panel>
-                    
-                    <p:panel header="Visitas" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
-                            <p:outputLabel value="Total de Visitas       : #"/>
-                            <p:outputLabel value="Estudiantes Disponibles: #{beanGrupos.listarStdSinGrupo().size()}"/>
-                            <p:outputLabel value="Estudiantes Asignados:   "/>
-                        </p:panelGrid>
+                            <p:outputLabel value="Fecha de inicio:"/> 
+                            <p:outputLabel value="#{beanPeriodos.conseguirActual().start}">
+                                <f:convertDateTime pattern="dd/MMMM/yyyy"/>
+                            </p:outputLabel>
+                            
+                            <p:outputLabel value="Fecha de termino:"/> 
+                            <p:outputLabel value="#{beanPeriodos.conseguirActual().end}">
+                                <f:convertDateTime pattern="dd/MMMM/yyyy "/>
+                            </p:outputLabel>
+                        </h:panelGrid>
                     </p:panel>
                     
                     <p:panel header="Actual" toggleable="true" styleClass="card box-solid box-primary">
-                        <p:panelGrid columns="2" rendered="#{beanPeriodos.conseguirActual() ne null}">
-                            <p:outputLabel value="Visitantes en el sistema: #{beanVisit.verHash().size()}"/>
-                            <p:outputLabel value="Estudiantes Disponibles: #{beanGrupos.listarStdSinGrupo().size()}"/>
-                            <p:outputLabel value="Estudiantes Asignados:   "/>
-                        </p:panelGrid>
+                         <h:panelGrid columns="2" >
+                             <p:outputLabel value="Número de Grupos: "/>
+                             <p:outputLabel value="#{beanGrupos.listarValidos().size()}"/>
+                             
+                             <p:outputLabel value="Número de Maestros: "/>
+                             <p:outputLabel value="#{beanPeriodos.listarItems().size()}"/>
+                             
+                             <p:outputLabel value="Sesiones Activas: "/>
+                             <p:outputLabel  value="#{beanVisit.verHash().size()}"/>
+                        </h:panelGrid>
                     </p:panel>
                     
-                    <p:panel header="Reportes" toggleable="true" styleClass="card box-solid box-primary">
-                        
+                    <p:panel header="Estudiantes" toggleable="true" styleClass="card box-solid box-primary">
+                         <h:panelGrid columns="2" >
+                            <p:outputLabel value="Total de Alumnos: "/>
+                            <p:outputLabel value="#{beanEstudiantes.listarValidos().size()}"/>
+                            
+                            <p:outputLabel value="Alumnos Asignados: "/>
+                            <p:outputLabel value="#{beanGrupos.contarStdConGrupo()}"/>
+                            
+                            <p:outputLabel value="Alumnos Libres: "/>
+                            <p:outputLabel value="#{beanGrupos.listarStdSinGrupo().size()}"/>
+                        </h:panelGrid>
                     </p:panel>
-                    
-                    <p:panel header="Estadisticas" toggleable="true" styleClass="card box-solid box-primary">
-                        
-                    </p:panel>
-                </p:panelGrid>
+
+                </h:panelGrid>
                 </h:form>
             </ui:define>
 

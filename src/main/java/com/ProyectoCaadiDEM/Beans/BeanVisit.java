@@ -120,25 +120,18 @@ public class BeanVisit implements Serializable {
     public void crearVisita () {
 
         // buscar el NUA y regresar al estudiante
-       Students st = fcdEstudiante.find(this.nua);
-       
-       if ( st != null ){
-           
-           // crear una nueva visita, buscar al periodo actual
-           this.vstActual = new Visit(2, new Date() );
-           this.stdActual = st;
-           this.prdActual = fcdPeriodo.conseguirPrdActual();
-           this.vstActual.setNua(st);
-           this.vstActual.setPeriodId(prdActual);
-           
-           return;
-       }
-       
-       this.stdActual = null;
-       
-       
-       
+        this.stdActual = fcdEstudiante.find(this.nua);
+
+        if (stdActual != null && stdActual.getVisible()) {
+            // crear una nueva visita, buscar al periodo actual
+            this.vstActual = new Visit(2, new Date());
+            this.prdActual = fcdPeriodo.conseguirPrdActual();
+            this.vstActual.setNua(stdActual);
+            this.vstActual.setPeriodId(prdActual);
+        } else 
+            this.stdActual = null;
     }
+    
    public String verificar () {
       Map<String, Object> mv = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
        if( this.prdActual != null && this.stdActual != null && !mv.containsKey(this.nua)){
@@ -438,13 +431,26 @@ public class BeanVisit implements Serializable {
         
         System.out.println("----------------------" +ip);
         System.out.println("----------------------" +ips);
+
+        //|| !"0:0:0:0:0:0:0:1".equals(ip)
         
-        if (!"0:0:0:0:0:0:0:1".equals(ip) || ip.equals(ips)) {
+        if (!"0:0:0:0:0:0:0:1".equals(ip)) 
             if( p.length == 1)
                 FacesContext.getCurrentInstance().getExternalContext().redirect(s);
             else
-                 FacesContext.getCurrentInstance().getExternalContext().redirect("404.xhtml");
-        }
+                FacesContext.getCurrentInstance().getExternalContext().redirect("404.xhtml");
+        
+        
+    
+        
+        /*
+        if (!ips.equals(ip)) 
+            if( p.length == 1)
+                FacesContext.getCurrentInstance().getExternalContext().redirect(s);
+            else
+                FacesContext.getCurrentInstance().getExternalContext().redirect("404.xhtml");
+        */
+        
     }
     
     public void pieGrafPdf (){

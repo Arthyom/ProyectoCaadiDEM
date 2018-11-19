@@ -26,6 +26,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -52,7 +53,7 @@ public class BeanGrupos implements Serializable {
     private List<Groups>     grpsFiltrados;
     private List<Students>   stdsSlct, stdsFlt;
     private List<Students>   stdsSlctG, stdsFltG; 
-    private List<Students>   stdNoExst = new ArrayList(), stdExst  = new ArrayList();
+    private List<Students>   stdNoExst, stdExst, stdNoVisi ;
     private String           indxPrf, indxPrd;
    
     
@@ -74,23 +75,58 @@ public class BeanGrupos implements Serializable {
     private int grpIndex;
     
     ////////////////////////////////////////////////////////////////////////////
+    public String limpiar(){
+        this.grpActual = null;
+        
+        return "/dash?faces-redirect=true";
+    }
+    
     public List<Groups> listarValidos(){
-        List <Groups> t = this.fcdGrupos.getEm().createNamedQuery("Groups.findValidos").getResultList();
+        
+        List <Groups> t = null;
+        try{
+        t = this.fcdGrupos.getEm().createNamedQuery("Groups.findValidos").getResultList();
+        }
+        catch(Exception ex){
+            ;
+        }
         return t;
     }
     
     public List<Groups> listarItems () {
-     List <Groups> t = this.fcdGrupos.getEm().createNamedQuery("Groups.findValidos").getResultList();
+     List <Groups> t = null;
+        try{
+        t = this.fcdGrupos.getEm().createNamedQuery("Groups.findValidos").getResultList();
+        }
+        catch(Exception ex){
+            ;
+        }
         return t;
     }
     
+    public List<Students> listarItemsFromActual () {
+       
+        List<Students> g = new ArrayList();
+
+        if (this.grpActual != null) {
+            List<Students> s = (List<Students>) this.grpActual.getStudentsCollection();
+            for (Students si : s) {
+                if (si.getVisible()) {
+                    g.add(si);
+                }
+            }
+
+            return g;
+        }
+
+        return null;
+    }
     
     public List<Students> listarStdSinGrupo () {
         
         List<Students> estTotal  = fcdEstudints.findAll();
         List<Students> estLibrs  = fcdEstudints.findAll();
-        List<Groups>   grpTotal = fcdGrupos.findAll();       
-        
+        List<Groups>   grpTotal = fcdGrupos.findAll();               
         
         for( int i = 0 ; i < estTotal.size() ; i ++ ){
             if( !estTotal.get(i).getVisible() ){
@@ -98,9 +134,7 @@ public class BeanGrupos implements Serializable {
                 estLibrs.remove( estLibrs.get(i) );
             }
         }
-        
-        
-        
+
         for( Students ei : estTotal )
             for( Groups gi : grpTotal )
                 for( Students eii : gi.getStudentsCollection() )
@@ -363,39 +397,46 @@ public class BeanGrupos implements Serializable {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesContext ct = FacesContext.getCurrentInstance();
 
-        try {
+      
             barrerArchivoXl();
             context.execute("PF('dlgCargar').show();");
-            return;
-        } catch (Exception e) {
+           
+       
             ct.addMessage(null,
                     new FacesMessage("Error: ", "El archivo no tiene el formato correcto"));
-        }
+        
     }
     
     public void barrerArchivoXl () throws IOException{
       
+            this.stdExst       = new ArrayList<Students>();
+            this.stdNoExst     = new ArrayList<Students>();
+            this.stdNoVisi     = new ArrayList<Students>();
+            
             XSSFWorkbook nb = new XSSFWorkbook(archivo.getInputstream());
             XSSFSheet nh = nb.getSheetAt(0);
 
             // conseguir la primera columna para representar al grupo
-            int gId = (int) nh.getRow(0).getCell(0).getNumericCellValue();
+            int gId = 1;
             String gIdTx = nh.getRow(0).getCell(1).getRichStringCellValue().getString();
             String gLuTx = nh.getRow(0).getCell(2).getRichStringCellValue().getString();
-            String gLvTx = nh.getRow(0).getCell(3).getRichStringCellValue().getString();
-            String gEmTx = nh.getRow(0).getCell(4).getRichStringCellValue().getString();
+            String gLvTx = String.valueOf((int)nh.getRow(0).getCell(3).getNumericCellValue());
+            String gEmTx = String.valueOf((int)nh.getRow(0).getCell(4).getNumericCellValue());
             int gPId = (int) nh.getRow(0).getCell(5).getNumericCellValue();
 
-            Groups gp = this.fcdGrupos.find(gId);
+            this.grpNuevo = this.fcdGrupos.find(gId);
             // buscar el grupo en la base de datos 
-            if (gp != null) // si no existe ya el grupo... crearlo 
-                gp = new Groups(gId, gLuTx, gLvTx, gIdTx);
+            if (this.grpNuevo == null) {// si no existe ya el grupo... crearlo 
+                this.grpNuevo = new Groups(gId, gLuTx, gLvTx, gIdTx);
+                this.grpNuevo.setStudentsCollection( new ArrayList<Students>() );
+            }
+
+                
             
             // saltarse una columna 
             // barrer todos los alumnos 
             for (int nr = 2; nr < nh.getLastRowNum() + 1; nr++) {
 
-                //
                 XSSFRow r = nh.getRow(nr);
                 XSSFCell cn = r.getCell(0); // nua
                 XSSFCell cN = r.getCell(1); // nombre
@@ -403,7 +444,7 @@ public class BeanGrupos implements Serializable {
                 XSSFCell cAM = r.getCell(3); // apellido M
                 XSSFCell cG = r.getCell(4); // genero
 
-                String cnV = cn.getRichStringCellValue().getString();
+                String cnV = String.valueOf((int) cn.getNumericCellValue()); 
                 String cNv = cN.getRichStringCellValue().getString();
                 String cAPv = cAP.getRichStringCellValue().getString();
                 String cAMv = cAM.getRichStringCellValue().getString();
@@ -413,22 +454,62 @@ public class BeanGrupos implements Serializable {
                 Students st = this.fcdEstudints.find(cnV);
                 if (st == null) {
                     st = new Students(cnV, cNv, cAPv, cAMv, cGV);
-                    this.fcdEstudints.create(st);
+                    st.setVisible(Boolean.TRUE);
                     this.stdNoExst.add(st);
+                   
 
-                } else // meterlo en la lista de existentes 
-                    this.stdExst.add(st);
-                
-                // enlazar estudiante y grupo
-                this.grpActual.getStudentsCollection().add(st);
+                } else // meterlo en la lista de existentes {
+                {
+                    if( !st.getVisible() )
+                    {
+                        st.setVisible(Boolean.TRUE);
+                        stdNoVisi.add(st);
+                    }
+                    else
+                        this.stdExst.add(st);
+                }
             }
-
-            // persistir el grupo
-            this.fcdGrupos.edit(grpActual);
         
           
     }
+    
+    public boolean grpContStd ( Students st ){
+        List<Groups> g = this.listarValidos();
+        
+        for( Groups gi : g )
+           if( gi.getStudentsCollection().contains(st) )
+            return true;
+        
+            return false;
+                
+    }
+    
     public String agregarAutomatico(){
+
+        for (Students s : stdNoExst) {
+            if (!this.grpContStd(s)) {
+                fcdEstudints.create(s);
+                grpNuevo.getStudentsCollection().add(s);
+            }
+        }
+
+        for (Students s : stdNoVisi) {
+            if (!this.grpContStd(s)) {
+                fcdEstudints.edit(s);
+                grpNuevo.getStudentsCollection().add(s);
+            }
+        }
+
+        for (Students s : stdExst)
+            if (!this.grpContStd(s)) 
+                grpNuevo.getStudentsCollection().add(s);
+
+       
+       if( fcdGrupos.find( grpNuevo.getId() ) != null )
+           fcdGrupos.create(grpNuevo);
+       else
+           fcdGrupos.edit(grpNuevo);
+       
   
         
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
@@ -448,7 +529,9 @@ public class BeanGrupos implements Serializable {
         this.archivo = archivo;
     }
     
-    
+    public void cancelarCargaAutomatica(){
+        
+    }
     
     
     

@@ -20,6 +20,10 @@
                                          action="#{beanGrupos.crearPDF()}"
                                          styleClass="btn btn-success btn-lg btn-block"/>
                         
+                        <b:commandButton value="Salir" 
+                                         action="#{beanGrupos.limpiar()}"
+                                         styleClass="btn btn-danger btn-lg btn-block"/>
+                        
                         <br/>
                         
                         <b:selectOneMenu value="#{beanGrupos.grpIndex}" required="true" renderLabel="false" label="Grupo"

@@ -43,12 +43,19 @@ public class BeanEstudiantes implements Serializable {
     
     
     ////////////////////////////////////////////////////////////////////////////
+    public String limpiar(){
+        this.nua = null;
+        this.stdActual = null;
+        
+        return "/index?faces-redirect=true";
+    }
+    
     public String buscarEstudiante ( ){
         this.stdActual = this.fcdEstudiante.find(this.nua);
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         FacesContext ct =  FacesContext.getCurrentInstance();
         
-        if(this.stdActual != null ){
+        if(this.stdActual != null && this.stdActual.getVisible()){
             ct.addMessage(null, 
               new FacesMessage("Deslogueado", "Hasta luego" ));
             return "/Estudiantes/estatus?faces-redirect=true";
@@ -59,12 +66,24 @@ public class BeanEstudiantes implements Serializable {
     }
     
     public List<Students> listarValidos (){
-        List<Students> t = this.fcdEstudiante.getEm().createNamedQuery("Students.findValidos").getResultList();
+        List<Students> t = null;
+        
+        try{
+        t = this.fcdEstudiante.getEm().createNamedQuery("Students.findValidos").getResultList();
+        }catch(Exception ex){
+            ;
+        }
         return t;
     }
     
     public List<Students> listarItems () {   
-       List<Students> t = this.fcdEstudiante.getEm().createNamedQuery("Students.findValidos").getResultList();
+       List<Students> t = null;
+        
+        try{
+        t = this.fcdEstudiante.getEm().createNamedQuery("Students.findValidos").getResultList();
+        }catch(Exception ex){
+            ;
+        }
         return t;
     }
         
@@ -157,10 +176,12 @@ public class BeanEstudiantes implements Serializable {
            if(ns != null)
                 // si el estudiante ya existe se agraga a la lista de nuevo  
                 this.stdExst.add(ns);
-           else
+           else{
                // si el estudiante no existe en la base de datos
-               this.stdNoExst.add( new Students( String.valueOf(cnV), cAPv, cAMv, cNv, cGV) );
-           
+              Students s = new Students( String.valueOf(cnV), cAPv, cAMv, cNv, cGV);
+              s.setVisible(Boolean.TRUE);
+              this.stdNoExst.add(s);
+           }
        }
     }
     public String agregarAutomatico(){

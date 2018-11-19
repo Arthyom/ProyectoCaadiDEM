@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Plantillas/HCF.xhtml">
+
+            <ui:define name="content">
+                
+           
+                <p:panel header="Transpilar Archivos JSON" id="pnlLog" styleClass="card box-solid box-primary smallFormLog" >      
+                    <h:panelGrid columns="2" class="gridLogForm">                                                
+                        <p:panel>         
+                            
+
+
+                            <h:form id="form" enctype="multipart/form-data">
+                                <b:growl showDetail="true"/>
+                                
+
+                            
+                              
+                                <b:selectOneMenu value="#{transpilar.objetivo}" required="true" renderLabel="false" label="Objetivo">
+                                    <f:selectItem itemLabel="Seleccione Objetivo"/>
+                                    <f:selectItem itemLabel="Maestros"    itemValue="2"/>
+                                    <f:selectItem itemLabel="Estudiantes" itemValue="1"/>
+                                    <f:selectItem itemLabel="Periodos" itemValue="3"/>
+                                    <f:selectItem itemLabel="Grupos" itemValue="4"/>
+                                    
+                                    <f:selectItem itemLabel="Miembros" itemValue="5"/>
+                                    
+                                    <f:selectItem itemLabel="Visitas" itemValue="6"/>
+                                </b:selectOneMenu>
+                                
+                                <p:fileUpload   label="Seleccionar Archivo" value="#{transpilar.archivo}" mode="simple" skinSimple="true"/>
+                                <b:commandButton value="Cargar" ajax="false" 
+                                                 styleClass="btn btn-primary"
+                                                 update="inf"
+                                                 onclick="PF('total').show()"
+                                                 action="#{transpilar.transpilarArchivo()}"
+                                                 />
+                            </h:form>
+                            
+                            
+                            <p:dialog id="inf"    showEffect="slide" hideEffect="slide" header="Transpilando" widgetVar="total" modal="true" resizable="false" closable="false"  draggable="false" height="90" width="500">
+
+                                <b:progressBar value="100" animated="true" renderCaption="false"/>
+                                <p:outputLabel value="Por favor espere "/>
+                                <p:outputLabel value="(La transpilacion puede tardar varios minutos)"/>
+
+                            </p:dialog>
+                            
+                            <p:dialog  showEffect="slide" hideEffect="slide" header="Resultados" widgetVar="status" modal="true" resizable="false" closable="false"  draggable="false" height="90" width="800">
+                                    <h:form>
+                                        <b:commandButton action="#{transpilar.ocultarPanel('status')}" value="Aceptar"/>
+                                    </h:form>
+                            </p:dialog>
+                            
+                        </p:panel>
+                    </h:panelGrid>
+                </p:panel>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

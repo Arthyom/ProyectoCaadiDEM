@@ -43,6 +43,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Periods.findByActual", query = "SELECT p FROM Periods p WHERE p.actual = true")})
 public class Periods implements Serializable {
 
+    @Size(max = 45)
+    @Column(name = "idAlterno")
+    private String idAlterno;
+
     @Column(name = "visible")
     private Boolean visible;
     @OneToMany(mappedBy = "periodid")
@@ -185,6 +189,14 @@ public class Periods implements Serializable {
 
     public void setVisitsCollection(Collection<Visits> visitsCollection) {
         this.visitsCollection = visitsCollection;
+    }
+
+    public String getIdAlterno() {
+        return idAlterno;
+    }
+
+    public void setIdAlterno(String idAlterno) {
+        this.idAlterno = idAlterno;
     }
     
 }
