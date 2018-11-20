@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/Plantillas/blankOut.xhtml">
+
+            
+            <ui:define name="content">
+                <h:outputScript>
+                    function ext() {
+                    this.cfg.seriesDefaults.rendererOptions.varyBarColor = true;
+                    this.cfg.legend = {show: false};
+
+                    this.cfg.highlighter={show: true,tooltipAxes: 'y',
+                    useAxesFormatters: false,tooltipFormatString: "%'d"};
+                    }                               
+                </h:outputScript>  
+                
+                <p:panel header="Reporte para:  #{beanEstudiantes.stdActual.name} 
+                         #{beanEstudiantes.stdActual.firstLastName}
+                         #{beanEstudiantes.stdActual.secondLastName} "
+                         styleClass="card box-solid box-primary" style="text-align: center; width: 90%; margin: 0 auto"
+                >
+                    <p:outputLabel value="Total de Horas: #{beanVisit.contarHoras( beanEstudiantes.stdActual )}" />
+                    <h:form>
+                        
+                        <b:commandButton value="Descargar PDF"  styleClass="btn-success btn-lg btn-block"
+                                        
+                                         action="#{beanVisit.crearPdfParaStd(beanEstudiantes.stdActual.name, beanEstudiantes.stdActual.nua)}"/>   
+                        <b:commandButton value="Salir" 
+                                         action="#{beanEstudiantes.limpiarOut()}"
+                                         styleClass="btn btn-danger btn-lg btn-block"/>
+                        <hr/>
+
+                    </h:form>
+                    <p:panel header="Detalles de Visitas" styleClass="card box-solid box-primary" toggleable="true">
+                    <p:dataTable var="vst" value="#{beanVisit.listarItems2Std(beanEstudiantes.stdActual.nua)}" styleClass="card box-solid box-default" >
+                       
+                        
+                        <p:column headerText="Inicio">
+                            <p:outputLabel value="#{vst.start}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
+                            </p:outputLabel>
+                        </p:column>
+                        
+                        <p:column headerText="Final">
+                            <p:outputLabel value="#{vst.end}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
+                            </p:outputLabel>
+                        </p:column>
+                        
+                        <p:column headerText="Duracion">
+                            <p:outputLabel value="#{beanVisit.contarLapso(vst)}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Habilidad">
+                            <p:outputLabel value="#{vst.skill}"/>
+                        </p:column>
+                        
+                    </p:dataTable>
+                    </p:panel>
+                    
+                    <br/>
+
+                    <p:panel header="Graficos de Analisis" toggleable="true">
+
+                            <p:chart type="pie" widgetVar="pie" model="#{beanVisit.crearVisitPieParaStd(beanEstudiantes.stdActual.nua)}" 
+                                     responsive="true"/>
+                            
+                            <br/>
+                            
+                            <p:chart type="bar" model="#{beanVisit.crearVisitBarParaStd(beanEstudiantes.stdActual.nua)}" 
+                                     responsive="true"/>
+
+                    </p:panel>
+                </p:panel>
+                
+                
+              
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

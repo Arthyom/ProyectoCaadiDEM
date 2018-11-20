@@ -54,7 +54,7 @@ public class BeanEstudiantes implements Serializable {
         this.nua = null;
         this.stdActual = null;
         
-        return "/index?faces-redirect=true";
+        return "/Students?faces-redirect=true";
     }
     
     public String buscarEstudiante ( ){
@@ -65,7 +65,7 @@ public class BeanEstudiantes implements Serializable {
         if(this.stdActual != null && this.stdActual.getVisible()){
             ct.addMessage(null, 
               new FacesMessage("Deslogueado", "Hasta luego" ));
-            return "/Estudiantes/estatus?faces-redirect=true";
+            return "/StudentsReport?faces-redirect=true";
         }
         ct.addMessage(null, 
               new FacesMessage("Error", "No se ha encontrado el NUA" ));

@@ -49,7 +49,7 @@ public class BeanMaestros implements Serializable {
         this.nue = null;
         this.mtsActual = null;
         
-        return "/index_Teachers?faces-redirect=true";
+        return "/Teachers?faces-redirect=true";
     }
     
     public List<Teachers> listarValidos (){
@@ -214,7 +214,7 @@ public class BeanMaestros implements Serializable {
                     new FacesMessage("Error", "No se encontro profesor"));
             return null;
         }
-        return "Grupos/reportes_out.xhtml?faces-redirect=true";
+        return "TeachersReport?faces-redirect=true";
     }
 
     ////////////////////////////////////////////////////////////////////////////

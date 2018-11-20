@@ -1,33 +1,3 @@
-<<<<<<< HEAD
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Entidades\Students.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Beans\BeanEstudiantes.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Fachadas\VisitsFacade.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Beans\BeanGrupos.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Entidades\Visits.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Fachadas\TeachersFacade.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Beans\BeanVisit.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Entidades\Groups.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Beans\BeanMaestros.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Entidades\Usuarios.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Beans\BeanUsuarios.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Fachadas\AbstractFacade.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Beans\GroupMembersPK.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Filtros\CacheControlPhaseListener.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Beans\BeanPeriodos.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Entidades\Teachers.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Fachadas\GroupsFacade.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Beans\GroupMembers.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Modelos\Visitantes.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Fachadas\VisitFacade.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Beans\BeanUtileria.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Beans\BeanIndex.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Entidades\Visit.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Entidades\Periods.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Fachadas\PeriodsFacade.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Fachadas\UsuariosFacade.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Beans\BeanVisitas.java
-C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Fachadas\StudentsFacade.java
-=======
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Entidades/Visits.java
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Fachadas/UsuariosFacade.java
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Beans/BeanMaestros.java
@@ -57,4 +27,3 @@ C:\Users\Frodo\Documents\ProyectoCaadiDEM\src\main\java\com\ProyectoCaadiDEM\Fac
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Beans/transpilar.java
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Beans/BeanVisitas.java
 /home/frodo/documents/ProyectoCaadiDEM/src/main/java/com/ProyectoCaadiDEM/Beans/GroupMembers.java
->>>>>>> 3be2a308c842fb0f569a14da99c574a004a8e46b

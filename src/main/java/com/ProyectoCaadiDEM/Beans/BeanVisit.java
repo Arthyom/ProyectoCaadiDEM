@@ -441,9 +441,9 @@ public class BeanVisit implements Serializable {
         HttpServletRequest req = (HttpServletRequest) FacesContext.
                 getCurrentInstance().getExternalContext().getRequest();
         
-        String p[] = req.getRequestURL().toString().split("/ProyectoCaadiDEM/");
+        String [] p = req.getRequestURL().toString().split("/");
         String s = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath() 
-                    + "/Visitas/Estudiantes.xhtml";
+                    + "/Students.xhtml";
 
         String ip = req.getRemoteAddr();
         
@@ -452,23 +452,17 @@ public class BeanVisit implements Serializable {
 
         //|| !"0:0:0:0:0:0:0:1".equals(ip)
         
-        if (!"0:0:0:0:0:0:0:1".equals(ip)) 
-            if( p.length == 1)
-                FacesContext.getCurrentInstance().getExternalContext().redirect(s);
-            else
-                FacesContext.getCurrentInstance().getExternalContext().redirect("404.xhtml");
-        
-        
-    
-        
-        /*
-        if (!ips.equals(ip)) 
-            if( p.length == 1)
-                FacesContext.getCurrentInstance().getExternalContext().redirect(s);
-            else
-                FacesContext.getCurrentInstance().getExternalContext().redirect("404.xhtml");
-        */
-        
+        switch (ip) {
+            case "0:0:0:0:0:0:0:1":case "127.0.0.1":return;
+            
+            default:
+                if (!ips.equals(ip)) 
+                    if( p.length < 5 )
+                        FacesContext.getCurrentInstance().getExternalContext().redirect(s);
+                    else
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoCaadiDEM/404.xhtml");
+            break;
+        }  
     }
     
     public void pieGrafPdf (){

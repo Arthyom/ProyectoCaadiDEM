@@ -5,7 +5,7 @@
         <property name="serverName" value="localhost"/>
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="CaadiIntegrada"/>
-        <property name="User" value="root"/>
+        <property name="User" value="frodo"/>
         <property name="Password" value=""/>
         <property name="URL" value="jdbc:mysql://localhost:3306/CaadiIntegrada?zeroDateTimeBehavior=convertToNull"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
