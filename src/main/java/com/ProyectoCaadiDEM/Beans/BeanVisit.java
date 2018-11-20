@@ -37,6 +37,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -103,6 +104,7 @@ public class BeanVisit implements Serializable {
     
     private DateFormat      formateador = new SimpleDateFormat( "dd/MM/yyyy HH:mm:ss");
     
+ 
    
     
     
@@ -276,8 +278,20 @@ public class BeanVisit implements Serializable {
         return new Float(h+"."+m);
     }
     
+    public String crearDirectori() throws UnknownHostException {
+        String  s= "../../imagenes/";
+        File ruta = new File(s);
+        if(ruta.exists())
+            return s;
+        ruta.mkdir();
+        return s;
+}
+
     public PieChartModel crearVisitPieParaStd ( String NUA ) throws IOException{
         String  sk [] = {"Reading", "Listening", "Grammar", "Speaking"};
+        
+        String ruta = crearDirectori();
+        
         
         int rd = this.fcdVisita.visitasParaHblParaStd(sk[0], NUA).size();
         int ls = this.fcdVisita.visitasParaHblParaStd(sk[1], NUA).size();
@@ -307,7 +321,7 @@ public class BeanVisit implements Serializable {
         pPie.setSimpleLabels(true);
         pPie.setLabelGenerator(gen);
         
-        ChartUtils.saveChartAsJPEG(new File("/home/frodo/images/"+NUA+"grafPie.jpeg"), gpPie, 360, 450);
+        ChartUtils.saveChartAsJPEG(new File(ruta+NUA+"grafPie.jpeg"), gpPie, 360, 450);
         
         mdn.setTitle("Visitas por Habilidad");
         mdn.setLegendPosition("w");
@@ -326,6 +340,8 @@ public class BeanVisit implements Serializable {
         String  sk [] = {"Reading", "Listening", "Grammar", "Speaking"};
         
         BarChartModel bm    = new BarChartModel();
+        String ruta = crearDirectori();
+        
     
         bm.setExtender("ext");
         bm.setTitle("Horas Por Habilidad");
@@ -359,7 +375,7 @@ public class BeanVisit implements Serializable {
          dt, PlotOrientation.VERTICAL,
          false, true, false);
 
-        ChartUtils.saveChartAsJPEG(new File("/home/frodo/images/"+NUA+"grafBar.jpeg"), gpBar, 390, 480);
+        ChartUtils.saveChartAsJPEG(new File(ruta+NUA+"grafBar.jpeg"), gpBar, 390, 480);
 
         bm.addSeries(sR);
 
@@ -367,6 +383,8 @@ public class BeanVisit implements Serializable {
     }
     
     public void crearPdfParaStd ( String nombre, String Nua) throws DocumentException, FileNotFoundException, IOException, ParseException{
+        
+        String ruta = crearDirectori();
         
         
         
@@ -384,8 +402,8 @@ public class BeanVisit implements Serializable {
     
     PdfPTable nt = new PdfPTable(4);
  
-    Image imgP = Image.getInstance("/home/frodo/images/"+Nua+"grafPie.jpeg");
-    Image imgB = Image.getInstance("/home/frodo/images/"+Nua+"grafBar.jpeg");
+    Image imgP = Image.getInstance(ruta+Nua+"grafPie.jpeg");
+    Image imgB = Image.getInstance(ruta+Nua+"grafBar.jpeg");
     
     
     Font hf = new Font( Font.FontFamily.HELVETICA, 15, Font.BOLD);
