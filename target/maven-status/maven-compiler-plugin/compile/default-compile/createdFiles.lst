@@ -1,3 +1,42 @@
+<<<<<<< HEAD
+com\ProyectoCaadiDEM\Entidades\Groups_.class
+com\ProyectoCaadiDEM\Beans\BeanEstudiantes.class
+com\ProyectoCaadiDEM\Beans\BeanVisitas.class
+com\ProyectoCaadiDEM\Entidades\Visits.class
+com\ProyectoCaadiDEM\Entidades\Students_.class
+com\ProyectoCaadiDEM\Fachadas\VisitsFacade.class
+com\ProyectoCaadiDEM\Entidades\Students.class
+com\ProyectoCaadiDEM\Fachadas\StudentsFacade.class
+com\ProyectoCaadiDEM\Beans\GroupMembersPK_.class
+com\ProyectoCaadiDEM\Entidades\Usuarios.class
+com\ProyectoCaadiDEM\Beans\BeanGrupos.class
+com\ProyectoCaadiDEM\Beans\GroupMembersPK.class
+com\ProyectoCaadiDEM\Entidades\Visits_.class
+com\ProyectoCaadiDEM\Fachadas\AbstractFacade.class
+com\ProyectoCaadiDEM\Filtros\CacheControlPhaseListener.class
+com\ProyectoCaadiDEM\Beans\GroupMembers.class
+com\ProyectoCaadiDEM\Beans\BeanPeriodos.class
+com\ProyectoCaadiDEM\Entidades\Teachers_.class
+com\ProyectoCaadiDEM\Beans\BeanUsuarios.class
+com\ProyectoCaadiDEM\Modelos\Visitantes.class
+com\ProyectoCaadiDEM\Beans\BeanMaestros.class
+com\ProyectoCaadiDEM\Beans\BeanVisit.class
+com\ProyectoCaadiDEM\Entidades\Periods_.class
+com\ProyectoCaadiDEM\Fachadas\GroupsFacade.class
+com\ProyectoCaadiDEM\Entidades\Periods.class
+com\ProyectoCaadiDEM\Entidades\Groups.class
+com\ProyectoCaadiDEM\Entidades\Visit_.class
+com\ProyectoCaadiDEM\Entidades\Teachers.class
+com\ProyectoCaadiDEM\Fachadas\TeachersFacade.class
+com\ProyectoCaadiDEM\Fachadas\VisitFacade.class
+com\ProyectoCaadiDEM\Beans\BeanIndex.class
+com\ProyectoCaadiDEM\Fachadas\UsuariosFacade.class
+com\ProyectoCaadiDEM\Beans\GroupMembers_.class
+com\ProyectoCaadiDEM\Entidades\Usuarios_.class
+com\ProyectoCaadiDEM\Beans\BeanUtileria.class
+com\ProyectoCaadiDEM\Fachadas\PeriodsFacade.class
+com\ProyectoCaadiDEM\Entidades\Visit.class
+=======
 com/ProyectoCaadiDEM/Beans/BeanVisitas.class
 com/ProyectoCaadiDEM/Modelos/Visitantes.class
 com/ProyectoCaadiDEM/Fachadas/GroupsFacade.class
@@ -36,3 +75,4 @@ com/ProyectoCaadiDEM/Beans/BeanUsuarios.class
 com/ProyectoCaadiDEM/Beans/BeanPeriodos.class
 com/ProyectoCaadiDEM/Entidades/Groups.class
 com/ProyectoCaadiDEM/Beans/BeanGrupos.class
+>>>>>>> 3be2a308c842fb0f569a14da99c574a004a8e46b
