@@ -57,19 +57,19 @@ public class BeanUsuarios {
     public void mensajeRechazarAdmin () {
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage("Rechazadoo",  "Credenciales invalidas") );   
+        context.addMessage( null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Rechazado: ", "Credenciales incorrectas") );   
     }
     
     public void mensajeAceptarStd () {
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage("Bienvenido",  "Estudiante") );   
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,  "Aceptado: ", "Bienvenido estudiante") );   
     }
     
     public void mensajeAceptarAdmin () {
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage("Aceptado",  "Bienvenido Administrador") );   
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,  "Aceptado: ", "Bienvenido administrador") );   
     }
     
     

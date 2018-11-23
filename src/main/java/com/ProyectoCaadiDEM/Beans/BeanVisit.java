@@ -200,7 +200,7 @@ public class BeanVisit implements Serializable {
             context.execute("PF('logInConfirm').show();");
         } else {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Error", "No se ha encontrado el NUA: " + this.nua));
+            context.addMessage(null, new FacesMessage( FacesMessage.FACES_MESSAGES, "Error", "No se ha encontrado el NUA: " + this.nua));
             this.nua = null;
         }
     }
