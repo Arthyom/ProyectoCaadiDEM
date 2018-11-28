@@ -15,16 +15,19 @@ import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -35,6 +38,12 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartUtils;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryLabelPositions;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.primefaces.context.RequestContext;
 import org.primefaces.model.UploadedFile;
 import org.primefaces.model.chart.AxisType;
@@ -136,7 +145,7 @@ public class BeanGrupos implements Serializable {
 
         for( Students ei : estTotal )
             for( Groups gi : grpTotal )
-                for( Students eii : gi.getStudentsCollection() )
+                for( Students eii : gi. getStudentsCollection() )
                     if( eii.getNua().equals(ei.getNua()) || !ei.getVisible() )
                         estLibrs.remove(ei);
                 return estLibrs;
@@ -277,14 +286,25 @@ public class BeanGrupos implements Serializable {
         return "-";
     }
 
+     public String crearDirectori() throws UnknownHostException {
+        String  s= "../../imagenes/";
+        File ruta = new File(s);
+        if(ruta.exists())
+            return s;
+        ruta.mkdir();
+        return s;
+}
+    
     public void crearPDF() throws IOException, BadElementException, DocumentException {
+        
+        if( this.grpActual != null ){
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
 
         String profName = grpActual.getEmployeeNumber().getName();
         String proFFname = grpActual.getEmployeeNumber().getFirstLastName();
         String proFSname = grpActual.getEmployeeNumber().getSecondLastName();
-        String grpSlctd = grpActual.getLearningUnit() + " " + grpActual.getLevel();
+        String grpSlctd = grpActual.getLearningUnit() + " " + grpActual.getLevel() + grpActual.getIdentifier();
         String grpIds = grpActual.getId() + grpActual.getIdentifier();
         int aRegs = grpActual.getStudentsCollection().size();
 
@@ -292,14 +312,18 @@ public class BeanGrupos implements Serializable {
 
         ec.responseReset();
         ec.setResponseContentType("application/pdf");
-        ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + "RP" + grpSlctd + profName + proFFname + ".pdf" + "\"");
+        ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + "RG" + grpSlctd + profName + proFFname + ".pdf" + "\"");
         OutputStream output = ec.getResponseOutputStream();
 
         Document nd = new Document(PageSize.LETTER);
         PdfPTable nt = new PdfPTable(5);
 
-        // Image imgP = Image.getInstance("/home/frodo/images/" + grpIds + "grafPie.jpeg");
-        // Image imgB = Image.getInstance("/home/frodo/images/" + grpIds + "grafBar.jpeg");
+        String ruta = this.crearDirectori();
+        String sP = ruta + grpIds + this.grpActual.getEmployeeNumber().getEmployeeNumber()+ "grafPie.jpeg";
+        String sB = ruta + grpIds +  this.grpActual.getEmployeeNumber().getEmployeeNumber()+"grafBar.jpeg";
+        
+        //Image imgP = Image.getInstance(sP);
+        Image imgB = Image.getInstance(sB);
         Font hf = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD);
         Font th = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD, BaseColor.BLUE);
 
@@ -311,30 +335,37 @@ public class BeanGrupos implements Serializable {
         // primer parrafo
         nd.add(new Paragraph("Reporte De Grupo Para: "));
         contenido.setFont(th);
-        contenido.add(grpSlctd + ",  Profesor: " + proFFname + " " + proFFname + " " + proFSname + ", Alumnos Registrados: " + aRegs);
+        contenido.add(grpSlctd + ",  Profesor: " + profName + " " + proFFname + " " + proFSname);
         nd.add(contenido);
+        
+        nd.add( new Paragraph("Alumnos Registrados: " + aRegs));
 
+        nd.add( new Paragraph(" "));
+        
         // encabezad de la tabla 
+        nt.addCell(new Phrase("#", hf));
         nt.addCell(new Phrase("NUA", hf));
         nt.addCell(new Phrase("Nombre", hf));
-        nt.addCell(new Phrase("Apellido Paterno", hf));
-        nt.addCell(new Phrase("Apellido Materno", hf));
+        nt.addCell(new Phrase("Apellidos", hf));
         nt.addCell(new Phrase("Total de Horas", hf));
 
+        int i = 1;
         // para cada estudiante en la coleccion 
         for (Students sti : grs) {
+            nt.addCell( String.valueOf(i));
             nt.addCell(sti.getNua());
             nt.addCell(sti.getName());
-            nt.addCell(sti.getFirstLastName());
-            nt.addCell(sti.getSecondLastName());
+            nt.addCell(sti.getFirstLastName() + " " +sti.getSecondLastName());
             nt.addCell(contarHorasParaStd(sti));
+            i++;
         }
 
         nd.add(nt);
-        // nd.add(imgP);
-        // nd.add(imgB);
+       // nd.add(imgP);
+        nd.add(imgB);
         nd.close();
         fc.responseComplete();
+        }
 
         
     }
@@ -346,8 +377,8 @@ public class BeanGrupos implements Serializable {
             total += vi.getEnd().getTime() - vi.getStart().getTime();
             
         h = total / (1000 * 60 * 60);
-        h = h % (1000 * 60 * 60);
-        m = h / (1000 * 60);
+        total = total % (1000 * 60 * 60);
+        m = total / (1000 * 60);
 
         return h + " Horas, " + m +" Minutos";
     }
@@ -369,9 +400,13 @@ public class BeanGrupos implements Serializable {
         return  new Float (h + "." + m );
     }
    
-    
-    public BarChartModel grpBarGraf (){
-        
+     public BarChartModel grpPieGraf() throws IOException {
+        if(this.grpActual != null){
+        String sk[] = {"Reading", "Listening", "Grammar", "Speaking"};
+        JFreeChart gpPie, gpBar;
+        String ruta = crearDirectori();
+        String grpIds = grpActual.getId() + grpActual.getIdentifier();
+
         BarChartModel bm = new BarChartModel();
         if (grpActual != null) {
 
@@ -379,16 +414,68 @@ public class BeanGrupos implements Serializable {
             bm.getAxis(AxisType.Y).setLabel("Horas");
             bm.getAxis(AxisType.X).setLabel("Nombre");
 
+            DefaultCategoryDataset dt = new DefaultCategoryDataset();
+            for (Students s : grpActual.getStudentsCollection()) 
+                dt.addValue(contarHorasParaStdNum(s), "Total de Horas", "-");
+            
+            gpBar = ChartFactory.createBarChart(
+                    "Horas Por Alumno",
+                    "Habilidad", "Horas",
+                    dt, PlotOrientation.VERTICAL,
+                    false, true, false);
+
+            ChartUtils.saveChartAsJPEG(new File(ruta +grpIds+ grpActual.getEmployeeNumber().getEmployeeNumber() + "graPie.jpeg"), gpBar, 800,500);
             ChartSeries sR = new ChartSeries("Nombre");
 
             for (Students si : grpActual.getStudentsCollection()) 
                 sR.set(si.getName(), contarHorasParaStdNum(si));
-            
-             bm.addSeries(sR);
+           
+            bm.addSeries(sR);
         }
-        
         return bm;
-        
+        }
+        return null;
+    }
+     
+    
+    public BarChartModel grpBarGraf() throws IOException {
+        String sk[] = {"Reading", "Listening", "Grammar", "Speaking"};
+        JFreeChart gpPie, gpBar;
+        String ruta = crearDirectori();
+        if( this.grpActual != null ){
+        String grpIds = grpActual.getId() + grpActual.getIdentifier();
+
+        BarChartModel bm = new BarChartModel();
+        bm.getAxis(AxisType.X).setTickAngle(90);
+        if (grpActual != null) {
+
+            bm.setTitle("Horas Por Alumno");
+            bm.getAxis(AxisType.Y).setLabel("Horas");
+            bm.getAxis(AxisType.X).setLabel("Nombre");
+
+            DefaultCategoryDataset dt = new DefaultCategoryDataset();
+            for (Students s : grpActual.getStudentsCollection()) 
+                dt.addValue(contarHorasParaStdNum(s), "Total Horas",s.getNua());
+            
+            gpBar = ChartFactory.createBarChart(
+                    "Horas Por Alumno",
+                    "NUA", "Horas",
+                    dt, PlotOrientation.VERTICAL,
+                    false, true, false);
+            
+            gpBar.getCategoryPlot().getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.DOWN_90);
+
+            ChartUtils.saveChartAsJPEG(new File(ruta +grpIds+ grpActual.getEmployeeNumber().getEmployeeNumber() + "grafBar.jpeg"), gpBar, 550, 480);
+            ChartSeries sR = new ChartSeries("Nombre");
+
+            for (Students si : grpActual.getStudentsCollection()) 
+                sR.set(si.getNua(), contarHorasParaStdNum(si));
+           
+            bm.addSeries(sR);
+        }
+        return bm;
+        }
+        return null;
     }
     
     public void mensajeCargar () throws IOException{

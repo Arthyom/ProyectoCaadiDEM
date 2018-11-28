@@ -1,0 +1,7 @@
+/* 1 */
+{
+    "_id" : "7g5F7KfsQfnaHi45S",
+    "start" : "2018-08-06",
+    "end" : "2018-11-30",
+    "description" : "Agosto-Diciembre 2018"
+}

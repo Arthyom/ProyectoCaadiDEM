@@ -1,0 +1,3990 @@
+/* 1 */
+{
+    "_id" : "MGp3HFnwiqRet8inC",
+    "nua" : "770514",
+    "firstLastName" : "Bedolla",
+    "secondLastName" : "Rios",
+    "name" : "Ángel Antonio",
+    "gender" : "MALE",
+    "birthday" : "1995-11-11",
+    "program" : "LSC",
+    "email" : "angel.bedri.1.7@gmail.com"
+}
+
+/* 2 */
+{
+    "_id" : "Et6PeXFT43uHjG4gh",
+    "nua" : "909759",
+    "firstLastName" : "González",
+    "secondLastName" : "Gaviña",
+    "name" : "Alfredo",
+    "gender" : "MALE",
+    "birthday" : "1994-01-20",
+    "program" : "LSC",
+    "email" : "a.gonzalezgavina@ugto.mx"
+}
+
+/* 3 */
+{
+    "_id" : "Yte66teBA4fEd8jx2",
+    "nua" : "810395",
+    "firstLastName" : "Moreno",
+    "secondLastName" : "Díaz",
+    "name" : "Daniela Berenice",
+    "gender" : "FEMALE",
+    "birthday" : "1995-10-27",
+    "program" : "LGE",
+    "email" : "dani_moreno90@hotmail.com"
+}
+
+/* 4 */
+{
+    "_id" : "tzxATzw4B7PooAkH5",
+    "nua" : "810537",
+    "firstLastName" : "Montes",
+    "secondLastName" : "Lemus",
+    "name" : "Nancy Yuliana",
+    "gender" : "FEMALE",
+    "birthday" : "1997-05-25",
+    "program" : "LEI",
+    "email" : "yulii.monteez280412@gmail.com"
+}
+
+/* 5 */
+{
+    "_id" : "By5ZY72v9xsQqbcjk",
+    "nua" : "783969",
+    "firstLastName" : "Ortega",
+    "secondLastName" : "Diaz",
+    "name" : "Paola Estefania",
+    "gender" : "FEMALE",
+    "birthday" : "1999-03-09",
+    "program" : "LEI",
+    "email" : "pao09estef@outlook.com"
+}
+
+/* 6 */
+{
+    "_id" : "MQZj4h2dj2qxQmQnw",
+    "nua" : "810456",
+    "firstLastName" : "Flores",
+    "secondLastName" : "Hernández",
+    "name" : "Paola",
+    "gender" : "FEMALE",
+    "birthday" : "1995-09-29",
+    "program" : "LGE",
+    "email" : "p.floreshernandez@ugto.mx"
+}
+
+/* 7 */
+{
+    "_id" : "cbkCjjxMmarz7Yuat",
+    "nua" : "810393",
+    "firstLastName" : "Martínez",
+    "secondLastName" : "Castro",
+    "name" : "Ricardo Daniel",
+    "gender" : "MALE",
+    "birthday" : "1996-01-21",
+    "program" : "LGE",
+    "email" : "rd.martinez.castro@outlook.com"
+}
+
+/* 8 */
+{
+    "_id" : "DXEEDgYt2x8jZYdij",
+    "nua" : "145376",
+    "firstLastName" : "Ortiz",
+    "secondLastName" : "Guzmán",
+    "name" : "Rosa Isela",
+    "gender" : "FEMALE",
+    "birthday" : "1997-08-15",
+    "program" : "LSC",
+    "email" : "rosaiseladeortiz@gmail.com"
+}
+
+/* 9 */
+{
+    "_id" : "fss4PzhS9XYvmxXFH",
+    "nua" : "145992",
+    "firstLastName" : "Cruz",
+    "secondLastName" : "Ramírez",
+    "name" : "Elizabeth",
+    "gender" : "FEMALE",
+    "birthday" : "1997-01-16",
+    "program" : "LSC",
+    "email" : "e.cruzramirez@ugto.mx"
+}
+
+/* 10 */
+{
+    "_id" : "nMZdJNc5Ab4TvRTjf",
+    "nua" : "502692",
+    "firstLastName" : "Zavala",
+    "secondLastName" : "Guzmán",
+    "name" : "Cecilia",
+    "gender" : "FEMALE",
+    "birthday" : "1998-07-22",
+    "program" : "LGE",
+    "email" : "cecyburby1@hotmail.com"
+}
+
+/* 11 */
+{
+    "_id" : "zkueyTaayrDFJfmFt",
+    "nua" : "146081",
+    "firstLastName" : "Moreno",
+    "secondLastName" : "Diaz",
+    "name" : "Maria del Carmen",
+    "gender" : "FEMALE",
+    "birthday" : "1998-04-16",
+    "program" : "LGE",
+    "email" : "mdc.morenodiaz@ugto.mx"
+}
+
+/* 12 */
+{
+    "_id" : "Mbxn7LgGShF3zdsdD",
+    "nua" : "145842",
+    "firstLastName" : "Dominguez",
+    "secondLastName" : "Gallardo",
+    "name" : "Jesús",
+    "gender" : "MALE",
+    "birthday" : "1998-06-25",
+    "program" : "LSC",
+    "email" : "cabeyou625@gmail.com"
+}
+
+/* 13 */
+{
+    "_id" : "odpPtkNgrnXaskyFT",
+    "nua" : "145993",
+    "firstLastName" : "Juarez",
+    "secondLastName" : "Villagómez",
+    "name" : "Jonathan",
+    "gender" : "MALE",
+    "birthday" : "1997-12-19",
+    "program" : "LSC",
+    "email" : "j.juarezvillagomez@ugto.mx"
+}
+
+/* 14 */
+{
+    "_id" : "cKdLCAMCX5QhfF7H7",
+    "nua" : "145511",
+    "firstLastName" : "Orozco",
+    "secondLastName" : "Torres",
+    "name" : "Pamela Michell",
+    "gender" : "FEMALE",
+    "birthday" : "1993-01-27",
+    "program" : "LGE",
+    "email" : "pm.orozcotorres@ugto.mx"
+}
+
+/* 15 */
+{
+    "_id" : "dssS6hs5LQghXK6Wh",
+    "nua" : "145465",
+    "firstLastName" : "Orozco",
+    "secondLastName" : "Cintora",
+    "name" : "María de Jesús",
+    "gender" : "FEMALE",
+    "birthday" : "1997-02-14",
+    "program" : "LGE",
+    "email" : "mdj.orozcocintora@ugto.mx"
+}
+
+/* 16 */
+{
+    "_id" : "mWiajsFQmxC4jDvCD",
+    "nua" : "145463",
+    "firstLastName" : "Pérez",
+    "secondLastName" : "Plascencia",
+    "name" : "Viridiana",
+    "gender" : "FEMALE",
+    "birthday" : "1997-05-26",
+    "program" : "LGE",
+    "email" : "v.perezplascencia@ugto.mx"
+}
+
+/* 17 */
+{
+    "_id" : "udSXw5f6RB2HGja79",
+    "nua" : "145946",
+    "firstLastName" : "Navarrete",
+    "secondLastName" : "Páramo",
+    "name" : "Esmeralda",
+    "gender" : "FEMALE",
+    "birthday" : "1998-03-05",
+    "program" : "LGE",
+    "email" : "morena5743@hotmail.es"
+}
+
+/* 18 */
+{
+    "_id" : "zSLMDHZSmATH4APDG",
+    "nua" : "769389",
+    "firstLastName" : "Guzmán",
+    "secondLastName" : "Magaña",
+    "name" : "Alejandro",
+    "gender" : "MALE",
+    "birthday" : "1995-12-05",
+    "program" : "LCE",
+    "email" : "amg_051295@outlook.com"
+}
+
+/* 19 */
+{
+    "_id" : "pSLaiv73HfaYqy5DG",
+    "nua" : "146019",
+    "firstLastName" : "González",
+    "secondLastName" : "López",
+    "name" : "Luz María",
+    "gender" : "FEMALE",
+    "birthday" : "1998-02-26",
+    "program" : "LGE",
+    "email" : "lupita_zzz@hotmail.com"
+}
+
+/* 20 */
+{
+    "_id" : "DkGsp3Bt4Kmoaoj8b",
+    "nua" : "145466",
+    "firstLastName" : "Montañez",
+    "secondLastName" : "López",
+    "name" : "Anayeli",
+    "gender" : "FEMALE",
+    "birthday" : "1996-09-21",
+    "program" : "LGE",
+    "email" : "AnayeliLopez240@gmail.com"
+}
+
+/* 21 */
+{
+    "_id" : "Ap5CXAJFsxycbLitw",
+    "nua" : "145597",
+    "firstLastName" : "Baeza",
+    "secondLastName" : "Ramírez",
+    "name" : "Diana Marisol",
+    "gender" : "FEMALE",
+    "birthday" : "1997-07-17",
+    "program" : "LGE",
+    "email" : "daayanaa.baaezaa@gmail.com"
+}
+
+/* 22 */
+{
+    "_id" : "GQfBnfkeQtJ67iig6",
+    "nua" : "146439",
+    "firstLastName" : "García",
+    "secondLastName" : "Jiménez",
+    "name" : "Diana Karen",
+    "gender" : "FEMALE",
+    "birthday" : "1999-02-06",
+    "program" : "LGE",
+    "email" : "diana_jimenez@live.mx"
+}
+
+/* 23 */
+{
+    "_id" : "zgmmwTT3DKyPQXQGF",
+    "nua" : "145474",
+    "firstLastName" : "Baeza",
+    "secondLastName" : "Camarena",
+    "name" : "Luis Javier",
+    "gender" : "MALE",
+    "birthday" : "1997-03-23",
+    "program" : "LGE",
+    "email" : "luiyitobi@hotmail.com"
+}
+
+/* 24 */
+{
+    "_id" : "rAQ6qXEPuXpbkY8NL",
+    "nua" : "146535",
+    "firstLastName" : "Zavala",
+    "secondLastName" : "León",
+    "name" : "Jesús Ulises",
+    "gender" : "MALE",
+    "birthday" : "1998-10-08",
+    "program" : "LSC",
+    "email" : "zavala.leon.jesusulises@gmail.com"
+}
+
+/* 25 */
+{
+    "_id" : "PRnXEjWC7H9DufFA3",
+    "nua" : "145688",
+    "firstLastName" : "González",
+    "secondLastName" : "Pérez",
+    "name" : "Valeria Estefania",
+    "gender" : "FEMALE",
+    "birthday" : "1996-02-18",
+    "program" : "LGE",
+    "email" : "valeria_1996_gonza@hotmail.com"
+}
+
+/* 26 */
+{
+    "_id" : "zhfGnRB6mCXvRsJ4Y",
+    "nua" : "765885",
+    "firstLastName" : "Corona",
+    "secondLastName" : "Vargas",
+    "name" : "Anayeli",
+    "gender" : "FEMALE",
+    "birthday" : "1995-02-06",
+    "program" : "LGE",
+    "email" : "anacoronav20@hotmail.com"
+}
+
+/* 27 */
+{
+    "_id" : "2wv7hhNqZL2rCNhNr",
+    "nua" : "991101",
+    "firstLastName" : "Martínez",
+    "secondLastName" : "Pantoja",
+    "name" : "Melissa",
+    "gender" : "FEMALE",
+    "birthday" : "1999-01-11",
+    "program" : "LEI",
+    "email" : "mely99_1101@hotmail.com"
+}
+
+/* 28 */
+{
+    "_id" : "pr2EaBHKHgi5t2vvL",
+    "nua" : "146634",
+    "firstLastName" : "Mendez",
+    "secondLastName" : "García",
+    "name" : "Isaí",
+    "gender" : "MALE",
+    "birthday" : "1999-08-14",
+    "program" : "lsc",
+    "email" : "I.MendezGarcia@ugto.mx"
+}
+
+/* 29 */
+{
+    "_id" : "f5ziyavuA4jSCs7d8",
+    "nua" : "145476",
+    "firstLastName" : "MONROY",
+    "secondLastName" : "HUÉRAMO",
+    "name" : "KAREN DENIS",
+    "gender" : "FEMALE",
+    "birthday" : "1997-08-05",
+    "program" : "LGE",
+    "email" : "kareenn0508@hotmail.com"
+}
+
+/* 30 */
+{
+    "_id" : "sB65ifhZJChTQsxpw",
+    "nua" : "146616",
+    "firstLastName" : "VÁZQUEZ",
+    "secondLastName" : "GONZÁLEZ",
+    "name" : "JUAN PABLO",
+    "gender" : "MALE",
+    "birthday" : "1998-12-27",
+    "program" : "ICE",
+    "email" : "pablo.vazquez.pv55@gmail.com"
+}
+
+/* 31 */
+{
+    "_id" : "mfYhZHpWvrmStW9Zf",
+    "nua" : "146990",
+    "firstLastName" : "Baeza",
+    "secondLastName" : "Carmona",
+    "name" : "María Isabel",
+    "gender" : "FEMALE",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "mi.baezacarmona@ugto.mx"
+}
+
+/* 32 */
+{
+    "_id" : "Kh9oYMdyXHL6BHw57",
+    "nua" : "146377",
+    "firstLastName" : "Villagómez",
+    "secondLastName" : "Torres",
+    "name" : "Andrea",
+    "gender" : "Female",
+    "birthday" : "1998-07-02",
+    "program" : "LGE",
+    "email" : "andreavillato2@hotmail.com"
+}
+
+/* 33 */
+{
+    "_id" : "c6jf4FR7hrbwK2iBx",
+    "nua" : "146444",
+    "firstLastName" : "Martínez",
+    "secondLastName" : "Gallardo",
+    "name" : "Javier",
+    "gender" : "Male",
+    "birthday" : "1998-10-02",
+    "program" : "LGE",
+    "email" : "javi9830oscuridad@gmail.com"
+}
+
+/* 34 */
+{
+    "_id" : "gmeFFLSAjHywLEXcM",
+    "nua" : "146422",
+    "firstLastName" : "Guzmán",
+    "secondLastName" : "Torres",
+    "name" : "Paulina",
+    "gender" : "Female",
+    "birthday" : "1998-11-12",
+    "program" : "LGE",
+    "email" : "pauguzman@outlook.com"
+}
+
+/* 35 */
+{
+    "_id" : "RELJBvndvAvrhj95s",
+    "nua" : "146366",
+    "firstLastName" : "Aguado",
+    "secondLastName" : "Ponce",
+    "name" : "Ana Karen",
+    "gender" : "Female",
+    "birthday" : "1998-10-12",
+    "program" : "LGE",
+    "email" : "karenaguado12@gmail.com"
+}
+
+/* 36 */
+{
+    "_id" : "SjFySM5ZkYYoZeYNo",
+    "nua" : "380003",
+    "firstLastName" : "Pintor",
+    "secondLastName" : "Zamudio",
+    "name" : "Alma Yanira",
+    "gender" : "Female",
+    "birthday" : "1998-10-16",
+    "program" : "LGE",
+    "email" : "almajb2010@hotmail.com"
+}
+
+/* 37 */
+{
+    "_id" : "rw225Gn3iuFupnYxE",
+    "nua" : "380016",
+    "firstLastName" : "Zavala",
+    "secondLastName" : "Lazaro",
+    "name" : "Rafael",
+    "gender" : "Male",
+    "birthday" : "1998-09-06",
+    "program" : "LGE",
+    "email" : "rafa78_barrera@hotmail.com"
+}
+
+/* 38 */
+{
+    "_id" : "4Cgor8xNhwYqsRHLw",
+    "nua" : "146453",
+    "firstLastName" : "Ramírez",
+    "secondLastName" : "Guzmán ",
+    "name" : "Elizabeth",
+    "gender" : "Female",
+    "birthday" : "1999-03-09",
+    "program" : "LGE",
+    "email" : "eli99ramirez@gmail.com"
+}
+
+/* 39 */
+{
+    "_id" : "oqe9T9vHYrc5EbD6i",
+    "nua" : "146274",
+    "firstLastName" : "Hernández",
+    "secondLastName" : "Garcia",
+    "name" : "Santiago de Jesus",
+    "gender" : "Male",
+    "birthday" : "1996-03-25",
+    "program" : "LGE",
+    "email" : "wero_run@hotmail.com"
+}
+
+/* 40 */
+{
+    "_id" : "J9gSLKr84feKAJbsQ",
+    "nua" : "146273",
+    "firstLastName" : "Tapia",
+    "secondLastName" : "López",
+    "name" : "Alejandra",
+    "gender" : "Female",
+    "birthday" : "1997-06-16",
+    "program" : "LGE",
+    "email" : "ale.talo@hotmail.com"
+}
+
+/* 41 */
+{
+    "_id" : "32XXi7RSCca78hYop",
+    "nua" : "146449",
+    "firstLastName" : "Gonzalez",
+    "secondLastName" : "Guerrero",
+    "name" : "Julio Cesar",
+    "gender" : "Male",
+    "birthday" : "1998-04-15",
+    "program" : "LGE",
+    "email" : "juliox.jcgg123@gamil.com"
+}
+
+/* 42 */
+{
+    "_id" : "waxrmzbehiDYs6Qo6",
+    "nua" : "146385",
+    "firstLastName" : "Sirangua",
+    "secondLastName" : "García",
+    "name" : "Gloria",
+    "gender" : "Female",
+    "birthday" : "1998-02-06",
+    "program" : "LGE",
+    "email" : "garciasiragua@gmail.com"
+}
+
+/* 43 */
+{
+    "_id" : "peBeDdp5oLLFLo6gv",
+    "nua" : "146411",
+    "firstLastName" : "Moreno",
+    "secondLastName" : "Nava",
+    "name" : "Mayra Jazmin",
+    "gender" : "Female",
+    "birthday" : "1999-03-10",
+    "program" : "LGE",
+    "email" : "mj.morenonava@ugto.mx"
+}
+
+/* 44 */
+{
+    "_id" : "Xy3AfNvSes2z4e8qd",
+    "nua" : "146379",
+    "firstLastName" : "Corona",
+    "secondLastName" : "Varela",
+    "name" : "Martin",
+    "gender" : "Male",
+    "birthday" : "19998-05-20",
+    "program" : "LGE",
+    "email" : "m.coronavarela@ugto.mx"
+}
+
+/* 45 */
+{
+    "_id" : "9oiX4tZEyKRXuTptk",
+    "nua" : "146268",
+    "firstLastName" : "Alcantar",
+    "secondLastName" : "Soto",
+    "name" : "Patsy Karen",
+    "gender" : "Female",
+    "birthday" : "1994-03-31",
+    "program" : "LGE",
+    "email" : "patsyalcantarsoto@gmail.com"
+}
+
+/* 46 */
+{
+    "_id" : "knT7YqzmLrHJqX95h",
+    "nua" : "145410",
+    "firstLastName" : "Rivera",
+    "secondLastName" : "López",
+    "name" : "Cristopher",
+    "gender" : "Male",
+    "birthday" : "1998-09-08",
+    "program" : "LGE",
+    "email" : "c.riveralopez@ugto.mx"
+}
+
+/* 47 */
+{
+    "_id" : "Dfb7NxLgmdM8Lpy5G",
+    "nua" : "146420",
+    "firstLastName" : "Calderón",
+    "secondLastName" : "Ávalos",
+    "name" : "Fernanda Lisset",
+    "gender" : "Male",
+    "birthday" : "1198-09-18",
+    "program" : "LGE",
+    "email" : "cfernandalisset@yahoo.com"
+}
+
+/* 48 */
+{
+    "_id" : "fmiH5iGRwNXsP58Qt",
+    "nua" : "146460",
+    "firstLastName" : "Santoyo",
+    "secondLastName" : "Ramírez",
+    "name" : "Rosa Gloria",
+    "gender" : "Female",
+    "birthday" : "1998-09-27",
+    "program" : "LGE",
+    "email" : "gloriasantoyoramirez@gmail.com"
+}
+
+/* 49 */
+{
+    "_id" : "k8YG3XxMp2Wce7G23",
+    "nua" : "145699",
+    "firstLastName" : "Gonzales",
+    "secondLastName" : "Gallardo",
+    "name" : "José Francisco",
+    "gender" : "Male",
+    "birthday" : "1993-08-24",
+    "program" : "LCE",
+    "email" : "jhosegallardo@gmail.com"
+}
+
+/* 50 */
+{
+    "_id" : "KxgbhZAvbeDEc4QzR",
+    "nua" : "402511",
+    "firstLastName" : "Tinoco",
+    "secondLastName" : "Haro",
+    "name" : "Luis Alejandro",
+    "gender" : "Male",
+    "birthday" : "1995-06-06",
+    "program" : "LCE",
+    "email" : "taco.lixus@gmail.com"
+}
+
+/* 51 */
+{
+    "_id" : "DeKwK5pFurajhd9T9",
+    "nua" : "146646",
+    "firstLastName" : "Chavez",
+    "secondLastName" : "Lopez",
+    "name" : "Rene Edwin",
+    "gender" : "Male",
+    "birthday" : "1999-08-13",
+    "program" : "LCE",
+    "email" : "ceres1999_@gmail.com"
+}
+
+/* 52 */
+{
+    "_id" : "NH32p4Rsj8p4kfTuE",
+    "nua" : "146540",
+    "firstLastName" : "Pantoja",
+    "secondLastName" : "Cisneros",
+    "name" : "Juan Manuel",
+    "gender" : "Male",
+    "birthday" : "1998-09-03",
+    "program" : "LCE",
+    "email" : "juanmanuelpc_03998@outlook.com"
+}
+
+/* 53 */
+{
+    "_id" : "bFT3gjsNETj2ybwCr",
+    "nua" : "146503",
+    "firstLastName" : "Parra",
+    "secondLastName" : "Lemus",
+    "name" : "Martin",
+    "gender" : "Male",
+    "birthday" : "1998-11-01",
+    "program" : "LSC",
+    "email" : "martin98parra@gmail.com"
+}
+
+/* 54 */
+{
+    "_id" : "SurBTXnBKvhRqtagX",
+    "nua" : "379969",
+    "firstLastName" : "Lopez",
+    "secondLastName" : "Rosas",
+    "name" : "Dolly Gwendoline",
+    "gender" : "Female",
+    "birthday" : "1997-09-17",
+    "program" : "LSC",
+    "email" : "dollyglr@hotmail.com"
+}
+
+/* 55 */
+{
+    "_id" : "q4wcHRJxoet2aEF7c",
+    "nua" : "123456",
+    "firstLastName" : "Juarez",
+    "secondLastName" : "Villagomez",
+    "name" : "Christopher",
+    "gender" : "Male",
+    "birthday" : "1999-04-26",
+    "program" : "LCE",
+    "email" : "superwii@live.com.mx"
+}
+
+/* 56 */
+{
+    "_id" : "uvy5Mdz5zREvKwy7n",
+    "nua" : "810466",
+    "firstLastName" : "Franco",
+    "secondLastName" : "Ortiz",
+    "name" : "Edgar Eliseo",
+    "gender" : "Male",
+    "birthday" : "1997-05-10",
+    "program" : "LCE",
+    "email" : "edgar_13franco@hotmail.com"
+}
+
+/* 57 */
+{
+    "_id" : "7dnBv9LtNArNEZZRa",
+    "nua" : "774871",
+    "firstLastName" : "Ruiz",
+    "secondLastName" : "Jiménez",
+    "name" : "José Mariano",
+    "gender" : "Male",
+    "birthday" : "0199-02-17",
+    "program" : "LGE",
+    "email" : "shopiachaparra@hotmail.com"
+}
+
+/* 58 */
+{
+    "_id" : "NTSxR8i8oX2NHEHsb",
+    "nua" : "145345",
+    "firstLastName" : "Muñoz",
+    "secondLastName" : "Ponce",
+    "name" : "Mauricio",
+    "gender" : "Male",
+    "birthday" : "1996-10-31",
+    "program" : "LCE",
+    "email" : "skrill_mau@hotmail.com"
+}
+
+/* 59 */
+{
+    "_id" : "QQ8ZBte3WqrhcEftL",
+    "nua" : "810300",
+    "firstLastName" : "Diaz",
+    "secondLastName" : "Ruiz",
+    "name" : "Jesus Miguel",
+    "gender" : "Male",
+    "birthday" : "1995-08-09",
+    "program" : "LGE",
+    "email" : "miguel_d.z@hotmail.com"
+}
+
+/* 60 */
+{
+    "_id" : "PdPYkmFpf9jDipspa",
+    "nua" : "146424",
+    "firstLastName" : "Ramirez",
+    "secondLastName" : "Campos",
+    "name" : "Daniela Jazmin",
+    "gender" : "Female",
+    "birthday" : "1999-03-12",
+    "program" : "LGE",
+    "email" : "dj.ramirezcampos@ugto.mx"
+}
+
+/* 61 */
+{
+    "_id" : "vvhcZ7Z8LGRsgo6Co",
+    "nua" : "146467",
+    "firstLastName" : "Mireles",
+    "secondLastName" : "Moreno",
+    "name" : "Yareli",
+    "gender" : "Female",
+    "birthday" : "1998-01-11",
+    "program" : "LGE",
+    "email" : "mimy980111@gmail.com"
+}
+
+/* 62 */
+{
+    "_id" : "E7oJRPZgAsdFt3A7F",
+    "nua" : "145851",
+    "firstLastName" : "Parra",
+    "secondLastName" : "Martinez",
+    "name" : "Ivan Manuel",
+    "gender" : "Male",
+    "birthday" : "1998-06-28",
+    "program" : "LGE",
+    "email" : "parramartinezivan@hotmail.com"
+}
+
+/* 63 */
+{
+    "_id" : "MxGx2dfqyowTQpRZW",
+    "nua" : "146017",
+    "firstLastName" : "Rodriguez",
+    "secondLastName" : "Rosas",
+    "name" : "Jorge",
+    "gender" : "Male",
+    "birthday" : "1997-07-19",
+    "program" : "LGE",
+    "email" : "j.rodriguez97@outlook.com"
+}
+
+/* 64 */
+{
+    "_id" : "MwFSpMuWwKCgRgfdX",
+    "nua" : "146101",
+    "firstLastName" : "Guzmán",
+    "secondLastName" : "Torres",
+    "name" : "José Cruz",
+    "gender" : "Male",
+    "birthday" : "1998-05-01",
+    "program" : "LSC",
+    "email" : "jcgtcryguz@gmail.com"
+}
+
+/* 65 */
+{
+    "_id" : "SEu8ewkqW5FxvdFA2",
+    "nua" : "146428",
+    "firstLastName" : "Fonseca",
+    "secondLastName" : "Moreno",
+    "name" : "María Fernanda",
+    "gender" : "Female",
+    "birthday" : "1999-07-20",
+    "program" : "LGE",
+    "email" : "mf.fonsecamoreno@ugto.mx"
+}
+
+/* 66 */
+{
+    "_id" : "ituFQkLBqeXTd9SYY",
+    "nua" : "146448",
+    "firstLastName" : "Ruiz",
+    "secondLastName" : "Rangel",
+    "name" : "Paola",
+    "gender" : "Female",
+    "birthday" : "1999-08-31",
+    "program" : "LGE",
+    "email" : "p.ruiz.rangel@ugto.mx"
+}
+
+/* 67 */
+{
+    "_id" : "WJjYRM4CzgdtwTKiE",
+    "nua" : "146393",
+    "firstLastName" : "Leon",
+    "secondLastName" : "Corona",
+    "name" : "Viridiana",
+    "gender" : "Female",
+    "birthday" : "1998-07-15",
+    "program" : "LGE",
+    "email" : "yayi_lion@hotmail.com"
+}
+
+/* 68 */
+{
+    "_id" : "rZvaLQ7NGRAMSGrjc",
+    "nua" : "146079",
+    "firstLastName" : "Martínez",
+    "secondLastName" : "Guerrero",
+    "name" : "Adán",
+    "gender" : "Male",
+    "birthday" : "1994-10-21",
+    "program" : "LCE",
+    "email" : "adan.21@hotmail.es"
+}
+
+/* 69 */
+{
+    "_id" : "NemtfLW4HvBW9D4mX",
+    "nua" : "145848",
+    "firstLastName" : "Guzmán",
+    "secondLastName" : "Niño",
+    "name" : "Flavio César",
+    "gender" : "Male",
+    "birthday" : "1998-02-23",
+    "program" : "LCE",
+    "email" : "flavio.guzni@gmail.com"
+}
+
+/* 70 */
+{
+    "_id" : "Xp7DFJEodSBP9dEj4",
+    "nua" : "145926",
+    "firstLastName" : "Cantellano",
+    "secondLastName" : "Bautista",
+    "name" : "Jose Guadalupe",
+    "gender" : "Male",
+    "birthday" : "1998-09-17",
+    "program" : "LCE",
+    "email" : "jg.cantellanobautista@ugto.mx"
+}
+
+/* 71 */
+{
+    "_id" : "SyxhArKynwzb2vy5e",
+    "nua" : "146421",
+    "firstLastName" : "Sandoval",
+    "secondLastName" : "Andrade",
+    "name" : "Miguel",
+    "gender" : "Male",
+    "birthday" : "1999-05-11",
+    "program" : "LGE",
+    "email" : "miguelmso27@hotmail.com"
+}
+
+/* 72 */
+{
+    "_id" : "jZ9WM6WF99gnsiwmm",
+    "nua" : "810460",
+    "firstLastName" : "Gonzalez",
+    "secondLastName" : "Rodriguez",
+    "name" : "Brenda",
+    "gender" : "Female",
+    "birthday" : "1996-04-19",
+    "program" : "LGE",
+    "email" : "gonzalezb56@hmail.com"
+}
+
+/* 73 */
+{
+    "_id" : "YejvAeL9AZmLBsKZt",
+    "nua" : "810323",
+    "firstLastName" : "Magaña",
+    "secondLastName" : "Cordero",
+    "name" : "María Fernanda",
+    "gender" : "Female",
+    "birthday" : "1995-04-14",
+    "program" : "LGE",
+    "email" : "maffmagg-15@gmail.com"
+}
+
+/* 74 */
+{
+    "_id" : "pa6di9CECbKySHSib",
+    "nua" : "146544",
+    "firstLastName" : "Gomez",
+    "secondLastName" : "Espinosa",
+    "name" : "Lisett",
+    "gender" : "Female",
+    "birthday" : "1998-06-18",
+    "program" : "LCE",
+    "email" : "lisettgoes17@hotmail.com"
+}
+
+/* 75 */
+{
+    "_id" : "W6dA5XCMdoCnEHquu",
+    "nua" : "146638",
+    "firstLastName" : "Santoyo",
+    "secondLastName" : "Rodriguez",
+    "name" : "Jose Manuel",
+    "gender" : "Male",
+    "birthday" : "1999-02-09",
+    "program" : "LSC",
+    "email" : "ga890052@gmail.com"
+}
+
+/* 76 */
+{
+    "_id" : "e5tSeJqX5APQN8H3k",
+    "nua" : "146562",
+    "firstLastName" : "Andrade",
+    "secondLastName" : "Nuñez",
+    "name" : "Alejandro",
+    "gender" : "Male",
+    "birthday" : "1999-02-28",
+    "program" : "LCE",
+    "email" : "alexwweann@gmail.com"
+}
+
+/* 77 */
+{
+    "_id" : "G7swAWjaSfJwqTNo4",
+    "nua" : "146538",
+    "firstLastName" : "Patiño",
+    "secondLastName" : "Miranda",
+    "name" : "Martín Raúl",
+    "gender" : "Male",
+    "birthday" : "1998-11-24",
+    "program" : "LCE",
+    "email" : "patino.ug@outlook.es"
+}
+
+/* 78 */
+{
+    "_id" : "Fyee3vsxrH6QBfyBa",
+    "nua" : "146539",
+    "firstLastName" : "Aguado",
+    "secondLastName" : "Solorio",
+    "name" : "José Manuel",
+    "gender" : "Male",
+    "birthday" : "1996-08-24",
+    "program" : "LCE",
+    "email" : "manotas20135@gmail.com"
+}
+
+/* 79 */
+{
+    "_id" : "dMMLYRtW9P6Dp2LDc",
+    "nua" : "380273",
+    "firstLastName" : "García",
+    "secondLastName" : "Ramírez",
+    "name" : "Daniel Alejandro",
+    "gender" : "Male",
+    "birthday" : "1999-05-24",
+    "program" : "LGE",
+    "email" : "coookie_moonster@live.com"
+}
+
+/* 80 */
+{
+    "_id" : "TsPibX4tEdaxqkYBm",
+    "nua" : "146615",
+    "firstLastName" : "Navarrete",
+    "secondLastName" : "Garcia",
+    "name" : "Jose Emmanuel",
+    "gender" : "Male",
+    "birthday" : "1999-04-05",
+    "program" : "LSC",
+    "email" : "emmanuelgar55555@gmail.com"
+}
+
+/* 81 */
+{
+    "_id" : "Spk42ivpuRi2Z4B5J",
+    "nua" : "146505",
+    "firstLastName" : "Salazar",
+    "secondLastName" : "Vidal",
+    "name" : "Jesus",
+    "gender" : "Male",
+    "birthday" : "1998-11-05",
+    "program" : "LSC",
+    "email" : "j.salazarvidal@ugto.mx"
+}
+
+/* 82 */
+{
+    "_id" : "LMc6Ls6ues2dgDf4L",
+    "nua" : "146628",
+    "firstLastName" : "Flores",
+    "secondLastName" : "Pérez",
+    "name" : "Erick",
+    "gender" : "Male",
+    "birthday" : "1998-11-30",
+    "program" : "LCE",
+    "email" : "forceblackdx@gmail.com"
+}
+
+/* 83 */
+{
+    "_id" : "x3jG8fLLs2bEz8W9z",
+    "nua" : "810541",
+    "firstLastName" : "Cisneros",
+    "secondLastName" : "Nava",
+    "name" : "Jacqueline",
+    "gender" : "Female",
+    "birthday" : "1996-11-04",
+    "program" : "LEI",
+    "email" : "jaki.mirai13@gmail.com"
+}
+
+/* 84 */
+{
+    "_id" : "MA8YBPk2EbtyPdKTj",
+    "nua" : "403441",
+    "firstLastName" : "Abarca",
+    "secondLastName" : "Rodríguez",
+    "name" : "Diego",
+    "gender" : "Male",
+    "birthday" : "1999-08-07",
+    "program" : "LSC",
+    "email" : "diego01234567891@gmail.com"
+}
+
+/* 85 */
+{
+    "_id" : "L3ECpz3eRTmcemM3P",
+    "nua" : "146574",
+    "firstLastName" : "Nava",
+    "secondLastName" : "Herrera",
+    "name" : "Antonio",
+    "gender" : "Male",
+    "birthday" : "1998-12-11",
+    "program" : "LCS",
+    "email" : "a.navaherrara@ugto.mx"
+}
+
+/* 86 */
+{
+    "_id" : "kg5uqBFtpFnNrDt6W",
+    "nua" : "146575",
+    "firstLastName" : "Ruiz",
+    "secondLastName" : "Mora",
+    "name" : "Luis Angel",
+    "gender" : "Male",
+    "birthday" : "1998-09-10",
+    "program" : "LCE",
+    "email" : "luisangelruizmora@gmail.com"
+}
+
+/* 87 */
+{
+    "_id" : "rGYhLN2xsGRJhLa24",
+    "nua" : "146484",
+    "firstLastName" : "Jurado",
+    "secondLastName" : "Zavala",
+    "name" : "Hermez Alejandro",
+    "gender" : "MALE",
+    "birthday" : "1999-05-11",
+    "program" : "LSC",
+    "email" : "ha.juradozavala@ugto.mx"
+}
+
+/* 88 */
+{
+    "_id" : "RARicGnDENwRWZeP2",
+    "nua" : "810354",
+    "firstLastName" : "Hernández",
+    "secondLastName" : "Guerrero",
+    "name" : "Aldair",
+    "gender" : "MALE",
+    "birthday" : "1995-10-02",
+    "program" : "LGE",
+    "email" : "aldair190@gmail.com"
+}
+
+/* 89 */
+{
+    "_id" : "RNvQ4LG9MP46dS2kE",
+    "nua" : "402975",
+    "firstLastName" : "Arredondo",
+    "secondLastName" : "Murillo",
+    "name" : "Juan Carlos",
+    "gender" : "MALE",
+    "birthday" : "1996-12-02",
+    "program" : "LSC",
+    "email" : "clon-98@hotmail.com"
+}
+
+/* 90 */
+{
+    "_id" : "XNvwEptmFEcJTBTin",
+    "nua" : "145411",
+    "firstLastName" : "Baeza",
+    "secondLastName" : "García",
+    "name" : "Erik Raymundo",
+    "gender" : "MALE",
+    "birthday" : "1996-09-22",
+    "program" : "LCE",
+    "email" : "mundis_09@hotmail.com"
+}
+
+/* 91 */
+{
+    "_id" : "kkhAwz494EvJmCJDb",
+    "nua" : "810379",
+    "firstLastName" : "García",
+    "secondLastName" : "Hurtado",
+    "name" : "Martin",
+    "gender" : "MALE",
+    "birthday" : "1995-12-07",
+    "program" : "LSC",
+    "email" : "martingarciahurtado@gmail.com"
+}
+
+/* 92 */
+{
+    "_id" : "iwfPMwD9r87q5NRYm",
+    "nua" : "810307",
+    "firstLastName" : "Hernández",
+    "secondLastName" : "Cruz",
+    "name" : "Tania Marcela",
+    "gender" : "FEMALE",
+    "birthday" : "1995-08-02",
+    "program" : "LGE",
+    "email" : "taniacruz7709@gmail.com"
+}
+
+/* 93 */
+{
+    "_id" : "zdzBhggMLZaJgHhKC",
+    "nua" : "810447",
+    "firstLastName" : "Jaramillo",
+    "secondLastName" : "Davalos",
+    "name" : "Jesús Alejandro",
+    "gender" : "MALE",
+    "birthday" : "1996-04-10",
+    "program" : "LCE",
+    "email" : "ja.jaramillodavalos@ugto.mx"
+}
+
+/* 94 */
+{
+    "_id" : "4kivCfaGhAJzj6J2c",
+    "nua" : "505280",
+    "firstLastName" : "Nuñez",
+    "secondLastName" : "Ramos",
+    "name" : "Paola",
+    "gender" : "FEMALE",
+    "birthday" : "1997-06-29",
+    "program" : "LEI",
+    "email" : "paola.ramos.132@gmail.com"
+}
+
+/* 95 */
+{
+    "_id" : "iueDvKLfCXLhB5LR6",
+    "nua" : "146557",
+    "firstLastName" : "Quintana",
+    "secondLastName" : "Arreguin",
+    "name" : "Maite",
+    "gender" : "FEMALE",
+    "birthday" : "1999-08-16",
+    "program" : "LSC",
+    "email" : "maytequintana05@gmail.com"
+}
+
+/* 96 */
+{
+    "_id" : "bdYegyyujgW8Jt7tb",
+    "nua" : "765911",
+    "firstLastName" : "Rosas",
+    "secondLastName" : "Silva",
+    "name" : "Jesús Alberto",
+    "gender" : "MALE",
+    "birthday" : "1995-01-28",
+    "program" : "LGE",
+    "email" : "economistajesusrosass@hotmail.com"
+}
+
+/* 97 */
+{
+    "_id" : "KKXYfwaRw5XY6qhnB",
+    "nua" : "810469",
+    "firstLastName" : "Martínez",
+    "secondLastName" : "Tencle",
+    "name" : "Azucena",
+    "gender" : "FEMALE",
+    "birthday" : "1995-07-25",
+    "program" : "LSC",
+    "email" : "bluedarkazu@gmail.com"
+}
+
+/* 98 */
+{
+    "_id" : "9o3ZsKM4EyrkAcDck",
+    "nua" : "810347",
+    "firstLastName" : "Almanza",
+    "secondLastName" : "Armenta",
+    "name" : "Cristian",
+    "gender" : "MALE",
+    "birthday" : "1995-09-26",
+    "program" : "LSC",
+    "email" : "almanza2695@gmail.com"
+}
+
+/* 99 */
+{
+    "_id" : "SHoWrwQPzBrYBk3kF",
+    "nua" : "145330",
+    "firstLastName" : "Bedolla",
+    "secondLastName" : "Ibarra",
+    "name" : "María Guadalupe",
+    "gender" : "FEMALE",
+    "birthday" : "1996-12-06",
+    "program" : "LCE",
+    "email" : "lupita25girl@gmail.com"
+}
+
+/* 100 */
+{
+    "_id" : "9yoWTbCoAjQkREuSq",
+    "nua" : "810339",
+    "firstLastName" : "Calderón",
+    "secondLastName" : "Isais",
+    "name" : "Jesús Alberto",
+    "gender" : "MALE",
+    "birthday" : "1995-09-04",
+    "program" : "LCE",
+    "email" : "jacidis@gmail.com"
+}
+
+/* 101 */
+{
+    "_id" : "7DpSkBJYuASrdDqgT",
+    "nua" : "810415",
+    "firstLastName" : "Gámez",
+    "secondLastName" : "Pérez",
+    "name" : "Francisco David",
+    "gender" : "MALE",
+    "birthday" : "1996-02-09",
+    "program" : "LSC",
+    "email" : "gamezdavid569@gmail.com"
+}
+
+/* 102 */
+{
+    "_id" : "cnded5smEycg63aMu",
+    "nua" : "810268",
+    "firstLastName" : "Paniagua",
+    "secondLastName" : "Medina",
+    "name" : "Juan José",
+    "gender" : "MALE",
+    "birthday" : "1995-11-30",
+    "program" : "LCE",
+    "email" : "juanjosepaniagua@hotmail.com"
+}
+
+/* 103 */
+{
+    "_id" : "YJhE5J5ohR225wwRN",
+    "nua" : "810420",
+    "firstLastName" : "Salazar",
+    "secondLastName" : "Martínez",
+    "name" : "Carlos",
+    "gender" : "MALE",
+    "birthday" : "1994-05-10",
+    "program" : "LSC",
+    "email" : "c_salazarmartinez@hotmail.com"
+}
+
+/* 104 */
+{
+    "_id" : "v3J5ok8z6ESb2HJHj",
+    "nua" : "143619",
+    "firstLastName" : "Sotomayor",
+    "secondLastName" : "Flores",
+    "name" : "Rubén Eduardo",
+    "gender" : "MALE",
+    "birthday" : "1990-02-06",
+    "program" : "LCE",
+    "email" : "re.sotomayorflores@ugto.mx"
+}
+
+/* 105 */
+{
+    "_id" : "3ZbBePQvCknCSX23B",
+    "nua" : "810380",
+    "firstLastName" : "Zavala",
+    "secondLastName" : "Páramo",
+    "name" : "Juan Pablo",
+    "gender" : "MALE",
+    "birthday" : "1996-05-10",
+    "program" : "LSC",
+    "email" : "juanparamosae@gmail.com"
+}
+
+/* 106 */
+{
+    "_id" : "hA8xBgs48ppXmZWPJ",
+    "nua" : "810326",
+    "firstLastName" : "González",
+    "secondLastName" : "Valtierra",
+    "name" : "Fernando",
+    "gender" : "MALE",
+    "birthday" : "1992-02-27",
+    "program" : "LCE",
+    "email" : "f.gonzalezvaltierra@ugto.mx"
+}
+
+/* 107 */
+{
+    "_id" : "dgNstT8T4fxr5mtTE",
+    "nua" : "145333",
+    "firstLastName" : "Reyes",
+    "secondLastName" : "Paniagua",
+    "name" : "Yovani Ezequiel",
+    "gender" : "MALE",
+    "birthday" : "1996-11-08",
+    "program" : "LCE",
+    "email" : "yovani_r_p@hotmail.com"
+}
+
+/* 108 */
+{
+    "_id" : "ZsoqGcXnAjjyLLqv4",
+    "nua" : "145459",
+    "firstLastName" : "Jurado",
+    "secondLastName" : "Zavala",
+    "name" : "Maria Andrea",
+    "gender" : "FEMALE",
+    "birthday" : "1996-12-18",
+    "program" : "LGE",
+    "email" : "andreajurado67@gmail.com"
+}
+
+/* 109 */
+{
+    "_id" : "doHJxedD7gGJnEiA4",
+    "nua" : "810477",
+    "firstLastName" : "Posadas",
+    "secondLastName" : "Martínez",
+    "name" : "Engelberto",
+    "gender" : "MALE",
+    "birthday" : "1987-11-13",
+    "program" : "LCE",
+    "email" : "enyelo_1@hotmail.com"
+}
+
+/* 110 */
+{
+    "_id" : "eoYsigbxPbQkp7isd",
+    "nua" : "143879",
+    "firstLastName" : "Corona",
+    "secondLastName" : "Meléndez",
+    "name" : "José Luis",
+    "gender" : "MALE",
+    "birthday" : "1989-11-28",
+    "program" : "MIEA",
+    "email" : "jlcorona2889@gmail.com"
+}
+
+/* 111 */
+{
+    "_id" : "34Zt66dm3ZbFBB6We",
+    "nua" : "810164",
+    "firstLastName" : "Blacazar",
+    "secondLastName" : "Torres",
+    "name" : "David Alejandro",
+    "gender" : "MALE",
+    "birthday" : "1993-07-19",
+    "program" : "MIEA",
+    "email" : "da.balcazartorres@ugto.mx"
+}
+
+/* 112 */
+{
+    "_id" : "daLsgnynexaFDnAik",
+    "nua" : "146558",
+    "firstLastName" : "Varas",
+    "secondLastName" : "Parada",
+    "name" : "Carlos Antonio",
+    "gender" : "MALE",
+    "birthday" : "1998-11-05",
+    "program" : "LCE",
+    "email" : "Ca.varasparada@ugto.mx"
+}
+
+/* 113 */
+{
+    "_id" : "haHzEnWoH3BoQQgwA",
+    "nua" : "907211",
+    "firstLastName" : "González",
+    "secondLastName" : "Villagómez",
+    "name" : "Jacob",
+    "gender" : "MALE",
+    "birthday" : "1992-05-25",
+    "program" : "MIEA",
+    "email" : "j.gonzalezvillagomez@ugto.mx"
+}
+
+/* 114 */
+{
+    "_id" : "HnjWRxroe2ZsRAuq8",
+    "nua" : "143622",
+    "firstLastName" : "Martínez",
+    "secondLastName" : "Hurtado",
+    "name" : "Sandra",
+    "gender" : "FEMALE",
+    "birthday" : "1988-07-29",
+    "program" : "MIEA",
+    "email" : "sandy005495@gmail.com"
+}
+
+/* 115 */
+{
+    "_id" : "obReM4bGsHKhJLW7K",
+    "nua" : "308113",
+    "firstLastName" : "Reynoso",
+    "secondLastName" : "Godinez",
+    "name" : "Reynaldo",
+    "gender" : "MALE",
+    "birthday" : "1988-11-23",
+    "program" : "MIEA",
+    "email" : "reynaldo_reynoso@hotmail.com"
+}
+
+/* 116 */
+{
+    "_id" : "wvHbZBKZweXayS6yH",
+    "nua" : "810150",
+    "firstLastName" : "Valdes",
+    "secondLastName" : "Ochoa",
+    "name" : "Miguel Ángel",
+    "gender" : "MALE",
+    "birthday" : "1993-02-22",
+    "program" : "MIEA",
+    "email" : "ma.valdesochoa@gmail.com"
+}
+
+/* 117 */
+{
+    "_id" : "s6hWBDenPh2Negmdh",
+    "nua" : "143424",
+    "firstLastName" : "Zendejas",
+    "secondLastName" : "Andrade",
+    "name" : "Luis Alejandro",
+    "gender" : "MALE",
+    "birthday" : "1989-06-23",
+    "program" : "MIEA",
+    "email" : "zeal890623@gmail.com"
+}
+
+/* 118 */
+{
+    "_id" : "KCGkYXMhhDTiesSdx",
+    "nua" : "146267",
+    "firstLastName" : "Arriaga",
+    "secondLastName" : "Ruiz",
+    "name" : "María Tania",
+    "gender" : "FEMALE",
+    "birthday" : "1989-05-17",
+    "program" : "MAT",
+    "email" : "mt.arriagaruiz@ugto.mx"
+}
+
+/* 119 */
+{
+    "_id" : "dSNZt42KXaxg7w3ru",
+    "nua" : "146266",
+    "firstLastName" : "Becerra",
+    "secondLastName" : "Montañez",
+    "name" : "Miguel Alfonso",
+    "gender" : "MALE",
+    "birthday" : "0089-12-10",
+    "program" : "MAT",
+    "email" : "ma.becerramontanez@ugto.mx"
+}
+
+/* 120 */
+{
+    "_id" : "E3k9CHBfZvdZLBGC6",
+    "nua" : "810213",
+    "firstLastName" : "Contreras",
+    "secondLastName" : "Contreras",
+    "name" : "Ignacio",
+    "gender" : "MALE",
+    "birthday" : "1992-10-16",
+    "program" : "MAT",
+    "email" : "contrerassign@gmail.com"
+}
+
+/* 121 */
+{
+    "_id" : "HvwAtB6fHQEDzkbC9",
+    "nua" : "726133",
+    "firstLastName" : "De Julian",
+    "secondLastName" : "Posadas",
+    "name" : "Eder Constantino",
+    "gender" : "MALE",
+    "birthday" : "1982-10-19",
+    "program" : "MAT",
+    "email" : "ec.dejulianposada@ugto.mx"
+}
+
+/* 122 */
+{
+    "_id" : "aiqkAe924ziaQeTYh",
+    "nua" : "335912",
+    "firstLastName" : "Flores",
+    "secondLastName" : "Saldivar",
+    "name" : "Héctor Gandhi",
+    "gender" : "MALE",
+    "birthday" : "1988-01-03",
+    "program" : "MAT",
+    "email" : "gandhi.flores@gmail.com"
+}
+
+/* 123 */
+{
+    "_id" : "vM7XgwGir6Qvuxpmy",
+    "nua" : "146272",
+    "firstLastName" : "López",
+    "secondLastName" : "Castillo",
+    "name" : "Sinai",
+    "gender" : "FEMALE",
+    "birthday" : "1994-11-10",
+    "program" : "MAT",
+    "email" : "s.lopez.castillo@ugto.mx"
+}
+
+/* 124 */
+{
+    "_id" : "hbD44crdGY6hRHGoM",
+    "nua" : "810122",
+    "firstLastName" : "Morales",
+    "secondLastName" : "Núñez",
+    "name" : "Carlos Alfredo",
+    "gender" : "MALE",
+    "birthday" : "1991-10-27",
+    "program" : "MAT",
+    "email" : "carlos.mrls@hotmail.com"
+}
+
+/* 125 */
+{
+    "_id" : "MzdekzpuaZFvHQQ66",
+    "nua" : "146472",
+    "firstLastName" : "Orrala",
+    "secondLastName" : "Silva",
+    "name" : "Sergio Alan",
+    "gender" : "MALE",
+    "birthday" : "1991-09-15",
+    "program" : "MAT",
+    "email" : "saos.pro12@gmail.com"
+}
+
+/* 126 */
+{
+    "_id" : "Yrw2Z6vSgaZJqfSoR",
+    "nua" : "146269",
+    "firstLastName" : "Otalora",
+    "secondLastName" : "Leguizamon",
+    "name" : "Cristian Camilo",
+    "gender" : "MALE",
+    "birthday" : "1993-05-03",
+    "program" : "MAT",
+    "email" : "cc.otaloraleguizamon@ugto.mx"
+}
+
+/* 127 */
+{
+    "_id" : "gnChqxt9ZEgNj7pcb",
+    "nua" : "146471",
+    "firstLastName" : "Rosas",
+    "secondLastName" : "Centeno",
+    "name" : "Eleazar",
+    "gender" : "MALE",
+    "birthday" : "1993-10-15",
+    "program" : "MAT",
+    "email" : "eleazarrosas@outlook.com"
+}
+
+/* 128 */
+{
+    "_id" : "ppnJ2SGDMtWNWCA36",
+    "nua" : "145509",
+    "firstLastName" : "Bedolla",
+    "secondLastName" : "Guzmán",
+    "name" : "Jonathan",
+    "gender" : "MALE",
+    "birthday" : "1996-09-26",
+    "program" : "LGE",
+    "email" : "jonathan.beguz@hotmail.com"
+}
+
+/* 129 */
+{
+    "_id" : "ZLsGSsFHBGGtb8n69",
+    "nua" : "146542",
+    "firstLastName" : "Luna",
+    "secondLastName" : "Gaviña",
+    "name" : "Ismael",
+    "gender" : "MALE",
+    "birthday" : "1999-06-06",
+    "program" : "LSC",
+    "email" : "mi.5432@live.com"
+}
+
+/* 130 */
+{
+    "_id" : "zcdivXytLxRqeyyrH",
+    "nua" : "145418",
+    "firstLastName" : "Romero",
+    "secondLastName" : "Hernández",
+    "name" : "Luis Antonio",
+    "gender" : "MALE",
+    "birthday" : "1997-07-21",
+    "program" : "LCE",
+    "email" : "darkgalaxy75@hotmail.com"
+}
+
+/* 131 */
+{
+    "_id" : "wG9qun58gRcjBaRmv",
+    "nua" : "146368",
+    "firstLastName" : "Durán",
+    "secondLastName" : "Carmona",
+    "name" : "Brenda",
+    "gender" : "FEMALE",
+    "birthday" : "1999-08-02",
+    "program" : "LGE",
+    "email" : "brenda.durcar.99@gmail.com"
+}
+
+/* 132 */
+{
+    "_id" : "8zXEkGnAaZ8PKzx8Q",
+    "nua" : "146452",
+    "firstLastName" : "Vargas",
+    "secondLastName" : "Sánchez",
+    "name" : "Viviana Guadalupe",
+    "gender" : "FEMALE",
+    "birthday" : "1998-11-22",
+    "program" : "LGE",
+    "email" : "vg.vargassanchez@ugto.mx"
+}
+
+/* 133 */
+{
+    "_id" : "FiHsyRLysLzdW9bjx",
+    "nua" : "146367",
+    "firstLastName" : "Plaza",
+    "secondLastName" : "Orozco",
+    "name" : "José Andrés",
+    "gender" : "MALE",
+    "birthday" : "1999-05-20",
+    "program" : "LGE",
+    "email" : "ja.plazaorozco@ugto.mx"
+}
+
+/* 134 */
+{
+    "_id" : "5cavX5e5ddjrXhnMT",
+    "nua" : "146486",
+    "firstLastName" : "Espinoza",
+    "secondLastName" : "Moreno",
+    "name" : "María de los Angeles",
+    "gender" : "FEMALE",
+    "birthday" : "1998-06-25",
+    "program" : "LSC",
+    "email" : "espinoza_diana_91@hotmail.com"
+}
+
+/* 135 */
+{
+    "_id" : "DzKm3Y4LyCvNRBaXn",
+    "nua" : "380134",
+    "firstLastName" : "Coronado",
+    "secondLastName" : "Arriaga",
+    "name" : "Marelyn Estefania",
+    "gender" : "FEMALE",
+    "birthday" : "1999-03-11",
+    "program" : "LGE",
+    "email" : "marelyn1281@gmail.com"
+}
+
+/* 136 */
+{
+    "_id" : "E2NXtC29nGszFHyzD",
+    "nua" : "146635",
+    "firstLastName" : "Espinosa",
+    "secondLastName" : "Sánchez",
+    "name" : "María Guadalupe",
+    "gender" : "FEMALE",
+    "birthday" : "1999-03-06",
+    "program" : "LSC",
+    "email" : "maria.gpees@hotmail.com"
+}
+
+/* 137 */
+{
+    "_id" : "oCnti8hGZsgXjt5DB",
+    "nua" : "146475",
+    "firstLastName" : "Lara",
+    "secondLastName" : "Espinosa",
+    "name" : "Diana Melina",
+    "gender" : "FEMALE",
+    "birthday" : "1998-03-13",
+    "program" : "LSC",
+    "email" : "kyomel5421@hotmail.com"
+}
+
+/* 138 */
+{
+    "_id" : "SZ8cDeRyGG7oP27B6",
+    "nua" : "146559",
+    "firstLastName" : "Calderón",
+    "secondLastName" : "Nieto",
+    "name" : "Roberto",
+    "gender" : "MALE",
+    "birthday" : "1998-11-25",
+    "program" : "LSC",
+    "email" : "r.calderonnieto@ugto.mx"
+}
+
+/* 139 */
+{
+    "_id" : "9bWewo378fpacMeks",
+    "nua" : "145663",
+    "firstLastName" : "Alcantar",
+    "secondLastName" : "Villagómez",
+    "name" : "Karla Paola",
+    "gender" : "FEMALE",
+    "birthday" : "1995-01-16",
+    "program" : "LGE",
+    "email" : "nekitakawaii3@gmail.com"
+}
+
+/* 140 */
+{
+    "_id" : "bCttEFSeiTAibx9Bp",
+    "nua" : "145696",
+    "firstLastName" : "Juárez",
+    "secondLastName" : "González",
+    "name" : "Ana Karina",
+    "gender" : "FEMALE",
+    "birthday" : "1996-04-03",
+    "program" : "LGE",
+    "email" : "kari_gonzalez03@hotmail.com"
+}
+
+/* 141 */
+{
+    "_id" : "nRr9tbmvXHB5fuAPM",
+    "nua" : "146391",
+    "firstLastName" : "Martínez",
+    "secondLastName" : "López",
+    "name" : "Mariana",
+    "gender" : "FEMALE",
+    "birthday" : "1999-04-15",
+    "program" : "LGE",
+    "email" : "marianaml990415@gmail.com"
+}
+
+/* 142 */
+{
+    "_id" : "BFkRHTo2oP7PnH8Hj",
+    "nua" : "810360",
+    "firstLastName" : "Cisneros",
+    "secondLastName" : "Castro",
+    "name" : "Rogelio Jesús",
+    "gender" : "MALE",
+    "birthday" : "1996-02-02",
+    "program" : "LGE",
+    "email" : "rogeliocg@live.com"
+}
+
+/* 143 */
+{
+    "_id" : "RPQkbZpGNfeheJYMJ",
+    "nua" : "146598",
+    "firstLastName" : "Bedolla",
+    "secondLastName" : "Guzmán",
+    "name" : "Veronica",
+    "gender" : "FEMALE",
+    "birthday" : "1999-02-04",
+    "program" : "LSC",
+    "email" : "vbedollaguzman@gmail.com"
+}
+
+/* 144 */
+{
+    "_id" : "BeBBJjqCxTDwx8QJG",
+    "nua" : "401028",
+    "firstLastName" : "HERNANDEZ",
+    "secondLastName" : "VILLAGOMEZ",
+    "name" : "GLORIA VIANEY",
+    "gender" : "WOMAN",
+    "birthday" : "1989-05-30",
+    "program" : "MAT",
+    "email" : "gv.hernandezvillagomez@ugto.mx"
+}
+
+/* 145 */
+{
+    "_id" : "ByRWWGesCbZoTPbNc",
+    "nua" : "146738",
+    "firstLastName" : "VALENZUELA",
+    "secondLastName" : "LOUBET",
+    "name" : "HECTOR JALIL",
+    "gender" : "MALE",
+    "birthday" : "1993-06-06",
+    "program" : "MIEA",
+    "email" : "hj.valenzuelaloubet@ugto.mx"
+}
+
+/* 146 */
+{
+    "_id" : "8zQwqymFTeZoAQkfm",
+    "nua" : "906186",
+    "firstLastName" : "GUZMAN",
+    "secondLastName" : "MARTINEZ",
+    "name" : "SERGIO",
+    "gender" : "MALE",
+    "birthday" : "1989-10-12",
+    "program" : "MIEA",
+    "email" : "sgm_1210@hotmail.com"
+}
+
+/* 147 */
+{
+    "_id" : "fENGasFb6CRswuDp8",
+    "nua" : "441327",
+    "firstLastName" : "SANCHEZ",
+    "secondLastName" : "GUZMAN",
+    "name" : "DAVID",
+    "gender" : "MALE",
+    "birthday" : "1990-11-16",
+    "program" : "MIEA",
+    "email" : "d.sanchezguzman@ugto.mx"
+}
+
+/* 148 */
+{
+    "_id" : "T4cs45L9CCr7yve3c",
+    "nua" : "907202",
+    "firstLastName" : "LARA",
+    "secondLastName" : "ESPINOZA",
+    "name" : "EDWIN MIGUEL",
+    "gender" : "MALE",
+    "birthday" : "1992-07-17",
+    "program" : "MIEA",
+    "email" : "emlara35@gmail.com"
+}
+
+/* 149 */
+{
+    "_id" : "bJ9FPQYySWLPQFrfK",
+    "nua" : "810127",
+    "firstLastName" : "NUÑEZ",
+    "secondLastName" : "GARCIA",
+    "name" : "IVAN",
+    "gender" : "MALE",
+    "birthday" : "1992-01-31",
+    "program" : "MIEA",
+    "email" : "topis7c@gmail.com"
+}
+
+/* 150 */
+{
+    "_id" : "9fbRGGhYrLzo3ip6s",
+    "nua" : "907210",
+    "firstLastName" : "GONZALEZ",
+    "secondLastName" : "VILLAGOMEZ",
+    "name" : "ESAU",
+    "gender" : "MALE",
+    "birthday" : "1992-05-25",
+    "program" : "MIEA",
+    "email" : "esau_gv12@hotmail.com"
+}
+
+/* 151 */
+{
+    "_id" : "HYiaMc5qeyqLe22Co",
+    "nua" : "146749",
+    "firstLastName" : "PACHECO",
+    "secondLastName" : "SANCHEZ",
+    "name" : "ROSALBA",
+    "gender" : "FEMALE",
+    "birthday" : "1993-11-28",
+    "program" : "MIEA",
+    "email" : "r.pacheco.sanchez@ugto.mx"
+}
+
+/* 152 */
+{
+    "_id" : "aqEf8f2BbthJpxdNL",
+    "nua" : "146699",
+    "firstLastName" : "SANJUAN",
+    "secondLastName" : "MENDEZ",
+    "name" : "JESUS",
+    "gender" : "MALE",
+    "birthday" : "1993-09-01",
+    "program" : "MIEA",
+    "email" : "pegazo_1.09@hotmail.com"
+}
+
+/* 153 */
+{
+    "_id" : "LeTnhppK7BSuxEfzY",
+    "nua" : "143479",
+    "firstLastName" : "DAMIAN",
+    "secondLastName" : "RAMIREZ",
+    "name" : "LETICIA",
+    "gender" : "FEMALE",
+    "birthday" : "1989-11-28",
+    "program" : "MAT",
+    "email" : "l.damianramirez@ugto.mx"
+}
+
+/* 154 */
+{
+    "_id" : "jdDJYTH5LrDNKLmYr",
+    "nua" : "146734",
+    "firstLastName" : "SALAZAR",
+    "secondLastName" : "MARTINEZ",
+    "name" : "ELIAS",
+    "gender" : "MALE",
+    "birthday" : "1984-01-02",
+    "program" : "MAT",
+    "email" : "e.salazarmartinez@ugto.mx"
+}
+
+/* 155 */
+{
+    "_id" : "dkNkvBm56meExW5CM",
+    "nua" : "810422",
+    "firstLastName" : "ZAVALA",
+    "secondLastName" : "ALFARO",
+    "name" : "JAQUELINE",
+    "gender" : "FEMALE",
+    "birthday" : "1996-03-14",
+    "program" : "LGE",
+    "email" : "j.zavalaalfaro@ugto.mx"
+}
+
+/* 156 */
+{
+    "_id" : "nDfEQvJ2BBzmnWDNy",
+    "nua" : "146032",
+    "firstLastName" : "GUZMÁN",
+    "secondLastName" : "MÉNDEZ",
+    "name" : "MARIA GUADLUPE",
+    "gender" : "FEMALE",
+    "birthday" : "1998-03-14",
+    "program" : "LGE",
+    "email" : "lupitaguzman14@hotmail.com"
+}
+
+/* 157 */
+{
+    "_id" : "rFurovQJ5mg42E8em",
+    "nua" : "146828",
+    "firstLastName" : "Acevedo",
+    "secondLastName" : "Sanchez",
+    "name" : "Sindy Guadalupe",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "ydnis.lu@gmail.com"
+}
+
+/* 158 */
+{
+    "_id" : "JDDCv2w5E7GPtrso9",
+    "nua" : "146622",
+    "firstLastName" : "García",
+    "secondLastName" : "Torres",
+    "name" : "Mayte Michelle",
+    "gender" : "Female",
+    "birthday" : "1995-03-14",
+    "program" : "LCE",
+    "email" : "mm.garciatorres@ugto.mx"
+}
+
+/* 159 */
+{
+    "_id" : "6r3SsWZoHtu7NqRfp",
+    "nua" : "914319",
+    "firstLastName" : "JUAREZ",
+    "secondLastName" : "VILLAGOMEZ",
+    "name" : "CHRISTOPHER",
+    "gender" : "MALE",
+    "birthday" : "1999-05-24",
+    "program" : "LICE",
+    "email" : "c.juarezvillagomez@ugto.mx"
+}
+
+/* 160 */
+{
+    "_id" : "4yFwrCwkcMJnkpPKL",
+    "nua" : "145338",
+    "firstLastName" : "CALDERON",
+    "secondLastName" : "URIBE",
+    "name" : "SALVADOR",
+    "gender" : "MALE",
+    "birthday" : "1996-09-02",
+    "program" : "ICE",
+    "email" : "salvador.calderon.131@gmail.com"
+}
+
+/* 161 */
+{
+    "_id" : "DPZu6rBaiwKkp46bz",
+    "nua" : "145965",
+    "firstLastName" : "SALINAS",
+    "secondLastName" : "ZAMUDIO",
+    "name" : "LUIS ENRIQUE",
+    "gender" : "MALE",
+    "birthday" : "1996-06-22",
+    "program" : "ISC",
+    "email" : "cielikari@gmail.com"
+}
+
+/* 162 */
+{
+    "_id" : "Mb9sa6YqdfAr9Y6A7",
+    "nua" : "771809",
+    "firstLastName" : "Ortega",
+    "secondLastName" : "Zepeda",
+    "name" : "Bianca Michelle",
+    "gender" : "Female",
+    "birthday" : "1995-09-20",
+    "program" : "LGE",
+    "email" : "michelleortega-95@hotmail.com"
+}
+
+/* 163 */
+{
+    "_id" : "oubmGoKiiRjo3kKSa",
+    "nua" : "145344",
+    "firstLastName" : "SAMANO",
+    "secondLastName" : "MORA",
+    "name" : "EFRAIN GUADALUPE",
+    "gender" : "MALE",
+    "birthday" : "1996-11-05",
+    "program" : "ICE",
+    "email" : "eg.samanomora@ugto.mx"
+}
+
+/* 164 */
+{
+    "_id" : "J7DpKhwPjTfQMeRHj",
+    "nua" : "145616",
+    "firstLastName" : "RANGEL",
+    "secondLastName" : "BAEZA",
+    "name" : "ALEJANDRO",
+    "gender" : "MALE",
+    "birthday" : "1995-11-03",
+    "program" : "LGE",
+    "email" : "alejandro-baeza@hotmail.com"
+}
+
+/* 165 */
+{
+    "_id" : "aRBMwyALjiWAQgzFn",
+    "nua" : "116544",
+    "firstLastName" : "GOMEZ",
+    "secondLastName" : "ESPINOZA",
+    "name" : "LISETT",
+    "gender" : "FEMALE",
+    "birthday" : "1998-06-18",
+    "program" : "LICE",
+    "email" : "lisettgoes17@hotmail.com"
+}
+
+/* 166 */
+{
+    "_id" : "eJNcN5iqhTB3zkCRM",
+    "nua" : "145964",
+    "firstLastName" : "ORTIZ",
+    "secondLastName" : "ALCANTAR",
+    "name" : "AZUCENA",
+    "gender" : "FEMALE",
+    "birthday" : "1998-06-25",
+    "program" : "LGE",
+    "email" : "azucena_4forever@hotmail.com"
+}
+
+/* 167 */
+{
+    "_id" : "dTTW3Ba8krgJoqFLS",
+    "nua" : "402539",
+    "firstLastName" : "JASSO",
+    "secondLastName" : "MEDINA",
+    "name" : "MARIA REBECA",
+    "gender" : "FEMALE",
+    "birthday" : "1995-10-17",
+    "program" : "LGE",
+    "email" : "mr.jassomedina@ugto.mx"
+}
+
+/* 168 */
+{
+    "_id" : "HD5vatX96MC6ybgdC",
+    "nua" : "810232",
+    "firstLastName" : "AVILES",
+    "secondLastName" : "DIAZ",
+    "name" : "JUAN CARLOS",
+    "gender" : "MALE",
+    "birthday" : "1995-06-20",
+    "program" : "ISC",
+    "email" : "j.c_avilez.d@hotmail.com"
+}
+
+/* 169 */
+{
+    "_id" : "4hbEJhDc6K7YcL9gM",
+    "nua" : "146056",
+    "firstLastName" : "MORALES",
+    "secondLastName" : "RIVERA",
+    "name" : "JOSE ALBERTO",
+    "gender" : "MALE",
+    "birthday" : "1997-12-02",
+    "program" : "LICE",
+    "email" : "albertomr_281@hotmail.com"
+}
+
+/* 170 */
+{
+    "_id" : "qH8DMiBudjHt7s4gE",
+    "nua" : "765909",
+    "firstLastName" : "RAYA",
+    "secondLastName" : "CRUZ",
+    "name" : "OSCAR ALBERTO",
+    "gender" : "MALE",
+    "birthday" : "1994-11-09",
+    "program" : "LGE",
+    "email" : "creepyscared_7@hotmail.com"
+}
+
+/* 171 */
+{
+    "_id" : "MuDLR5ccdD2638a85",
+    "nua" : "145479",
+    "firstLastName" : "SILVA",
+    "secondLastName" : "NUÑEZ",
+    "name" : "JANNETE MONTSERRAT",
+    "gender" : "FEMALE",
+    "birthday" : "1996-12-31",
+    "program" : "LGE",
+    "email" : "jannete.montserrat.silva.132@gmail.com"
+}
+
+/* 172 */
+{
+    "_id" : "iZm9ZhSSShpkej4Tb",
+    "nua" : "810293",
+    "firstLastName" : "ZAVALA",
+    "secondLastName" : "PEREZ",
+    "name" : "MARIA GUADALUPE",
+    "gender" : "FEMALE",
+    "birthday" : "1994-10-18",
+    "program" : "LGE",
+    "email" : "mg.zavalaperez@ugto.mx"
+}
+
+/* 173 */
+{
+    "_id" : "x7m5YJFewBsWfaj27",
+    "nua" : "810285",
+    "firstLastName" : "MEDRANO",
+    "secondLastName" : "SALAZAR",
+    "name" : "KARINA",
+    "gender" : "FEMALE",
+    "birthday" : "1995-04-12",
+    "program" : "LGE",
+    "email" : "ka.medranosalazar@ugto.mx"
+}
+
+/* 174 */
+{
+    "_id" : "WxXGJhvwapWSYAXjJ",
+    "nua" : "755589",
+    "firstLastName" : "MARTINEZ",
+    "secondLastName" : "GAYTAN",
+    "name" : "JESUS ALBERTO",
+    "gender" : "MALE",
+    "birthday" : "1993-08-28",
+    "program" : "ICE",
+    "email" : "ja.martinezgaytan@ugto.mx"
+}
+
+/* 175 */
+{
+    "_id" : "i8PPXnpkgznu93X3T",
+    "nua" : "146091",
+    "firstLastName" : "RAMIREZ",
+    "secondLastName" : "RAMIREZ",
+    "name" : "CARLOS RUBEN",
+    "gender" : "MALE",
+    "birthday" : "1998-02-11",
+    "program" : "ICE",
+    "email" : "crramirez596@gmail.com"
+}
+
+/* 176 */
+{
+    "_id" : "kgsv3SiRv7ckhdrwN",
+    "nua" : "810417",
+    "firstLastName" : "TORRES",
+    "secondLastName" : "CARMONA",
+    "name" : "JOSE JESUS",
+    "gender" : "MALE",
+    "birthday" : "1994-02-04",
+    "program" : "LISC",
+    "email" : "jesus_torres_94@outlook.com"
+}
+
+/* 177 */
+{
+    "_id" : "LMaoTjtDzM8ZGKZJM",
+    "nua" : "810279",
+    "firstLastName" : "BIBIAN",
+    "secondLastName" : "ALVAREZ",
+    "name" : "JOSE FREDY",
+    "gender" : "MALE",
+    "birthday" : "1995-04-11",
+    "program" : "LGE",
+    "email" : "jf.bibianalvarez@ugto.mx"
+}
+
+/* 178 */
+{
+    "_id" : "TSp3JjHRDFZD6xate",
+    "nua" : "810234",
+    "firstLastName" : "DIMAS",
+    "secondLastName" : "MARTINEZ",
+    "name" : "VICTOR MANUEL",
+    "gender" : "MALE",
+    "birthday" : "1995-07-07",
+    "program" : "LGE",
+    "email" : "vm.dimasmartinez@ugto.mx"
+}
+
+/* 179 */
+{
+    "_id" : "nGuXejiqwiQMyNrSH",
+    "nua" : "145828",
+    "firstLastName" : "ZAMUDIO",
+    "secondLastName" : "CANO",
+    "name" : "ADRIAN",
+    "gender" : "MALE",
+    "birthday" : "1995-10-01",
+    "program" : "LGE",
+    "email" : "a.zamudiocano@ugto.mx"
+}
+
+/* 180 */
+{
+    "_id" : "w97DyBX7FYKKwLnJw",
+    "nua" : "145957",
+    "firstLastName" : "ESTRADA",
+    "secondLastName" : "SEGURA",
+    "name" : "JOSE FRANCISCO",
+    "gender" : "MALE",
+    "birthday" : "1998-05-25",
+    "program" : "ICE",
+    "email" : "franciscoestrada1998@gmail.com"
+}
+
+/* 181 */
+{
+    "_id" : "wyMErabPYbKWj9QA3",
+    "nua" : "145917",
+    "firstLastName" : "GONZALEZ",
+    "secondLastName" : "FRANCO",
+    "name" : "GIOVANNY",
+    "gender" : "MALE",
+    "birthday" : "1998-08-15",
+    "program" : "LICE",
+    "email" : "giovanny.gonfra.98@gmail.com"
+}
+
+/* 182 */
+{
+    "_id" : "zoD5n3m27kyDGxYKH",
+    "nua" : "770131",
+    "firstLastName" : "GUZMAN",
+    "secondLastName" : "CALDERON",
+    "name" : "JONATHAN EMMANUEL",
+    "gender" : "MALE",
+    "birthday" : "1995-12-04",
+    "program" : "LGE",
+    "email" : "je.guzmancalderon@ugto.mx"
+}
+
+/* 183 */
+{
+    "_id" : "CkGQcJZjnTwR3uRLK",
+    "nua" : "739464",
+    "firstLastName" : "VILLAGOMEZ",
+    "secondLastName" : "MARTINEZ",
+    "name" : "MIGUEL ANGEL",
+    "gender" : "MALE",
+    "birthday" : "1989-02-16",
+    "program" : "LGE",
+    "email" : "migmask232@hotmail.com"
+}
+
+/* 184 */
+{
+    "_id" : "Qfcbynj9NBxZ8Mace",
+    "nua" : "145669",
+    "firstLastName" : "BAEZA",
+    "secondLastName" : "MORENO",
+    "name" : "JUANA PATRICIA",
+    "gender" : "FEMALE",
+    "birthday" : "1997-02-20",
+    "program" : "LGE",
+    "email" : "juana_pbn@hotmail.com"
+}
+
+/* 185 */
+{
+    "_id" : "DHE97NKBmfzfu9exw",
+    "nua" : "810272",
+    "firstLastName" : "GUTIERREZ",
+    "secondLastName" : "ZAVALA",
+    "name" : "ASAEL",
+    "gender" : "MALE",
+    "birthday" : "1995-07-01",
+    "program" : "LGE",
+    "email" : "a.gutierrezzavala@ugto.mx"
+}
+
+/* 186 */
+{
+    "_id" : "icLq2ciwHLFmn77L9",
+    "nua" : "145612",
+    "firstLastName" : "BAUTISTA",
+    "secondLastName" : "RUIZ",
+    "name" : "DANIEL",
+    "gender" : "MALE",
+    "birthday" : "1996-01-22",
+    "program" : "LISC",
+    "email" : "bardbr22@gmail.com"
+}
+
+/* 187 */
+{
+    "_id" : "zfBsmbYvdEXEzGgh7",
+    "nua" : "777346",
+    "firstLastName" : "ZAVALA",
+    "secondLastName" : "MENDEZ",
+    "name" : "ELISA GUADALUPE",
+    "gender" : "FEMALE",
+    "birthday" : "1996-12-23",
+    "program" : "ISC",
+    "email" : "eg.zavalamendez@ugto.mx"
+}
+
+/* 188 */
+{
+    "_id" : "78sqvZpXTNBKyK9e4",
+    "nua" : "810192",
+    "firstLastName" : "CONSTANTINO",
+    "secondLastName" : "HERRERA",
+    "name" : "JESUS ANTONIO",
+    "gender" : "MALE",
+    "birthday" : "1993-07-15",
+    "program" : "ICE",
+    "email" : "chucho.933@hotmail.com"
+}
+
+/* 189 */
+{
+    "_id" : "NSbgJbffpqiaxjkSB",
+    "nua" : "145416",
+    "firstLastName" : "GONZALEZ",
+    "secondLastName" : "HERRERA ",
+    "name" : "DANIEL",
+    "gender" : "MALE",
+    "birthday" : "1997-07-14",
+    "program" : "LGE",
+    "email" : "d.gonzalezherrera@ugto.mx"
+}
+
+/* 190 */
+{
+    "_id" : "N7kC9Jga8F8PN7drX",
+    "nua" : "145341",
+    "firstLastName" : "SANDOVAL",
+    "secondLastName" : "PANTOJA",
+    "name" : "VALERIA",
+    "gender" : "FEMALE",
+    "birthday" : "1997-08-28",
+    "program" : "ICE",
+    "email" : "valesitasc@hotmail.com"
+}
+
+/* 191 */
+{
+    "_id" : "L3YgALZP8czf6hCxh",
+    "nua" : "145654",
+    "firstLastName" : "ESPINO",
+    "secondLastName" : "ARANDA",
+    "name" : "ALEJANDRO",
+    "gender" : "MALE",
+    "birthday" : "1997-06-10",
+    "program" : "ISC",
+    "email" : "a.espinoaranda@ugto.mx"
+}
+
+/* 192 */
+{
+    "_id" : "qKgxNXSN4CXHtoP3i",
+    "nua" : "810294",
+    "firstLastName" : "DURAN",
+    "secondLastName" : "CARMONA",
+    "name" : "CARLOS",
+    "gender" : "MALE",
+    "birthday" : "1995-05-20",
+    "program" : "ICE",
+    "email" : "carlos_dc08@hotmail.com"
+}
+
+/* 193 */
+{
+    "_id" : "m66Saeg2qw4ZypxiF",
+    "nua" : "909216",
+    "firstLastName" : "MARTINEZ",
+    "secondLastName" : "PANIAGUA",
+    "name" : "CARLOS ALBERTO",
+    "gender" : "MALE",
+    "birthday" : "1991-12-19",
+    "program" : "LISC",
+    "email" : "ca.martinezpaniagua@ugto.mx"
+}
+
+/* 194 */
+{
+    "_id" : "SNGCo6JvM8Jri7yRu",
+    "nua" : "145475",
+    "firstLastName" : "SAMANO",
+    "secondLastName" : "GARCIA",
+    "name" : "MICHELLE GUADALUPE",
+    "gender" : "FEMALE",
+    "birthday" : "1997-08-11",
+    "program" : "LGE",
+    "email" : "michelle_gpe_1997@hotmail.com"
+}
+
+/* 195 */
+{
+    "_id" : "XCsacJ4qgACHNqYJQ",
+    "nua" : "402057",
+    "firstLastName" : "LOPEZ",
+    "secondLastName" : "VILLAGOMEZ",
+    "name" : "JOSE MANUEL",
+    "gender" : "MALE",
+    "birthday" : "1993-01-11",
+    "program" : "MIEA",
+    "email" : "josemanuel182010@outlook.com"
+}
+
+/* 196 */
+{
+    "_id" : "hPca7hcB65ye4iZk8",
+    "nua" : "145721",
+    "firstLastName" : "RODRIGUEZ",
+    "secondLastName" : "RODRIGUEZ",
+    "name" : "JOSE GUADALUPE",
+    "gender" : "MALE",
+    "birthday" : "1995-08-01",
+    "program" : "LGE",
+    "email" : "rorg950801@hotmail.com"
+}
+
+/* 197 */
+{
+    "_id" : "Qh93zC9rk2ndKETHh",
+    "nua" : "810320",
+    "firstLastName" : "CHAVEZ",
+    "secondLastName" : "SANTOYO",
+    "name" : "NICOLAS",
+    "gender" : "MALE",
+    "birthday" : "1995-02-25",
+    "program" : "LSC",
+    "email" : "n.chavezsantoyo@ugto.mx"
+}
+
+/* 198 */
+{
+    "_id" : "Xh6L2Do7SbssLnGyD",
+    "nua" : "765865",
+    "firstLastName" : "MARTINEZ",
+    "secondLastName" : "TELLEZ",
+    "name" : "FATIMA",
+    "gender" : "FEMALE",
+    "birthday" : "1995-04-21",
+    "program" : "LGE",
+    "email" : "f.martineztellez@ugto.mx"
+}
+
+/* 199 */
+{
+    "_id" : "oQ2y93iFxmukn5rb8",
+    "nua" : "146752",
+    "firstLastName" : "GUZMAN",
+    "secondLastName" : "BEDOLLA",
+    "name" : "CRISTIAN NERI",
+    "gender" : "MALE",
+    "birthday" : "1998-11-26",
+    "program" : "ISC",
+    "email" : "neriguzman10@gmail.com"
+}
+
+/* 200 */
+{
+    "_id" : "gC6YN92PAbbi66z3x",
+    "nua" : "145414",
+    "firstLastName" : "GONZALEZ",
+    "secondLastName" : "MENDOZA",
+    "name" : "CHRISTIAN IVAN",
+    "gender" : "MALE",
+    "birthday" : "1996-11-05",
+    "program" : "LICE",
+    "email" : "christiansleeping@hotmail.com"
+}
+
+/* 201 */
+{
+    "_id" : "aEFxQ6iKjzJxDZGc7",
+    "nua" : "810289",
+    "firstLastName" : "ARREOLA",
+    "secondLastName" : "GOMEZ",
+    "name" : "EMERSON",
+    "gender" : "MALE",
+    "birthday" : "1995-04-02",
+    "program" : "LGE",
+    "email" : "emer.ag@hotmail.com"
+}
+
+/* 202 */
+{
+    "_id" : "D4eyFBfvwASHs8AW4",
+    "nua" : "145472",
+    "firstLastName" : "SÁNCHEZ",
+    "secondLastName" : "ALCANTAR",
+    "name" : "PAULINA",
+    "gender" : "FEMALE",
+    "birthday" : "1997-06-16",
+    "program" : "LGE",
+    "email" : "paulinaalcantar96@gmail.com"
+}
+
+/* 203 */
+{
+    "_id" : "najJsHfZwHDsyjbWq",
+    "nua" : "810448",
+    "firstLastName" : "GARCÍA",
+    "secondLastName" : "MUÑOZ",
+    "name" : "JORGE DAVID",
+    "gender" : "MALE",
+    "birthday" : "1995-12-23",
+    "program" : "LGE",
+    "email" : "jd.garciamunoz@ugto.mx"
+}
+
+/* 204 */
+{
+    "_id" : "FnjnZfwG4nLJCSSkf",
+    "nua" : "810277",
+    "firstLastName" : "ESPARZA",
+    "secondLastName" : "VILLAGOMEZ",
+    "name" : "JONATAN RUBEN",
+    "gender" : "MALE",
+    "birthday" : "1993-12-22",
+    "program" : "LSC",
+    "email" : "jr.esparzavillagomez@ugto.mx"
+}
+
+/* 205 */
+{
+    "_id" : "N4XSmrKCGZy7Ww9DJ",
+    "nua" : "146721",
+    "firstLastName" : "NILA",
+    "secondLastName" : "GUTIERREZ",
+    "name" : "ANDRE SABBATHIEL",
+    "gender" : "MALE",
+    "birthday" : "1999-02-20",
+    "program" : "LCE",
+    "email" : "as.nilagutierrez@ugto.mx"
+}
+
+/* 206 */
+{
+    "_id" : "drpSoMZuvJyGywjaM",
+    "nua" : "810419",
+    "firstLastName" : "NUÑEZ",
+    "secondLastName" : "SANTOYO",
+    "name" : "SERGIO",
+    "gender" : "MALE",
+    "birthday" : "1996-10-23",
+    "program" : "LSC",
+    "email" : "a.nunezsantoyo@ugto.mx"
+}
+
+/* 207 */
+{
+    "_id" : "X3GuKSPHjRZQAucyY",
+    "nua" : "810440",
+    "firstLastName" : "ALCÁNTAR",
+    "secondLastName" : "GONZÁLEZ",
+    "name" : "DANIEL",
+    "gender" : "MALE",
+    "birthday" : "1995-05-13",
+    "program" : "LGE",
+    "email" : "danielalcantar1512@gmail.com"
+}
+
+/* 208 */
+{
+    "_id" : "GNzEPRkcyWC8Aev7A",
+    "nua" : "785474",
+    "firstLastName" : "MARTINEZ",
+    "secondLastName" : "PANTOJA",
+    "name" : "MELISSA",
+    "gender" : "FEMALE",
+    "birthday" : "1999-01-11",
+    "program" : "LEI",
+    "email" : "mely99_1101@hotmail.com"
+}
+
+/* 209 */
+{
+    "_id" : "qrcm3qvQq6Ja58Jms",
+    "nua" : "810292",
+    "firstLastName" : "SILVA",
+    "secondLastName" : "NUÑEZ",
+    "name" : "GABRIELA SARAI",
+    "gender" : "FEMALE",
+    "birthday" : "1995-05-04",
+    "program" : "LGE",
+    "email" : "gabysarai95@gmail.com"
+}
+
+/* 210 */
+{
+    "_id" : "Z3MsFBfQMQmyxCSDf",
+    "nua" : "736214",
+    "firstLastName" : "GONZÁLEZ",
+    "secondLastName" : "GARCÍA",
+    "name" : "EDUARDO MIGUEL",
+    "gender" : "MALE",
+    "birthday" : "1990-01-27",
+    "program" : "MAT",
+    "email" : "edumigoga@outlook.es"
+}
+
+/* 211 */
+{
+    "_id" : "DR6YzNpwfk39NHDzD",
+    "nua" : "145477",
+    "firstLastName" : "PITO",
+    "secondLastName" : "SOTO",
+    "name" : "PATRICIA",
+    "gender" : "FEMALE",
+    "birthday" : "1997-01-04",
+    "program" : "LGE",
+    "email" : "paty-2227@hotmail.com"
+}
+
+/* 212 */
+{
+    "_id" : "NaBYkxy73H7vQnS3b",
+    "nua" : "146860",
+    "firstLastName" : "Batista",
+    "secondLastName" : "González",
+    "name" : "Erika",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "e.batistagonzales@ugto.mx"
+}
+
+/* 213 */
+{
+    "_id" : "v6BdrL8ScMp8bPsTY",
+    "nua" : "146940",
+    "firstLastName" : "Gutierrez ",
+    "secondLastName" : "Calderon",
+    "name" : "Alejandra",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : ""
+}
+
+/* 214 */
+{
+    "_id" : "LdCoXGE96jgGwwG3z",
+    "nua" : "146978",
+    "firstLastName" : "Nieto",
+    "secondLastName" : "Calderon",
+    "name" : "Maricruz",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "m.nietocalderon@ugto.mx"
+}
+
+/* 215 */
+{
+    "_id" : "f29eSFyTYGWMRHXgQ",
+    "nua" : "146944",
+    "firstLastName" : "Orozco",
+    "secondLastName" : "Bedolla",
+    "name" : "Jose Luis",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : ""
+}
+
+/* 216 */
+{
+    "_id" : "tEiS5JDhLqWXE9uvZ",
+    "nua" : "146947",
+    "firstLastName" : "Salgado",
+    "secondLastName" : "Santoyo",
+    "name" : "Luis Andres",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "la.salgadosantoyo@ugto.mx"
+}
+
+/* 217 */
+{
+    "_id" : "XXovmSbj2oCmscRLD",
+    "nua" : "146989",
+    "firstLastName" : "Vivián",
+    "secondLastName" : "Durán",
+    "name" : "Oscar Adrián",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "Vivian07.adrian@outlook.com"
+}
+
+/* 218 */
+{
+    "_id" : "fnvWw2nwYha7oqzkj",
+    "nua" : "146892",
+    "firstLastName" : "Zavala",
+    "secondLastName" : "Gómez",
+    "name" : "Irais Andrea",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "zavalagomezirais@gmail.com"
+}
+
+/* 219 */
+{
+    "_id" : "tPRMpveKzeGgEy6QW",
+    "nua" : "146821",
+    "firstLastName" : "Zavala",
+    "secondLastName" : "Torres",
+    "name" : "Ivan",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "i.zavalatorres@ugto.mx"
+}
+
+/* 220 */
+{
+    "_id" : "zWq2XDzZbL4iydGYn",
+    "nua" : "810305",
+    "firstLastName" : "García",
+    "secondLastName" : "López",
+    "name" : "Maria Guadalupe",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "lupita.garcia.131@gmail.com"
+}
+
+/* 221 */
+{
+    "_id" : "m7SLiWQnrQmtoJR68",
+    "nua" : "810435",
+    "firstLastName" : "Mora",
+    "secondLastName" : "Mendez",
+    "name" : "Melissa",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "meli.mora49@gmail.com"
+}
+
+/* 222 */
+{
+    "_id" : "AfLKnSNxCnk2FkfhY",
+    "nua" : "145422",
+    "firstLastName" : "Perez",
+    "secondLastName" : "López",
+    "name" : "Ricardo",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LICE",
+    "email" : "rperezlopez@ugto.mx"
+}
+
+/* 223 */
+{
+    "_id" : "ZyW7PjvfYzudsGHtE",
+    "nua" : "824669",
+    "firstLastName" : "Acevedo",
+    "secondLastName" : "Arcila",
+    "name" : "Iván Andres",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "MAT",
+    "email" : "ia.acevedoarcila@ugto.mx"
+}
+
+/* 224 */
+{
+    "_id" : "LsRMYoxQXjC7PZGaF",
+    "nua" : "147011",
+    "firstLastName" : "Ayon",
+    "secondLastName" : "Sicaeros",
+    "name" : "Rubi Anabella",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "MIEA",
+    "email" : "ra.ayonsicaeros@ugto.mx"
+}
+
+/* 225 */
+{
+    "_id" : "2ZEfdRP9neFvZdFte",
+    "nua" : "146984",
+    "firstLastName" : "Tapia",
+    "secondLastName" : "Flores",
+    "name" : "Joel",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "MAT",
+    "email" : "j.tapiaflores@ugto.mx"
+}
+
+/* 226 */
+{
+    "_id" : "yhKcZh7kTqWoyryHf",
+    "nua" : "146803",
+    "firstLastName" : "Barrios",
+    "secondLastName" : "Sanchez",
+    "name" : "Jorge Manuel",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "MAT",
+    "email" : "jm.barriossanchez@ugto.mx"
+}
+
+/* 227 */
+{
+    "_id" : "mCupu7yRaPNkwxfk4",
+    "nua" : "380434",
+    "firstLastName" : "Murillo",
+    "secondLastName" : "Paniagua",
+    "name" : "Alondra",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LISC",
+    "email" : "alondracoronel.amp@gmail.com"
+}
+
+/* 228 */
+{
+    "_id" : "oiQS8QCg9Fx3AYEkq",
+    "nua" : "146937",
+    "firstLastName" : "Malagón",
+    "secondLastName" : "Alvarez",
+    "name" : "Maricela",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "ICE",
+    "email" : "m.malagonalvarez@ugto.mx"
+}
+
+/* 229 */
+{
+    "_id" : "dRggPeAe8FhC4Jm8c",
+    "nua" : "810104",
+    "firstLastName" : "Aguilera",
+    "secondLastName" : "Pantoja",
+    "name" : "Javier",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LISC",
+    "email" : "j.aguilerapantoja@ugto.mx"
+}
+
+/* 230 */
+{
+    "_id" : "asuXxkXeTHgH4pYfn",
+    "nua" : "146909",
+    "firstLastName" : "Alvarado",
+    "secondLastName" : "Lara",
+    "name" : "German",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "ICE",
+    "email" : "German.alvarado.alvarado@gmail.com"
+}
+
+/* 231 */
+{
+    "_id" : "XQBkA5bcTkGn3vxBP",
+    "nua" : "146921",
+    "firstLastName" : "Guzmán",
+    "secondLastName" : "Gaviña",
+    "name" : "Jose Jesus",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LISC",
+    "email" : "pollo11998@hotmail.com"
+}
+
+/* 232 */
+{
+    "_id" : "mAFMtTFEvML78mTW2",
+    "nua" : "380553",
+    "firstLastName" : "Orozco",
+    "secondLastName" : "Rábago",
+    "name" : "Israel Emmanuel",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LISC",
+    "email" : "emmanuelrabago2805@hotmail.com"
+}
+
+/* 233 */
+{
+    "_id" : "sDjkrKJRqomfSshAk",
+    "nua" : "146716",
+    "firstLastName" : "López",
+    "secondLastName" : "Tenorio",
+    "name" : "Fabiola",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "ISC",
+    "email" : "f.lopeztenorio@ugto.mx"
+}
+
+/* 234 */
+{
+    "_id" : "P8SjvNJYeJdSe6HWd",
+    "nua" : "773610",
+    "firstLastName" : "Gutierrez",
+    "secondLastName" : "Larrondo",
+    "name" : "Marlen",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "larrondo97@hotmail.com"
+}
+
+/* 235 */
+{
+    "_id" : "gixc5auH8kidEhoFW",
+    "nua" : "145470",
+    "firstLastName" : "Pizano",
+    "secondLastName" : "García",
+    "name" : "Margarita",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "maguipizano@gmail.com"
+}
+
+/* 236 */
+{
+    "_id" : "nk4DoWAKK3yJyCu7s",
+    "nua" : "145461",
+    "firstLastName" : "Pérez",
+    "secondLastName" : "Oceguera",
+    "name" : "Dylan Adrian",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : ""
+}
+
+/* 237 */
+{
+    "_id" : "FLMZewFHvTWsWEyLt",
+    "nua" : "146925",
+    "firstLastName" : "García",
+    "secondLastName" : "Martinez",
+    "name" : "Edith",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "ISC",
+    "email" : "e.garciamartinez@ugto.mx"
+}
+
+/* 238 */
+{
+    "_id" : "5xdZBRwWXHNkynPXY",
+    "nua" : "146959",
+    "firstLastName" : "Andrade ",
+    "secondLastName" : "Martinez",
+    "name" : "María Giovanna",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "ICE",
+    "email" : "giovanaan095@gmail.com"
+}
+
+/* 239 */
+{
+    "_id" : "tydfPrpqTCWRwinJf",
+    "nua" : "146975",
+    "firstLastName" : "Cisneros",
+    "secondLastName" : "Rivera",
+    "name" : "Jesus Antonio",
+    "gender" : "male",
+    "birthday" : "",
+    "program" : "ISC",
+    "email" : "ja.cisnerosrivera@ugto.mx"
+}
+
+/* 240 */
+{
+    "_id" : "7euwQxRxRhM4JhbJA",
+    "nua" : "146006",
+    "firstLastName" : "Flores",
+    "secondLastName" : "Guzman",
+    "name" : "José Alexis",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "alexisfloresguzman23@outlook.es"
+}
+
+/* 241 */
+{
+    "_id" : "z5yxNSnCwRcMTBvEJ",
+    "nua" : "403719",
+    "firstLastName" : "García ",
+    "secondLastName" : "Lugo",
+    "name" : "Andrea",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LISC",
+    "email" : "a.garcialugo@ugto.mx"
+}
+
+/* 242 */
+{
+    "_id" : "MnFFxD8DwqJC89nnd",
+    "nua" : "789338",
+    "firstLastName" : "Gomez",
+    "secondLastName" : "Martínez",
+    "name" : "Diego Armando",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "ISC",
+    "email" : "dgox16@gmail.com"
+}
+
+/* 243 */
+{
+    "_id" : "nNFSK5yg8GY7RQHRK",
+    "nua" : "146798",
+    "firstLastName" : "Leon",
+    "secondLastName" : "Nuñez",
+    "name" : "Benjami",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LICE",
+    "email" : "bleon633@gmail.com"
+}
+
+/* 244 */
+{
+    "_id" : "ALBdcj7jTw3K92wTh",
+    "nua" : "146907",
+    "firstLastName" : "Paniagua",
+    "secondLastName" : "Arellano",
+    "name" : "Iván",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LSC",
+    "email" : "ivan_paniagua_arellano@hotmail.com"
+}
+
+/* 245 */
+{
+    "_id" : "Cb8AcwYtgnad6booM",
+    "nua" : "146855",
+    "firstLastName" : "Parra",
+    "secondLastName" : "Díaz",
+    "name" : "Salvador",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "ISC",
+    "email" : "salvadorparra1700@gmail.com"
+}
+
+/* 246 */
+{
+    "_id" : "vimMnh3f9y4mppfrq",
+    "nua" : "146943",
+    "firstLastName" : "Quesada",
+    "secondLastName" : "Vega",
+    "name" : "Alan Humberto",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "ICE",
+    "email" : "Alan.qb60@cmail.com"
+}
+
+/* 247 */
+{
+    "_id" : "NjuJcxaWZ5aGzDwhZ",
+    "nua" : "146935",
+    "firstLastName" : "Salazar",
+    "secondLastName" : "Vargas",
+    "name" : "Brandon Jesús",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LICE",
+    "email" : "vargasbrandon2000@gmail.com"
+}
+
+/* 248 */
+{
+    "_id" : "jph8uPhMqsNKYbFwW",
+    "nua" : "146903",
+    "firstLastName" : "Santoyo",
+    "secondLastName" : "Arredondo",
+    "name" : "Luis Diego",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "ISC",
+    "email" : "luisdi354@gmail.com"
+}
+
+/* 249 */
+{
+    "_id" : "xhFX9mhf3ik6PohXP",
+    "nua" : "146917",
+    "firstLastName" : "Sarabia",
+    "secondLastName" : "Zavala",
+    "name" : "Atzel",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "ISC",
+    "email" : "axelsarza@gmail.com"
+}
+
+/* 250 */
+{
+    "_id" : "ZKGZ7Hm4bp7noLbs3",
+    "nua" : "146801",
+    "firstLastName" : "Arriaga",
+    "secondLastName" : "Cardenas",
+    "name" : "Luis Antonio",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "laariaga@live.com.mx"
+}
+
+/* 251 */
+{
+    "_id" : "8NgseHzK6bAHMnsKp",
+    "nua" : "146985",
+    "firstLastName" : "Bedolla",
+    "secondLastName" : "Calderón",
+    "name" : "Luis Eduardo",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "le.bedollacalderon@ugto.mx"
+}
+
+/* 252 */
+{
+    "_id" : "92Dtvr6hDbmbSmawa",
+    "nua" : "146824",
+    "firstLastName" : "Cisneros ",
+    "secondLastName" : "Calderón",
+    "name" : "Nicolas",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "nicisca151297@gmail.com"
+}
+
+/* 253 */
+{
+    "_id" : "dAj3LFxtwJajsvCCW",
+    "nua" : "146866",
+    "firstLastName" : "Nuñez",
+    "secondLastName" : "Guerra",
+    "name" : "Emmanuel",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LICE",
+    "email" : "gotzemma18@gmail.com"
+}
+
+/* 254 */
+{
+    "_id" : "i46wdzTZnafmR9BGh",
+    "nua" : "768872",
+    "firstLastName" : "Téllez",
+    "secondLastName" : "Cordero",
+    "name" : "Daniel",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LSC",
+    "email" : "danieltellezc@gmail.com"
+}
+
+/* 255 */
+{
+    "_id" : "vvZPA2ygdssSgiEAC",
+    "nua" : "146906",
+    "firstLastName" : "Viveros",
+    "secondLastName" : "Morales",
+    "name" : "Jacaranday",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "jacarandayviverosmorales@gmail.com"
+}
+
+/* 256 */
+{
+    "_id" : "uv72R4XBb2gR5AffL",
+    "nua" : "146271",
+    "firstLastName" : "Santoyo",
+    "secondLastName" : "Baeza",
+    "name" : "Alejandra",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "m_onky@hotmail.com"
+}
+
+/* 257 */
+{
+    "_id" : "gh2b3JahQYudQsPMG",
+    "nua" : "146796",
+    "firstLastName" : "Chaurand",
+    "secondLastName" : "Padilla",
+    "name" : "André",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "ICE",
+    "email" : "a.chaurandpadilla@ugto.mx"
+}
+
+/* 258 */
+{
+    "_id" : "X99TfPSt57jSM49dt",
+    "nua" : "146864",
+    "firstLastName" : "Rico",
+    "secondLastName" : "Cornejo",
+    "name" : "Alejandra Guadalupe",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "alejandraricornejo@gmail.com"
+}
+
+/* 259 */
+{
+    "_id" : "4fJ2YiKsu5vFnsnbs",
+    "nua" : "146919",
+    "firstLastName" : "Contreras",
+    "secondLastName" : "Gamez",
+    "name" : "Vicente",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "vicentgamecont@gmail.com"
+}
+
+/* 260 */
+{
+    "_id" : "ZEFFrvTDLBJYB7H6P",
+    "nua" : "146926",
+    "firstLastName" : "Zavala",
+    "secondLastName" : "Guzmán",
+    "name" : "Monserrat",
+    "gender" : "Female",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : ""
+}
+
+/* 261 */
+{
+    "_id" : "A4yTP7gA3uGuSq7Sf",
+    "nua" : "380123",
+    "firstLastName" : "García",
+    "secondLastName" : "Aguilar",
+    "name" : "Brian Raul",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LCE",
+    "email" : "br.garciaaguilar@ugto.mx"
+}
+
+/* 262 */
+{
+    "_id" : "QpCCnXoMrSDz8dQdY",
+    "nua" : "403761",
+    "firstLastName" : "Chinchillas",
+    "secondLastName" : "Olaiz",
+    "name" : "Daniel",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LICE",
+    "email" : "chinchillas07@hotmail.com"
+}
+
+/* 263 */
+{
+    "_id" : "7RBfcu2Qg4PT9SE9o",
+    "nua" : "788464",
+    "firstLastName" : "Camacho",
+    "secondLastName" : "Guzmán",
+    "name" : "José Alexander",
+    "gender" : "Male",
+    "birthday" : "",
+    "program" : "LGE",
+    "email" : "josealexandercamachoguzman50@gmail.com"
+}
+
+/* 264 */
+{
+    "_id" : "g2Xywp5AJduQzxatb",
+    "nua" : "146859",
+    "firstLastName" : "Pizano",
+    "secondLastName" : "Guerrero",
+    "name" : "Ana Elida",
+    "gender" : "Female",
+    "birthday" : "1999-09-22",
+    "program" : "ISC",
+    "email" : "ae.pizanoguerrero@ugto.mx"
+}
+
+/* 265 */
+{
+    "_id" : "Led9GubTnCpYcCwWZ",
+    "nua" : "403478",
+    "firstLastName" : "Torres",
+    "secondLastName" : "Martínez",
+    "name" : "Paloma del Carmen",
+    "gender" : "Female",
+    "birthday" : "1999-07-16",
+    "program" : "ICE",
+    "email" : "pdc.torresmartinez@ugto.mx"
+}
+
+/* 266 */
+{
+    "_id" : "YWeMdukRX75dsXcGr",
+    "nua" : "146910",
+    "firstLastName" : "Bedolla",
+    "secondLastName" : "Pantoja ",
+    "name" : "Martin Jr.",
+    "gender" : "Male",
+    "birthday" : "2000-03-29",
+    "program" : "LICE",
+    "email" : "mj.bedollapantoja@ugto.mx"
+}
+
+/* 267 */
+{
+    "_id" : "7KHb7AZ7ETZCm8BaJ",
+    "nua" : "915675",
+    "firstLastName" : "Sánchez",
+    "secondLastName" : "Nieto",
+    "name" : "Alexandra Giselle",
+    "gender" : "Female",
+    "birthday" : "2000-06-07",
+    "program" : "ISC",
+    "email" : "aldaba072723@gmail.com"
+}
+
+/* 268 */
+{
+    "_id" : "Y4CbcCEMcThRGh8XZ",
+    "nua" : "146966",
+    "firstLastName" : "Rojas",
+    "secondLastName" : "López",
+    "name" : "Carolina",
+    "gender" : "Female",
+    "birthday" : "1999-11-27",
+    "program" : "LGE",
+    "email" : "carolinarojaslopez1999@gmail.com"
+}
+
+/* 269 */
+{
+    "_id" : "3jFcnuz2YL4BKr4ce",
+    "nua" : "146896",
+    "firstLastName" : "Ramírez",
+    "secondLastName" : "Niño",
+    "name" : "María Teresa",
+    "gender" : "Female",
+    "birthday" : "2000-02-19",
+    "program" : "LGE",
+    "email" : "MARIARERESA0219@outlook.com"
+}
+
+/* 270 */
+{
+    "_id" : "qBRkHijrnm68eKwhd",
+    "nua" : "146968",
+    "firstLastName" : "Nuñez",
+    "secondLastName" : "Bedolla",
+    "name" : "Yesica",
+    "gender" : "Female",
+    "birthday" : "2000-08-04",
+    "program" : "LGE",
+    "email" : "yesibedolla20@gmail.com"
+}
+
+/* 271 */
+{
+    "_id" : "WPxTtf7FxSEY985C9",
+    "nua" : "146924",
+    "firstLastName" : "Bedolla",
+    "secondLastName" : "Gúzman",
+    "name" : "Maria Josefina",
+    "gender" : "Female",
+    "birthday" : "1999-10-27",
+    "program" : "LGE",
+    "email" : "Majo.bego199@gmail.com"
+}
+
+/* 272 */
+{
+    "_id" : "q7pBLwPvmRFuaEAfy",
+    "nua" : "146895",
+    "firstLastName" : "Duran",
+    "secondLastName" : "Sarazua",
+    "name" : "Maria Guadalupe",
+    "gender" : "Female",
+    "birthday" : "1999-11-26",
+    "program" : "LGE",
+    "email" : "lupita_duran_99@hotmail.com"
+}
+
+/* 273 */
+{
+    "_id" : "6mDoFK3bFCycaCGuc",
+    "nua" : "146893",
+    "firstLastName" : "Camarena",
+    "secondLastName" : "López",
+    "name" : "Esmeralda",
+    "gender" : "Female",
+    "birthday" : "1999-10-02",
+    "program" : "LGE",
+    "email" : "mery17349@gmail.com"
+}
+
+/* 274 */
+{
+    "_id" : "J5NQsBnbMn5DsFXTq",
+    "nua" : "146994",
+    "firstLastName" : "Molina",
+    "secondLastName" : "Ledezma",
+    "name" : "Marina Victoria",
+    "gender" : "Female",
+    "birthday" : "2000-07-19",
+    "program" : "ISC",
+    "email" : "vickymolinagatus@gmail.com"
+}
+
+/* 275 */
+{
+    "_id" : "kr3Hxta3xxmb9yPC2",
+    "nua" : "146992",
+    "firstLastName" : "Gutierrez",
+    "secondLastName" : "Fernández",
+    "name" : "Marco Antonio",
+    "gender" : "Male",
+    "birthday" : "1998-09-27",
+    "program" : "ISC",
+    "email" : "marcogutierrez188@gmail.com"
+}
+
+/* 276 */
+{
+    "_id" : "Dxse6GaTZoHncNRfx",
+    "nua" : "810352",
+    "firstLastName" : "Lara",
+    "secondLastName" : "Alvarado",
+    "name" : "Sonia Laura",
+    "gender" : "Female",
+    "birthday" : "1996-05-21",
+    "program" : "LGE",
+    "email" : "s.laura.lara.a@gmail.com"
+}
+
+/* 277 */
+{
+    "_id" : "SJSsQ2F7TScnkDrYL",
+    "nua" : "810384",
+    "firstLastName" : "Jiménez",
+    "secondLastName" : "Pérez",
+    "name" : "Adriana Berenice",
+    "gender" : "Female",
+    "birthday" : "1996-06-19",
+    "program" : "LGE",
+    "email" : "berejimenez19dic@gmail.com"
+}
+
+/* 278 */
+{
+    "_id" : "vEWTqYR2np4WhMZeo",
+    "nua" : "914375",
+    "firstLastName" : "García",
+    "secondLastName" : "Bedolla",
+    "name" : "Andrea",
+    "gender" : "Female",
+    "birthday" : "1998-11-30",
+    "program" : "LGE",
+    "email" : "a.garciabedolla@ugto.mx"
+}
+
+/* 279 */
+{
+    "_id" : "afdBDoYKhD2jJwG6F",
+    "nua" : "146834",
+    "firstLastName" : "González",
+    "secondLastName" : "López",
+    "name" : "Maria Guadalupe",
+    "gender" : "Female",
+    "birthday" : "2000-02-12",
+    "program" : "LGE",
+    "email" : "ma1202glez@gmail.com"
+}
+
+/* 280 */
+{
+    "_id" : "bZrrqNXruHpKeX3HR",
+    "nua" : "810462",
+    "firstLastName" : "León",
+    "secondLastName" : "Corona",
+    "name" : "Berenice",
+    "gender" : "Female",
+    "birthday" : "1995-04-21",
+    "program" : "LGE",
+    "email" : "leberenicee@gmail.com"
+}
+
+/* 281 */
+{
+    "_id" : "GWpPm3PDnvYpMRHEB",
+    "nua" : "146957",
+    "firstLastName" : "García",
+    "secondLastName" : "González",
+    "name" : "Aislin Naomi",
+    "gender" : "Female",
+    "birthday" : "1999-07-01",
+    "program" : "LGE",
+    "email" : "an.garciagonzalez@ugto.mx"
+}
+
+/* 282 */
+{
+    "_id" : "J9Y6GvWy5JboapJh6",
+    "nua" : "146922",
+    "firstLastName" : "López",
+    "secondLastName" : "García",
+    "name" : "Arturo de Jesús",
+    "gender" : "Male",
+    "birthday" : "1998-02-17",
+    "program" : "LGE",
+    "email" : "arturolopez1702@gmail.com"
+}
+
+/* 283 */
+{
+    "_id" : "pLxpLCjSf2AbBTqQF",
+    "nua" : "757451",
+    "firstLastName" : "Ortega",
+    "secondLastName" : "Vega",
+    "name" : "Miguel Ángel",
+    "gender" : "Male",
+    "birthday" : "1994-02-14",
+    "program" : "LGE",
+    "email" : "ma.ortegavega@ugto.mx"
+}
+
+/* 284 */
+{
+    "_id" : "EARrGks8eiQyYi4Lu",
+    "nua" : "146880",
+    "firstLastName" : "Baeza",
+    "secondLastName" : "Arroyo",
+    "name" : "María Guadalupe",
+    "gender" : "Female",
+    "birthday" : "1999-12-03",
+    "program" : "LGE",
+    "email" : "baezaarroyo.99@gmail.com"
+}
+
+/* 285 */
+{
+    "_id" : "G4hfB7476YWwfBaY9",
+    "nua" : "146958",
+    "firstLastName" : "Almanza",
+    "secondLastName" : "Pérez",
+    "name" : "Katy",
+    "gender" : "Female",
+    "birthday" : "1999-09-23",
+    "program" : "LGE",
+    "email" : "katyap0999@gmail.com"
+}
+
+/* 286 */
+{
+    "_id" : "6f8jt4GqFhY9gstKK",
+    "nua" : "146912",
+    "firstLastName" : "González",
+    "secondLastName" : "Martínez",
+    "name" : "Ramon Guadalupe",
+    "gender" : "Male",
+    "birthday" : "1999-11-18",
+    "program" : "LGE",
+    "email" : "gonzalezramon464@gmail.com"
+}
+
+/* 287 */
+{
+    "_id" : "d2tXX4in7N8hXFEfd",
+    "nua" : "146929",
+    "firstLastName" : "Nolazco",
+    "secondLastName" : "Rodriguez",
+    "name" : "Luis Fernando",
+    "gender" : "Male",
+    "birthday" : "1999-02-07",
+    "program" : "LGE",
+    "email" : "italiantortila@hotmail.com"
+}
+
+/* 288 */
+{
+    "_id" : "fYNFbnp227Xhg6HoT",
+    "nua" : "810297",
+    "firstLastName" : "Mendoza",
+    "secondLastName" : "García",
+    "name" : "Andros Iván",
+    "gender" : "Male",
+    "birthday" : "1995-02-28",
+    "program" : "ICE",
+    "email" : "ai.mendozagarcia@ugto.mx"
+}
+
+/* 289 */
+{
+    "_id" : "ZA5fHjF8xP6HBuqex",
+    "nua" : "146969",
+    "firstLastName" : "Morales",
+    "secondLastName" : "Espinosa",
+    "name" : "Jenifer Josefina",
+    "gender" : "Female",
+    "birthday" : "2000-03-20",
+    "program" : "LGE",
+    "email" : ""
+}
+
+/* 290 */
+{
+    "_id" : "7CB2HPbDcQpa3Wi86",
+    "nua" : "146885",
+    "firstLastName" : "Sánchez",
+    "secondLastName" : "Ramírez",
+    "name" : "Norali",
+    "gender" : "Female",
+    "birthday" : "2000-08-19",
+    "program" : "LGE",
+    "email" : "noraliramirez@hotmail.com"
+}
+
+/* 291 */
+{
+    "_id" : "kuGjvBkoodiDXqAfv",
+    "nua" : "146965",
+    "firstLastName" : "Serrato",
+    "secondLastName" : "Nava",
+    "name" : "Yazmin",
+    "gender" : "Female",
+    "birthday" : "2000-04-04",
+    "program" : "LGE",
+    "email" : "yazserraato@gmail.com"
+}
+
+/* 292 */
+{
+    "_id" : "j6Qqq3LwRrCHwt6XM",
+    "nua" : "146999",
+    "firstLastName" : "Díaz",
+    "secondLastName" : "Barajas",
+    "name" : "Cecilia",
+    "gender" : "Female",
+    "birthday" : "1998-10-29",
+    "program" : "LGE",
+    "email" : "ac.diazbarajas@ugto.mx"
+}
+
+/* 293 */
+{
+    "_id" : "iHf5LrADxPP64Et9A",
+    "nua" : "146949",
+    "firstLastName" : "Torres",
+    "secondLastName" : "Flores",
+    "name" : "Brenda Paola",
+    "gender" : "Female",
+    "birthday" : "1999-12-21",
+    "program" : "LGE",
+    "email" : "bp.torresflores@ugto.mx"
+}
+
+/* 294 */
+{
+    "_id" : "REKrXFBmuhBAE8FaQ",
+    "nua" : "810408",
+    "firstLastName" : "Fernández",
+    "secondLastName" : "Guzmán",
+    "name" : "Diego Abraham",
+    "gender" : "Male",
+    "birthday" : "1996-01-30",
+    "program" : "LGE",
+    "email" : "da.fernandezguzman@ugto.mx"
+}
+
+/* 295 */
+{
+    "_id" : "kSWQTLhuL9EZ9ZQyQ",
+    "nua" : "146854",
+    "firstLastName" : "Luna",
+    "secondLastName" : "Cisneros",
+    "name" : "Miguel Angel",
+    "gender" : "Male",
+    "birthday" : "2000-01-30",
+    "program" : "LGE",
+    "email" : "maicol_alc@hotmail.com"
+}
+
+/* 296 */
+{
+    "_id" : "WGgXPiBbQfXv64PNo",
+    "nua" : "145837",
+    "firstLastName" : "Campos",
+    "secondLastName" : "Arreola",
+    "name" : "Alan",
+    "gender" : "Male",
+    "birthday" : "1998-07-28",
+    "program" : "ICE",
+    "email" : "a.camposarreola@ugto.mx"
+}
+
+/* 297 */
+{
+    "_id" : "M7dRoxbSbS2MQEwFo",
+    "nua" : "810098",
+    "firstLastName" : "Ochoa",
+    "secondLastName" : "Ruiz",
+    "name" : "Velia de Monserrat",
+    "gender" : "Female",
+    "birthday" : "1992-12-15",
+    "program" : "MAT",
+    "email" : "vdm.ochoaruiz@ugto.mx"
+}
+
+/* 298 */
+{
+    "_id" : "zmbQT3EJzzssPW5Qp",
+    "nua" : "915679",
+    "firstLastName" : "Gómez",
+    "secondLastName" : "Cantellano",
+    "name" : "Viridiana Vanesa",
+    "gender" : "Female",
+    "birthday" : "1999-10-15",
+    "program" : "LGE",
+    "email" : "viridiana-gomez-15@hotmail.com"
+}
+
+/* 299 */
+{
+    "_id" : "6rCtXKKvqoSZj5wwZ",
+    "nua" : "146923",
+    "firstLastName" : "Martínez",
+    "secondLastName" : "Mendoza",
+    "name" : "José Alejandro",
+    "gender" : "Male",
+    "birthday" : "1999-11-15",
+    "program" : "LGE",
+    "email" : "martinezmendozajosealejandro@gmail.com"
+}
+
+/* 300 */
+{
+    "_id" : "bHew25vw2geK8gaFS",
+    "nua" : "774869",
+    "firstLastName" : "Rivera",
+    "secondLastName" : "Rodríguez",
+    "name" : "Stephani ",
+    "gender" : "Jatziry",
+    "birthday" : "1997-03-19",
+    "program" : "LGE",
+    "email" : "stephanirivera19@outlook.com"
+}
+
+/* 301 */
+{
+    "_id" : "o3BnvDZSXeaf2XdGm",
+    "nua" : "790233",
+    "firstLastName" : "Lucio",
+    "secondLastName" : "Alcaraz",
+    "name" : "Aurora",
+    "gender" : "Female",
+    "birthday" : "2000-01-05",
+    "program" : "LGE",
+    "email" : "a.lucioalcaraz@ugto.mx"
+}
+
+/* 302 */
+{
+    "_id" : "n58FkaBwz4dajiYfW",
+    "nua" : "145899",
+    "firstLastName" : "Aviles",
+    "secondLastName" : "Díaz",
+    "name" : "Bryan Kevin",
+    "gender" : "Male",
+    "birthday" : "1998-06-19",
+    "program" : "ICE",
+    "email" : "bk.avilesdiaz@ugto.mx"
+}
+
+/* 303 */
+{
+    "_id" : "KfgJb2aR8MLAuzvmx",
+    "nua" : "143949",
+    "firstLastName" : "Mata",
+    "secondLastName" : "Chávez",
+    "name" : "Sandra Vianey",
+    "gender" : "Female",
+    "birthday" : "1991-08-14",
+    "program" : "LGE",
+    "email" : "vianny2011@gmail.com"
+}
+
+/* 304 */
+{
+    "_id" : "v4mWGCyqu7FKRy4Kr",
+    "nua" : "777312",
+    "firstLastName" : "Carmona",
+    "secondLastName" : "Bello",
+    "name" : "Alejandra Yameli",
+    "gender" : "Female",
+    "birthday" : "1997-07-05",
+    "program" : "LGE",
+    "email" : "yame.carmona@outlook.com"
+}
+
+/* 305 */
+{
+    "_id" : "wJvHCbSgBBm4Cwq77",
+    "nua" : "146951",
+    "firstLastName" : "Santoyo",
+    "secondLastName" : "Renteria",
+    "name" : "Nancy",
+    "gender" : "Female",
+    "birthday" : "1999-10-16",
+    "program" : "LGE",
+    "email" : "nancysantoyo9@gmail.com"
+}
+
+/* 306 */
+{
+    "_id" : "oyHxq5d93auB57SLx",
+    "nua" : "810433",
+    "firstLastName" : "Guzmán",
+    "secondLastName" : "García",
+    "name" : "Maria Guadalupe",
+    "gender" : "Female",
+    "birthday" : "1995-07-10",
+    "program" : "LGE",
+    "email" : "mdg.guzmangarcia@ugto.mx"
+}
+
+/* 307 */
+{
+    "_id" : "R6FqRmxgZYmvBNakC",
+    "nua" : "402682",
+    "firstLastName" : "Gómez",
+    "secondLastName" : "Guzmán",
+    "name" : "Alexis Ramsés",
+    "gender" : "Male",
+    "birthday" : "1996-08-29",
+    "program" : "ICE",
+    "email" : "ar.gomezguzman@ugto.mx"
+}

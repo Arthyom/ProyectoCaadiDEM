@@ -46,18 +46,18 @@
                         
                         <p:column selectionMode="multiple" class="selectFormList" />
                         
-                        <p:column headerText="Identificador" filterBy="#{std.id}">
-                            <p:outputLabel value="#{std.identifier}"/>
-                        </p:column>
-                        
-                        <p:column headerText="Unidad de Aprendizaje" filterBy="#{std.learningUnit}">
-                            <p:outputLabel value="#{std.learningUnit}"/>
-                        </p:column>
-                        
                         <p:column headerText="Nivel" filterBy="#{std.level}">
                             <p:outputLabel value="#{std.level}"/>
                         </p:column>
                         
+                        <p:column headerText="Identificador" filterBy="#{std.id}">
+                            <p:outputLabel value="#{std.identifier}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Profesor" >
+                            <p:outputLabel value="#{std.employeeNumber.name} #{std.employeeNumber.firstLastName}"/>
+                        </p:column>
+
                         <p:column headerText="# Estudiantes" >
                             <p:outputLabel value="#{std.studentsCollection.size()}"/>
                         </p:column>

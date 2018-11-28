@@ -72,7 +72,7 @@ public class Groups implements Serializable {
     private String level;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 5)
+    @Size(min = 1, max = 50)
     @Column(name = "identifier")
     private String identifier;
     @JoinTable(name = "GroupMembers", joinColumns = {

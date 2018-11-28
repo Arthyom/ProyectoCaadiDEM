@@ -1,0 +1,99 @@
+/* 1 */
+{
+    "_id" : "ngxXMM4f2XpxbA4FH",
+    "periodId" : "pPkffbwwcDcwHDFt7",
+    "employeeNumber" : "80136",
+    "learningUnit" : "ENGLISH",
+    "level" : "1B",
+    "identifier" : "(B)"
+}
+
+/* 2 */
+{
+    "_id" : "H4ds62qukHo9r7qsy",
+    "periodId" : "7g5F7KfsQfnaHi45S",
+    "employeeNumber" : "67890",
+    "learningUnit" : "ENGLISH",
+    "level" : "1",
+    "identifier" : "A"
+}
+
+/* 3 */
+{
+    "_id" : "5GrGGhTLYje49ZjPH",
+    "periodId" : "7g5F7KfsQfnaHi45S",
+    "employeeNumber" : "67890",
+    "learningUnit" : "ENGLISH",
+    "level" : "3",
+    "identifier" : "B"
+}
+
+/* 4 */
+{
+    "_id" : "buy8G9BRcyvQkbCmF",
+    "periodId" : "7g5F7KfsQfnaHi45S",
+    "employeeNumber" : "67890",
+    "learningUnit" : "ENGLISH",
+    "level" : "1",
+    "identifier" : "Maestría"
+}
+
+/* 5 */
+{
+    "_id" : "oWig2MrvtD8wBonQK",
+    "periodId" : "7g5F7KfsQfnaHi45S",
+    "employeeNumber" : "80136",
+    "learningUnit" : "ENGLISH",
+    "level" : "1",
+    "identifier" : "A"
+}
+
+/* 6 */
+{
+    "_id" : "mR8FxW66wbeEhm7F3",
+    "periodId" : "7g5F7KfsQfnaHi45S",
+    "employeeNumber" : "12345",
+    "learningUnit" : "ENGLISH",
+    "level" : "2",
+    "identifier" : "B"
+}
+
+/* 7 */
+{
+    "_id" : "8ZjWFwbjwWg9ZDap6",
+    "periodId" : "7g5F7KfsQfnaHi45S",
+    "employeeNumber" : "12345",
+    "learningUnit" : "ENGLISH",
+    "level" : "2",
+    "identifier" : "Maestría"
+}
+
+/* 8 */
+{
+    "_id" : "EaHww2TaaGdeHPpn7",
+    "periodId" : "7g5F7KfsQfnaHi45S",
+    "employeeNumber" : "80136",
+    "learningUnit" : "ENGLISH",
+    "level" : "1",
+    "identifier" : "B"
+}
+
+/* 9 */
+{
+    "_id" : "diBYxgLXBKFDHJx3m",
+    "periodId" : "7g5F7KfsQfnaHi45S",
+    "employeeNumber" : "09876",
+    "learningUnit" : "ENGLISH",
+    "level" : "2",
+    "identifier" : "A"
+}
+
+/* 10 */
+{
+    "_id" : "DRAXGsanPnTixodCH",
+    "periodId" : "7g5F7KfsQfnaHi45S",
+    "employeeNumber" : "09876",
+    "learningUnit" : "ENGLISH",
+    "level" : "3",
+    "identifier" : "A"
+}

@@ -1,0 +1,54 @@
+/* 1 */
+{
+    "_id" : "tBkLrE3dXF7zisL77",
+    "employeeNumber" : "12345",
+    "firstLastName" : "MEDINA",
+    "secondLastName" : "AGUILERA",
+    "name" : "BLANCA ESTELA",
+    "gender" : "FEMALE",
+    "email" : "blanquita@ugto.mx"
+}
+
+/* 2 */
+{
+    "_id" : "EYsHyoxpPqecnLBBS",
+    "employeeNumber" : "67890",
+    "firstLastName" : "REYES",
+    "secondLastName" : "VIEYRA",
+    "name" : "RODOLFO",
+    "gender" : "MALE",
+    "email" : "rudy@ugto.mx"
+}
+
+/* 3 */
+{
+    "_id" : "qLFSLGR82AidMAGKu",
+    "employeeNumber" : "09876",
+    "firstLastName" : "CALDERON",
+    "secondLastName" : "CALDERON",
+    "name" : "ANGEL",
+    "gender" : "MALE",
+    "email" : "angelcc@ugto.mx"
+}
+
+/* 4 */
+{
+    "_id" : "7Q2ndgika77iDEYK7",
+    "employeeNumber" : "80136",
+    "firstLastName" : "PANTOJA",
+    "secondLastName" : "FLORES",
+    "name" : "MARCELINA",
+    "gender" : "FEMALE",
+    "email" : "marcepf.flor@gmail.com"
+}
+
+/* 5 */
+{
+    "_id" : "pSr8mkFtavqehvB2M",
+    "employeeNumber" : "80168",
+    "firstLastName" : "VAZQUEZ",
+    "secondLastName" : "DE LA ROSA",
+    "name" : "ISABEL",
+    "gender" : "FEMALE",
+    "email" : "mi.vazquez@ugto.mx"
+}

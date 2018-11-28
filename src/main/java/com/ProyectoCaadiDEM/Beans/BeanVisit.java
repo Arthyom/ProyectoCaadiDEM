@@ -200,7 +200,7 @@ public class BeanVisit implements Serializable {
             context.execute("PF('logInConfirm').show();");
         } else {
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage( FacesMessage.FACES_MESSAGES, "Error", "No se ha encontrado el NUA: " + this.nua));
+            context.addMessage(null, new FacesMessage( FacesMessage.SEVERITY_ERROR, "Error", "No se ha encontrado el NUA: " + this.nua));
             this.nua = null;
         }
     }
@@ -321,7 +321,7 @@ public class BeanVisit implements Serializable {
         pPie.setSimpleLabels(true);
         pPie.setLabelGenerator(gen);
         
-        ChartUtils.saveChartAsJPEG(new File(ruta+NUA+"grafPie.jpeg"), gpPie, 360, 450);
+        ChartUtils.saveChartAsJPEG(new File(ruta+NUA+"grafPie.jpeg"), gpPie, 500, 500);
         
         mdn.setTitle("Visitas por Habilidad");
         mdn.setLegendPosition("w");
@@ -340,6 +340,7 @@ public class BeanVisit implements Serializable {
         String  sk [] = {"Reading", "Listening", "Grammar", "Speaking"};
         
         BarChartModel bm    = new BarChartModel();
+        
         String ruta = crearDirectori();
         
     
@@ -375,7 +376,7 @@ public class BeanVisit implements Serializable {
          dt, PlotOrientation.VERTICAL,
          false, true, false);
 
-        ChartUtils.saveChartAsJPEG(new File(ruta+NUA+"grafBar.jpeg"), gpBar, 390, 480);
+        ChartUtils.saveChartAsJPEG(new File(ruta+NUA+"grafBar.jpeg"), gpBar, 550, 500);
 
         bm.addSeries(sR);
 

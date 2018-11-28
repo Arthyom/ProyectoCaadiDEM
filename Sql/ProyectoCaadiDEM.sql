@@ -183,3 +183,6 @@ ADD COLUMN `idAlterno` VARCHAR(45) NULL AFTER `visible`;
 
 INSERT INTO `CaadiIntegrada`.`usuarios` (`nombre`, `pass`, `visible`) VALUES ('admin', '1820_AdCa?!', b'1');
 INSERT INTO `CaadiIntegrada`.`usuarios` (`nombre`, `pass`, `visible`) VALUES ('students', '1820_AdSt?!', b'1');
+
+ALTER TABLE `CaadiIntegrada`.`Groups` 
+CHANGE COLUMN `identifier` `identifier` VARCHAR(50) NULL DEFAULT NULL ;

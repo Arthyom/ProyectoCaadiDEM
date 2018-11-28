@@ -57,7 +57,9 @@
                             </p:dialog>
                             
                             <p:dialog  showEffect="slide" hideEffect="slide" header="Resultados" widgetVar="status" modal="true" resizable="false" closable="false"  draggable="false" height="90" width="800">
-                                    <h:form>
+                                <h:form>
+                                        <p:outputLabel value="Registros correctos: #{transpilar.correctos}"/>
+                                        <p:outputLabel value="Registros incorrectos: #{transpilar.incorrectos}"/>
                                         <b:commandButton action="#{transpilar.ocultarPanel('status')}" value="Aceptar"/>
                                     </h:form>
                             </p:dialog>

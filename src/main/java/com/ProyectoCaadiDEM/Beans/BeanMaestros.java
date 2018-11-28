@@ -49,7 +49,7 @@ public class BeanMaestros implements Serializable {
         this.nue = null;
         this.mtsActual = null;
         
-        return "/Teachers?faces-redirect=true";
+        return "/Teachers.xhtml?faces-redirect=true";
     }
     
     public List<Teachers> listarValidos (){

@@ -62,13 +62,18 @@ public class transpilar implements Serializable {
     
     private UploadedFile     archivo;
 
-    private int              objetivo;
+    private int              objetivo, correctos, incorrectos;
+    
+    private Students         testSt;
+    
+    private Visit            testVs;
     
     ////////////////////////////////////////////////////////////////////////////
     
     // analizar el archivo json seleccinado
     public void ocultarPanel ( String panel ){
-        
+        this.incorrectos = 0;
+        this.correctos   = 0;
         RequestContext context = RequestContext.getCurrentInstance();
         FacesContext ct = FacesContext.getCurrentInstance();
         context.execute("PF('"+panel+"').hide();");
@@ -83,7 +88,7 @@ public class transpilar implements Serializable {
         context.execute("PF('"+panel+"').show();");
     }
     
-    public void insertarLineas (String [] lineas){
+    public void insertarLineas (String [] lineas) throws Exception{
         DateFormat formateador    = new SimpleDateFormat("yyyy-MM-dd");
         DateFormat formateadorIso = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         
@@ -110,12 +115,16 @@ public class transpilar implements Serializable {
             switch (this.objetivo) {
                 //alumnos
                 case 1:
+                    if(buffer.size() > 7){
                     Students sn = new Students(buffer.get(1), buffer.get(2), buffer.get(3), buffer.get(4), buffer.get(5));
-                    sn.setBirthday( formateador.parse(buffer.get(6)) );
+                  //  sn.setBirthday( formateador.parse(buffer.get(6)) );
                     sn.setProgram(buffer.get(7));
                     sn.setEmail(buffer.get(8));
                     sn.setVisible(Boolean.FALSE);
+                    this.testSt = sn;
                     this.fcdEstudiante.create(sn);
+                    this.correctos ++;
+                    }
                     break;
 
                 //maestros
@@ -172,18 +181,26 @@ public class transpilar implements Serializable {
                     
                 case 6:
                    
+                    
+                    
                    Periods ms = fcdPeriodos.conseguirPrdActual();
                    
                    if( ms.getIdAlterno().equals( buffer.get(1)) ){
+                   
                    Date start = formateadorIso.parse(buffer.get(4));
                    Date end   = formateadorIso.parse(buffer.get(5));
+                   
+                   
+                 
                    Visit vn = new Visit(1);
                    vn.setNua( fcdEstudiante.find(buffer.get(2)));
                    vn.setSkill( buffer.get(3));
                    vn.setStart(start);
                    vn.setEnd(end);
                    vn.setPeriodId( ms );
+                   this.testVs = vn;
                    fcdVisita.create(vn);
+                   correctos++;
                    }
 
                   
@@ -191,7 +208,11 @@ public class transpilar implements Serializable {
             }
 
         } catch (Exception ex) {
-            ;
+            incorrectos++;
+            if(this.testVs != null){
+            System.out.println(this.testVs.toString());
+            throw ex;
+            }
         }
                
     }
@@ -206,7 +227,7 @@ public class transpilar implements Serializable {
     }
     
     // ejecutar la insercion del archivo json parseado
-    public void transpilarArchivo () throws IOException{
+    public void transpilarArchivo () throws IOException, Exception{
         
         if ( archivo != null ){
 
@@ -229,8 +250,28 @@ public class transpilar implements Serializable {
     
     
     ////////////////////////////////////////////////////////////////////////////
+
+    public int getCorrectos() {
+        return correctos;
+    }
+
+    public void setCorrectos(int correctos) {
+        this.correctos = correctos;
+    }
+
+    public int getIncorrectos() {
+        return incorrectos;
+    }
+
+    public void setIncorrectos(int incorrectos) {
+        this.incorrectos = incorrectos;
+    }
+    
+    
     
     public transpilar() {
+        this.correctos = 0;
+        this.incorrectos = 0;
     }
 
     public UploadedFile getArchivo() {

@@ -89,6 +89,7 @@
                         <p:panel header="Graficos De Analisis" toggleable="true" id="grafs">
                            
                             <p:chart type="bar" model="#{beanGrupos.grpBarGraf()}"
+                                     rendered="#{beanGrupos.grpBarGraf() ne null}"
                                      responsive="true"/>
                             
                         </p:panel>
