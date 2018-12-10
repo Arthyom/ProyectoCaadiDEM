@@ -10,6 +10,7 @@ import com.ProyectoCaadiDEM.Fachadas.GroupsFacade;
 import com.ProyectoCaadiDEM.Fachadas.PeriodsFacade;
 import com.ProyectoCaadiDEM.Fachadas.StudentsFacade;
 import com.ProyectoCaadiDEM.Fachadas.TeachersFacade;
+import com.ProyectoCaadiDEM.Fachadas.VisitFacade;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -19,6 +20,7 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
@@ -28,6 +30,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.net.UnknownHostException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -42,13 +45,18 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryLabelPositions;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import org.primefaces.context.RequestContext;
 import org.primefaces.model.UploadedFile;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.PieChartModel;
 
 
 @Named(value = "beanGrupos")
@@ -79,6 +87,9 @@ public class BeanGrupos implements Serializable {
     
     @EJB
     private PeriodsFacade    fcdPeriods;
+    
+    @EJB
+    private VisitFacade      fcdVisit;
     
     private int grpIndex;
     
@@ -317,12 +328,14 @@ public class BeanGrupos implements Serializable {
 
         Document nd = new Document(PageSize.LETTER);
         PdfPTable nt = new PdfPTable(5);
+        nt.setWidths(new float[]{4,8,20,20,20});
+       
 
         String ruta = this.crearDirectori();
         String sP = ruta + grpIds + this.grpActual.getEmployeeNumber().getEmployeeNumber()+ "grafPie.jpeg";
         String sB = ruta + grpIds +  this.grpActual.getEmployeeNumber().getEmployeeNumber()+"grafBar.jpeg";
         
-        //Image imgP = Image.getInstance(sP);
+        Image imgP = Image.getInstance(sP);
         Image imgB = Image.getInstance(sB);
         Font hf = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD);
         Font th = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD, BaseColor.BLUE);
@@ -341,8 +354,7 @@ public class BeanGrupos implements Serializable {
         nd.add( new Paragraph("Alumnos Registrados: " + aRegs));
 
         nd.add( new Paragraph(" "));
-        
-        // encabezad de la tabla 
+
         nt.addCell(new Phrase("#", hf));
         nt.addCell(new Phrase("NUA", hf));
         nt.addCell(new Phrase("Nombre", hf));
@@ -361,7 +373,7 @@ public class BeanGrupos implements Serializable {
         }
 
         nd.add(nt);
-       // nd.add(imgP);
+        nd.add(imgP);
         nd.add(imgB);
         nd.close();
         fc.responseComplete();
@@ -400,41 +412,62 @@ public class BeanGrupos implements Serializable {
         return  new Float (h + "." + m );
     }
    
-     public BarChartModel grpPieGraf() throws IOException {
-        if(this.grpActual != null){
-        String sk[] = {"Reading", "Listening", "Grammar", "Speaking"};
-        JFreeChart gpPie, gpBar;
-        String ruta = crearDirectori();
-        String grpIds = grpActual.getId() + grpActual.getIdentifier();
+     public PieChartModel grpPieGraf() throws IOException {
+                      int reading = 0, listening = 0, grammar = 0, speaking = 0;
+             DefaultPieDataset pd = new DefaultPieDataset();
+             PieChartModel mdn = new PieChartModel();
+         if (this.grpActual != null) {
+             String sk[] = {"Reading", "Listening", "Grammar", "Speaking"};
+             JFreeChart gpPie;
+             String ruta = crearDirectori();
+             String grpIds = grpActual.getId() + grpActual.getIdentifier();
 
-        BarChartModel bm = new BarChartModel();
-        if (grpActual != null) {
+             // iterar para todos los estudiantes del grupo
+             for (Students st : this.grpActual.getStudentsCollection()) {
 
-            bm.setTitle("Horas Por Alumno");
-            bm.getAxis(AxisType.Y).setLabel("Horas");
-            bm.getAxis(AxisType.X).setLabel("Nombre");
+                 reading += this.fcdVisit.getEm().createNamedQuery("Visit.findBySkillByNUA").
+                         setParameter("nua", st.getNua()).setParameter("skill", sk[0]).getResultList().size();
 
-            DefaultCategoryDataset dt = new DefaultCategoryDataset();
-            for (Students s : grpActual.getStudentsCollection()) 
-                dt.addValue(contarHorasParaStdNum(s), "Total de Horas", "-");
-            
-            gpBar = ChartFactory.createBarChart(
-                    "Horas Por Alumno",
-                    "Habilidad", "Horas",
-                    dt, PlotOrientation.VERTICAL,
-                    false, true, false);
+                 listening += this.fcdVisit.getEm().createNamedQuery("Visit.findBySkillByNUA").
+                         setParameter("nua", st.getNua()).setParameter("skill", sk[1]).getResultList().size();
 
-            ChartUtils.saveChartAsJPEG(new File(ruta +grpIds+ grpActual.getEmployeeNumber().getEmployeeNumber() + "graPie.jpeg"), gpBar, 800,500);
-            ChartSeries sR = new ChartSeries("Nombre");
+                 grammar += this.fcdVisit.getEm().createNamedQuery("Visit.findBySkillByNUA").
+                         setParameter("nua", st.getNua()).setParameter("skill", sk[2]).getResultList().size();
 
-            for (Students si : grpActual.getStudentsCollection()) 
-                sR.set(si.getName(), contarHorasParaStdNum(si));
-           
-            bm.addSeries(sR);
-        }
-        return bm;
-        }
-        return null;
+                 speaking += this.fcdVisit.getEm().createNamedQuery("Visit.findBySkillByNUA").
+                         setParameter("nua", st.getNua()).setParameter("skill", sk[3]).getResultList().size();
+
+             }
+
+             pd.setValue(sk[0], reading);
+             pd.setValue(sk[1], listening);
+             pd.setValue(sk[2], grammar);
+             pd.setValue(sk[3], speaking);
+
+             gpPie = ChartFactory.createPieChart(
+                     "Habilidades Más Trabajadas", pd, true, true, false);
+
+             PieSectionLabelGenerator gen = new StandardPieSectionLabelGenerator(
+                     "{0}: {1} ({2})", new DecimalFormat("0"), new DecimalFormat("0%"));
+
+             PiePlot pPie = (PiePlot) gpPie.getPlot();
+             pPie.setCircular(false);
+             pPie.setSimpleLabels(true);
+             pPie.setLabelGenerator(gen);
+
+             ChartUtils.saveChartAsJPEG(new File(ruta + grpIds + grpActual.getEmployeeNumber().getEmployeeNumber() + "grafPie.jpeg"), gpPie, 550, 480);
+
+             mdn.setTitle("Visitas por Habilidad");
+             mdn.setLegendPosition("w");
+             mdn.setShowDataLabels(true);
+
+             mdn.set(sk[0], reading);
+             mdn.set(sk[1], listening);
+             mdn.set(sk[2], grammar);
+             mdn.set(sk[3], speaking);
+             
+         }
+         return mdn;
     }
      
     

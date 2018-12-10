@@ -8,27 +8,19 @@ import com.ProyectoCaadiDEM.Fachadas.PeriodsFacade;
 import com.ProyectoCaadiDEM.Fachadas.StudentsFacade;
 import com.ProyectoCaadiDEM.Fachadas.VisitFacade;
 import com.ProyectoCaadiDEM.Modelos.Visitantes;
-import com.itextpdf.awt.DefaultFontMapper;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Paint;
-import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -46,11 +38,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.ejb.EJB;
-import javax.enterprise.inject.Default;
+
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
@@ -64,8 +55,7 @@ import org.jfree.chart.labels.PieSectionLabelGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.renderer.category.BarRenderer;
-import org.jfree.chart.renderer.category.CategoryItemRenderer;
+
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 

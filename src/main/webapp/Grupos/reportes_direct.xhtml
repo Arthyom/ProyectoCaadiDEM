@@ -26,6 +26,8 @@
 
                         <br/>
                         
+                        <p:outputLabel value="Grupo: #{beanGrupos.grpActual.learningUnit} #{beanGrupos.grpActual.level}#{beanGrupos.grpActual.identifier}"/>
+                        <br/>
                         <p:outputLabel id="idProf" value="Profesor: #{beanGrupos.grpActual.employeeNumber.name}
                                        #{beanGrupos.grpActual.employeeNumber.firstLastName}
                                        #{beanGrupos.grpActual.employeeNumber.secondLastName}"/>
@@ -65,6 +67,11 @@
                         <p:panel header="Graficos De Analisis" toggleable="true" id="grafs">
                            
                             <p:chart type="bar" model="#{beanGrupos.grpBarGraf()}"
+                                     responsive="true"/>
+                            
+                            <br/>
+                            
+                            <p:chart type="pie" model="#{beanGrupos.grpPieGraf()}"
                                      responsive="true"/>
                             
                         </p:panel>
