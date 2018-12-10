@@ -31,6 +31,7 @@ footer{
     font-family: Helvetica, Arial, sans-serif;
     background: linear-gradient(rgb(23, 77, 135) 0%, rgb(14, 52, 91) 77%, rgb(14, 52, 91) 100%);
     border-bottom: 8px solid #A0935F;
+    z-index: 1;
 }
 
 a:hover{
