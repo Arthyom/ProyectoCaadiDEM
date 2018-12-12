@@ -13,7 +13,7 @@
 
             <ui:define name="content">
                 <h:form enctype="multipart/form-data">
-                    <b:growl showDetail="true"/>
+                    <b:growl showDetail="true" allowDismiss="true"/>
                     <p:panel header="Cargar desde Archivo">
                         <p:fileUpload   label="Seleccionar Archivo" value="#{beanEstudiantes.archivo}" mode="simple" skinSimple="true"/>
                         <b:commandButton value="Cargar" ajax="false"
