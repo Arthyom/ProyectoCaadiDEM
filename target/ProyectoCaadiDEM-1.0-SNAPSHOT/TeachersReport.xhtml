@@ -39,8 +39,7 @@
                             <f:selectItem itemLabel="Seleccione Grupo" itemValue="0"/>
                             <f:selectItems value="#{beanMaestros.listarGruposXprof()}" 
                                            var="grp" 
-                                           itemLabel="#{grp.id} #{grp.identifier} 
-                                           #{grp.learningUnit} #{grp.level}"
+                                           itemLabel="#{grp.learningUnit} #{grp.level}#{grp.identifier}"
                                            itemValue="#{grp.id}"/>
                             
 

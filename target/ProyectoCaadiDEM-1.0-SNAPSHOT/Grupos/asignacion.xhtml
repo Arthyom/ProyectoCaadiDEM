@@ -21,8 +21,7 @@
                             <f:selectItem itemLabel="Seleccione Grupo"/>
                             <f:selectItems value="#{beanGrupos.listarItems()}" 
                                            var="grp" itemValue="#{grp.id}"
-                                           itemLabel="#{grp.identifier} 
-                                           #{grp.learningUnit} #{grp.level} #{grp.id}"/>
+                                           itemLabel="#{grp.learningUnit}  #{grp.level}#{grp.identifier}"/>
                             <f:ajax listener="#{beanGrupos.buscarGrupo()}" render="profe stdGrp"/>
                             
                         </p:selectOneMenu>
