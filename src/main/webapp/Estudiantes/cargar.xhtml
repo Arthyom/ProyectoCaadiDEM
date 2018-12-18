@@ -17,11 +17,22 @@
                     <p:panel header="Cargar desde Archivo">
                         <p:fileUpload   label="Seleccionar Archivo" value="#{beanEstudiantes.archivo}" mode="simple" skinSimple="true"/>
                         <b:commandButton value="Cargar" ajax="false"
-                                         onclick="PF('inf').show()"
+                                         onclick="PF('total').show()"
                                          action="#{beanEstudiantes.mensajeCargar()}"
                         />
+                         
                     </p:panel>
                 </h:form>
+                
+                <p:dialog id="inf"    showEffect="slide" hideEffect="slide" header="Cargar" 
+                          widgetVar="total" modal="true" resizable="false" closable="false"  
+                          draggable="false" height="90" width="500">
+
+                    <b:progressBar value="100" animated="true" renderCaption="false"/>
+                    <p:outputLabel value="Cargando por favor espere"/>
+                    <p:outputLabel value="(Este proceso puede tardar varios minutos)"/>
+
+                </p:dialog>
                 
                 <p:dialog header="Listar Agregados" id="dlgCargar" widgetVar="dlgCargar" dynamic="true" modal="true">
                     <h:form id="form">
@@ -62,18 +73,12 @@
                         </p:panelGrid>
                         
                     </p:panel>
+                        
+                       
+                        
                     </h:form>
                     
-                    <p:dialog id="inf"    showEffect="slide" hideEffect="slide" header="Transpilando" 
-                              widgetVar="total" modal="true" resizable="false" closable="false"  
-                              draggable="false" height="90" width="500">
-
-                        <b:progressBar value="100" animated="true" renderCaption="false"/>
-                        <p:outputLabel value="Cargando por favor espere"/>
-                        <p:outputLabel value="(Este proceso puede tardar varios minutos)"/>
-
-                    </p:dialog>
-                    
+               
                 </p:dialog>
             </ui:define>
 
