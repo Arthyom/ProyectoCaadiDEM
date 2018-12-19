@@ -139,12 +139,20 @@ public class BeanMaestros implements Serializable {
         {
             if (this.archivo.getContentType().contains("xlsx")) {
                 barrerArchivoXl();
-                context.execute("PF('dlgCargar').show();");
+                mostrarPanel("dlgCargar");
                 return;
             } 
         }
         ct.addMessage(null,
                 new FacesMessage("Error: ", "El archivo no tiene el formato correcto"));
+    }
+    
+      // analizar el archivo json seleccinado
+    public void mostrarPanel ( String panel ){
+        
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesContext ct = FacesContext.getCurrentInstance();
+        context.execute("PF('"+panel+"').show();");
     }
     
     public void barrerArchivoXl () throws IOException{
