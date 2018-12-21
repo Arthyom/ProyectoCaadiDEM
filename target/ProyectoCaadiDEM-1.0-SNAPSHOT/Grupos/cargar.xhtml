@@ -15,12 +15,15 @@
 
                 <h:form enctype="multipart/form-data">
                     <b:growl showDetail="true" allowDismiss="true"/>
-                    <p:panel header="Cargar desde Archivo">
+                    <p:panel header="Cargar desde Archivo" styleClass="card box-solid box-primary smallFormLog">
+                        <h:panelGrid columns="1" class="gridLogForm">
                         <p:fileUpload   label="Seleccionar Archivo" value="#{beanGrupos.archivo}" mode="simple" skinSimple="true"/>
                         <b:commandButton value="Cargar" ajax="false"
+                                         styleClass="btn-success btn-lg btn-block"
                                          onclick="PF('total').show()"
                                          action="#{beanGrupos.mensajeCargar()}"
                                          />
+                        </h:panelGrid>
                     </p:panel>
                 </h:form>
 
@@ -34,7 +37,7 @@
 
                 </p:dialog>
                 
-                <p:dialog header="Listar Agregados" widgetVar="dlgCargar" dynamic="true" modal="true">
+                <p:dialog header="Grupos: Resultado de la Carga" widgetVar="dlgCargar" dynamic="true" modal="true">
                     <h:form id="form">
                         <p:panel id="idPnlCargar">
                             <p:outputLabel value="Estudiantes existentes: #{beanGrupos.stdExst.size()}" />
@@ -67,8 +70,8 @@
                                         <p:outputLabel value="#{stdNoEx.firstLastName} #{stdNoEx.secondLastName}"/>
                                     </p:column>
                                 </p:dataTable>
-                                <b:commandButton value="Agregar"      action="#{beanGrupos.agregarAutomatico()}"/>
-                                <b:commandButton value="Cancelar" action="#{beanGrupos.cancelarCargaAutomatica()}"/>
+                                <b:commandButton value="Agregar"   styleClass="btn-success btn-lg btn-block"   action="#{beanGrupos.agregarAutomatico()}"/>
+                                <b:commandButton value="Cancelar"  styleClass="btn-danger btn-lg btn-block" action="#{beanGrupos.cancelarCargaAutomatica()}"/>
                             </p:panelGrid>
                         </p:panel>
                     </h:form>

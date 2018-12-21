@@ -13,6 +13,10 @@ footer{
     height: 16%;
 }
 
+body{
+    background-color: #AFAFAF
+}
+
 .footerText{
     color: black;
     font-family: "Raleway", Helvetica, Arial, sans-serif;

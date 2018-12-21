@@ -13,11 +13,14 @@
             <ui:define name="content">
                 <h:form enctype="multipart/form-data">
                     <b:growl showDetail="true" allowDismiss="true"/>
-                    <p:panel header="Cargar desde Archivo">
+                    <p:panel header="Cargar desde Archivo" styleClass="card box-solid box-primary smallFormLog"> 
+                        <h:panelGrid columns="1" class="gridLogForm">
                         <p:fileUpload   label="Seleccionar Archivo" value="#{beanMaestros.archivo}" mode="simple" skinSimple="true"/>
                         <b:commandButton value="Cargar" ajax="false"
+                                         styleClass="btn-success btn-lg btn-block"
                                          onclick="PF('total').show()"
                                          action="#{beanMaestros.mensajeCargar()}"/>
+                        </h:panelGrid>
                     </p:panel>
                 </h:form>
                 
@@ -31,7 +34,7 @@
 
                 </p:dialog>
 
-                <p:dialog header="Listar Agregados" widgetVar="dlgCargar" dynamic="true" modal="true">
+                <p:dialog header="Maestros: Resultado de la Carga" widgetVar="dlgCargar" dynamic="true" modal="true">
                     <h:form id="form">
                         <p:panel id="idPnlCargar">
                             <p:outputLabel value="Estudiantes existentes: #{beanMaestros.mtsExist.size()}" />
@@ -65,8 +68,8 @@
                                     </p:column>
                                 </p:dataTable>
 
-                                <b:commandButton value="Agregar"      action="#{beanMaestros.agregarAutomatico()}"/>
-                                <b:commandButton value="Cancelar" action="#{beanMaestros.cancelarCargaAutomatica()}"/>
+                                <b:commandButton value="Agregar"  styleClass="btn-success btn-lg btn-block"    action="#{beanMaestros.agregarAutomatico()}"/>
+                                <b:commandButton value="Cancelar" styleClass="btn-danger btn-lg btn-block" action="#{beanMaestros.cancelarCargaAutomatica()}"/>
                             </p:panelGrid>
 
                         </p:panel>

@@ -14,12 +14,15 @@
             <ui:define name="content">
                 <h:form enctype="multipart/form-data">
                     <b:growl showDetail="true" allowDismiss="true"/>
-                    <p:panel header="Cargar desde Archivo">
+                    <p:panel header="Cargar desde Archivo" styleClass="card box-solid box-primary smallFormLog">
+                        <h:panelGrid columns="1" class="gridLogForm">
                         <p:fileUpload   label="Seleccionar Archivo" value="#{beanEstudiantes.archivo}" mode="simple" skinSimple="true"/>
                         <b:commandButton value="Cargar" ajax="false"
+                                         styleClass="btn-success btn-lg btn-block"
                                          onclick="PF('total').show()"
                                          action="#{beanEstudiantes.mensajeCargar()}"
                         />
+                        </h:panelGrid>
                          
                     </p:panel>
                 </h:form>
@@ -34,7 +37,7 @@
 
                 </p:dialog>
                 
-                <p:dialog header="Resultado de la Carga" id="dlgCargar" widgetVar="dlgCargar" dynamic="true" 
+                <p:dialog header="Estudiantes: Resultado de la Carga" id="dlgCargar" widgetVar="dlgCargar" dynamic="true" 
                           resizable="false" modal="true" draggable="false" closable="false">
                     <h:form id="form">
                    
@@ -84,7 +87,7 @@
 
                             </p:dataTable>
                           
-                            <b:commandButton value="Agregar"   styleClass="btn-success btn-lg btn-block"   action="#{beanEstudiantes.agregarAutomatico()}"/>
+                            <b:commandButton value="Agregar"      styleClass="btn-success btn-lg btn-block"   action="#{beanEstudiantes.agregarAutomatico()}"/>
                                 <b:commandButton value="Cancelar" styleClass="btn-danger btn-lg btn-block" action="#{beanEstudiantes.cancelarCargaAutomatica()}"/>
                         </p:panelGrid>
                         
