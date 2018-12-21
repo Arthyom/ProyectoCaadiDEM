@@ -40,8 +40,13 @@
                             <p:outputLabel value="Estudiantes existentes: #{beanMaestros.mtsExist.size()}" />
                             <p:outputLabel value="Estudiantes Nuevo     : #{beanMaestros.mtsNoExist.size()}" />
                             <p:panelGrid columns="2" id="idDlgCargar">
-                                <p:dataTable value="#{beanMaestros.mtsExist}" var="mstEx">
-                                    <p:column headerText="NUA">
+                                <p:dataTable value="#{beanMaestros.mtsExist}" var="mstEx"
+                                             paginator="true"
+                                             rows="7"
+                                             paginatorPosition="bottom"
+                                             rowsPerPageTemplate="10,15,20"
+                                >
+                                    <p:column headerText="NUA" style="width: 70px">
                                         <p:outputLabel value="#{mstEx.employeeNumber}"/>
                                     </p:column>
 
@@ -49,13 +54,18 @@
                                         <p:outputLabel value="#{mstEx.name}"/>
                                     </p:column>
 
-                                    <p:column headerText="Apellidos">
+                                    <p:column headerText="Apellidos" style="width: 100px">
                                         <p:outputLabel value="#{mstEx.firstLastName} #{mstEx.secondLastName}"/>
                                     </p:column>
                                 </p:dataTable>
 
-                                <p:dataTable value="#{beanMaestros.mtsNoExist}" var="stdNoEx">
-                                    <p:column headerText="NUA">
+                                <p:dataTable value="#{beanMaestros.mtsNoExist}" var="stdNoEx"
+                                             paginator="true"
+                                             rows="7"
+                                             paginatorPosition="bottom"
+                                             rowsPerPageTemplate="10,15,20"
+                                >
+                                    <p:column headerText="NUA" style="width: 70px">
                                         <p:outputLabel value="#{stdNoEx.employeeNumber}"/>
                                     </p:column>
 
@@ -63,7 +73,7 @@
                                         <p:outputLabel value="#{stdNoEx.name}"/>
                                     </p:column>
 
-                                    <p:column headerText="Apellidos">
+                                    <p:column headerText="Apellidos" style="width: 100px">
                                         <p:outputLabel value="#{stdNoEx.firstLastName} #{stdNoEx.secondLastName}"/>
                                     </p:column>
                                 </p:dataTable>
