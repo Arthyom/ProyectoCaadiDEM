@@ -39,7 +39,7 @@
                 
                 <p:dialog header="Grupos: Resultado de la Carga" widgetVar="dlgCargar" dynamic="true" modal="true" draggable="false" closable="false" resizable="false">
                     <h:form id="form">
-                        <p:panel id="idPnlCargar">
+
                             <p:outputLabel value="Estudiantes existentes: #{beanGrupos.stdExst.size()}" />
                             <p:outputLabel value="Estudiantes Nuevo     : #{beanGrupos.stdNoExst.size()}" />
                             <p:panelGrid columns="2" id="idDlgCargar">
@@ -51,16 +51,13 @@
                                          style="width: 400px"
                                 >
                                     <p:column headerText="NUA" style="width: 70px">
-                                        <p:outputLabel value="#{mstEx.nua}"/>
+                                        <p:outputLabel value="#{mstEx.nua} "/>
                                     </p:column>
 
-                                    <p:column headerText="Nombre">
-                                        <p:outputLabel value="#{mstEx.name}"/>
+                                    <p:column headerText="Nombre Y Apellido">
+                                        <p:outputLabel value="#{mstEx.name} #{mstEx.firstLastName} #{mstEx.secondLastName}"/>
                                     </p:column>
-
-                                    <p:column headerText="Apellidos" style="width: 100px">
-                                        <p:outputLabel value="#{mstEx.firstLastName} #{mstEx.secondLastName}"/>
-                                    </p:column>
+           
                                 </p:dataTable>
 
                                 <p:dataTable value="#{beanGrupos.stdNoExst}" var="stdNoEx"
@@ -75,17 +72,14 @@
                                     </p:column>
 
                                     <p:column headerText="Nombre">
-                                        <p:outputLabel value="#{stdNoEx.name}"/>
+                                        <p:outputLabel value="#{stdNoEx.name} #{mstEx.firstLastName} #{mstEx.secondLastName}"/>
                                     </p:column>
 
-                                    <p:column headerText="Apellidos" style="width: 100px">
-                                        <p:outputLabel value="#{stdNoEx.firstLastName} #{stdNoEx.secondLastName}"/>
-                                    </p:column>
                                 </p:dataTable>
                                 <b:commandButton value="Agregar"   styleClass="btn-success btn-lg btn-block"   action="#{beanGrupos.agregarAutomatico()}"/>
                                 <b:commandButton value="Cancelar"  styleClass="btn-danger btn-lg btn-block" action="#{beanGrupos.cancelarCargaAutomatica()}"/>
                             </p:panelGrid>
-                        </p:panel>
+
                     </h:form>
                 </p:dialog>
             </ui:define>
