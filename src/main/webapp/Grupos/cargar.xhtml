@@ -37,7 +37,7 @@
 
                 </p:dialog>
                 
-                <p:dialog header="Grupos: Resultado de la Carga" widgetVar="dlgCargar" dynamic="true" modal="true">
+                <p:dialog header="Grupos: Resultado de la Carga" widgetVar="dlgCargar" dynamic="true" modal="true" draggable="false" closable="false" resizable="false">
                     <h:form id="form">
                         <p:panel id="idPnlCargar">
                             <p:outputLabel value="Estudiantes existentes: #{beanGrupos.stdExst.size()}" />
@@ -48,6 +48,7 @@
                                          rows="7"
                                          paginatorPosition="bottom"
                                          rowsPerPageTemplate="10,15,20"
+                                         style="width: 400px"
                                 >
                                     <p:column headerText="NUA" style="width: 70px">
                                         <p:outputLabel value="#{mstEx.nua}"/>
@@ -67,6 +68,7 @@
                                          rows="7"
                                          paginatorPosition="bottom"
                                          rowsPerPageTemplate="10,15,20"
+                                         style="width: 400px"
                                 >
                                     <p:column headerText="NUA" style="width: 70px">
                                         <p:outputLabel value="#{stdNoEx.nua}"/>

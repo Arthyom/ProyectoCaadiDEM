@@ -34,27 +34,28 @@
 
                 </p:dialog>
 
-                <p:dialog header="Maestros: Resultado de la Carga" widgetVar="dlgCargar" dynamic="true" modal="true">
+                <p:dialog header="Maestros: Resultado de la Carga" widgetVar="dlgCargar" dynamic="true" resizable="false" modal="true" draggable="false" closable="false">
                     <h:form id="form">
-                        <p:panel id="idPnlCargar">
-                            <p:outputLabel value="Estudiantes existentes: #{beanMaestros.mtsExist.size()}" />
-                            <p:outputLabel value="Estudiantes Nuevo     : #{beanMaestros.mtsNoExist.size()}" />
+                        
                             <p:panelGrid columns="2" id="idDlgCargar">
+                                <p:outputLabel value="Maestros existentes: #{beanMaestros.mtsExist.size()}" />
+                                <p:outputLabel value="Maestros Nuevos     : #{beanMaestros.mtsNoExist.size()}" />
                                 <p:dataTable value="#{beanMaestros.mtsExist}" var="mstEx"
                                              paginator="true"
                                              rows="7"
                                              paginatorPosition="bottom"
                                              rowsPerPageTemplate="10,15,20"
+                                             style="width: 400px"
                                 >
                                     <p:column headerText="NUA" style="width: 70px">
                                         <p:outputLabel value="#{mstEx.employeeNumber}"/>
                                     </p:column>
 
-                                    <p:column headerText="Nombre">
-                                        <p:outputLabel value="#{mstEx.name}"/>
+                                    <p:column headerText="Nombre y Apellidos">
+                                        <p:outputLabel value="#{mstEx.name} #{mstEx.firstLastName} #{mstEx.secondLastName}"/>
                                     </p:column>
 
-                                    <p:column headerText="Apellidos" style="width: 100px">
+                                    <p:column headerText="Carrera" style="width: 100px">
                                         <p:outputLabel value="#{mstEx.firstLastName} #{mstEx.secondLastName}"/>
                                     </p:column>
                                 </p:dataTable>
@@ -64,17 +65,18 @@
                                              rows="7"
                                              paginatorPosition="bottom"
                                              rowsPerPageTemplate="10,15,20"
+                                             style="width: 400px"
                                 >
                                     <p:column headerText="NUA" style="width: 70px">
                                         <p:outputLabel value="#{stdNoEx.employeeNumber}"/>
                                     </p:column>
 
-                                    <p:column headerText="Nombre">
-                                        <p:outputLabel value="#{stdNoEx.name}"/>
+                                    <p:column headerText="Nombre y Apellidos">
+                                        <p:outputLabel value="#{stdNoEx.name} #{mstEx.firstLastName} #{mstEx.secondLastName}"/>
                                     </p:column>
 
-                                    <p:column headerText="Apellidos" style="width: 100px">
-                                        <p:outputLabel value="#{stdNoEx.firstLastName} #{stdNoEx.secondLastName}"/>
+                                    <p:column headerText="Carrera" style="width: 100px">
+                                        <p:outputLabel value="#{stdNoEx.gender}"/>
                                     </p:column>
                                 </p:dataTable>
 
@@ -82,7 +84,7 @@
                                 <b:commandButton value="Cancelar" styleClass="btn-danger btn-lg btn-block" action="#{beanMaestros.cancelarCargaAutomatica()}"/>
                             </p:panelGrid>
 
-                        </p:panel>
+            
                     </h:form>
                 </p:dialog>
             </ui:define>
