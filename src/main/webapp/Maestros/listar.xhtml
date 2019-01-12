@@ -32,14 +32,14 @@
                     <p:dataTable 
                         selection="#{beanMaestros.mtsSeleccionados}"
                         rowKey="#{std.employeeNumber}" paginator="true"
-                        rows="10"
+                        rows="5"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
                          {PreviousPageLink} {PageLinks} {NextPageLink}
                          {LastPageLink} {RowsPerPageDropdown}"
                          value="#{beanMaestros.listarValidos()}" var="std"
                         filteredValue="#{beanMaestros.mtsFiltrados}"
                         styleClass="box-solid box-default"
-                        rowsPerPageTemplate="10,15,20" 
+                        rowsPerPageTemplate="5,10,15,20" 
                         paginatorPosition="bottom"
                     >
                         

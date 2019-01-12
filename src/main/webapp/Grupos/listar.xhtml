@@ -29,14 +29,14 @@
                     <p:dataTable 
                         selection="#{beanGrupos.grpsSeleccionados}"
                         rowKey="#{std.id}" paginator="true"
-                        rows="10"
+                        rows="5"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
                          {PreviousPageLink} {PageLinks} {NextPageLink}
                          {LastPageLink} {RowsPerPageDropdown}"
                          value="#{beanGrupos.listarValidos()}" var="std"
                         filteredValue="#{beanGrupos.grpsFiltrados}"
                         styleClass="box-solid box-default"
-                        rowsPerPageTemplate="10,15,20" 
+                        rowsPerPageTemplate="5,10,15,20" 
                         paginatorPosition="bottom"
                         >
 
@@ -46,19 +46,19 @@
                         
                         <p:column selectionMode="multiple" class="selectFormList" />
                         
-                        <p:column headerText="Nivel" filterBy="#{std.level}">
+                        <p:column headerText="Nivel" style="width:  50px" filterBy="#{std.level}">
                             <p:outputLabel value="#{std.level}"/>
                         </p:column>
                         
-                        <p:column headerText="Identificador" filterBy="#{std.id}">
+                        <p:column headerText="Identificador"  style="width:  100px" filterBy="#{std.id}">
                             <p:outputLabel value="#{std.identifier}"/>
                         </p:column>
                         
                         <p:column headerText="Profesor" >
-                            <p:outputLabel value="#{std.employeeNumber.name} #{std.employeeNumber.firstLastName}"/>
+                            <p:outputLabel value="#{std.employeeNumber.name} #{std.employeeNumber.firstLastName}  #{std.employeeNumber.secondLastName}"/>
                         </p:column>
 
-                        <p:column headerText="# Estudiantes" >
+                        <p:column headerText="Estudiantes" >
                             <p:outputLabel value="#{std.studentsCollection.size()}"/>
                         </p:column>
                         

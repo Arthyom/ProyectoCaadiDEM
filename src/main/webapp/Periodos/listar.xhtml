@@ -28,14 +28,14 @@
                     <p:dataTable 
                         selection="#{beanPeriodos.prdSeleccionados}"
                         rowKey="#{std.id}" paginator="true"
-                        rows="10"
+                        rows="5"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
                          {PreviousPageLink} {PageLinks} {NextPageLink}
                          {LastPageLink} {RowsPerPageDropdown}"
                          value="#{beanPeriodos.listarValidos()}" var="std"
                          filteredValue="#{beanPeriodos.prdFiltrados}"
                          styleClass="box-solid box-default"
-                         rowsPerPageTemplate="10,15,20" 
+                         rowsPerPageTemplate="5,10,15,20" 
                          paginatorPosition="bottom"
                          >
 
