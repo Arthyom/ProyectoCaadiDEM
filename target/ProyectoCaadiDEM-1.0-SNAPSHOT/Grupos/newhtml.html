@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+           <p:panel header="Asignar Estudiantes al Grupo" styleClass="card box-solid box-primary" 
+                             style="text-align: center; width: 990px; margin: 0 auto">
+                        <h:panelGrid columns="2" class="gridFormButtonsHeader">
+                        
+                       
+                        </h:panelGrid>
+                        <hr/>
+        
+         
+                        <p:outputLabel value="Profesor: "/>
+                        <p:outputLabel id="profe" value="#{beanGrupos.grpActual.employeeNumber.name} 
+                                       #{beanGrupos.grpActual.employeeNumber.firstLastName} 
+                                       #{beanGrupos.grpActual.employeeNumber.secondLastName}"/> 
+                        
+                        
+                       
+                        <b:commandButton value="Asignar  Seleccionados" action="#{beanGrupos.asignarME()}" styleClass="btn-primary btn-md btn-block"/>
+                        <b:commandButton value="Eliminar Seleccionados" action="#{beanGrupos.eliminarSeleccionados()}" styleClass="btn-fatal btn-md btn-block"/>
+                        
+        
+        
+        <div>TODO write content</div>
+    </body>
+</html>

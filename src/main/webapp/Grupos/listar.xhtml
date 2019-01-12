@@ -64,6 +64,12 @@
                         
                  
                          <p:column headerText="Opciones" >
+                             <b:commandButton action="asignar" icon="user"> 
+                                 <f:setPropertyActionListener 
+                                     value="#{std}" target="#{beanGrupos.grpActual}"
+                                 />
+                             </b:commandButton>
+                             
                              <b:commandButton update=":form:delUno" 
                                               icon="minus" styleClass="btn btn-danger"
                                               action="#{beanUtileria.mostrarDialogoBorrarSingle('dlgBorrar')}">
