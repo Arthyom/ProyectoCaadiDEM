@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn" time="72.077" errors="1" skipped="0">
+<testsuite tests="1" failures="0" name="com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn" time="16.494" errors="1" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
@@ -13,10 +13,10 @@
     <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
-    <property name="test" value="com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/home/frodo/Documentos/ProyectoCaadiDEM"/>
     <property name="java.runtime.version" value="1.8.0_151-8u151-b12-1-b12"/>
+    <property name="netbeans.deploy" value="true"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/endorsed"/>
     <property name="os.arch" value="amd64"/>
@@ -24,6 +24,7 @@
     <property name="line.separator" value="
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="netbeans.deploy.debugmode" value="true"/>
     <property name="os.name" value="Linux"/>
     <property name="maven.ext.class.path" value="/home/frodo/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar"/>
     <property name="classworlds.conf" value="/home/frodo/netbeans-8.2/java/maven/bin/m2.conf"/>
@@ -43,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-8-openjdk-amd64/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn -Dmaven.ext.class.path=/home/frodo/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dnetbeans.deploy.debugmode=true -Dnetbeans.deploy=true -Dmaven.ext.class.path=/home/frodo/netbeans-8.2/java/maven-nblib/netbeans-eventspy.jar package"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="es"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -60,21 +61,30 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn" name="testSimple" time="71.896">
-    <error message="Expected condition failed: waiting for visibility of element located by By.id: form2:j_idt24 (tried for 50 second(s) with 500 milliseconds interval)
+  <testcase classname="com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn" name="testSimple" time="16.318">
+    <error message="Reached error page: about:neterror?e=connectionFailure&amp;u=http%3A//localhost%3A8080/ProyectoCaadiDEM/Visitas/LogInSession.xhtml&amp;c=UTF-8&amp;f=regular&amp;d=Firefox%20no%20pudo%20establecer%20una%20conexi%C3%B3n%20con%20el%20servidor%20en%20localhost%3A8080.
 Build info: version: &apos;3.13.0&apos;, revision: &apos;2f0d292&apos;, time: &apos;2018-06-25T15:24:21.231Z&apos;
 System info: host: &apos;frodo&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.14.0-3-amd64&apos;, java.version: &apos;1.8.0_151&apos;
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 58.0.1, javascriptEnabled: true, moz:accessibilityChecks: false, moz:geckodriverVersion: 0.23.0, moz:headless: false, moz:processID: 13499, moz:profile: /tmp/rust_mozprofile.ZU5n36..., moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.14.0-3-amd64, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
-Session ID: 526a0ceb-e6c5-4c9a-b8d0-b680da68c220" type="org.openqa.selenium.TimeoutException">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: form2:j_idt24 (tried for 50 second(s) with 500 milliseconds interval)
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 58.0.1, javascriptEnabled: true, moz:accessibilityChecks: false, moz:geckodriverVersion: 0.23.0, moz:headless: false, moz:processID: 25170, moz:profile: /tmp/rust_mozprofile.VVXmbh..., moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.14.0-3-amd64, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: 50bc60e8-6091-4123-a1ff-dfa4e42925cc" type="org.openqa.selenium.WebDriverException">org.openqa.selenium.WebDriverException: Reached error page: about:neterror?e=connectionFailure&amp;u=http%3A//localhost%3A8080/ProyectoCaadiDEM/Visitas/LogInSession.xhtml&amp;c=UTF-8&amp;f=regular&amp;d=Firefox%20no%20pudo%20establecer%20una%20conexi%C3%B3n%20con%20el%20servidor%20en%20localhost%3A8080.
 Build info: version: &apos;3.13.0&apos;, revision: &apos;2f0d292&apos;, time: &apos;2018-06-25T15:24:21.231Z&apos;
 System info: host: &apos;frodo&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.14.0-3-amd64&apos;, java.version: &apos;1.8.0_151&apos;
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 58.0.1, javascriptEnabled: true, moz:accessibilityChecks: false, moz:geckodriverVersion: 0.23.0, moz:headless: false, moz:processID: 13499, moz:profile: /tmp/rust_mozprofile.ZU5n36..., moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.14.0-3-amd64, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
-Session ID: 526a0ceb-e6c5-4c9a-b8d0-b680da68c220
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)
-	at com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn.testSimple(Test_StudentsSessionLogIn.java:42)
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 58.0.1, javascriptEnabled: true, moz:accessibilityChecks: false, moz:geckodriverVersion: 0.23.0, moz:headless: false, moz:processID: 25170, moz:profile: /tmp/rust_mozprofile.VVXmbh..., moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.14.0-3-amd64, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: 50bc60e8-6091-4123-a1ff-dfa4e42925cc
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:276)
+	at com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn.testSimple(Test_StudentsSessionLogIn.java:30)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -105,16 +115,13 @@ Session ID: 526a0ceb-e6c5-4c9a-b8d0-b680da68c220
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
-    <system-err>1547794819453	mozrunner::runner	INFO	Running command: &quot;/usr/lib/firefox/firefox&quot; &quot;-marionette&quot; &quot;-foreground&quot; &quot;-no-remote&quot; &quot;-profile&quot; &quot;/tmp/rust_mozprofile.ZU5n36XZ868K&quot;
-1547794823627	Marionette	INFO	Enabled via --marionette
+    <system-err>1547967975400	mozrunner::runner	INFO	Running command: &quot;/usr/lib/firefox/firefox&quot; &quot;-marionette&quot; &quot;-foreground&quot; &quot;-no-remote&quot; &quot;-profile&quot; &quot;/tmp/rust_mozprofile.VVXmbhucVSbC&quot;
+1547967978477	Marionette	INFO	Enabled via --marionette
 JavaScript error: jar:file:///usr/lib/firefox/omni.ja!/components/addonsInfo.js, line 91: SyntaxError: &quot;0&quot;-prefixed octal literals and octal escape sequences are deprecated; for octal literals use the &quot;0o&quot; prefix instead
-1547794832582	Marionette	INFO	Listening on port 42451
-1547794832668	Marionette	WARN	TLS certificate errors will be ignored for this session
-ene 18, 2019 1:00:33 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+1547967986861	Marionette	INFO	Listening on port 45937
+1547967986931	Marionette	WARN	TLS certificate errors will be ignored for this session
+ene 20, 2019 1:06:27 AM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFORMACIÓN: Detected dialect: W3C
-kf5.kio.core: Refilling KProtocolInfoFactory cache in the hope to find &quot;ircs&quot;
-kf5.kio.core: Refilling KProtocolInfoFactory cache in the hope to find &quot;mailto&quot;
-kf5.kio.core: Refilling KProtocolInfoFactory cache in the hope to find &quot;irc&quot;
 </system-err>
   </testcase>
 </testsuite>

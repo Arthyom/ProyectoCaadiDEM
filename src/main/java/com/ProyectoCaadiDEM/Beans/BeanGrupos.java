@@ -545,16 +545,16 @@ public class BeanGrupos implements Serializable {
 
             // conseguir la primera columna para representar al grupo
             int gId = 1;
-            String gIdTx = nh.getRow(0).getCell(1).getRichStringCellValue().getString();
-            String gLuTx = nh.getRow(0).getCell(2).getRichStringCellValue().getString();
-            String gLvTx = String.valueOf((int)nh.getRow(0).getCell(3).getNumericCellValue());
-            String gEmTx = String.valueOf((int)nh.getRow(0).getCell(4).getNumericCellValue());
-            int gPId = (int) nh.getRow(0).getCell(5).getNumericCellValue();
+            String gIdTx = nh.getRow(0).getCell(0).getRichStringCellValue().getString();
+            String gLuTx = nh.getRow(0).getCell(1).getRichStringCellValue().getString();
+            String gLvTx = String.valueOf((int)nh.getRow(0).getCell(2).getNumericCellValue());
+            //String gEmTx = String.valueOf((int)nh.getRow(0).getCell(4).getNumericCellValue());
+            //int gPId = (int) nh.getRow(0).getCell(5).getNumericCellValue();
 
             this.grpNuevo = this.fcdGrupos.find(gId);
             // buscar el grupo en la base de datos 
             if (this.grpNuevo == null) {// si no existe ya el grupo... crearlo 
-                this.grpNuevo = new Groups(gId, gLuTx, gLvTx, gIdTx);
+                this.grpNuevo = new Groups (gId, gLuTx, gLvTx, gIdTx);
                 this.grpNuevo.setStudentsCollection( new ArrayList<Students>() );
             }
 
@@ -591,7 +591,8 @@ public class BeanGrupos implements Serializable {
                     {
                         st.setVisible(Boolean.TRUE);
                         stdNoVisi.add(st);
-                    }
+                        this.stdExst.add(st);
+                    } 
                     else
                         this.stdExst.add(st);
                 }

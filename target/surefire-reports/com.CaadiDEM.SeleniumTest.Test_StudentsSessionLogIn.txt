@@ -1,17 +1,26 @@
 -------------------------------------------------------------------------------
 Test set: com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 72.074 sec <<< FAILURE!
-testSimple(com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn)  Time elapsed: 71.896 sec  <<< ERROR!
-org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: form2:j_idt24 (tried for 50 second(s) with 500 milliseconds interval)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 16.494 sec <<< FAILURE!
+testSimple(com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn)  Time elapsed: 16.318 sec  <<< ERROR!
+org.openqa.selenium.WebDriverException: Reached error page: about:neterror?e=connectionFailure&u=http%3A//localhost%3A8080/ProyectoCaadiDEM/Visitas/LogInSession.xhtml&c=UTF-8&f=regular&d=Firefox%20no%20pudo%20establecer%20una%20conexi%C3%B3n%20con%20el%20servidor%20en%20localhost%3A8080.
 Build info: version: '3.13.0', revision: '2f0d292', time: '2018-06-25T15:24:21.231Z'
 System info: host: 'frodo', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.14.0-3-amd64', java.version: '1.8.0_151'
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 58.0.1, javascriptEnabled: true, moz:accessibilityChecks: false, moz:geckodriverVersion: 0.23.0, moz:headless: false, moz:processID: 13499, moz:profile: /tmp/rust_mozprofile.ZU5n36..., moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.14.0-3-amd64, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
-Session ID: 526a0ceb-e6c5-4c9a-b8d0-b680da68c220
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)
-	at com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn.testSimple(Test_StudentsSessionLogIn.java:42)
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 58.0.1, javascriptEnabled: true, moz:accessibilityChecks: false, moz:geckodriverVersion: 0.23.0, moz:headless: false, moz:processID: 25170, moz:profile: /tmp/rust_mozprofile.VVXmbh..., moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.14.0-3-amd64, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: 50bc60e8-6091-4123-a1ff-dfa4e42925cc
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:276)
+	at com.CaadiDEM.SeleniumTest.Test_StudentsSessionLogIn.testSimple(Test_StudentsSessionLogIn.java:30)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
