@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -14,6 +15,26 @@
             <ui:define name="content">
                 <h:form enctype="multipart/form-data">
                     <b:growl showDetail="true" allowDismiss="true"/>
+                    
+                    <p:panel header="Instrucciones">
+                        <h:panelGrid columns="2">
+                            <p:panelGrid columns="5">
+                                <p:outputLabel value="NUA"/>
+                                <p:outputLabel value="Nombre"/>
+                                <p:outputLabel value="Apellido Paterno"/>
+                                <p:outputLabel value="Apellido Materno"/>
+                                <p:outputLabel value="Sexo"/>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid columns="3">
+                                <p:outputLabel value="Fecha de Nacimiento"/>
+                                <p:outputLabel value="Email"/>
+                                <p:outputLabel value="Programa Educativo"/>
+                              
+                            </p:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                  
                     <p:panel header="Cargar desde Archivo" styleClass="card box-solid box-primary smallFormLog">
                         <h:panelGrid columns="1" class="gridLogForm">
                         <p:fileUpload   label="Seleccionar Archivo" value="#{beanEstudiantes.archivo}" mode="simple" skinSimple="true"/>
@@ -40,7 +61,7 @@
                 <p:dialog header="Estudiantes: Resultado de la Carga" id="dlgCargar" widgetVar="dlgCargar" dynamic="true" 
                           resizable="false" modal="true" draggable="false" closable="false">
                     <h:form id="form">
-                   
+
                         <p:panelGrid columns="2" id="idDlgCargar" style="border-color: #ffffff">
                             <p:outputLabel value="Estudiantes existentes: #{beanEstudiantes.stdExst.size()}" />
                             <p:outputLabel value="Estudiantes Nuevos: #{beanEstudiantes.stdNoExst.size()}" />

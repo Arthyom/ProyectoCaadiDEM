@@ -13,6 +13,25 @@
             <ui:define name="content">
                 <h:form enctype="multipart/form-data">
                     <b:growl showDetail="true" allowDismiss="true"/>
+                    
+                     <p:panel header="Instrucciones">
+                        <h:panelGrid columns="2">
+                            <p:panelGrid columns="5">
+                                <p:outputLabel value="NUA"/>
+                                <p:outputLabel value="Nombre"/>
+                                <p:outputLabel value="Apellido Paterno"/>
+                                <p:outputLabel value="Apellido Materno"/>
+                                <p:outputLabel value="Sexo"/>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="Email"/>
+                                <p:outputLabel value="Programa Educativo"/>
+                              
+                            </p:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                    
                     <p:panel header="Cargar desde Archivo" styleClass="card box-solid box-primary smallFormLog"> 
                         <h:panelGrid columns="1" class="gridLogForm">
                         <p:fileUpload   label="Seleccionar Archivo" value="#{beanMaestros.archivo}" mode="simple" skinSimple="true"/>
