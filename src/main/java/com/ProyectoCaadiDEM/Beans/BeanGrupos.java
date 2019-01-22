@@ -31,6 +31,8 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.net.UnknownHostException;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -511,19 +513,20 @@ public class BeanGrupos implements Serializable {
         return null;
     }
     
-    public void mensajeCargar () throws IOException{
+    public void mensajeCargar () throws IOException, ParseException{
         
         RequestContext context = RequestContext.getCurrentInstance();
         FacesContext ct = FacesContext.getCurrentInstance();
 
-      
+        try{
             barrerArchivoXl();
             mostrarPanel("dlgCargar");
+        }
            
-       
+       catch(Exception exp){
             ct.addMessage(null,
                     new FacesMessage("Error: ", "El archivo no tiene el formato correcto"));
-        
+       }
     }
     
       // analizar el archivo json seleccinado
@@ -534,7 +537,7 @@ public class BeanGrupos implements Serializable {
         context.execute("PF('"+panel+"').show();");
     }
     
-    public void barrerArchivoXl () throws IOException{
+    public void barrerArchivoXl () throws IOException, ParseException{
       
             this.stdExst       = new ArrayList<Students>();
             this.stdNoExst     = new ArrayList<Students>();
@@ -576,11 +579,18 @@ public class BeanGrupos implements Serializable {
                 String cAPv = cAP.getRichStringCellValue().getString();
                 String cAMv = cAM.getRichStringCellValue().getString();
                 String cGV = cG.getRichStringCellValue().getString();
+                String cFNac = r.getCell(5).getRichStringCellValue().getString();
+                String cEmil = r.getCell(6).getRichStringCellValue().getString();
+                String cPedu = r.getCell(7).getRichStringCellValue().getString();
+
 
                 // verificar si el estudiante no existe persistirlo y agregarlo a la lista de existentes
                 Students st = this.fcdEstudints.find(cnV);
                 if (st == null) {
                     st = new Students(cnV, cNv, cAPv, cAMv, cGV);
+                    st.setBirthday(new SimpleDateFormat("dd/MM/yyyy").parse(cFNac));
+                    st.setEmail(cEmil);
+                    st.setProgram(cPedu);
                     st.setVisible(Boolean.TRUE);
                     this.stdNoExst.add(st);
                    

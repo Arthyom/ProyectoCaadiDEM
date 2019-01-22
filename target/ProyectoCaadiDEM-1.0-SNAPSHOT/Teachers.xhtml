@@ -14,21 +14,18 @@
        
 
             <ui:define name="content">
-                <div class="backgroundBody" >
-                       <hr/>
+      
+  
 
- 
-                <h:form id="form" >
-                    <b:growl id="usrGrowl" showSummary="true" allowDismiss="true"/>
+                <h:form id="form">
+                    <b:growl id="usrGrowl" showSummary="true" showDetail="true" allowDismiss="true"/>
+
                     <p:panel header="Seccion de Profesores" id="pnlLog" styleClass="card box-solid box-primary smallFormLog" >
                         <div class="primIcon">
-                   <span class="glyphicon glyphicon-user"></span>
-                 </div>
-          
+                            <span class="glyphicon glyphicon-user"></span>
+                        </div>
                         <h:panelGrid columns="1" class="gridLogForm">
-                                                  
-                            
-                            <b:inputText placeholder="Número de Empleado" required="true"  
+                             <b:inputText placeholder="Número de Empleado" required="true"  
                                          label="Usuario" renderLabel="false"
                                          value="#{beanMaestros.nue}"
                                          >
@@ -44,12 +41,12 @@
                                               actionListener="#{beanMaestros.buscarProfesor()}"
                                               action="#{beanMaestros.comprobarProfesor()}"
                                              />
-
                         </h:panelGrid>
                     </p:panel>
                 </h:form>
-                    <hr/>
-                </div>
+                
+               
+                      
             </ui:define>
 
 

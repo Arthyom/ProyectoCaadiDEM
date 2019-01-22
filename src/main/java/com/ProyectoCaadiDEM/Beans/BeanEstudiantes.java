@@ -9,6 +9,8 @@ import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -140,22 +142,23 @@ public class BeanEstudiantes implements Serializable {
         this.stdExst.clear(); this.stdNoExst.clear();
     }
     
-    public void mensajeCargar () throws IOException{
+    public void mensajeCargar () throws IOException, ParseException{
         
         RequestContext context = RequestContext.getCurrentInstance();
         FacesContext ct = FacesContext.getCurrentInstance();
             
         
-        if (this.archivo != null) // si es un archivo xl
-        {
+        try{
             if (this.archivo.getContentType().contains("xlsx")) {
                 barrerArchivoXl();
                 mostrarPanel("dlgCargar");
                 return;
             } 
         }
+        catch(Exception exp){
         ct.addMessage(null,
                 new FacesMessage("Error: ", "El archivo no tiene el formato correcto"));
+        }
     }
 
     // analizar el archivo json seleccinado
@@ -166,7 +169,7 @@ public class BeanEstudiantes implements Serializable {
         context.execute("PF('"+panel+"').show();");
     }
     
-    public void barrerArchivoXl () throws IOException{
+    public void barrerArchivoXl () throws IOException, ParseException{
         
        XSSFWorkbook      nb = new XSSFWorkbook( archivo.getInputstream() );
        XSSFSheet         nh = nb.getSheetAt(0);
@@ -185,6 +188,10 @@ public class BeanEstudiantes implements Serializable {
            String  cAPv = cAP.getRichStringCellValue().getString();
            String  cAMv = cAM.getRichStringCellValue().getString();
            String  cGV  = cG.getRichStringCellValue().getString();
+           String  cFNac = r.getCell(5).getRichStringCellValue().getString();
+           String  cEmil = r.getCell(6).getRichStringCellValue().getString();
+           String  cPedu = r.getCell(7).getRichStringCellValue().getString();
+           
            
            Students ns = this.fcdEstudiante.find( String.valueOf(cnV) );
            
@@ -194,6 +201,9 @@ public class BeanEstudiantes implements Serializable {
            else{
                // si el estudiante no existe en la base de datos
               Students s = new Students( String.valueOf(cnV), cAPv, cAMv, cNv, cGV);
+              s.setBirthday( new SimpleDateFormat("dd/MM/yyyy").parse(cFNac) );
+              s.setEmail(cEmil);
+              s.setProgram(cPedu);
               s.setVisible(Boolean.TRUE);
               this.stdNoExst.add(s);
            }

@@ -135,16 +135,17 @@ public class BeanMaestros implements Serializable {
         FacesContext ct = FacesContext.getCurrentInstance();
             
         
-        if (this.archivo != null) // si es un archivo xl
-        {
+        try{
             if (this.archivo.getContentType().contains("xlsx")) {
                 barrerArchivoXl();
                 mostrarPanel("dlgCargar");
                 return;
             } 
         }
+        catch(Exception ex){
         ct.addMessage(null,
                 new FacesMessage("Error: ", "El archivo no tiene el formato correcto"));
+        }
     }
     
       // analizar el archivo json seleccinado
@@ -174,6 +175,7 @@ public class BeanMaestros implements Serializable {
            String  cAPv = cAP.getRichStringCellValue().getString();
            String  cAMv = cAM.getRichStringCellValue().getString();
            String  cGV  = cG.getRichStringCellValue().getString();
+           String  cEmil = r.getCell(5).getRichStringCellValue().getString();
            
            Teachers nt = this.fcdMaestros.find( String.valueOf(cnV) );
            
@@ -183,6 +185,7 @@ public class BeanMaestros implements Serializable {
            else{
                // si el maestro no existe en la base de datos
                Teachers t = new Teachers( String.valueOf(cnV), cAPv, cAMv, cNv, cGV);
+               t.setEmail(cEmil);
                t.setVisible(Boolean.TRUE);
                this.mtsNoExist.add(t);
            }

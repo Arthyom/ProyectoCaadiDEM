@@ -12,14 +12,17 @@
         <ui:composition template="/Plantillas/blankOut.xhtml">
 
             <ui:define name="content">
-
                 <br/>
                 <br/>
                 <br/>
+                <br/>
+                <br/>
+                <p:panel header="Profesor: #{beanMaestros.mtsActual.name} #{beanMaestros.mtsActual.setFirstLastName(firstLastName)} #{beanMaestros.mtsActual.secondLastName}" 
+                             toggleable="true" styleClass="card box-solid box-primary " 
+                             style="text-align: center; width: 90%; margin: 0 auto">
                 <h:form id="form">
                     <b:growl showDetail="true" allowDismiss="true"/>
-                    <p:panel header="Profesor: #{beanMaestros.mtsActual.name} #{beanMaestros.mtsActual.setFirstLastName(firstLastName)} #{beanMaestros.mtsActual.secondLastName}" 
-                             toggleable="true" styleClass="card box-solid box-primary commonFormList">
+                    
                        
 
                         <b:commandButton value="Imprimir PDF" 
@@ -92,8 +95,9 @@
                                      responsive="true"/>
                             
                         </p:panel>
+                         </h:form>
                     </p:panel>
-                </h:form>
+               
             </ui:define>
 
             <ui:define name="bottom">
