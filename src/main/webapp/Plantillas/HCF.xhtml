@@ -92,9 +92,10 @@
                     
                     <p:overlayPanel for="overPanel" dynamic="true" >
                         <p:panel header="Administrador">
-                            <b:commandButton value="Cerrar Secion" class="btn-success" 
+                            <b:commandButton value="Cerrar Secion" class="btn-success btn-lg btn-block" 
                                              actionListener="#{beanUsuarios.limpiar()}"
-                                             action="#{beanIndex.cerrarSesion()}"/>
+                                             action="#{beanIndex.cerrarSesion()}"
+                                             />
                         </p:panel>
                     </p:overlayPanel>
                 </h:form>
