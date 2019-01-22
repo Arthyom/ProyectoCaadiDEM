@@ -16,7 +16,13 @@
                 <h:form enctype="multipart/form-data">
                     <b:growl showDetail="true" allowDismiss="true"/>
                     
-                    <p:panel header="Instrucciones">
+                    <p:panel header="Instrucciones" style="width: 600px; margin: 0 auto">
+                        <h:outputLabel>
+                              En esta seccion se especifica el formato que debe
+                              seguir un libro de Excell para ser cargado de manera auntomatica
+                              se recomentiza usar versiones de Excell 2007 en adelante
+                          </h:outputLabel>
+                       
                         <h:panelGrid columns="2">
                             <p:panelGrid columns="5">
                                 <p:outputLabel value="NUA"/>
@@ -25,7 +31,7 @@
                                 <p:outputLabel value="Apellido Materno"/>
                                 <p:outputLabel value="Sexo"/>
                             </p:panelGrid>
-                            
+                             
                             <p:panelGrid columns="3">
                                 <p:outputLabel value="Fecha de Nacimiento"/>
                                 <p:outputLabel value="Email"/>
@@ -34,7 +40,7 @@
                             </p:panelGrid>
                         </h:panelGrid>
                     </p:panel>
-                  
+                   <br/>
                     <p:panel header="Cargar desde Archivo" styleClass="card box-solid box-primary smallFormLog">
                         <h:panelGrid columns="1" class="gridLogForm">
                         <p:fileUpload   label="Seleccionar Archivo" value="#{beanEstudiantes.archivo}" mode="simple" skinSimple="true"/>

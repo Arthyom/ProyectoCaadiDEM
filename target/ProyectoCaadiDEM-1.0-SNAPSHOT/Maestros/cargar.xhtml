@@ -14,24 +14,26 @@
                 <h:form enctype="multipart/form-data">
                     <b:growl showDetail="true" allowDismiss="true"/>
                     
-                     <p:panel header="Instrucciones">
-                        <h:panelGrid columns="2">
-                            <p:panelGrid columns="5">
+                     <p:panel header="Instrucciones" style="width: 500px; margin: 0 auto">
+                        <h:panelGrid columns="2" >
+                            <h:outputLabel>
+                              En esta seccion se especifica el formato que debe
+                              seguir un libro de Excell para ser cargado de manera auntomatica
+                              se recomentiza usar versiones de Excell 2007 en adelante
+                          </h:outputLabel>
+                           <br/>
+                            <p:panelGrid columns="6">
                                 <p:outputLabel value="NUE"/>
                                 <p:outputLabel value="Nombre"/>
                                 <p:outputLabel value="Apellido Paterno"/>
                                 <p:outputLabel value="Apellido Materno"/>
                                 <p:outputLabel value="Sexo"/>
-                            </p:panelGrid>
-                            
-                            <p:panelGrid columns="1">
                                 <p:outputLabel value="Email"/>
-                                
-                              
                             </p:panelGrid>
+
                         </h:panelGrid>
                     </p:panel>
-                    
+                     <br/>
                     <p:panel header="Cargar desde Archivo" styleClass="card box-solid box-primary smallFormLog"> 
                         <h:panelGrid columns="1" class="gridLogForm">
                         <p:fileUpload   label="Seleccionar Archivo" value="#{beanMaestros.archivo}" mode="simple" skinSimple="true"/>
