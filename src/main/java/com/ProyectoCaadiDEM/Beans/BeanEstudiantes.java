@@ -149,11 +149,8 @@ public class BeanEstudiantes implements Serializable {
             
         
         try{
-            if (this.archivo.getContentType().contains("xlsx")) {
                 barrerArchivoXl();
                 mostrarPanel("dlgCargar");
-                return;
-            } 
         }
         catch(Exception exp){
         ct.addMessage(null,
@@ -201,7 +198,9 @@ public class BeanEstudiantes implements Serializable {
            else{
                // si el estudiante no existe en la base de datos
               Students s = new Students( String.valueOf(cnV), cAPv, cAMv, cNv, cGV);
-              s.setBirthday( new SimpleDateFormat("dd/MM/yyyy").parse(cFNac) );
+              if(cFNac.length()>1)
+                s.setBirthday( new SimpleDateFormat("dd/MM/yyyy").parse(cFNac) );
+              
               s.setEmail(cEmil);
               s.setProgram(cPedu);
               s.setVisible(Boolean.TRUE);

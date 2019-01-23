@@ -32,6 +32,18 @@
 
                             </p:panelGrid>
                             <br/>
+                            
+                            <p:panelGrid columns="6">
+                                <p:outputLabel value="NUE"  style="color: #D20005"/>
+                                <p:outputLabel value="Nombre" style="color: #D20005"/>
+                                <p:outputLabel value="Apellido Paterno" style="color: #D20005"/>
+                                <p:outputLabel value="Apellido Materno" style="color: #D20005"/>
+                                <p:outputLabel value="Sexo" style="color: #D20005"/>
+                                <p:outputLabel value="Email"/>
+                            </p:panelGrid>
+                            
+                            <br/>
+                            
                             <h:panelGrid columns="2">
                             <p:panelGrid columns="5">
                                 <p:outputLabel value="NUA" style="color: #D20005"/>
@@ -78,10 +90,19 @@
                 
                 <p:dialog header="Grupos: Resultado de la Carga" widgetVar="dlgCargar" dynamic="true" modal="true" draggable="false" closable="false" resizable="false">
                     <h:form id="form">
-
+                        <h:panelGrid columns="2" style="margin: 0 auto">
+                        <p:outputLabel value="Nuevo Grupo: &#160; &#160;"/>
+                        <p:outputLabel value="#{beanGrupos.grpNuevo.learningUnit} #{beanGrupos.grpNuevo.level}#{beanGrupos.grpNuevo.identifier} 
+                                       " style="color: #D20005; font-size: 15px"/>
+                        <p:outputLabel value="Profesor del Grupo: &#160; &#160;"/>
+                        <p:outputLabel value="#{beanGrupos.loadedTeacher.name} #{beanGrupos.loadedTeacher.firstLastName} #{beanGrupos.loadedTeacher.secondLastName} 
+                                       " style="color: #045491; font-size: 15px"/>
+                        </h:panelGrid>
+                          <p:panelGrid columns="2"  style="border-color: #ffffff">
+                            
                             <p:outputLabel value="Estudiantes existentes: #{beanGrupos.stdExst.size()}" />
-                            <p:outputLabel value="Estudiantes Nuevo     : #{beanGrupos.stdNoExst.size()}" />
-                            <p:panelGrid columns="2" id="idDlgCargar">
+                            <p:outputLabel value="Estudiantes Nuevos   : #{beanGrupos.stdNoExst.size()}" />
+                           
                                 <p:dataTable value="#{beanGrupos.stdExst}" var="mstEx"
                                              paginator="true"
                                          rows="7"
@@ -96,6 +117,10 @@
                                     <p:column headerText="Nombre Y Apellido">
                                         <p:outputLabel value="#{mstEx.name} #{mstEx.firstLastName} #{mstEx.secondLastName}"/>
                                     </p:column>
+                                    
+                                    <p:column headerText="Carrera" style="width: 100px">
+                                    <p:outputLabel value="#{mstEx.program}"/>
+                                </p:column>
            
                                 </p:dataTable>
 
@@ -110,15 +135,19 @@
                                         <p:outputLabel value="#{stdNoEx.nua}"/>
                                     </p:column>
 
-                                    <p:column headerText="Nombre">
-                                        <p:outputLabel value="#{stdNoEx.name} #{mstEx.firstLastName} #{mstEx.secondLastName}"/>
+                                    <p:column headerText="Nombre Y Apellidos">
+                                        <p:outputLabel value="#{stdNoEx.name} #{stdNoEx.firstLastName} #{stdNoEx.secondLastName}"/>
                                     </p:column>
+                                    
+                                    <p:column headerText="Carrera" style="width: 100px">
+                                    <p:outputLabel value="#{stdNoEx.program}"/>
+                                </p:column>
 
                                 </p:dataTable>
                                 <b:commandButton value="Agregar"   styleClass="btn-success btn-lg btn-block"   action="#{beanGrupos.agregarAutomatico()}"/>
                                 <b:commandButton value="Cancelar"  styleClass="btn-danger btn-lg btn-block" action="#{beanGrupos.cancelarCargaAutomatica()}"/>
-                            </p:panelGrid>
-
+                            
+                          </p:panelGrid>
                     </h:form>
                 </p:dialog>
             </ui:define>

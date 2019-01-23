@@ -73,6 +73,7 @@ public class BeanGrupos implements Serializable {
     private List<Students>   stdsSlctG, stdsFltG; 
     private List<Students>   stdNoExst, stdExst, stdNoVisi ;
     private String           indxPrf, indxPrd;
+    private Teachers         loadedTeacher;
    
     
     private UploadedFile     archivo;
@@ -561,11 +562,34 @@ public class BeanGrupos implements Serializable {
                 this.grpNuevo.setStudentsCollection( new ArrayList<Students>() );
             }
 
-                
-            
+            // conseguir datos del profesor
+             XSSFRow rowTeacher = nh.getRow(2);
+             String teacherNue  = String.valueOf( (int)rowTeacher.getCell(0).getNumericCellValue() );
+             String teacherName = rowTeacher.getCell(1).getRichStringCellValue().getString();
+             String teacherFLastName = rowTeacher.getCell(2).getRichStringCellValue().getString();
+             String teacherSLastName = rowTeacher.getCell(3).getRichStringCellValue().getString();
+             String teacherGender    = rowTeacher.getCell(4).getRichStringCellValue().getString();
+             String teacherEmail     = rowTeacher.getCell(5).getRichStringCellValue().getString();
+             
+            loadedTeacher = this.fcdProfes.find(teacherNue);
+             if(loadedTeacher == null ){
+                 loadedTeacher = new Teachers(teacherNue, teacherName, teacherFLastName, teacherSLastName, teacherGender);
+                 loadedTeacher.setVisible(Boolean.TRUE);
+                 loadedTeacher.setEmail(teacherEmail);
+             }
+             else{
+                 loadedTeacher.setEmployeeNumber(teacherNue);
+                 loadedTeacher.setName(teacherName);
+                 loadedTeacher.setFirstLastName(teacherFLastName);
+                 loadedTeacher.setSecondLastName(teacherSLastName);
+                 loadedTeacher.setGender(teacherGender);
+                 loadedTeacher.setEmail(teacherEmail);
+                 loadedTeacher.setVisible(Boolean.TRUE);
+             }
+             
             // saltarse una columna 
             // barrer todos los alumnos 
-            for (int nr = 2; nr < nh.getLastRowNum() + 1; nr++) {
+            for (int nr = 4; nr < nh.getLastRowNum() + 1; nr++) {
 
                 XSSFRow r = nh.getRow(nr);
                 XSSFCell cn = r.getCell(0); // nua
@@ -588,7 +612,10 @@ public class BeanGrupos implements Serializable {
                 Students st = this.fcdEstudints.find(cnV);
                 if (st == null) {
                     st = new Students(cnV, cNv, cAPv, cAMv, cGV);
-                    st.setBirthday(new SimpleDateFormat("dd/MM/yyyy").parse(cFNac));
+                    
+                    if(cFNac.length()>1)
+                        st.setBirthday(new SimpleDateFormat("dd/MM/yyyy").parse(cFNac));
+                    
                     st.setEmail(cEmil);
                     st.setProgram(cPedu);
                     st.setVisible(Boolean.TRUE);
@@ -624,6 +651,11 @@ public class BeanGrupos implements Serializable {
     
     public String agregarAutomatico(){
 
+        if( fcdProfes.find(loadedTeacher.getEmployeeNumber()) == null )
+            fcdProfes.create(loadedTeacher);
+        else
+            fcdProfes.edit(loadedTeacher);
+        
         for (Students s : stdNoExst) {
             if (!this.grpContStd(s)) {
                 fcdEstudints.create(s);
@@ -643,10 +675,14 @@ public class BeanGrupos implements Serializable {
                 grpNuevo.getStudentsCollection().add(s);
 
        
-       if( fcdGrupos.find( grpNuevo.getId() ) != null )
+       if( fcdGrupos.find( grpNuevo.getId() ) != null ){
+           grpNuevo.setEmployeeNumber(loadedTeacher);
            fcdGrupos.create(grpNuevo);
-       else
+       }
+       else{
+           grpNuevo.setEmployeeNumber(loadedTeacher);
            fcdGrupos.edit(grpNuevo);
+       }
        
   
         
@@ -783,7 +819,16 @@ public class BeanGrupos implements Serializable {
     public void setStdExst(List<Students> stdExst) {
         this.stdExst = stdExst;
     }
+
+    public Teachers getLoadedTeacher() {
+        return loadedTeacher;
+    }
+
+    public void setLoadedTeacher(Teachers loadedTeacher) {
+        this.loadedTeacher = loadedTeacher;
+    }
  
+    
     
     
    

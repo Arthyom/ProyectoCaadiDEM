@@ -133,18 +133,14 @@ public class BeanMaestros implements Serializable {
         
         RequestContext context = RequestContext.getCurrentInstance();
         FacesContext ct = FacesContext.getCurrentInstance();
-            
-        
-        try{
-            if (this.archivo.getContentType().contains("xlsx")) {
-                barrerArchivoXl();
-                mostrarPanel("dlgCargar");
-                return;
-            } 
-        }
-        catch(Exception ex){
-        ct.addMessage(null,
-                new FacesMessage("Error: ", "El archivo no tiene el formato correcto"));
+
+       try {
+            barrerArchivoXl();
+            mostrarPanel("dlgCargar");
+
+        } catch(Exception exp) {
+            ct.addMessage(null,
+                    new FacesMessage("Error: ", "El archivo no tiene el formato correcto"));
         }
     }
     
