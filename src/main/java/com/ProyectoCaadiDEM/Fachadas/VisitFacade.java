@@ -33,10 +33,12 @@ public class VisitFacade extends AbstractFacade<Visit> {
         return ls;
     }
     
-    public List<Visit> visitasParaHblParaStd ( String skill, String nua ){
-        List<Visit> ls = this.em.createNamedQuery("Visit.findBySkillByNUA")
+    public List<Visit> visitasParaHblParaStd ( String skill, String nua, int pid, String pidAlt ){
+        List<Visit> ls = this.em.createNamedQuery("Visit.findBySkillByNUAByPeriod")
                 .setParameter("nua", nua)
                 .setParameter("skill", skill)
+                .setParameter("pid", pid)
+                .setParameter("pidAlt", pidAlt)
                 .getResultList();
                 
         return ls;

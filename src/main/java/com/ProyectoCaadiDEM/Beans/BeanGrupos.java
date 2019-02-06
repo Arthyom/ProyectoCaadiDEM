@@ -284,18 +284,24 @@ public class BeanGrupos implements Serializable {
         long total = 0, h = 0, m = 0;
 
         if (grp != null) {
-            // contar las horas que cada estudiante ha realizaro
-            for (Students si : grp.getStudentsCollection()) {
-                for (Visit vi : si.getVisitCollection()) {
-                    total += vi.getEnd().getTime() - vi.getStart().getTime();
+            int idp = this.fcdPeriods.conseguirPrdActual().getId();
+            String idAlt = this.fcdPeriods.conseguirPrdActual().getIdAlterno();
+            if (grp.getPeriodId().getId() == this.fcdPeriods.conseguirPrdActual().getId() || 
+                grp.getPeriodId().getIdAlterno().equals(idAlt)
+               ) {
+                // contar las horas que cada estudiante ha realizaro
+                for (Students si : grp.getStudentsCollection()) {
+                    for (Visit vi : si.getVisitCollection()) {
+                        total += vi.getEnd().getTime() - vi.getStart().getTime();
+                    }
                 }
+
+                h = total / (1000 * 60 * 60);
+                total = total % (1000 * 60 * 60);
+                m = total / (1000 * 60);
+
+                return h + " Horas, " + m + " Minutos";
             }
-
-            h = total / (1000 * 60 * 60);
-            total = total % (1000 * 60 * 60);
-            m = total / (1000 * 60);
-
-            return h + " Horas, " + m + " Minutos";
         }
         return "-";
     }
@@ -388,7 +394,15 @@ public class BeanGrupos implements Serializable {
     public String contarHorasParaStd ( Students stdGrp ){
         long total = 0, h = 0 , m = 0;
         
-        for ( Visit vi : stdGrp.getVisitCollection() )
+        Periods p = this.fcdPeriods.conseguirPrdActual();
+
+       
+        List<Visit> vs = this.fcdVisit.getEm().createNamedQuery("Visit.findByNuaByPeriod")
+                .setParameter( "stdNua", stdGrp.getNua())
+                .setParameter( "idP", p.getId()) 
+                .getResultList();
+        
+        for ( Visit vi : vs )
             total += vi.getEnd().getTime() - vi.getStart().getTime();
             
         h = total / (1000 * 60 * 60);
@@ -401,7 +415,15 @@ public class BeanGrupos implements Serializable {
      public float contarHorasParaStdNum ( Students stdGrp ){
         long total = 0, h = 0 , m = 0;
         
-        for ( Visit vi : stdGrp.getVisitCollection() )
+        Periods p = this.fcdPeriods.conseguirPrdActual();
+
+       
+        List<Visit> vs = this.fcdVisit.getEm().createNamedQuery("Visit.findByNuaByPeriod")
+                .setParameter( "stdNua", stdGrp.getNua())
+                .setParameter( "idP", p.getId()) 
+                .getResultList();
+        
+        for ( Visit vi : vs )
             total += vi.getEnd().getTime() - vi.getStart().getTime();
             
         h = total / (1000 * 60 * 60);

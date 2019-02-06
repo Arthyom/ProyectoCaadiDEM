@@ -222,12 +222,12 @@ public class BeanVisit implements Serializable {
         Periods p = this.fcdPeriodo.conseguirPrdActual();
 
        
-        List<Visits> v = this.fcdVisita.getEm().createNamedQuery("Visit.findByNuaByPeriod")
-                .setParameter(stdCont.getNua(), "stdNua")
-                .setParameter(p.getId(), "IdP") 
+        List<Visit> vs = this.fcdVisita.getEm().createNamedQuery("Visit.findByNuaByPeriod")
+                .setParameter( "stdNua", stdCont.getNua())
+                .setParameter( "idP", p.getId()) 
                 .getResultList();
         
-        for (Visit vi : stdCont.getVisitCollection()) 
+        for (Visit vi : vs) 
             if (vi.getEnd() != null && vi.getStart() != null) 
                 tTtl += vi.getEnd().getTime() - vi.getStart().getTime();
                 
@@ -257,8 +257,13 @@ public class BeanVisit implements Serializable {
     
     
     public List<Visit> listarItems2Std ( String nua ) {
-        List<Visit> s = this.fcdVisita.visitasParaStd(nua);    
-        return s;
+        Periods p = this.fcdPeriodo.conseguirPrdActual();
+     
+        List<Visit> vs = this.fcdVisita.getEm().createNamedQuery("Visit.findByNuaByPeriod")
+                .setParameter( "stdNua", nua )
+                .setParameter( "idP", p.getId()) 
+                .getResultList();
+        return vs;
     } 
     
     public float contarHorasLista ( List<Visit> listaVisitas ){
@@ -291,11 +296,16 @@ public class BeanVisit implements Serializable {
         
         String ruta = crearDirectori();
         
+        Students stN = this.fcdEstudiante.find(NUA);
         
-        int rd = this.fcdVisita.visitasParaHblParaStd(sk[0], NUA).size();
-        int ls = this.fcdVisita.visitasParaHblParaStd(sk[1], NUA).size();
-        int gr = this.fcdVisita.visitasParaHblParaStd(sk[2], NUA).size();
-        int sp = this.fcdVisita.visitasParaHblParaStd(sk[3], NUA).size();
+        
+        int pid = this.fcdPeriodo.conseguirPrdActual().getId();
+        String pidAlt = this.fcdPeriodo.conseguirPrdActual().getIdAlterno();
+        
+        int rd = this.fcdVisita.visitasParaHblParaStd(sk[0], NUA, pid, pidAlt).size();
+        int ls = this.fcdVisita.visitasParaHblParaStd(sk[1], NUA, pid, pidAlt).size();
+        int gr = this.fcdVisita.visitasParaHblParaStd(sk[2], NUA, pid, pidAlt).size();
+        int sp = this.fcdVisita.visitasParaHblParaStd(sk[3], NUA, pid, pidAlt).size();
         
  
         
@@ -350,11 +360,14 @@ public class BeanVisit implements Serializable {
         
         
         ChartSeries sR = new ChartSeries(sk[0]); 
+        
+        int pid = this.fcdPeriodo.conseguirPrdActual().getId();
+        String pidAlt = this.fcdPeriodo.conseguirPrdActual().getIdAlterno();
 
-        List<Visit> rd = this.fcdVisita.visitasParaHblParaStd(sk[0], NUA);
-        List<Visit> ls = this.fcdVisita.visitasParaHblParaStd(sk[1], NUA);
-        List<Visit> gr = this.fcdVisita.visitasParaHblParaStd(sk[2], NUA);
-        List<Visit> sp = this.fcdVisita.visitasParaHblParaStd(sk[3], NUA);
+        List<Visit> rd = this.fcdVisita.visitasParaHblParaStd(sk[0], NUA, pid, pidAlt);
+        List<Visit> ls = this.fcdVisita.visitasParaHblParaStd(sk[1], NUA, pid, pidAlt);
+        List<Visit> gr = this.fcdVisita.visitasParaHblParaStd(sk[2], NUA, pid, pidAlt);
+        List<Visit> sp = this.fcdVisita.visitasParaHblParaStd(sk[3], NUA, pid, pidAlt);
         
        
         sR.set(sk[0], contarHorasLista(rd) );
