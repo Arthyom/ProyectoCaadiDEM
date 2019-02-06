@@ -73,24 +73,27 @@
                         </p:column>
                         
                          <p:column headerText="Opciones" >
-                             <b:commandButton styleClass="btn-danger"  update=":form:delUno" action="#{beanUtileria.mostrarDialogoBorrarSingle('dlgBorrar')}"
+                             
+                             <b:commandButton  icon="pencil" action="editar" tooltip="Editar">
+                                 <f:setPropertyActionListener 
+                                     value="#{std}" target="#{beanEstudiantes.stdActual}"
+                                     />
+                             </b:commandButton>
+
+                             <b:commandButton  action="estatus" icon="search" tooltip="Reporte">
+                                 <f:setPropertyActionListener 
+                                     value="#{std}" target="#{beanEstudiantes.stdActual}"
+                                     />
+                             </b:commandButton>
+
+                             <b:commandButton styleClass="btn-danger"  
+                                              tooltip="Eliminar"
+                                              update=":form:delUno" action="#{beanUtileria.mostrarDialogoBorrarSingle('dlgBorrar')}"
                                               icon="minus"
                                               >
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanEstudiantes.stdActual}"
-                                 />
-                             </b:commandButton>
-                             
-                             <b:commandButton  icon="pencil" action="editar">
-                                 <f:setPropertyActionListener 
-                                     value="#{std}" target="#{beanEstudiantes.stdActual}"
-                                 />
-                             </b:commandButton>
-                             
-                             <b:commandButton  action="estatus" icon="search">
-                                 <f:setPropertyActionListener 
-                                     value="#{std}" target="#{beanEstudiantes.stdActual}"
-                                 />
+                                     />
                              </b:commandButton>
                         </p:column>
                     </p:dataTable>

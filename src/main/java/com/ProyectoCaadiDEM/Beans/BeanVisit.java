@@ -4,6 +4,7 @@ package com.ProyectoCaadiDEM.Beans;
 import com.ProyectoCaadiDEM.Entidades.Periods;
 import com.ProyectoCaadiDEM.Entidades.Students;
 import com.ProyectoCaadiDEM.Entidades.Visit;
+import com.ProyectoCaadiDEM.Entidades.Visits;
 import com.ProyectoCaadiDEM.Fachadas.PeriodsFacade;
 import com.ProyectoCaadiDEM.Fachadas.StudentsFacade;
 import com.ProyectoCaadiDEM.Fachadas.VisitFacade;
@@ -36,6 +37,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -217,7 +219,14 @@ public class BeanVisit implements Serializable {
     public String contarHoras(Students stdCont) throws ParseException {
         String total;
         long   tTtl = 0, h= 0, m = 0;
+        Periods p = this.fcdPeriodo.conseguirPrdActual();
 
+       
+        List<Visits> v = this.fcdVisita.getEm().createNamedQuery("Visit.findByNuaByPeriod")
+                .setParameter(stdCont.getNua(), "stdNua")
+                .setParameter(p.getId(), "IdP") 
+                .getResultList();
+        
         for (Visit vi : stdCont.getVisitCollection()) 
             if (vi.getEnd() != null && vi.getStart() != null) 
                 tTtl += vi.getEnd().getTime() - vi.getStart().getTime();

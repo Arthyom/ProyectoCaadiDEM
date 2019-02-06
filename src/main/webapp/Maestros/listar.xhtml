@@ -67,14 +67,14 @@
                         
                         
                          <p:column headerText="Opciones" >
-                             <b:commandButton icon="pencil" action="editar">
+                             <b:commandButton icon="pencil" action="editar" tooltip="Editar">
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanMaestros.mtsActual}"
                                  />
                              </b:commandButton>
                              
                              <b:commandButton icon="minus" 
-                                              styleClass="btn btn-danger"
+                                              styleClass="btn btn-danger" tooltip="Eliminar"
                                               update=":form:delUno" action="#{beanUtileria.mostrarDialogoBorrarSingle('dlgBorrar')}">
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanMaestros.mtsActual}"

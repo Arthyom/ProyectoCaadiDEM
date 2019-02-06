@@ -68,13 +68,14 @@
                         
                          <p:column headerText="Opciones" >
                              
-                             <b:commandButton icon="pencil" action="editar">
+                             <b:commandButton icon="pencil" action="editar"  tooltip="Editar">
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanPeriodos.prdActual}"
                                  />
                              </b:commandButton>
                              
                              <b:commandButton icon="star" action="#{beanPeriodos.fijarComoActual()}"
+                                              tooltip="Actual"
                                               styleClass="btn btn-warning">
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanPeriodos.prdActual}"
@@ -82,7 +83,7 @@
                              </b:commandButton>
                              
                              <b:commandButton icon="minus" update=":form:delUno" 
-                                              styleClass="btn btn-danger"
+                                              styleClass="btn btn-danger" tooltip="Eliminar"
                                               action="#{beanUtileria.mostrarDialogoBorrarSingle('dlgBorrar')}">
                                  <f:setPropertyActionListener 
                                      value="#{std}" target="#{beanPeriodos.prdActual}"
