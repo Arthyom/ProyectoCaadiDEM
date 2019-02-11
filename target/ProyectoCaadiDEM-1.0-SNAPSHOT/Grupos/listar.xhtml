@@ -25,6 +25,12 @@
                             />
                             
                             <b:commandButton styleClass="btn btn-primary" icon="plus-sign" value="Agregar Grupo" action="agregar" actionListener="#{beanGrupos.crearNuevoItem()}"/>
+                        
+                            <b:commandButton styleClass="btn btn-primary" icon="plus-sign" value="Liberar Todos" 
+                                             action="#{beanGrupos.desconectarTodo()}"/>
+                        
+                            
+                            
                         </p:outputPanel>
                     <p:dataTable 
                         selection="#{beanGrupos.grpsSeleccionados}"

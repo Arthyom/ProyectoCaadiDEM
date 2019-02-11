@@ -59,8 +59,8 @@
                                     <p:outputLabel value="#{stdG.name}"/>
                                 </p:column>
                                 <p:column headerText="Apellidos" filterBy="#{stdG.firstLastName}" style="width: 120px">
-                                    <p:outputLabel value="#{stdG.firstLastName}"/>
-                                    <p:outputLabel value="#{stdG.secondLastName}"/>
+                                    <p:outputLabel value="#{stdG.firstLastName} &#160; #{stdG.secondLastName}"/>
+                                    
                                 </p:column>
                                 
                                 <p:column headerText="Licenciatura" filterBy="#{stdG.program}" style="width: 120px">
@@ -106,9 +106,9 @@
                                 <p:outputLabel value="#{std.name}"/>
                             </p:column>
                             
-                            <p:column headerText="Apellido Paterno" filterBy="#{std.firstLastName}" style="width: 120px">
-                                <p:outputLabel value="#{std.firstLastName}"/>
-                                <p:outputLabel value="#{std.secondLastName}"/>
+                            <p:column headerText="Apellido " filterBy="#{std.firstLastName}" style="width: 120px">
+                                <p:outputLabel value="#{std.firstLastName} &#160; #{std.secondLastName}"/>
+                               
                             </p:column>
                         </p:dataTable>
                                    </p:panel>

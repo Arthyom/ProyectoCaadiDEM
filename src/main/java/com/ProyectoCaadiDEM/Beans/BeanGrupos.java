@@ -325,7 +325,7 @@ public class BeanGrupos implements Serializable {
         String proFFname = grpActual.getEmployeeNumber().getFirstLastName();
         String proFSname = grpActual.getEmployeeNumber().getSecondLastName();
         String grpSlctd = grpActual.getLearningUnit() + " " + grpActual.getLevel() + grpActual.getIdentifier();
-        String grpIds = grpActual.getId() + grpActual.getIdentifier();
+        String grpIds =   grpActual.getLevel() +grpActual.getIdentifier();
         int aRegs = grpActual.getStudentsCollection().size();
 
         List<Students> grs = (List<Students>) grpActual.getStudentsCollection();
@@ -341,8 +341,8 @@ public class BeanGrupos implements Serializable {
        
 
         String ruta = this.crearDirectori();
-        String sP = ruta + grpIds + this.grpActual.getEmployeeNumber().getEmployeeNumber()+ "grafPie.jpeg";
-        String sB = ruta + grpIds +  this.grpActual.getEmployeeNumber().getEmployeeNumber()+"grafBar.jpeg";
+        String sP = ruta + grpIds + this.grpActual.getEmployeeNumber().getName()+  this.grpActual.getEmployeeNumber().getFirstLastName() + this.grpActual.getEmployeeNumber().getSecondLastName() + "grafPie.jpeg";
+        String sB = ruta + grpIds + this.grpActual.getEmployeeNumber().getName()+  this.grpActual.getEmployeeNumber().getFirstLastName() + this.grpActual.getEmployeeNumber().getSecondLastName() +"grafBar.jpeg";
         
         Image imgP = Image.getInstance(sP);
         Image imgB = Image.getInstance(sB);
@@ -445,7 +445,8 @@ public class BeanGrupos implements Serializable {
              String sk[] = {"Reading", "Listening", "Grammar", "Speaking"};
              JFreeChart gpPie;
              String ruta = crearDirectori();
-             String grpIds = grpActual.getId() + grpActual.getIdentifier();
+              String grpIds = grpActual.getLevel() +grpActual.getIdentifier();
+              String nombre = ruta  + grpIds+ this.grpActual.getEmployeeNumber().getName()+ this.grpActual.getEmployeeNumber().getFirstLastName() +  this.grpActual.getEmployeeNumber().getSecondLastName();
 
              // iterar para todos los estudiantes del grupo
              for (Students st : this.grpActual.getStudentsCollection()) {
@@ -480,9 +481,9 @@ public class BeanGrupos implements Serializable {
              pPie.setSimpleLabels(true);
              pPie.setLabelGenerator(gen);
 
-             ChartUtils.saveChartAsJPEG(new File(ruta + grpIds + grpActual.getEmployeeNumber().getEmployeeNumber() + "grafPie.jpeg"), gpPie, 550, 480);
+             ChartUtils.saveChartAsJPEG(new File( nombre + "grafPie.jpeg"), gpPie, 550, 480);
 
-             mdn.setTitle("Visitas por Habilidad");
+             mdn.setTitle("Habilidades Más Trabajadas");
              mdn.setLegendPosition("w");
              mdn.setShowDataLabels(true);
 
@@ -501,7 +502,8 @@ public class BeanGrupos implements Serializable {
         JFreeChart gpPie, gpBar;
         String ruta = crearDirectori();
         if( this.grpActual != null ){
-        String grpIds = grpActual.getId() + grpActual.getIdentifier();
+        String grpIds = grpActual.getLevel() +grpActual.getIdentifier();
+        String nombre = ruta  + grpIds + this.grpActual.getEmployeeNumber().getName()+ this.grpActual.getEmployeeNumber().getFirstLastName() +  this.grpActual.getEmployeeNumber().getSecondLastName();
 
         BarChartModel bm = new BarChartModel();
         bm.getAxis(AxisType.X).setTickAngle(90);
@@ -523,7 +525,7 @@ public class BeanGrupos implements Serializable {
             
             gpBar.getCategoryPlot().getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.DOWN_90);
 
-            ChartUtils.saveChartAsJPEG(new File(ruta +grpIds+ grpActual.getEmployeeNumber().getEmployeeNumber() + "grafBar.jpeg"), gpBar, 550, 480);
+            ChartUtils.saveChartAsJPEG(new File( nombre  + "grafBar.jpeg"), gpBar, 550, 480);
             ChartSeries sR = new ChartSeries("Nombre");
 
             for (Students si : grpActual.getStudentsCollection()) 
@@ -581,6 +583,7 @@ public class BeanGrupos implements Serializable {
             // buscar el grupo en la base de datos 
             if (this.grpNuevo == null) {// si no existe ya el grupo... crearlo 
                 this.grpNuevo = new Groups (gId, gLuTx, gLvTx, gIdTx);
+                this.grpNuevo.setPeriodId(this.fcdPeriods.conseguirPrdActual());
                 this.grpNuevo.setStudentsCollection( new ArrayList<Students>() );
             }
 
@@ -598,6 +601,7 @@ public class BeanGrupos implements Serializable {
                  loadedTeacher = new Teachers(teacherNue, teacherName, teacherFLastName, teacherSLastName, teacherGender);
                  loadedTeacher.setVisible(Boolean.TRUE);
                  loadedTeacher.setEmail(teacherEmail);
+                 this.fcdProfes.create(loadedTeacher);
              }
              else{
                  loadedTeacher.setEmployeeNumber(teacherNue);
@@ -607,6 +611,7 @@ public class BeanGrupos implements Serializable {
                  loadedTeacher.setGender(teacherGender);
                  loadedTeacher.setEmail(teacherEmail);
                  loadedTeacher.setVisible(Boolean.TRUE);
+                 this.fcdProfes.edit(loadedTeacher);
              }
              
             // saltarse una columna 
@@ -630,7 +635,7 @@ public class BeanGrupos implements Serializable {
                 String cPedu = r.getCell(7).getRichStringCellValue().getString();
 
 
-                // verificar si el estudiante no existe persistirlo y agregarlo a la lista de existentes
+                // verificar si el estudiante no existe persistirlo y agregarlo a la lista de no existentes
                 Students st = this.fcdEstudints.find(cnV);
                 if (st == null) {
                     st = new Students(cnV, cNv, cAPv, cAMv, cGV);
@@ -646,11 +651,19 @@ public class BeanGrupos implements Serializable {
 
                 } else // meterlo en la lista de existentes {
                 {
+                    st.setName(cNv);
+                    st.setFirstLastName(cAPv);
+                    st.setSecondLastName(cAMv);
+                    st.setGender(cGV);
+                    st.setEmail(cEmil);
+                    if(cFNac.length()>1)
+                        st.setBirthday(new SimpleDateFormat("dd/MM/yyyy").parse(cFNac));
+                    st.setProgram(cPedu);
                     if( !st.getVisible() )
                     {
                         st.setVisible(Boolean.TRUE);
                         stdNoVisi.add(st);
-                        this.stdExst.add(st);
+                       // this.stdExst.add(st);
                     } 
                     else
                         this.stdExst.add(st);
@@ -663,12 +676,50 @@ public class BeanGrupos implements Serializable {
     public boolean grpContStd ( Students st ){
         List<Groups> g = this.listarValidos();
         
-        for( Groups gi : g )
-           if( gi.getStudentsCollection().contains(st) )
-            return true;
+        for( Groups gi : g ){
+           List<Students> ss = (List<Students>) gi.getStudentsCollection();
+           for(Students si : ss)
+               if( si.getNua().equals(st.getNua() ) )
+                 return true;
+        }
         
             return false;
                 
+    }
+    
+    public String desconectarTodo (){
+        List<Periods> ps = this.fcdPeriods.findAll();
+        for(Periods p : ps){
+            List<Groups>gs = (List<Groups>) p.getGroupsCollection();
+            for( Groups g : gs ){
+                g.getStudentsCollection().clear();
+                this.fcdGrupos.edit(g);
+            }
+        }
+        
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        FacesContext ct = FacesContext.getCurrentInstance();
+
+        ct.addMessage(null,
+                new FacesMessage("Agregar: ", "Estudiantes Liberados Correctamente"));
+        return "listar?faces-redirect=true";
+    }
+    
+    public void desconectarStdOfGrp(Students std){
+        List<Periods> ps = this.fcdPeriods.findAll();
+        
+        for( int i = 0 ; i < ps.size() ; i ++ ){
+            List<Groups> gs = (List<Groups>)ps.get(i).getGroupsCollection();
+            for( int j = 0 ; j < gs.size() ; j ++ ){
+                List<Students>ss = (List<Students>)gs.get(j).getStudentsCollection();
+                for(int k = 0 ; k < ss.size() ; k++){
+                    if( ss.get(k).getNua().equals( std.getNua()) ){
+                        ss.remove(k);
+                        this.fcdGrupos.edit(gs.get(j));
+                    }
+                }
+            }
+        } 
     }
     
     public String agregarAutomatico(){
@@ -679,6 +730,7 @@ public class BeanGrupos implements Serializable {
             fcdProfes.edit(loadedTeacher);
         
         for (Students s : stdNoExst) {
+            this.desconectarStdOfGrp(s);
             if (!this.grpContStd(s)) {
                 fcdEstudints.create(s);
                 grpNuevo.getStudentsCollection().add(s);
@@ -686,15 +738,22 @@ public class BeanGrupos implements Serializable {
         }
 
         for (Students s : stdNoVisi) {
+            this.desconectarStdOfGrp(s);
             if (!this.grpContStd(s)) {
                 fcdEstudints.edit(s);
                 grpNuevo.getStudentsCollection().add(s);
+                
             }
         }
 
-        for (Students s : stdExst)
-            if (!this.grpContStd(s)) 
+        for (Students s : stdExst){
+            this.desconectarStdOfGrp(s);
+            if (!this.grpContStd(s)) {
+                this.fcdEstudints.edit(s);
                 grpNuevo.getStudentsCollection().add(s);
+                
+            }
+        }
 
        
        if( fcdGrupos.find( grpNuevo.getId() ) != null ){
