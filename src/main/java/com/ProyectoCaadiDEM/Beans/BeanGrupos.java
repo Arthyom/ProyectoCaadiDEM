@@ -34,11 +34,13 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -543,8 +545,9 @@ public class BeanGrupos implements Serializable {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesContext ct = FacesContext.getCurrentInstance();
 
-        try{
             barrerArchivoXl();
+        try{
+            //barrerArchivoXl();
             mostrarPanel("dlgCargar");
         }
            
@@ -630,18 +633,31 @@ public class BeanGrupos implements Serializable {
                 String cAPv = cAP.getRichStringCellValue().getString();
                 String cAMv = cAM.getRichStringCellValue().getString();
                 String cGV = cG.getRichStringCellValue().getString();
-                String cFNac = r.getCell(5).getRichStringCellValue().getString();
+                Date   cFNac; String cFnacS;
+                
+                switch(r.getCell(5).getCellType()){
+                    case Cell.CELL_TYPE_NUMERIC:
+                        cFNac =  r.getCell(5).getDateCellValue();
+                        cFnacS = new SimpleDateFormat("dd/MM/yyyy").format(cFNac);
+                        cFNac = new SimpleDateFormat("dd/MM/yyyy").parse(cFnacS);
+                    break;
+                    
+                    default:
+                        cFnacS =  r.getCell(5).getRichStringCellValue().getString();                              
+                        cFNac = new SimpleDateFormat("dd/MM/yyyy").parse(cFnacS );
+                    break;
+                }
                 String cEmil = r.getCell(6).getRichStringCellValue().getString();
                 String cPedu = r.getCell(7).getRichStringCellValue().getString();
-
+                
 
                 // verificar si el estudiante no existe persistirlo y agregarlo a la lista de no existentes
                 Students st = this.fcdEstudints.find(cnV);
                 if (st == null) {
                     st = new Students(cnV, cNv, cAPv, cAMv, cGV);
                     
-                    if(cFNac.length()>1)
-                        st.setBirthday(new SimpleDateFormat("dd/MM/yyyy").parse(cFNac));
+                    if(cFNac != null)
+                        st.setBirthday(cFNac);
                     
                     st.setEmail(cEmil);
                     st.setProgram(cPedu);
@@ -656,14 +672,14 @@ public class BeanGrupos implements Serializable {
                     st.setSecondLastName(cAMv);
                     st.setGender(cGV);
                     st.setEmail(cEmil);
-                    if(cFNac.length()>1)
-                        st.setBirthday(new SimpleDateFormat("dd/MM/yyyy").parse(cFNac));
+                    if(cFNac != null)
+                        st.setBirthday(cFNac);
                     st.setProgram(cPedu);
                     if( !st.getVisible() )
                     {
                         st.setVisible(Boolean.TRUE);
                         stdNoVisi.add(st);
-                       // this.stdExst.add(st);
+                        this.stdExst.add(st);
                     } 
                     else
                         this.stdExst.add(st);

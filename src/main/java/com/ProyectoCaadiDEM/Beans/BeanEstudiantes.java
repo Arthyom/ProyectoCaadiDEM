@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -185,9 +186,10 @@ public class BeanEstudiantes implements Serializable {
            String  cAPv = cAP.getRichStringCellValue().getString();
            String  cAMv = cAM.getRichStringCellValue().getString();
            String  cGV  = cG.getRichStringCellValue().getString();
-           String  cFNac = r.getCell(5).getRichStringCellValue().getString();
+           Date    cFNac = r.getCell(5).getDateCellValue();
            String  cEmil = r.getCell(6).getRichStringCellValue().getString();
            String  cPedu = r.getCell(7).getRichStringCellValue().getString();
+           String newCn = new SimpleDateFormat("dd/MM/yyyy").format(cFNac);
            
            
            Students ns = this.fcdEstudiante.find( String.valueOf(cnV) );
@@ -198,8 +200,8 @@ public class BeanEstudiantes implements Serializable {
            else{
                // si el estudiante no existe en la base de datos
               Students s = new Students( String.valueOf(cnV), cAPv, cAMv, cNv, cGV);
-              if(cFNac.length()>1)
-                s.setBirthday( new SimpleDateFormat("dd/MM/yyyy").parse(cFNac) );
+              if(cFNac != null)
+                s.setBirthday( new SimpleDateFormat("dd/MM/yyyy").parse(newCn) );
               
               s.setEmail(cEmil);
               s.setProgram(cPedu);
