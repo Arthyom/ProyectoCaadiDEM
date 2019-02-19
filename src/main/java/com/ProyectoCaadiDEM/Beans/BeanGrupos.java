@@ -545,9 +545,10 @@ public class BeanGrupos implements Serializable {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesContext ct = FacesContext.getCurrentInstance();
 
-            barrerArchivoXl();
+            
         try{
             //barrerArchivoXl();
+            barrerArchivoXl();
             mostrarPanel("dlgCargar");
         }
            
@@ -575,20 +576,20 @@ public class BeanGrupos implements Serializable {
             XSSFSheet nh = nb.getSheetAt(0);
 
             // conseguir la primera columna para representar al grupo
-            int gId = 1;
+            
             String gIdTx = nh.getRow(0).getCell(0).getRichStringCellValue().getString();
             String gLuTx = nh.getRow(0).getCell(1).getRichStringCellValue().getString();
             String gLvTx = String.valueOf((int)nh.getRow(0).getCell(2).getNumericCellValue());
             //String gEmTx = String.valueOf((int)nh.getRow(0).getCell(4).getNumericCellValue());
             //int gPId = (int) nh.getRow(0).getCell(5).getNumericCellValue();
 
-            this.grpNuevo = this.fcdGrupos.find(gId);
+            
             // buscar el grupo en la base de datos 
-            if (this.grpNuevo == null) {// si no existe ya el grupo... crearlo 
-                this.grpNuevo = new Groups (gId, gLuTx, gLvTx, gIdTx);
-                this.grpNuevo.setPeriodId(this.fcdPeriods.conseguirPrdActual());
-                this.grpNuevo.setStudentsCollection( new ArrayList<Students>() );
-            }
+            
+            this.grpNuevo = new Groups (0, gLuTx, gLvTx, gIdTx);
+            this.grpNuevo.setPeriodId(this.fcdPeriods.conseguirPrdActual());
+            this.grpNuevo.setStudentsCollection( new ArrayList<Students>() );
+            
 
             // conseguir datos del profesor
              XSSFRow rowTeacher = nh.getRow(2);
@@ -634,7 +635,6 @@ public class BeanGrupos implements Serializable {
                 String cAMv = cAM.getRichStringCellValue().getString();
                 String cGV = cG.getRichStringCellValue().getString();
                 Date   cFNac; String cFnacS;
-                
                 switch(r.getCell(5).getCellType()){
                     case Cell.CELL_TYPE_NUMERIC:
                         cFNac =  r.getCell(5).getDateCellValue();
@@ -678,7 +678,7 @@ public class BeanGrupos implements Serializable {
                     if( !st.getVisible() )
                     {
                         st.setVisible(Boolean.TRUE);
-                        stdNoVisi.add(st);
+                        //stdNoVisi.add(st);
                         this.stdExst.add(st);
                     } 
                     else
@@ -753,14 +753,7 @@ public class BeanGrupos implements Serializable {
             }
         }
 
-        for (Students s : stdNoVisi) {
-            this.desconectarStdOfGrp(s);
-            if (!this.grpContStd(s)) {
-                fcdEstudints.edit(s);
-                grpNuevo.getStudentsCollection().add(s);
-                
-            }
-        }
+       
 
         for (Students s : stdExst){
             this.desconectarStdOfGrp(s);
@@ -772,14 +765,11 @@ public class BeanGrupos implements Serializable {
         }
 
        
-       if( fcdGrupos.find( grpNuevo.getId() ) != null ){
-           grpNuevo.setEmployeeNumber(loadedTeacher);
-           fcdGrupos.create(grpNuevo);
-       }
-       else{
-           grpNuevo.setEmployeeNumber(loadedTeacher);
-           fcdGrupos.edit(grpNuevo);
-       }
+       
+       grpNuevo.setEmployeeNumber(loadedTeacher);
+       grpNuevo.setPeriodId(fcdPeriods.conseguirPrdActual());
+       fcdGrupos.create(grpNuevo);
+       
        
   
         

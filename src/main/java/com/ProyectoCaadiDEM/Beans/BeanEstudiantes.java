@@ -17,6 +17,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -140,7 +141,9 @@ public class BeanEstudiantes implements Serializable {
     }
     
     public void cancelarCargaAutomatica (){
-        this.stdExst.clear(); this.stdNoExst.clear();
+        this.stdExst.clear(); 
+        
+        this.stdNoExst.clear();
     }
     
     public void mensajeCargar () throws IOException, ParseException{
@@ -186,10 +189,23 @@ public class BeanEstudiantes implements Serializable {
            String  cAPv = cAP.getRichStringCellValue().getString();
            String  cAMv = cAM.getRichStringCellValue().getString();
            String  cGV  = cG.getRichStringCellValue().getString();
-           Date    cFNac = r.getCell(5).getDateCellValue();
+           
            String  cEmil = r.getCell(6).getRichStringCellValue().getString();
            String  cPedu = r.getCell(7).getRichStringCellValue().getString();
-           String newCn = new SimpleDateFormat("dd/MM/yyyy").format(cFNac);
+
+           Date   cFNac; String cFnacS;
+                switch(r.getCell(5).getCellType()){
+                    case Cell.CELL_TYPE_NUMERIC:
+                        cFNac =  r.getCell(5).getDateCellValue();
+                        cFnacS = new SimpleDateFormat("dd/MM/yyyy").format(cFNac);
+                        cFNac = new SimpleDateFormat("dd/MM/yyyy").parse(cFnacS);
+                    break;
+                    
+                    default:
+                        cFnacS =  r.getCell(5).getRichStringCellValue().getString();                              
+                        cFNac = new SimpleDateFormat("dd/MM/yyyy").parse(cFnacS );
+                    break;
+                }
            
            
            Students ns = this.fcdEstudiante.find( String.valueOf(cnV) );
@@ -201,7 +217,7 @@ public class BeanEstudiantes implements Serializable {
                // si el estudiante no existe en la base de datos
               Students s = new Students( String.valueOf(cnV), cAPv, cAMv, cNv, cGV);
               if(cFNac != null)
-                s.setBirthday( new SimpleDateFormat("dd/MM/yyyy").parse(newCn) );
+                s.setBirthday( cFNac );
               
               s.setEmail(cEmil);
               s.setProgram(cPedu);
@@ -213,6 +229,7 @@ public class BeanEstudiantes implements Serializable {
     public String agregarAutomatico(){
         for (Students si : this.stdNoExst) 
             this.fcdEstudiante.create(si);
+        
 
         this.stdExst.clear();
         this.stdNoExst.clear();
