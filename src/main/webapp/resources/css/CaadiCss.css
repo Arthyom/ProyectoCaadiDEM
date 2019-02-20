@@ -3,12 +3,12 @@
     }
 
 footer{
-    position: relative;
-    margin-bottom: 0%;
+    
     text-decoration-style: block;
     background-color: rgb(229, 229, 229);
     width: 100%;
-    margin-top: 0%;
+    height: 100%;
+    position: fixed
 }
 
 body{
@@ -23,6 +23,7 @@ body{
     color: #092f56;
     font-stretch: normal;    
     font-size: 13px !important;
+    height: 100%;
 }
 
 
@@ -81,25 +82,18 @@ a:hover{
     width: 280px;
     margin: 0 auto; 
     text-align: center;
-    margin-bottom: 100%;
+    margin-bottom: auto;
     margin-top: auto
 }
 
-.smallFormLogOut{
-    width: 280px;
-    margin: 0 auto; 
-    text-align: center;
-    margin-bottom: 100%;
-    margin-top: 80px;
-}
+
 
 
 .centerFormLogOut{
     width: 280px;
     margin: 0 auto; 
     text-align: center;
-    margin-bottom: 100%;
-    margin-top: 50%;
+    margin-top: 30px
 }
 
 .commonFormList{

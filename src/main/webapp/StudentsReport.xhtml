@@ -13,6 +13,7 @@
 
             
             <ui:define name="content">
+                 <div class="backgroundBody">
                 <h:outputScript>
                     function ext() {
                     this.cfg.seriesDefaults.rendererOptions.varyBarColor = true;
@@ -23,10 +24,8 @@
                     }                               
                 </h:outputScript>  
                 
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+           
+               
                 
                 <p:panel header="Reporte para:  #{beanEstudiantes.stdActual.name} 
                          #{beanEstudiantes.stdActual.firstLastName}
@@ -89,6 +88,7 @@
 
                     </p:panel>
                 </p:panel>
+                </div>
                 
                 
               

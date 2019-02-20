@@ -14,13 +14,14 @@
        
 
             <ui:define name="content">
-      
-  
+                
+                <div  class="backgroundBodySmall">
+                  
 
                 <h:form id="form">
                     <b:growl id="usrGrowl" showSummary="true" showDetail="true" allowDismiss="true"/>
 
-                    <p:panel header="Seccion de Profesores" id="pnlLog" styleClass="card box-solid box-primary smallFormLogOut" >
+                    <p:panel header="Seccion de Profesores" id="pnlLog" styleClass="card box-solid box-primary centerFormLogOut" >
                         <div class="primIcon">
                             <span class="glyphicon glyphicon-user"></span>
                         </div>
@@ -30,7 +31,7 @@
                                          value="#{beanMaestros.nue}"
                                          >
                                 <f:facet name="prepend">
-                                    <b:icon name="user" />
+                                    <b:iconAwesome name="key" />
                                 </f:facet>
                             </b:inputText>
 
@@ -45,7 +46,7 @@
                     </p:panel>
                 </h:form>
                 
-               
+                </div>
                       
             </ui:define>
 

@@ -12,10 +12,7 @@
         <ui:composition template="/Plantillas/blankOut.xhtml">
 
             <ui:define name="content">
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+               <div class="backgroundBody">
                 <p:panel header="Profesor: #{beanMaestros.mtsActual.name} #{beanMaestros.mtsActual.setFirstLastName(firstLastName)} #{beanMaestros.mtsActual.secondLastName}" 
                              toggleable="true" styleClass="card box-solid box-primary centerFormLogOut" 
                              style="text-align: center; width: 90%; margin: 0 auto; top: 120px">
@@ -97,7 +94,8 @@
                         </p:panel>
                          </h:form>
                     </p:panel>
-               
+
+            </div>
             </ui:define>
 
             <ui:define name="bottom">
