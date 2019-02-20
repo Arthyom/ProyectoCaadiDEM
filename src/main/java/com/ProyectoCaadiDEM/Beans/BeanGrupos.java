@@ -440,11 +440,12 @@ public class BeanGrupos implements Serializable {
     }
    
      public PieChartModel grpPieGraf() throws IOException {
-                      int reading = 0, listening = 0, grammar = 0, speaking = 0;
+                      int reading = 0, listening = 0, grammar = 0, speaking = 0, a4 = 0, a5 = 0;
              DefaultPieDataset pd = new DefaultPieDataset();
              PieChartModel mdn = new PieChartModel();
          if (this.grpActual != null) {
-             String sk[] = {"Reading", "Listening", "Grammar", "Speaking"};
+             
+             String sk[] = {"Reading", "Listening", "Grammar", "Speaking","Vocabulary", "Writing"};
              JFreeChart gpPie;
              String ruta = crearDirectori();
               String grpIds = grpActual.getLevel() +grpActual.getIdentifier();
@@ -464,6 +465,12 @@ public class BeanGrupos implements Serializable {
 
                  speaking += this.fcdVisit.getEm().createNamedQuery("Visit.findBySkillByNUA").
                          setParameter("nua", st.getNua()).setParameter("skill", sk[3]).getResultList().size();
+                 
+                 a4 += this.fcdVisit.getEm().createNamedQuery("Visit.findBySkillByNUA").
+                         setParameter("nua", st.getNua()).setParameter("skill", sk[4]).getResultList().size();
+
+                 a5 += this.fcdVisit.getEm().createNamedQuery("Visit.findBySkillByNUA").
+                         setParameter("nua", st.getNua()).setParameter("skill", sk[5]).getResultList().size();
 
              }
 
@@ -471,6 +478,8 @@ public class BeanGrupos implements Serializable {
              pd.setValue(sk[1], listening);
              pd.setValue(sk[2], grammar);
              pd.setValue(sk[3], speaking);
+             pd.setValue(sk[4], a4);
+             pd.setValue(sk[5], a5);
 
              gpPie = ChartFactory.createPieChart(
                      "Habilidades Más Trabajadas", pd, true, true, false);
@@ -493,6 +502,8 @@ public class BeanGrupos implements Serializable {
              mdn.set(sk[1], listening);
              mdn.set(sk[2], grammar);
              mdn.set(sk[3], speaking);
+             mdn.set(sk[4], a4);
+             mdn.set(sk[5], a5);
              
          }
          return mdn;
@@ -500,7 +511,7 @@ public class BeanGrupos implements Serializable {
      
     
     public BarChartModel grpBarGraf() throws IOException {
-        String sk[] = {"Reading", "Listening", "Grammar", "Speaking"};
+        String sk[] = {"Reading", "Listening", "Grammar", "Speaking","Vocabulary", "Writing"};
         JFreeChart gpPie, gpBar;
         String ruta = crearDirectori();
         if( this.grpActual != null ){

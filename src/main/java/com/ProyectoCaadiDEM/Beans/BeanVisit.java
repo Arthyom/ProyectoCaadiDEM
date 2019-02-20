@@ -140,7 +140,7 @@ public class BeanVisit implements Serializable {
            this.nua = null;
            FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Aceptado", "Bienvenido: " + this.stdActual.getName()));
+            context.addMessage(null, new FacesMessage("Aceptado", "Bienvenid@: " + this.stdActual.getName()));
            return "LogInSession?faces-redirect=true";
        }
        else{
@@ -292,7 +292,7 @@ public class BeanVisit implements Serializable {
 }
 
     public PieChartModel crearVisitPieParaStd ( String NUA ) throws IOException{
-        String  sk [] = {"Reading", "Listening", "Grammar", "Speaking"};
+        String  sk [] = {"Reading", "Listening", "Grammar", "Speaking","Vocabulary", "Writing"};
         
         String ruta = crearDirectori();
         
@@ -306,6 +306,8 @@ public class BeanVisit implements Serializable {
         int ls = this.fcdVisita.visitasParaHblParaStd(sk[1], NUA, pid, pidAlt).size();
         int gr = this.fcdVisita.visitasParaHblParaStd(sk[2], NUA, pid, pidAlt).size();
         int sp = this.fcdVisita.visitasParaHblParaStd(sk[3], NUA, pid, pidAlt).size();
+        int sr = this.fcdVisita.visitasParaHblParaStd(sk[4], NUA, pid, pidAlt).size();
+        int ss = this.fcdVisita.visitasParaHblParaStd(sk[5], NUA, pid, pidAlt).size();
         
  
         
@@ -317,6 +319,8 @@ public class BeanVisit implements Serializable {
         pd.setValue(sk[1], ls);
         pd.setValue(sk[2], gr);
         pd.setValue(sk[3], sp);
+        pd.setValue(sk[4], sr);
+        pd.setValue(sk[5], ss);
         
         this.gpPie = ChartFactory.createPieChart(
                 "Visitas por Habilidad",  pd, true, true, false );
@@ -341,12 +345,14 @@ public class BeanVisit implements Serializable {
         mdn.set(sk[1], ls);
         mdn.set(sk[2], gr);
         mdn.set(sk[3], sp);
+        mdn.set(sk[4], sr);
+        mdn.set(sk[5], ss);
         
         return mdn;
     }
     
     public BarChartModel crearVisitBarParaStd ( String NUA ) throws IOException{
-        String  sk [] = {"Reading", "Listening", "Grammar", "Speaking"};
+        String  sk [] = {"Reading", "Listening", "Grammar", "Speaking","Vocabulary", "Writing"};
         
         BarChartModel bm    = new BarChartModel();
         
@@ -368,18 +374,24 @@ public class BeanVisit implements Serializable {
         List<Visit> ls = this.fcdVisita.visitasParaHblParaStd(sk[1], NUA, pid, pidAlt);
         List<Visit> gr = this.fcdVisita.visitasParaHblParaStd(sk[2], NUA, pid, pidAlt);
         List<Visit> sp = this.fcdVisita.visitasParaHblParaStd(sk[3], NUA, pid, pidAlt);
+        List<Visit> sr = this.fcdVisita.visitasParaHblParaStd(sk[4], NUA, pid, pidAlt);
+        List<Visit> ssp = this.fcdVisita.visitasParaHblParaStd(sk[5], NUA, pid, pidAlt);
         
        
         sR.set(sk[0], contarHorasLista(rd) );
         sR.set(sk[1], contarHorasLista(ls));
         sR.set(sk[2], contarHorasLista(gr));
         sR.set(sk[3], contarHorasLista(sp));
+        sR.set(sk[4], contarHorasLista(sr));
+        sR.set(sk[5], contarHorasLista(ssp));
         
         DefaultCategoryDataset dt = new DefaultCategoryDataset( );
         dt.addValue(contarHorasLista(rd), "Habilidad", sk[0]);
         dt.addValue(contarHorasLista(ls), "Habilidad", sk[1]);
         dt.addValue(contarHorasLista(gr), "Habilidad", sk[2]);
         dt.addValue(contarHorasLista(sp), "Habilidad", sk[3]);
+        dt.addValue(contarHorasLista(sr), "Habilidad", sk[4]);
+        dt.addValue(contarHorasLista(ssp), "Habilidad", sk[5]);
      
 
       this.gpBar = ChartFactory.createBarChart(

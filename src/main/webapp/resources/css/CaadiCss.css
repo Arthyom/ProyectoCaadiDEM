@@ -3,11 +3,12 @@
     }
 
 footer{
-    position: absolute;
-    margin-bottom: 100%;
+    position: relative;
+    margin-bottom: 0%;
     text-decoration-style: block;
     background-color: rgb(229, 229, 229);
     width: 100%;
+    margin-top: 0%;
 }
 
 body{
@@ -34,7 +35,7 @@ body{
     font-family: Helvetica, Arial, sans-serif;
     background: linear-gradient(rgb(23, 77, 135) 0%, rgb(14, 52, 91) 77%, rgb(14, 52, 91) 100%);
     border-bottom: 8px solid #A0935F;
-    z-index: 1;
+    z-index: 3;
 }
 
 a:hover{
@@ -89,7 +90,16 @@ a:hover{
     margin: 0 auto; 
     text-align: center;
     margin-bottom: 100%;
-    margin-top: 9%
+    margin-top: 80px;
+}
+
+
+.centerFormLogOut{
+    width: 280px;
+    margin: 0 auto; 
+    text-align: center;
+    margin-bottom: 100%;
+    margin-top: 50%;
 }
 
 .commonFormList{

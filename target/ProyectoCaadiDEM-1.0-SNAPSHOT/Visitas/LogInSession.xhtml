@@ -23,7 +23,7 @@
 
 
                 <h:form id="form">
-                    <b:growl id="logGrowl" showSummary="true" allowDismiss="true"/>
+                    <b:growl id="logGrowl" showSummary="true" showDetail="true" allowDismiss="true"/>
                     <p:panel header="Registro" id="grupo" styleClass="card box-solid box-primary smallFormLog" >
                         
                         <div class="primIcon">
@@ -96,11 +96,13 @@
                     >
                         <h:form>
 
-                            <h:panelGrid columns="1" style="width: 100%; height: 200px " cellpadding="50px" cellspacing="50px">
+                            <h:panelGrid columns="1" style="width: 100%; height: 300px " cellpadding="50px" cellspacing="50px">
                                 <b:commandButton value="Listening" look="info" styleClass="info btn-block btn-lg" action="#{beanVisit.logOutVisitante('Listening')}"/>
-                                <b:commandButton value="Reading"   styleClass="btn-danger  btn-block btn-lg"  action="#{beanVisit.logOutVisitante('Reading')}"/>
-                                <b:commandButton value="Grammar"   styleClass="btn-success btn-block btn-lg" action="#{beanVisit.logOutVisitante('Grammar')}"/>
-                                <b:commandButton value="Speaking"  styleClass="btn-warning btn-block btn-lg" action="#{beanVisit.logOutVisitante('Speaking')}"/>
+                                <b:commandButton value="Reading"     styleClass="btn-danger  btn-block btn-lg"  action="#{beanVisit.logOutVisitante('Reading')}"/>
+                                <b:commandButton value="Writing"     styleClass="btn-success btn-block btn-lg" action="#{beanVisit.logOutVisitante('Writing')}"/>
+                                <b:commandButton value="Speaking"    styleClass="btn-warning btn-block btn-lg" action="#{beanVisit.logOutVisitante('Speaking')}"/>
+                                <b:commandButton value="Grammar"     styleClass="btn-primary btn-block btn-lg" action="#{beanVisit.logOutVisitante('Grammar')}"/>
+                                <b:commandButton value="Vocabulary"  styleClass="btn-default btn-block btn-lg" action="#{beanVisit.logOutVisitante('Vocabulary')}"/>
                             </h:panelGrid>
 
                         </h:form>

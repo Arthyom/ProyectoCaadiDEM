@@ -23,10 +23,15 @@
                     }                               
                 </h:outputScript>  
                 
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                
                 <p:panel header="Reporte para:  #{beanEstudiantes.stdActual.name} 
                          #{beanEstudiantes.stdActual.firstLastName}
                          #{beanEstudiantes.stdActual.secondLastName} "
-                         styleClass="card box-solid box-primary" style="text-align: center; width: 90%; 
+                         styleClass="card box-solid box-primary" style="margin-top:150%; text-align: center; width: 90%; 
                          margin: 0 auto"
                 >
                     <p:outputLabel value="Total de Horas: #{beanVisit.contarHoras( beanEstudiantes.stdActual )}" />
@@ -90,7 +95,7 @@
             </ui:define>
 
             <ui:define name="bottom">
-                bottom
+                
             </ui:define>
 
         </ui:composition>
