@@ -38,7 +38,7 @@ public class BeanIndex implements Serializable {
    
    
     public String cerrarSesion (){
-       FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+       //FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("admin");
        
        
