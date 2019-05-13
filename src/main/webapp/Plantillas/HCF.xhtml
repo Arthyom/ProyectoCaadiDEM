@@ -53,8 +53,10 @@
                                 <b:navCommandLink  value="Agregar" action="/Grupos/agregar"
                                            actionListener="#{beanGrupos.crearNuevoItem()}"/>
                                 <b:navCommandLink value="Cargar"   action="/Grupos/cargar"/>
-
-                                
+                            </b:dropMenu>
+                            
+                            <b:dropMenu value="Visitas" rendered="#{beanGrupos.listarValidos().size() gt 0 and beanEstudiantes.listarValidos().size() gt 0} }">
+                                <b:navCommandLink value="Cargar"   action="/Visitas/cargar"/>
                             </b:dropMenu>
                             
                             <b:dropMenu value="Maestros" rendered="#{beanPeriodos.conseguirActual() ne null}">

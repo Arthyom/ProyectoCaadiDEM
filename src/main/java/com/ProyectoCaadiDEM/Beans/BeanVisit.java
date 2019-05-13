@@ -37,8 +37,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import static java.util.Collections.list;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -49,6 +52,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtils;
 
@@ -60,8 +68,10 @@ import org.jfree.chart.plot.PlotOrientation;
 
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
+import org.primefaces.component.importconstants.ConstantsHashMap;
 
 import org.primefaces.context.RequestContext;
+import org.primefaces.model.UploadedFile;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
@@ -96,11 +106,18 @@ public class BeanVisit implements Serializable {
     
     private DateFormat      formateador = new SimpleDateFormat( "dd/MM/yyyy HH:mm:ss");
     
+     private DateFormat     formateadorHora = new SimpleDateFormat( "HH:mm");
+    
+    private UploadedFile    archivo;
  
-   
+    private List<Visit>     VisitasCargadas = new ArrayList();
+    
+    private HashMap<String, Date> hashVisits =  new HashMap<String, Date>();
     
     
     public BeanVisit() {
+        
+        
     }
 
     public Visit getVstActual() {
@@ -235,7 +252,7 @@ public class BeanVisit implements Serializable {
         tTtl = tTtl%(1000*60*60);
         m = tTtl/(1000*60);
         
-        total = h+" Horas, " + m + " Minutos";
+        total = h+" Hora(s), " + m + " Minuto(s)";
         return total;
     }
     
@@ -250,7 +267,7 @@ public class BeanVisit implements Serializable {
         m = delta/(1000*60);
         
         
-        return h+" Horas, " + m + " Minutos";
+        return h+" Hora(s), " + m + " Minuto(s)";
         
     }
     
@@ -494,7 +511,103 @@ public class BeanVisit implements Serializable {
        
     }
     
-   
+    public void mensajeCargar () throws IOException, ParseException{
+        
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesContext ct = FacesContext.getCurrentInstance();
+            
+        try{
+                barrerArchivoXl();
+                mostrarPanel("dlgCargar");
+        }
+        catch(Exception exp){
+        ct.addMessage(null,
+                new FacesMessage("Error: ", "El archivo no tiene el formato correcto"));
+        }
+    }
+    
+   // analizar el archivo json seleccinado
+    public void mostrarPanel ( String panel ){
+        
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesContext ct = FacesContext.getCurrentInstance();
+        context.execute("PF('"+panel+"').show();");
+    }
+    
+    public void barrerArchivoXl () throws IOException, ParseException{
+       
+       XSSFWorkbook      nb = new XSSFWorkbook( archivo.getInputstream() );
+       XSSFSheet         nh = nb.getSheetAt(0);
+       
+       // comenzar una transaccion 
+       
+       for( int nr = nh.getFirstRowNum(); nr<nh.getLastRowNum()+1 ; nr++){
+           
+           long h = 0, m = 0;
+           Visit nv = new Visit();
+           // cnseguir celdas 
+           XSSFRow   r            = nh.getRow(nr);
+           XSSFCell  cNua         = r.getCell(0);
+           XSSFCell  cSkill       = r.getCell(1);
+           XSSFCell  cLapso       = r.getCell(2);
+           XSSFCell  cTotal       = r.getCell(3);
+           
+           // extraer valores de las celdas
+           String nua   = String.valueOf( (int)cNua.getNumericCellValue() );
+           String skill = cSkill.getRichStringCellValue().getString();
+           
+          
+           // extraer los valores de los lapsos de tiempo o del tiempo absoluto
+           // buscar al estudiante en la base de datos y regresarlo para insertar las horas cargadas
+           Students ns = this.fcdEstudiante.find(nua);
+           if(ns != null){
+               // crear una nueva visita e insertarla
+               nv.setVisible(Boolean.TRUE);
+               nv.setPeriodId(this.fcdPeriodo.conseguirPrdActual());
+               nv.setId(0);
+               nv.setNua(ns);
+               nv.setSkill(skill);
+               if(cLapso != null ){
+                     /// conseguir los valores del lapso
+                    String fechaTemporal = cLapso.getRichStringCellValue().getString();
+                    fechaTemporal = fechaTemporal.replace(" – ", "–");
+                    
+                    String fechaCortada [] = fechaTemporal.split("–");
+                    nv.setStart( this.formateadorHora.parse(fechaCortada[0]) );
+                    nv.setEnd(   this.formateadorHora.parse(fechaCortada[1]) );
+                }
+               else{
+                   /// conseguir los valores del total
+                   Date valorFechaCelda = cTotal.getDateCellValue();
+                   nv.setStart( this.formateadorHora.parse("00:00") );
+                   nv.setEnd(   this.formateador.parse("01/01/1970 "+valorFechaCelda.getHours()+":"+ valorFechaCelda.getMinutes()+":00") );                
+                }
+               
+                // guardar la visita para persistirla cuando el usuario acepte el metodo
+                this.VisitasCargadas.add(nv);
+           }
+       }
+    }
+    
+     public String agregarAutomatico(){
+         
+        // persistir cada una de las visitas 
+        for(Visit vsI : this.VisitasCargadas )
+            this.fcdVisita.create(vsI);
+       
+        this.VisitasCargadas.clear();
+        
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        FacesContext ct = FacesContext.getCurrentInstance();
+
+        ct.addMessage(null,
+                new FacesMessage("Agregar: ", "Visitas Cargadas Correctamente"));
+        return "/Estudiantes/listar?faces-redirect=true";     
+    }
+     
+    public void cancelarCargaAutomatica (){
+        this.VisitasCargadas.clear();
+    }
    
     ////////////////////////////////////////////////////////////////////////////
     
@@ -523,6 +636,32 @@ public class BeanVisit implements Serializable {
         this.prdActual = prdActual;
     }
 
+    public UploadedFile getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(UploadedFile archivo) {
+        this.archivo = archivo;
+    }
+
+    public List<Visit> getVisitasCargadas() {
+        return VisitasCargadas;
+    }
+
+    public void setVisitasCargadas(List<Visit> VisitasCargadas) {
+        this.VisitasCargadas = VisitasCargadas;
+    }
+
+    public HashMap<String, Date> getHashVisits() {
+        return hashVisits;
+    }
+
+    public void setHashVisits(HashMap<String, Date> hashVisits) {
+        this.hashVisits = hashVisits;
+    }
+    
+
+    
    
    
    

@@ -50,15 +50,17 @@
                        
                         
                         <p:column headerText="Inicio">
-                            <p:outputLabel value="#{vst.start}">
+                            <p:outputLabel value="#{vst.start}" rendered="#{vst.start.year gt 1970}">
                                 <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
                             </p:outputLabel>
+                             <p:outputLabel value="Cargado desde Lista" rendered="#{vst.start.year lt 1970}" />
                         </p:column>
                         
                         <p:column headerText="Final">
-                            <p:outputLabel value="#{vst.end}">
+                            <p:outputLabel value="#{vst.end}" rendered="#{vst.end.year gt 1970}" >
                                 <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
                             </p:outputLabel>
+                            <p:outputLabel value="Cargado desde Lista" rendered="#{vst.end.year lt 1970}" />
                         </p:column>
                         
                         <p:column headerText="Duracion">
