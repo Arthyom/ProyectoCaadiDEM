@@ -78,9 +78,17 @@ public class BeanMaestros implements Serializable {
     }
        
     
-    public Collection<Groups> listarGruposXprof(){
-        return this.mtsActual.getGroupsCollection();
+    public List<Groups> listarGruposXprof(){
+         List<Groups> c = (List) this.mtsActual.getGroupsCollection();
+         List<Groups> cx = new ArrayList();
+         
+         for(Groups gi : c )
+             if(gi.getVisible())
+                 cx.add(gi);
+         
+         return cx;  
     }
+    
     public String borrarSeleccionado () {
         mtsActual.setVisible(Boolean.FALSE);
         fcdMaestros.edit(mtsActual);
