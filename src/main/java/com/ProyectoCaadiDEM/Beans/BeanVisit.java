@@ -570,9 +570,14 @@ public class BeanVisit implements Serializable {
                if(cLapso != null ){
                      /// conseguir los valores del lapso
                     String fechaTemporal = cLapso.getRichStringCellValue().getString();
-                    fechaTemporal = fechaTemporal.replace(" – ", "–");
+                    fechaTemporal = fechaTemporal.replace(" - ", "-");
+                    fechaTemporal = fechaTemporal.replace("-", "-");
+                    fechaTemporal = fechaTemporal.replace("–", "-");
+                    fechaTemporal = fechaTemporal.replace(" – ", "-");
                     
-                    String fechaCortada [] = fechaTemporal.split("–");
+                    String fechaCortada [] = fechaTemporal.split("-");
+                    
+                    
                     nv.setStart( this.formateadorHora.parse(fechaCortada[0]) );
                     nv.setEnd(   this.formateadorHora.parse(fechaCortada[1]) );
                 }
