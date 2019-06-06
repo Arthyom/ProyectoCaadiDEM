@@ -79,7 +79,8 @@ public class BeanMaestros implements Serializable {
        
     
     public List<Groups> listarGruposXprof(){
-         List<Groups> c = (List) this.mtsActual.getGroupsCollection();
+         List<Groups> c = new ArrayList();
+         c = (List) this.mtsActual.getGroupsCollection();
          List<Groups> cx = new ArrayList();
          
          for(Groups gi : c )
