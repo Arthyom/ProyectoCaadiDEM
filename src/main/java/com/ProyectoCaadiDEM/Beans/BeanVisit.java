@@ -446,7 +446,7 @@ public class BeanVisit implements Serializable {
  
     Image imgP = Image.getInstance(ruta+Nua+"grafPie.jpeg");
     Image imgB = Image.getInstance(ruta+Nua+"grafBar.jpeg");
-    
+    Date dateComp = new SimpleDateFormat("yyyy-MM-dd").parse("1970-01-01");
     
     Font hf = new Font( Font.FontFamily.HELVETICA, 15, Font.BOLD);
     Font th = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD, BaseColor.BLUE);
@@ -455,8 +455,16 @@ public class BeanVisit implements Serializable {
         nt.addCell(new Phrase("Duracion",hf) );nt.addCell(new Phrase("Habilidad",hf) );
         
         for (Visit vi : lv) {
-            nt.addCell(this.formateador.format(vi.getStart()));
-            nt.addCell(this.formateador.format(vi.getEnd()));
+            if(vi.getStart().getYear() == dateComp.getYear() )
+                nt.addCell("Cargado Desde Lista");
+            else
+                nt.addCell(this.formateador.format(vi.getStart()));
+            
+            if(vi.getStart().getYear() == dateComp.getYear() )
+                nt.addCell("Cargado Desde Lista");
+            else
+                nt.addCell(this.formateador.format(vi.getEnd()));
+            
             nt.addCell(this.contarLapso(vi));
             nt.addCell(vi.getSkill());
         }
