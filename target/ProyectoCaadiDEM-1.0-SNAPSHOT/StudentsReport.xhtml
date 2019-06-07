@@ -35,6 +35,7 @@
                 >
                     <p:outputLabel value="Total de Horas: #{beanVisit.contarHoras( beanEstudiantes.stdActual )}" />
                     <h:form>
+                        <b:growl id="usrGrowl" showSummary="true" showDetail="true" allowDismiss="true"/>
                         
                         <b:commandButton value="Descargar PDF"  styleClass="btn-success btn-lg btn-block"
                                         

@@ -4,6 +4,7 @@ package com.ProyectoCaadiDEM.Beans;
 
 import com.ProyectoCaadiDEM.Entidades.Groups;
 import com.ProyectoCaadiDEM.Entidades.Teachers;
+import com.ProyectoCaadiDEM.Fachadas.GroupsFacade;
 import com.ProyectoCaadiDEM.Fachadas.TeachersFacade;
 import java.io.IOException;
 import javax.inject.Named;
@@ -30,11 +31,15 @@ public class BeanMaestros implements Serializable {
     @EJB
     private TeachersFacade fcdMaestros;
     
+    @EJB
+    private GroupsFacade fcdGrupos;
+   
     private Teachers        mtsActual;
     private Teachers        mtsNuevo;
     private List<Teachers>  mtsSeleccionados,
                             mtsNoExist = new ArrayList(),
                             mtsExist   = new ArrayList();
+   
     
     private UploadedFile    archivo;
     private String          nue;
@@ -46,6 +51,10 @@ public class BeanMaestros implements Serializable {
     
     ////////////////////////////////////////////////////////////////////////////
     public String limpiar(){
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        FacesContext ct =  FacesContext.getCurrentInstance();
+        ct.addMessage(null, new FacesMessage("Deslogueado", "Hasta luego" ));
+        
         this.nue = null;
         this.mtsActual = null;
         
@@ -79,13 +88,23 @@ public class BeanMaestros implements Serializable {
        
     
     public List<Groups> listarGruposXprof(){
-         List<Groups> c = new ArrayList();
-         c = (List) this.mtsActual.getGroupsCollection();
+         List<Groups> c  = new ArrayList();
          List<Groups> cx = new ArrayList();
          
+         try{
+         c = (List) this.mtsActual.getGroupsCollection();
          for(Groups gi : c )
              if(gi.getVisible())
                  cx.add(gi);
+        }
+        catch(Exception exp){
+            List<Groups> totalGrupos =  (List) this.fcdGrupos.findAll();
+            
+            for( Groups gi : totalGrupos ){
+                if(gi.getEmployeeNumber().getEmployeeNumber().equals(this.nue) && gi.getVisible() )
+                    cx.add(gi);
+            }
+        }
          
          return cx;  
     }
@@ -230,6 +249,23 @@ public class BeanMaestros implements Serializable {
                     new FacesMessage("Error", "No se encontro profesor"));
             return null;
         }
+        return "TeachersReport?faces-redirect=true";
+    }
+    
+    public String comprobarProfesorExterno() {
+
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        FacesContext ct = FacesContext.getCurrentInstance();
+        
+        if (this.mtsActual == null) {
+            ct.addMessage(null,
+                    new FacesMessage("Error", "No se encontro profesor"));
+            return null;
+        }
+        
+        ct.addMessage(null,
+                    new FacesMessage("Aceptado", "Bienvenido Profesor: " + this.mtsActual.getName() + " "+ 
+                            this.mtsActual.getFirstLastName() +" "+this.mtsActual.getSecondLastName()));
         return "TeachersReport?faces-redirect=true";
     }
 

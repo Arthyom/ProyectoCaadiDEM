@@ -47,7 +47,7 @@ public class BeanEstudiantes implements Serializable {
     
     
     ////////////////////////////////////////////////////////////////////////////
-    public String limpiar(){
+    public String limpiar(){      
         this.nua = null;
         this.stdActual = null;
         
@@ -55,6 +55,9 @@ public class BeanEstudiantes implements Serializable {
     }
     
      public String limpiarOut(){
+          FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        FacesContext ct =  FacesContext.getCurrentInstance();
+        ct.addMessage(null, new FacesMessage("Deslogueado", "Hasta luego" ));
         this.nua = null;
         this.stdActual = null;
         
@@ -69,6 +72,21 @@ public class BeanEstudiantes implements Serializable {
         if(this.stdActual != null && this.stdActual.getVisible()){
             ct.addMessage(null, 
               new FacesMessage("Deslogueado", "Hasta luego" ));
+            return "/StudentsReport?faces-redirect=true";
+        }
+        ct.addMessage(null, 
+              new FacesMessage("Error", "No se ha encontrado el NUA" ));
+        return ""; 
+    }
+    
+    public String comprobarEstudianteExterno ( ){
+        this.stdActual = this.fcdEstudiante.find(this.nua);
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        FacesContext ct =  FacesContext.getCurrentInstance();
+        
+        if(this.stdActual != null && this.stdActual.getVisible()){
+            ct.addMessage(null, 
+              new FacesMessage("Aceptado", "Bienvenido(a): "+this.stdActual.getName() + " "+ this.stdActual.getFirstLastName() + " "+ this.stdActual.getSecondLastName() ));
             return "/StudentsReport?faces-redirect=true";
         }
         ct.addMessage(null, 

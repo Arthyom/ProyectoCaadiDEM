@@ -13,11 +13,11 @@
 
             <ui:define name="content">
                <div class="backgroundBody">
-                <p:panel header="Profesor: #{beanMaestros.mtsActual.name} #{beanMaestros.mtsActual.setFirstLastName(firstLastName)} #{beanMaestros.mtsActual.secondLastName}" 
+                   <p:panel header="Profesor: #{beanMaestros.mtsActual.name} #{beanMaestros.mtsActual.firstLastName} #{beanMaestros.mtsActual.secondLastName}" 
                              toggleable="true" styleClass="card box-solid box-primary centerFormLogOut" 
                              style="text-align: center; width: 90%; margin: 0 auto; top: 120px">
                 <h:form id="form">
-                    <b:growl showDetail="true" allowDismiss="true"/>
+                    <b:growl id="usrGrowl" showSummary="false" showDetail="true" allowDismiss="true"/>
                     
                        
 
