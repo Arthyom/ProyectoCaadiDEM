@@ -8,3 +8,5 @@ target/test-classes/
 target/classes/.netbeans_automatic_build
 target/ProyectoCaadiDEM-1.0-SNAPSHOT/gfv3ee6.dpf
 target/ProyectoCaadiDEM-1.0-SNAPSHOT/
+/target/
+!/src/main/webapp/WEB-INF/glassfish-resources.xml
